@@ -117,18 +117,18 @@
 
 
 
-<meta name="description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(\bm x\in R^{D}\)，限制条件是\(g(\bm x) = 0\)。限制条件表示为在\(\bm x\">
+<meta name="description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(\bm x\in R^{D}\)，限制条件是\(g(\bm x) = 0\)。限制条件表示为在\(\bm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈机器学习中Lagrange-Multipliers">
 <meta property="og:url" content="https://muyi110.github.io/2018/07/11/浅谈机器学习中Lagrange-Multipliers/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(\bm x\in R^{D}\)，限制条件是\(g(\bm x) = 0\)。限制条件表示为在\(\bm x\">
+<meta property="og:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(\bm x\in R^{D}\)，限制条件是\(g(\bm x) = 0\)。限制条件表示为在\(\bm">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/2018.png">
-<meta property="og:updated_time" content="2018-07-11T14:09:11.938Z">
+<meta property="og:updated_time" content="2018-07-11T14:13:18.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中Lagrange-Multipliers">
-<meta name="twitter:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(\bm x\in R^{D}\)，限制条件是\(g(\bm x) = 0\)。限制条件表示为在\(\bm x\">
+<meta name="twitter:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(\bm x\in R^{D}\)，限制条件是\(g(\bm x) = 0\)。限制条件表示为在\(\bm">
 <meta name="twitter:image" content="https://muyi110.github.io/images/2018.png">
 
 
@@ -349,13 +349,15 @@
       
 
       
-        <p><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"><br></script></p>
+        <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <h1 id="拉格朗日数乘"><a href="#拉格朗日数乘" class="headerlink" title="拉格朗日数乘"></a>拉格朗日数乘</h1><blockquote>
 <p>Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.</p>
 </blockquote>
 <p>考虑变量\(\bm x\in R^{D}\)，限制条件是\(g(\bm x) = 0\)。限制条件表示为在\(\bm x\)空间里的\(D-1\)维表面。<br>在限制表面上的任何点，其梯度\(\nabla g\left(\bm x\right)\)都和限制表面正交。下图是对此说明。<br>$$f(x)=x^2$$<br><img src="/images/2018.png" alt="有等式约束的拉格朗日数乘图例"></p>
 <ul>
-<li>对上面一句话证明:<br>考虑限制表面上的一个点\(\bm x\)，同时考虑一个相邻的点\(\bm x+\bm \varepsilon\)也在限制表面上，利用泰勒展开公式得到$$g\left( x+t\right)=g\left(x\right) +\varepsilon^{T}\nabla g\left(x\right)$$<br>由于\(\bm x\)与\(\bm x+\bm \varepsilon\)都在限制表面上，得到\(g(\bm x)=g(\bm x+\bm \varepsilon\)</li>
+<li>对上面一句话证明:<br>考虑限制表面上的一个点\(\bm x\)，同时考虑一个相邻的点\(\bm x+\bm \varepsilon\)也在限制表面上，利用泰勒展开公式得到$$g\left( x+t\right)=g\left(x\right) +\varepsilon^{T}\nabla g\left(x\right)$$<br>由于\(\bm x\)与\(\bm x+\bm \varepsilon\)都在限制表面上，得到\(g(\bm x)=g(\bm x+\bm \varepsilon\)，因此</li>
 </ul>
 
       
