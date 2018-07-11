@@ -493,7 +493,7 @@ pre,
 }
 pre,
 code {
-  font-family: 'Courier New', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: 'Courier', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
@@ -1131,7 +1131,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 24px;
   font-weight: normal;
-  font-family: 'Lobster Two', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #639840;
+  background: #630534;
 }
 .links-of-blogroll {
   font-size: 13px;
