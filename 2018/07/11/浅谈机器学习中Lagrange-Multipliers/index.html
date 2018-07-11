@@ -125,7 +125,7 @@
 <meta property="og:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(x\in R^{D}\)，限制条件是\(g(x) = 0\)。限制条件表示为在\(x\)空间里的\(D-1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/2018.png">
-<meta property="og:updated_time" content="2018-07-11T14:25:14.781Z">
+<meta property="og:updated_time" content="2018-07-11T14:30:05.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中Lagrange-Multipliers">
 <meta name="twitter:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  考虑变量\(x\in R^{D}\)，限制条件是\(g(x) = 0\)。限制条件表示为在\(x\)空间里的\(D-1">
@@ -355,9 +355,9 @@
 <h1 id="拉格朗日数乘"><a href="#拉格朗日数乘" class="headerlink" title="拉格朗日数乘"></a>拉格朗日数乘</h1><blockquote>
 <p>Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.</p>
 </blockquote>
-<p>考虑变量\(<strong>x</strong>\in R^{D}\)，限制条件是\(g(<strong>x</strong>) = 0\)。限制条件表示为在\(<strong>x</strong>\)空间里的\(D-1\)维表面。<br>在限制表面上的任何点，其梯度\(\nabla g\left(<strong>x</strong>\right)\)都和限制表面正交。下图是对此说明。<br><img src="/images/2018.png" alt="有等式约束的拉格朗日数乘图例"></p>
+<p>考虑变量\(x\in R^{D}\)，限制条件是\(g(x) = 0\)。限制条件表示为在\(x\)空间里的\(D-1\)维表面。<br>在限制表面上的任何点，其梯度\(\nabla g\left(x\right)\)都和限制表面正交。下图是对此说明。<br><img src="/images/2018.png" alt="有等式约束的拉格朗日数乘图例"></p>
 <ul>
-<li>对上面一句话证明:<br>考虑限制表面上的一个点\(<strong>x</strong>\)，同时考虑一个相邻的点\(<strong>x</strong>+<strong>\varepsilon</strong>\)也在限制表面上，利用泰勒展开公式得到$$g\left(<strong>x</strong>+<strong>\varepsilon</strong>\right)=g\left(<strong>x</strong>\right) +<strong>\varepsilon</strong>^{T}\nabla g\left(<strong>x</strong>\right)$$<br>由于\(<strong>x</strong>\)与\(<strong>x</strong>+<strong>\varepsilon</strong>\)都在限制表面上，得到\(g(<strong>x</strong>)=g(<strong>x</strong>+<strong>\varepsilon</strong>\)，因此</li>
+<li>对上面一句话证明:<br>考虑限制表面上的一个点\(x\)，同时考虑一个相邻的点\(x+\varepsilon\)也在限制表面上，利用泰勒展开公式得到$$g\left(x+\varepsilon\right)=g\left(x\right) +\varepsilon^{T}\nabla g\left(x\right)$$<br>由于\(x\)与\(x+\varepsilon\)都在限制表面上，得到\(g(x)=g(x+\varepsilon\)，因此有\(\varepsilon^{T}\nabla g\left(x\right)=0\)当</li>
 </ul>
 
       
