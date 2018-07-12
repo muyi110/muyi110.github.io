@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/2018.png">
 <meta property="og:image" content="https://muyi110.github.io/images/20180712.png">
-<meta property="og:updated_time" content="2018-07-12T03:49:12.277Z">
+<meta property="og:updated_time" content="2018-07-12T03:55:09.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中Lagrange-Multipliers">
 <meta name="twitter:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  等式限制的情况考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol">
@@ -371,9 +371,9 @@
 <li>落在\(g(\boldsymbol x)&gt;0\)的区域。在此种情况下限制函数\(g(\boldsymbol x)\)不起作用，只需简单令\(\nabla f(\boldsymbol x)=0\)求解即可，这和等式限制条件下的拉格朗日函数中\(\lambda =0\)等价。</li>
 <li>落在\(g(\boldsymbol x)=0\)的区域。这和之前讨论的等式约束条件类似，此时\(\lambda \neq 0\)。注意此时只有函数\(f(\boldsymbol x)\)的梯度\(\nabla f\left(\boldsymbol x\right)\)指向远离\(g(\boldsymbol x)&gt;0\)的区域，才有函数\(f(\boldsymbol x)\)取极大值（上图有说明，解释可参考上面等式约束部分“非正式的解释”）。于是有\(\nabla f(\boldsymbol x)=-\lambda\nabla g(\boldsymbol x)\)，其中\(\lambda &gt;0\)。</li>
 </ol>
-<p>以上两种情况都有\(\lambda g(\boldsymbol x)=0\)，因此问题转为下式带约束的极大值$$L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)+\lambda g\left(\boldsymbol x\right)$$$$\begin{cases}g\left( x\right) =0\ \lambda \geq 0\ \lambda g\left( x\right) =0\end{cases}$$约束条件为KKT条件。<br><strong>注意如果是\(\min f\left(\boldsymbol x\right)\)，限制条件为\(g\left(\boldsymbol x\right)\geq 0\)，则拉格朗日函数应该为\(L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)-\lambda g\left(\boldsymbol x\right)\)其中\(\lambda \geq 0\)</strong></p>
+<p>以上两种情况都有\(\lambda g(\boldsymbol x)=0\)，因此问题转为下式带约束的极大值$$L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)+\lambda g\left(\boldsymbol x\right)$$$$\begin{cases}g\left( x\right) =0\\ \lambda \geq 0\\ \lambda g\left( x\right) =0\end{cases}$$约束条件为KKT条件。<br><strong>注意如果是\(\min f\left(\boldsymbol x\right)\)，限制条件为\(g\left(\boldsymbol x\right)\geq 0\)，则拉格朗日函数应该为\(L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)-\lambda g\left(\boldsymbol x\right)\)其中\(\lambda \geq 0\)</strong></p>
 <ul>
-<li><strong>对上面注意事项解释如下</strong><br>如果限制条件成立，则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)\);但是若限制条件不满足，即\(g(\boldsymbol x)&lt;0\)，则需要惩罚，由于\(\lambda\geq 0\)则惩罚项\(\lambda g(\boldsymbol x)=-\infty\)。则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)-(-\infty)\)，因此问题转为$$L\left( x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\ +\infty ,不满足限制\end{cases}$$在这种情况下最小化才有意义（和原文题\(\min f\left(\boldsymbol x\right)\)保持一致）。如果拉格朗日数乘算子前还是”+”的话，则问题转为$$L\left( x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\ -\infty ,不满足限制\end{cases}$$此时最小化无意义。（此思想对于其他的情况也适用）</li>
+<li><strong>对上面注意事项解释如下</strong><br>如果限制条件成立，则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)\);但是若限制条件不满足，即\(g(\boldsymbol x)&lt;0\)，则需要惩罚，由于\(\lambda\geq 0\)则惩罚项\(\lambda g(\boldsymbol x)=-\infty\)。则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)-(-\infty)\)，因此问题转为$$L\left(\boldsymbol x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\ +\infty ,不满足限制\end{cases}$$在这种情况下最小化才有意义（和原文题\(\min f\left(\boldsymbol x\right)\)保持一致）。如果拉格朗日数乘算子前还是”+”的话，则问题转为$$L\left(\boldsymbol x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\ -\infty ,不满足限制\end{cases}$$此时最小化无意义。（此思想对于其他的情况也适用）</li>
 </ul>
 <p>将上述等式约束和不等式约束组合可得到拉格朗日数乘公式的一般形式，具体就不写了，注意KKT条件。</p>
 
