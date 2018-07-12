@@ -125,7 +125,7 @@
 <meta property="og:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  等式限制的情况考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/2018.png">
-<meta property="og:updated_time" content="2018-07-12T02:05:20.979Z">
+<meta property="og:updated_time" content="2018-07-12T02:13:58.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中Lagrange-Multipliers">
 <meta name="twitter:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  等式限制的情况考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol">
@@ -358,12 +358,10 @@
 <h2 id="等式限制的情况"><a href="#等式限制的情况" class="headerlink" title="等式限制的情况"></a>等式限制的情况</h2><p>考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol x) = 0\)。限制条件表示为在\(\boldsymbol x\)空间里的\(D-1\)维表面。在限制表面上的任何点，其梯度\(\nabla g\left(\boldsymbol x\right)\)都和限制表面正交。下图是对此说明。<br><img src="/images/2018.png" alt="有等式约束的拉格朗日数乘图例"></p>
 <ul>
 <li><strong>对上面一句话（其梯度\(\nabla g\left(\boldsymbol x\right)\)都和限制表面正交）证明:</strong><br>考虑限制表面上的一个点\(\boldsymbol x\)，同时考虑一个相邻的点\(\boldsymbol x+\boldsymbol \varepsilon\)也在限制表面上，利用泰勒展开公式得到$$g\left(\boldsymbol x+\boldsymbol \varepsilon\right)=g\left(\boldsymbol x\right) +\boldsymbol \varepsilon^{T}\nabla g\left(\boldsymbol x\right)$$由于\(\boldsymbol x\)与\(\boldsymbol x+\boldsymbol \varepsilon\)都在限制表面上，得到\(g(\boldsymbol x)=g(\boldsymbol x+\boldsymbol \varepsilon)\)，因此有\(\boldsymbol \varepsilon^{T}\nabla g\left(\boldsymbol x\right)=0\)当\(\lim \left| \boldsymbol \varepsilon\right| \rightarrow 0\)。由于\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行，所以梯度\(\nabla g\left(\boldsymbol x\right)\)都和限制表面正交。</li>
-<li><strong>杂谈：为什么有\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行？</strong><br>由于\(\boldsymbol x\)与\(\boldsymbol x+\boldsymbol \varepsilon\)都在限制表面上，说明向量\(\boldsymbol \varepsilon\)的”头”和”尾”都在限制表面上，因此有\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行。</li>
+<li><strong>杂谈：为什么有\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行？</strong><br>由于\(\boldsymbol x\)与\(\boldsymbol x+\boldsymbol \varepsilon\)都在限制表面上，说明向量\(\boldsymbol \varepsilon\)的”头”和”尾”都在限制表面上，因此有\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行。<br>接下来的目的是要在限制表面\(g(\boldsymbol x) = 0\)上寻找一点\(\boldsymbol x^\ast\)，使得目标函数\(f\left(\boldsymbol x\right)\)取最大值。<strong>像这样的点满足一个属性：向量\(\nabla f\left(\boldsymbol x\right)\)也和限制表面正交。</strong></li>
+<li><strong>如何理解向量\(\nabla f\left(\boldsymbol x^\ast\right)\)也和限制表面正交？</strong><br>非正式的解释如下：\(\boldsymbol x\)在限制表面\(g(\boldsymbol x) = 0\)上移动，直到找到使目标函数\(f\left(\boldsymbol x\right)\)取最大值时停止，若\(\nabla f\left(\boldsymbol x\right)\)与\(\nabla g\left(\boldsymbol x\right)\)不共线，则\(\nabla f\left(\boldsymbol x\right)\)在该点有一个切向分量，\(\boldsymbol x\)沿着该分量移动使得\(f\left(\boldsymbol x\right)\)可以取得更大的值，最终会稳定在一个使得\(\nabla f\left(\boldsymbol x\right)\)与\(\nabla g\left(\boldsymbol x\right)\)共线的位置。（可以类比梯度法（上升/下降）找极值理解）</li>
 </ul>
-<p>接下来的目的是要在限制表面\(g(\boldsymbol x) = 0\)上寻找一点\(\boldsymbol x^\ast\)，使得目标函数(\f\left(\boldsymbol x\right)\)取最大值。<strong>像这样的点满足一个属性：向量\(\nabla f\left(\boldsymbol x\right)\)也和限制表面正交。</strong></p>
-<ul>
-<li>如何理解向量\(\nabla f\left(\boldsymbol x^\ast\right)\)也和限制表面正交？<br>非正式的解释如下：\(\boldsymbol x\)在限制表面\(g(\boldsymbol x) = 0\)上移动，直到找到使目标函数(\f\left(\boldsymbol x\right)\)取最大值时停止，若\(\nabla f\left(\boldsymbol x\right)\)与\(\nabla g\left(\boldsymbol x\right)\)不共线，则\(\nabla f\left(\boldsymbol x\right)\)在该点有一个切向分量，\(\boldsymbol x\)沿着该分量移动使得(\f\left(\boldsymbol x\right)\)可以取得更大的值，最终会稳定在一个使得\(\nabla f\left(\boldsymbol x\right)\)与\(\nabla g\left(\boldsymbol x\right)\)共线的位置。（可以类比梯度法（上升/下降）找极值理解）<br>因此存在一个参数\(\lambda\)使得$$\nabla f\left(\boldsymbol x\right)+\lambda \nabla g\left(\boldsymbol x\right)=0$$，进而自然引出拉格朗日函数$$L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)+\lambda g\left(\boldsymbol x\right)$$通过令\(\nabla _{\boldsymbol x}L=0\)得到所求的极值点。(在等式限制条件下，\(\min f(\boldsymbol x\)与\(\max f(\boldsymbol x\)应用拉格朗日是对等的，没啥区别）</li>
-</ul>
+<p>因此存在一个参数\(\lambda\)使得$$\nabla f\left(\boldsymbol x\right)+\lambda \nabla g\left(\boldsymbol x\right)=0$$进而自然引出拉格朗日函数$$L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)+\lambda g\left(\boldsymbol x\right)$$通过令\(\nabla _{\boldsymbol x}L=0\)得到所求的极值点。(在等式限制条件下，\(\min f(\boldsymbol x\)与\(\max f(\boldsymbol x\)应用拉格朗日是对等的，没啥区别）</p>
 <h2 id="不等式限制条件"><a href="#不等式限制条件" class="headerlink" title="不等式限制条件"></a>不等式限制条件</h2><p>接下来探讨\(\max f\left(\boldsymbol x\right)\)，限制条件为\(g\left(\boldsymbol x\right)\geq 0\)。</p>
 
       
