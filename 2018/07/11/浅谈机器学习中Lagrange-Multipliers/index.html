@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/2018.png">
 <meta property="og:image" content="https://muyi110.github.io/images/20180712.png">
-<meta property="og:updated_time" content="2018-07-12T08:28:16.142Z">
+<meta property="og:updated_time" content="2018-07-12T08:34:29.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中Lagrange-Multipliers">
 <meta name="twitter:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  等式限制的情况考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol">
@@ -375,12 +375,11 @@
 <li>落在\(g(\boldsymbol x)=0\)的区域。这和之前讨论的等式约束条件类似，此时\(\lambda \neq 0\)。注意此时只有函数\(f(\boldsymbol x)\)的梯度\(\nabla f\left(\boldsymbol x\right)\)指向远离\(g(\boldsymbol x)&gt;0\)的区域，才有函数\(f(\boldsymbol x)\)取极大值（上图有说明，解释可参考上面等式约束部分“非正式的解释”）。于是有\(\nabla f(\boldsymbol x)=-\lambda\nabla g(\boldsymbol x)\)，其中\(\lambda &gt;0\)。</li>
 </ol>
 <ul>
-<li><strong>杂谈：</strong>如何确定限制面上的点的梯度\(\nabla g(\boldsymbol x\)的指向（图中事例都是指向限制面包裹区域的内部)<blockquote>
-<p>梯度：函数在某一点的梯度是这样一个向量，它的方向与取得最大<a href="http://math.fudan.edu.cn/gdsx/KEJIAN/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E5%92%8C%E6%A2%AF%E5%BA%A6.pdf" target="_blank" rel="noopener">方向导数</a>的方向一致，而它的模为<a href="http://math.fudan.edu.cn/gdsx/KEJIAN/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E5%92%8C%E6%A2%AF%E5%BA%A6.pdf" target="_blank" rel="noopener">方向导数</a>的最大值。<strong>沿梯度方向，函数值增加最快（此时方向导数是正值，取最大）</strong>，为更好理解考虑下面用泰勒公式展开的一元函数$$f(x+\nabla x)\approx f(x)+f’(x)\nabla x$$当\(f’(x)&gt;0\)时，函数值增加。当\(f’(x)&lt;0\)时，函数值减小，多元函数类似。</p>
+<li><strong>杂谈：</strong>如何确定限制面上的点的梯度\(\nabla g(\boldsymbol x)\)的指向（图中示例都是指向限制面包裹区域的内部)<blockquote>
+<p>梯度：函数在某一点的梯度是这样一个向量，它的方向与取得最大<a href="http://math.fudan.edu.cn/gdsx/KEJIAN/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E5%92%8C%E6%A2%AF%E5%BA%A6.pdf" target="_blank" rel="noopener">方向导数</a>的方向一致，而它的模为<a href="http://math.fudan.edu.cn/gdsx/KEJIAN/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E5%92%8C%E6%A2%AF%E5%BA%A6.pdf" target="_blank" rel="noopener">方向导数</a>的最大值。<strong>沿梯度方向，函数值增加最快（此时方向导数是正值，取最大）</strong>，为更好理解考虑下面用泰勒公式展开的一元函数$$f(x+\nabla x)\approx f(x)+f’(x)\nabla x$$当\(f’(x)&gt;0\)时，函数值增加。当\(f’(x)&lt;0\)时，函数值减小，多元函数类似。<br>回归正题：由刚才的分析可知，沿梯度的方向，函数值增加最快，因此可得到梯度的方向就是函数值增加的方向。由于上面图给出\(g(\boldsymbol x)&gt;0\)在内部，因此梯度方向也就指向内部了。（若\(g(\boldsymbol x)&gt;0\)在外部，那梯度方向就指向外部了，之前的所有分析都是还成立的）</p>
 </blockquote>
 </li>
 </ul>
-<p>回归正题：由刚才的分析可知，沿梯度的方向，函数值增加最快，因此可得到梯度的方向就是函数值增加的方向。由于上面图给出\(g(\boldsymbol x)&gt;0\)在内部，因此梯度方向也就指向内部了。（若\(g(\boldsymbol x)&gt;0\)在外部，那梯度方向就指向外部了，之前的所有分析都是还成立的）</p>
 <p>以上两种情况都有\(\lambda g(\boldsymbol x)=0\)，因此问题转为下式带约束的极大值$$L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)+\lambda g\left(\boldsymbol x\right)$$$$s.t.\begin{cases}g\left( x\right) =0\\ \lambda \geq 0\\ \lambda g\left( x\right) =0\end{cases}$$约束条件为KKT条件。<br><strong>注意如果是\(\min f\left(\boldsymbol x\right)\)，限制条件为\(g\left(\boldsymbol x\right)\geq 0\)，则拉格朗日函数应该为\(L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)-\lambda g\left(\boldsymbol x\right)\)其中\(\lambda \geq 0\)</strong></p>
 <ul>
 <li><strong>对上面注意事项解释如下</strong><br>如果限制条件成立，则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)\);但是若限制条件不满足，即\(g(\boldsymbol x)&lt;0\)，则需要惩罚，由于\(\lambda\geq 0\)则惩罚项\(\lambda g(\boldsymbol x)=-\infty\)。则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)-(-\infty)\)，因此问题转为$$L\left(\boldsymbol x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\\ +\infty ,不满足限制\end{cases}$$在这种情况下最小化才有意义（和原文题\(\min f\left(\boldsymbol x\right)\)保持一致）。如果拉格朗日数乘算子前还是”+”的话，则问题转为$$L\left(\boldsymbol x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\\ -\infty ,不满足限制\end{cases}$$此时最小化无意义。（此思想对于其他的情况也适用）</li>
