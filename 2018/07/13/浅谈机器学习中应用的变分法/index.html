@@ -117,17 +117,17 @@
 
 
 
-<meta name="description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  $$y(x_{2})=y(x_{1},\ldots ,x_{D})$$在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)">
+<meta name="description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  $$y(x_{1}+\varepsilon {1},\ldots ,x{D}+\varepsilon {D})=y(x{1},\l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈机器学习中应用的变分法">
 <meta property="og:url" content="https://muyi110.github.io/2018/07/13/浅谈机器学习中应用的变分法/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  $$y(x_{2})=y(x_{1},\ldots ,x_{D})$$在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)">
+<meta property="og:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  $$y(x_{1}+\varepsilon {1},\ldots ,x{D}+\varepsilon {D})=y(x{1},\l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-13T09:00:33.745Z">
+<meta property="og:updated_time" content="2018-07-13T09:07:52.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中应用的变分法">
-<meta name="twitter:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  $$y(x_{2})=y(x_{1},\ldots ,x_{D})$$在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)">
+<meta name="twitter:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  $$y(x_{1}+\varepsilon {1},\ldots ,x{D}+\varepsilon {D})=y(x{1},\l">
 
 
 
@@ -353,7 +353,7 @@
 <h1 id="变分法"><a href="#变分法" class="headerlink" title="变分法"></a>变分法</h1><blockquote>
 <p>可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))</p>
 </blockquote>
-<p>$$y(x_{2})=y(x_{1},\ldots ,x_{D})$$<br>在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x)\)使泛函\(F[y]\)取最大值或最小值。<br>对于一元函数\(y(x)\)求导。可根据如下公式$$y(x+\varepsilon)=y(x)+\dfrac {dy}{dx}\varepsilon+O(\varepsilon ^2)$$令\(\varepsilon \rightarrow 0\)。同理，对于多元函数\(y(x_{1},\ldots ,x_{D})\)的偏导数根据如下公式定义$$y(x_{1}+\varepsilon <em>{1},\ldots ,x</em>{D}+\varepsilon <em>{D})=y(x</em>{1},\ldots ,x_{D})+\sum ^{D}<em>{i=1}\dfrac {\partial y}{\partial x</em>{i}}\varepsilon_{2}+O(\varepsilon ^2)$$同样的思想，用于泛函求导。类比上面的公式可写出如下公式$$F[y(x)+\varepsilon\eta (x)]=F[y(x)]+\varepsilon\int\dfrac {\partial F}{\partial y\left(x\right)}\eta (x)dx+O(\varepsilon ^2)$$其中\(\eta (x)\)是\(x\)任意的函数。我们的目的是找到</p>
+<p>$$y(x_{1}+\varepsilon <em>{1},\ldots ,x</em>{D}+\varepsilon <em>{D})=y(x</em>{1},\ldots ,x_{D})+\sum ^{D}<em>{i=1}\dfrac {\partial y}{\partial x</em>{i}}\varepsilon _{i}+O(\varepsilon <em>{2})$$<br>在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x)\)使泛函\(F[y]\)取最大值或最小值。<br>对于一元函数\(y(x)\)求导。可根据如下公式$$y(x+\varepsilon)=y(x)+\dfrac {dy}{dx}\varepsilon+O(\varepsilon ^2)$$令\(\varepsilon \rightarrow 0\)。同理，对于多元函数\(y(x</em>{1},\ldots ,x_{D})\)的偏导数根据如下公式定义$$y(x_{1}+\varepsilon <em>{1},\ldots ,x</em>{D}+\varepsilon <em>{D})=y(x</em>{1},\ldots ,x_{D})+\sum ^{D}<em>{i=1}\dfrac {\partial y}{\partial x</em>{i}}\varepsilon_{2}+O(\varepsilon ^2)$$同样的思想，用于泛函求导。类比上面的公式可写出如下公式$$F[y(x)+\varepsilon\eta (x)]=F[y(x)]+\varepsilon\int\dfrac {\partial F}{\partial y\left(x\right)}\eta (x)dx+O(\varepsilon ^2)$$其中\(\eta (x)\)是\(x\)任意的函数。我们的目的是找到</p>
 
       
     </div>
