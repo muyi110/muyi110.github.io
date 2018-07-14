@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-14T03:43:37.898Z">
+<meta property="og:updated_time" content="2018-07-14T03:45:06.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中应用的变分法">
 <meta name="twitter:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
@@ -357,7 +357,7 @@
 <h2 id="变分法浅探究"><a href="#变分法浅探究" class="headerlink" title="变分法浅探究"></a>变分法浅探究</h2><p>考虑如下形式定义的泛函$$F[y]=\int G(y(x),y’(x),x)dx$$其中假设\(y(x)\)的值在积分边界处是固定的。考虑函数\(y(x)\)的变化，得到如下公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
 <ul>
 <li><strong>杂谈：对于上面公式的非正式说明</strong><blockquote>
-<p>根据定义$$F[y(x)+\varepsilon \eta (x)]=\int G[y(x)+\varepsilon \eta (x),y’(x)+\varepsilon \eta’(x),x]dx$$可以将函数\(G\)看成多元函数，所以可以得到“多元函数\(G\)”的偏导数为(这样的写法不对，但为了和引言中多元函数展开公式相对应，就这么写了，忽略系数\(\varepsilon\)）$$\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)$$我们知道，对于$$(y(x)=\int f(x)dx$$有$$(y’(x)=\int f’(x)dx$$，所以可得到公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
+<p>根据定义$$F[y(x)+\varepsilon \eta (x)]=\int G[y(x)+\varepsilon \eta (x),y’(x)+\varepsilon \eta’(x),x]dx$$可以将函数\(G\)看成多元函数，所以可以得到“多元函数\(G\)”的偏导数为(这样的写法不对，但为了和引言中多元函数展开公式相对应，就这么写了，忽略系数\(\varepsilon\)）$$\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)$$我们知道，对于$$y(x)=\int f(x)dx$$有$$y’(x)=\int f’(x)dx$$所以可得到公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
 </blockquote>
 </li>
 </ul>
