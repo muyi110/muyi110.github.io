@@ -130,7 +130,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_004.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_006.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_005.png">
-<meta property="og:updated_time" content="2018-07-27T14:38:30.336Z">
+<meta property="og:updated_time" content="2018-07-27T14:43:58.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.神经网络和深度学习">
 <meta name="twitter:description" content="深度学习引言什么是神经网络上图说明了最简的神经网络，小圆圈表示一个单独的神经元，连接你的网络实现左边图的功能。稍微大点的神经网络如下图所示。当你实现它之后,你要做的只是输入x，就能得到输出y。因为它可以自己计算你训练集中样本的数目以及所有的中间过程。 结构化数据和非结构化数据  结构化数据意思是每个特征，比如说房屋大小卧室数量，或者是一个用户的年龄,都有一个很好的定义。例如在房价预测中，可能">
@@ -407,9 +407,7 @@
 </ol>
 <h2 id="深度学习兴起的原因"><a href="#深度学习兴起的原因" class="headerlink" title="深度学习兴起的原因"></a>深度学习兴起的原因</h2><p><img src="/images/deeplearning_ai_004.png" alt="规模驱动深度学习"><br>事实上如今最可靠的方法来在神经网络上获得更好的性能，往往就是<strong>要么训练一个更大的神经网络，要么投入更多的数据</strong>，这只能在一定程度上起作用，因为最终你耗尽了数据，或者最终你的网络是如此大规模导致将要用太久的时间去训练，但是仅仅提升规模的的确确地让我们在深度学习的世界中摸索了很多时间。<br><img src="/images/deeplearning_ai_006.png" alt="深度学习兴起总结"></p>
 <blockquote>
-<blockquote>
-<p>许多算法的创新都在尝试使神经网络跑得更快，一个例子如下图（激活函数的改变）。<br><img src="/images/deeplearning_ai_005.png" alt="激活函数创新"><br>使用 sigmoid 函数问题是，在这个区域（横坐标值很大或很小）， sigmoid 函数的梯度会接近零，所以学习的速度会变得非常缓慢，因为当你实现梯度下降以及梯度接近零的时候，参数会更新的很慢，所以学习的速率也会变的很慢，通过改变激活函数为 ReLU 的函数(修正线性单元)，ReLU 的梯度对于所有输入的负值都是零，因此梯度不会趋向逐渐减少到零。通过将 Sigmod 函数转换成 ReLU 函数，便能够使得一个叫做梯度下降(gradient descent)的算法运行的更快。</p>
-</blockquote>
+<p>许多算法的创新都在尝试使神经网络跑得更快，一个例子如下图（激活函数的改变）。<br><img src="/images/deeplearning_ai_005.png" alt="激活函数创新">使用 sigmoid 函数问题是，在这个区域（横坐标值很大或很小）， sigmoid 函数的梯度会接近零，所以学习的速度会变得非常缓慢，因为当你实现梯度下降以及梯度接近零的时候，参数会更新的很慢，所以学习的速率也会变的很慢，通过改变激活函数为 ReLU 的函数(修正线性单元)，ReLU 的梯度对于所有输入的负值都是零，因此梯度不会趋向逐渐减少到零。通过将 Sigmod 函数转换成 ReLU 函数，便能够使得一个叫做梯度下降(gradient descent)的算法运行的更快。</p>
 </blockquote>
 <h1 id="神经网络编程基础"><a href="#神经网络编程基础" class="headerlink" title="神经网络编程基础"></a>神经网络编程基础</h1>
       
