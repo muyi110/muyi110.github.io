@@ -137,7 +137,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_011.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_012.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_013.png">
-<meta property="og:updated_time" content="2018-07-28T09:32:54.195Z">
+<meta property="og:updated_time" content="2018-07-28T09:38:13.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.神经网络和深度学习">
 <meta name="twitter:description" content="深度学习引言什么是神经网络上图说明了最简的神经网络，小圆圈表示一个单独的神经元，连接你的网络实现左边图的功能。稍微大点的神经网络如下图所示。当实现它之后,要做的只是输入x，就能得到输出y。因为它可以自己计算训练集中样本的数目以及所有的中间过程。 结构化数据和非结构化数据  结构化数据意思是每个特征，比如说房屋大小、卧室数量，或者是一个用户的年龄，都有一个很好的定义。例如在房价预测中，可能有一">
@@ -448,10 +448,13 @@
 <p>经验法则：编写代码，只要有其他可能就不要使用<code>for</code>循环，比如可以考虑<strong>向量化</strong></p>
 </blockquote>
 <ul>
-<li>杂谈：向量化与<code>for</code>循环效率对比:<br><code>`</code>python<br>import numpy as np<br>import time</li>
+<li><p>杂谈：向量化与<code>for</code>循环效率对比:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">a = np.random.rand(<span class="number">1000000</span>)</span><br><span class="line">b = np.random.rand(<span class="number">1000000</span>)</span><br><span class="line">tic = time.time()</span><br><span class="line">c = np.dot(a,b)</span><br><span class="line">toc = time.time()</span><br><span class="line">print(c)</span><br><span class="line">print(<span class="string">'Vectorized version: '</span> + str((toc-tic)*<span class="number">1000</span>) + <span class="string">'ms'</span>)</span><br><span class="line"></span><br><span class="line">c=<span class="number">0</span></span><br><span class="line">tic = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">    c += a[i] * b[i]</span><br><span class="line">toc = time.time()</span><br><span class="line">print(c)</span><br><span class="line">print(<span class="string">'For loop: '</span> + str((toc-tic)*<span class="number">1000</span>) + <span class="string">'ms'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">250235.98496807975</span><br><span class="line">Vectorized version: 1.1947154998779297ms</span><br><span class="line">250235.98496807023</span><br><span class="line">For loop: 445.22929191589355ms</span><br><span class="line">可以说是差距巨大。</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>a = np.random.rand(1000000)<br>b = np.random.rand(1000000)<br>tic = time.time()<br>c = np.dot(a,b)<br>toc = time.time()<br>print(c)<br>print(‘Vectorized version: ‘ + str((toc-tic)*1000) + ‘ms’)</p>
-<p>c=0<br>tic = time.time()<br>for i in range(1000000):<br>    c += a[i] <em> b[i]<br>toc = time.time()<br>print(c)<br>print(‘For loop: ‘ + str((toc-tic)</em>1000) + ‘ms’)<br><code>结果:</code>bash<br>250235.98496807975<br>Vectorized version: 1.1947154998779297ms<br>250235.98496807023<br>For loop: 445.22929191589355ms<br><code>`</code>可以说是差距巨大。</p>
 <p>回到<code>Logistic</code>回归上，其<strong>向量化</strong>版本的流程如下：<img src="/images/deeplearning_ai_012.png" alt="向量化版本">注意：上述只是完成一次迭代，多次迭代依然需要<code>for</code>循环。</p>
 <h2 id="Numpy-中广播-broadcasting"><a href="#Numpy-中广播-broadcasting" class="headerlink" title="Numpy 中广播(broadcasting)"></a>Numpy 中广播(broadcasting)</h2><p><img src="/images/deeplearning_ai_013.png" alt="广播">详细介绍参考<a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="noopener">官方文档</a></p>
 <h2 id="编程建议"><a href="#编程建议" class="headerlink" title="编程建议"></a>编程建议</h2><ol>
