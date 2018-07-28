@@ -146,7 +146,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_020.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_021.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_022.png">
-<meta property="og:updated_time" content="2018-07-28T13:04:10.338Z">
+<meta property="og:updated_time" content="2018-07-28T13:06:52.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.神经网络和深度学习">
 <meta name="twitter:description" content="深度学习引言什么是神经网络上图说明了最简的神经网络，小圆圈表示一个单独的神经元，连接你的网络实现左边图的功能。稍微大点的神经网络如下图所示。当实现它之后,要做的只是输入x，就能得到输出y。因为它可以自己计算训练集中样本的数目以及所有的中间过程。 结构化数据和非结构化数据  结构化数据意思是每个特征，比如说房屋大小、卧室数量，或者是一个用户的年龄，都有一个很好的定义。例如在房价预测中，可能有一">
@@ -487,7 +487,7 @@
 <h2 id="使用非线性激活函数的原因"><a href="#使用非线性激活函数的原因" class="headerlink" title="使用非线性激活函数的原因"></a>使用非线性激活函数的原因</h2><p>若使用线性激活函数，无论神经网络有多少层，输出都是输入的线性组合，与<strong>没有隐藏层</strong>效果相当，就成了最原始的感知机了。</p>
 <h2 id="激活函数的导数"><a href="#激活函数的导数" class="headerlink" title="激活函数的导数"></a>激活函数的导数</h2><p>在神经网络使用反向传播时，需要计算激活函数的梯度，这里直接给出之前介绍的激活函数的梯度（导数）。</p>
 <ul>
-<li><code>sigmoid</code>函数:&amp;&amp;a=\dfrac{1}{1+e^{-z}}&amp;&amp;其导数为\(a(1-a)\)。</li>
+<li><code>sigmoid</code>函数:$$a=\dfrac{1}{1+e^{-z}}$$其导数为\(a(1-a)\)。</li>
 <li><code>tanh</code>函数（双曲正切函数）:$$a=\dfrac{e^z-e^{-z}}{e^z+e^{-z}}$$其导数为\(1-a^2\)。</li>
 <li><code>ReLu</code>函数(the rectified linear unit，修正线性单元):$$a=max(0,z)$$其导数为\(a’=\begin{cases}0,z&gt;0\\ 1,z&lt;0\\ undefine,z=0 \end{cases}\)。</li>
 </ul>
