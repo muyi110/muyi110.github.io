@@ -144,7 +144,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_018.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_019.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_020.png">
-<meta property="og:updated_time" content="2018-07-28T12:18:57.861Z">
+<meta property="og:updated_time" content="2018-07-28T12:21:56.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.神经网络和深度学习">
 <meta name="twitter:description" content="深度学习引言什么是神经网络上图说明了最简的神经网络，小圆圈表示一个单独的神经元，连接你的网络实现左边图的功能。稍微大点的神经网络如下图所示。当实现它之后,要做的只是输入x，就能得到输出y。因为它可以自己计算训练集中样本的数目以及所有的中间过程。 结构化数据和非结构化数据  结构化数据意思是每个特征，比如说房屋大小、卧室数量，或者是一个用户的年龄，都有一个很好的定义。例如在房价预测中，可能有一">
@@ -474,7 +474,7 @@
 <li>隐藏层的激活值为\(a^{[1]}\)，其中第一个单元（或节点）表示为\(a_{1}^{[1]}\)，输出层类似。在上图中$$a^{[1]}=\begin{bmatrix} a_{1}^{[1]} \\ a_{2}^{[2]}  \\ a_{3}^{[3]}  \\ a_{4}^{[4]}  \end{bmatrix}$$</li>
 <li>隐藏层和输出层都是带有参数\(W\)与\(b\)的，使用上标\([i]\)表示第\(i\)层的参数。在上图中\(W^{[1]}\)是一个\(4\times 3\)矩阵，\(b^{[1]}\)是一个\(4\times 1\)矩阵（因为有\(4\)个节点，\(3\)个输入特征）,同理\(W^{[2]}\)是一个\(1\times 4\)矩阵，\(b^{[2]}\)是一个\(1\times 1\)矩阵</li>
 </ul>
-<h2 id="计算神经网络的输出（前向传播）"><a href="#计算神经网络的输出（前向传播）" class="headerlink" title="计算神经网络的输出（前向传播）"></a>计算神经网络的输出（前向传播）</h2><p><img src="/images/deeplearning_ai_015.png" alt="神经网络计算">神经网络不过是将<code>Logistic</code>回归的计算步骤重复多次。详细的计算结果如下<img src="/images/deeplearning_ai_016.png" alt="神经网络计算结果">用向量表示如下$$z^{[1]}=(W^{[1]})a^{[0]}+b^{[1]}$$$$a^{[1]}=\sigma(z^{[1]})$$<br><img src="/images/deeplearning_ai_017.png" alt="向量表示">其中$$a^{[1]}=\begin{bmatrix} a_{1}^{[1]} \ a_{2}^{[2]}  \ a_{3}^{[3]}  \ a_{4}^{[4]}  \end{bmatrix}$$同理对于输出层有$$z^{[2]}=(W^{[2]})a^{[1]}+b^{[2]}$$$$\widehat y=a^{[2]}=\sigma(z^{[2]})$$以上都是针对单个样本的情况，对于有\(m\)个样本，向量化的方式如下:<br><img src="/images/deeplearning_ai_018.png" alt="多向量表示">进而得到如下公式<img src="/images/deeplearning_ai_019.png" alt="向量表示结果"></p>
+<h2 id="计算神经网络的输出（前向传播）"><a href="#计算神经网络的输出（前向传播）" class="headerlink" title="计算神经网络的输出（前向传播）"></a>计算神经网络的输出（前向传播）</h2><p><img src="/images/deeplearning_ai_015.png" alt="神经网络计算">神经网络不过是将<code>Logistic</code>回归的计算步骤重复多次。详细的计算结果如下<img src="/images/deeplearning_ai_016.png" alt="神经网络计算结果">用向量表示如下$$z^{[1]}=(W^{[1]})a^{[0]}+b^{[1]}$$$$a^{[1]}=\sigma(z^{[1]})$$<br><img src="/images/deeplearning_ai_017.png" alt="向量表示">其中$$a^{[1]}=\begin{bmatrix} a_{1}^{[1]} \\ a_{2}^{[2]}  \\ a_{3}^{[3]}  \\ a_{4}^{[4]}  \end{bmatrix}$$同理对于输出层有$$z^{[2]}=(W^{[2]})a^{[1]}+b^{[2]}$$$$\widehat y=a^{[2]}=\sigma(z^{[2]})$$以上都是针对单个样本的情况，对于有\(m\)个样本，向量化的方式如下:<br><img src="/images/deeplearning_ai_018.png" alt="多向量表示">进而得到如下公式<img src="/images/deeplearning_ai_019.png" alt="向量表示结果"></p>
 <h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>之前的激活函数选择都是<code>sigmoid</code>函数，单有时其他的激活函数效果可能会更好。<br>可选的激活函数有：</p>
 <ul>
 <li><code>tanh</code>函数（双曲正切函数）:$$a=\dfrac{e^z-e^{-z}}{e^z+e^{-z}}$$效果几乎总是比<code>sigmoid</code>函数好（除了<strong>二元分类的输出层</strong>，因为希望输出结果介于\(0\)与\(1\)之间），因为函数输出值介于\(-1\)与\(1\)之间，激活函数的平均值接近\(0\)，有类似数据中心化效果，方便下一层的学习。<br>但<code>tanh</code>函数和<code>sigmoid</code>函数有一个共同缺点：当\(z\)很大或很小时，函数梯度趋向于\(0\)，使得梯度下降算法很慢。</li>
@@ -482,7 +482,8 @@
 <li><code>Leaky ReLu</code>函数（带泄漏的<code>ReLu</code>）：$$a=max(0.01z,z)$$（这里的\(0.01\)根据实际情况可修改）不常用。</li>
 </ul>
 <p>四个激活函数的图形如下:<img src="/images/deeplearning_ai_020.png" alt="激活函数图形"><strong>选择激活函数的经验法则是：如果输出值是\(0\)，\(1\)值（二分类），则输出层选择<code>sigmoid</code>函数，其他的单元选择<code>ReLu</code>函数。这是很多激活函数的默认选择，如果在隐藏层上不确定选择哪个激活函数，通常选择<code>ReLu</code>函数，有时也选择<code>tanh</code>函数。当然不同的层可以选择不同的激活函数。</strong></p>
-<h2 id="使用非线性激活函数的原因"><a href="#使用非线性激活函数的原因" class="headerlink" title="使用非线性激活函数的原因"></a>使用非线性激活函数的原因</h2>
+<h2 id="使用非线性激活函数的原因"><a href="#使用非线性激活函数的原因" class="headerlink" title="使用非线性激活函数的原因"></a>使用非线性激活函数的原因</h2><p>若使用线性激活函数，</p>
+
       
     </div>
     
