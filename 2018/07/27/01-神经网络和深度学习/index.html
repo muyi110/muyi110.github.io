@@ -131,7 +131,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_006.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_005.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_007.png">
-<meta property="og:updated_time" content="2018-07-28T06:50:18.180Z">
+<meta property="og:updated_time" content="2018-07-28T07:10:53.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01.神经网络和深度学习">
 <meta name="twitter:description" content="深度学习引言什么是神经网络上图说明了最简的神经网络，小圆圈表示一个单独的神经元，连接你的网络实现左边图的功能。稍微大点的神经网络如下图所示。当实现它之后,要做的只是输入x，就能得到输出y。因为它可以自己计算训练集中样本的数目以及所有的中间过程。 结构化数据和非结构化数据  结构化数据意思是每个特征，比如说房屋大小、卧室数量，或者是一个用户的年龄，都有一个很好的定义。例如在房价预测中，可能有一">
@@ -431,7 +431,7 @@
 <h2 id="代价函数-Cost-Function"><a href="#代价函数-Cost-Function" class="headerlink" title="代价函数(Cost Function)"></a>代价函数(Cost Function)</h2><blockquote>
 <p>通过训练<strong>代价函数</strong>来得到<code>logistic regression</code>的参数\(w\)与\(b\)</p>
 </blockquote>
-<p><strong>损失函数</strong>用来衡量输出值和实际值的接近程度，一般情况损失函数定义为平方差损失，如下：$$L(\widehat {y},y)=\dfrac{1}{2}(\widehat y -y)^2$$但<code>logistic</code>回归不这么做，因为之后的优化目标变为<strong>非凸的</strong>，梯度下降法可能找不到全局最优。<br><code>logistic</code>回归的损失函数一般用$$L(\widehat {y},y)=-(y\log{\widehat y})-(1-y)\log{(1-\widehat y)}$$损失函数是在<strong>单个</strong>训练样本中定义，衡量算法在单个训练样本中表现如何。<strong>代价函数</strong>衡量算法在全部训练样本上的表现，是对\(m\)个样本损失函数求和并除以\(m\)，公式如下$$J(w,b)=\dfrac{1}{m}\sum_{i=1}^{m}L(\widehat y^{(i)},y^{(i)})=\dfrac{1}{m}(-y^{(i)}\log{\widehat y^{(i)}-(1-y^{(i)})\log(1-\widehat y^{(i)}))$$</p>
+<p><strong>损失函数</strong>用来衡量输出值和实际值的接近程度，一般情况损失函数定义为平方差损失，如下：$$L(\widehat {y},y)=\dfrac{1}{2}(\widehat y -y)^2$$但<code>logistic</code>回归不这么做，因为之后的优化目标变为<strong>非凸的</strong>，梯度下降法可能找不到全局最优。<br><code>logistic</code>回归的损失函数一般用$$L(\widehat {y},y)=-(y\log{\widehat y})-(1-y)\log{(1-\widehat y)}$$损失函数是在<strong>单个</strong>训练样本中定义，衡量算法在单个训练样本中表现如何。<strong>代价函数</strong>衡量算法在全部训练样本上的表现，是对\(m\)个样本损失函数求和并除以\(m\)，公式如下$$J(w,b)=\dfrac{1}{m}\sum_{i=1}^{m}L(\widehat y ^{(i)},y^{(i)})=\dfrac{1}{m}(-y^{(i)}\log{\widehat y ^{(i)}-(1-y^{(i)})\log(1-\widehat y ^{(i)}))$$</p>
 <h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2>
       
     </div>
