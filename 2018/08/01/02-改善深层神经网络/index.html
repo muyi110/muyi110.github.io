@@ -136,7 +136,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_037.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_038.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_039.png">
-<meta property="og:updated_time" content="2018-08-02T13:22:12.461Z">
+<meta property="og:updated_time" content="2018-08-02T13:40:25.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.改善深层神经网络">
 <meta name="twitter:description" content="深度学习的实用层面数据集划分：训练/验证/测试 应用深度学习/机器学习是一个不断迭代的过程。  对于一个实际问题的样本数据，在建立模型的过程中，数据集会被划分为如下部分：  训练集：对模型进行训练，学习模型的参数； 验证集：用于交叉验证，选择最好的模型； 测试集：对学习到的模型进行测试，获取模型运行的无偏估计。  对小数据情况（如：100、1000、10000）数据集通常按照如下比例划分：">
@@ -499,14 +499,15 @@
 <h3 id="mini-batch-梯度下降法中-mini-batches的实现"><a href="#mini-batch-梯度下降法中-mini-batches的实现" class="headerlink" title="mini-batch 梯度下降法中 mini-batches的实现"></a>mini-batch 梯度下降法中 mini-batches的实现</h3><p>实现<code>mini-batches</code>主要有两步：<strong>将数据集打乱</strong>和<strong>按照既定大小划分数据集</strong>。</p>
 <ul>
 <li><strong>将数据集打乱(Shuffle)</strong>：如下图所示：<img src="/images/deeplearning_ai_038.png" alt="数据集打乱"><code>X</code>和<code>Y</code>的每一列表示一个训练样本。<code>X</code>和<code>Y</code>的随机打乱要<strong>同步</strong>，也就是说随机打乱后<code>X</code>的\(i^{th}\)列对应于<code>Y</code>中\(i^{th}\)个标签(<code>label</code>)（和打乱之前相对应）。这一步确保数据集被随机划分为不同的<code>mini-batches</code>。</li>
-<li><strong>按照既定大小划分数据集(Partition)</strong>：将随机打乱后的数据集<code>X</code>和<code>Y</code>划分为大小为<code>mini_batch_size</code>的<code>mini-batches</code>。实际中训练样本集可能并不能保证每一个<code>mini_batches</code>的大小都是<code>mini-batch_size</code>，最后一个<code>mini_batch</code>可能更小，不过不用担心， 下图是说明<img src="/images/deeplearning_ai_039.png" alt="数据集划分"></li>
+<li><strong>按照既定大小划分数据集(Partition)</strong>：将随机打乱后的数据集<code>X</code>和<code>Y</code>划分为大小为<code>mini_batch_size</code>的<code>mini-batches</code>。实际中训练样本集可能并不能保证每一个<code>mini_batches</code>的大小都是<code>mini-batch_size</code>，最后一个<code>mini_batch</code>可能更小，不过不用担心， 下图是说明：<img src="/images/deeplearning_ai_039.png" alt="数据集划分"></li>
 </ul>
 <h3 id="mini-batch-大小的选择"><a href="#mini-batch-大小的选择" class="headerlink" title="mini-batch 大小的选择"></a>mini-batch 大小的选择</h3><ul>
 <li>当训练样本集比较小，如\(m &lt; 2000\)时，选择<code>batch</code>梯度下降法；</li>
 <li>当训练样本集比较大时，选择<code>mini-batch</code>梯度下降法，一般<code>mini-batch</code>的大小为\(2\)的幂次方，典型的大小有\(2^6, 2^7, 2^8, 2^9\)；</li>
 <li>注意<code>mini-batch</code>的大小要符合<code>CPU/GPU</code>的内存。</li>
 </ul>
-<h2 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h2>
+<h2 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h2><p><strong>指数加权平均(Exponentially Weight Average)</strong>的公式如下：$$S_t =\begin {cases}0 ,t=0 \\ \beta S_{t-1}+(1-\beta)Y_t ,t&gt;1 \end {cases}$$其中\(Y_t\)为\(t\)下的实际值，\(S_t\)为\(t\)下的加权平均后的值，\(\beta \)为权重值。<strong>\(\beta \)越大相当于利用之前的数据越多</strong>（下面是解释）。</p>
+
       
     </div>
     
