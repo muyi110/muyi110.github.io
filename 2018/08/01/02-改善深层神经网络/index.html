@@ -130,7 +130,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_031.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_032.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_033.png">
-<meta property="og:updated_time" content="2018-08-02T02:13:10.647Z">
+<meta property="og:updated_time" content="2018-08-02T02:22:05.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.改善深层神经网络">
 <meta name="twitter:description" content="深度学习的实用层面数据集划分：训练/验证/测试 应用深度学习/机器学习是一个不断迭代的过程。  对于一个实际问题的样本数据，在建立模型的过程中，数据集会被划分为如下部分：  训练集：对模型进行训练，学习模型的参数； 验证集：用于交叉验证，选择最好的模型； 测试集：对学习到的模型进行测试，获取模型运行的无偏估计。  对小数据情况（如：100、1000、10000）数据集通常按照如下比例划分：">
@@ -454,8 +454,9 @@
 <h2 id="理解-dropout"><a href="#理解-dropout" class="headerlink" title="理解 dropout"></a>理解 dropout</h2><p>加入了<code>dropout</code>后，输入的特征都存在被随机清除的可能，所以该神经元不会再特别依赖于任何一个输入特征，即不会给任何一个输入特征设置太大的权重。通过传播过程，<code>dropout</code>将产生和<code>L2</code>正则化相同的收缩权重的效果。<br>对于不同的层，设置的<code>keep_prob</code>也不同。一般来说，神经元较少的层，会设<code>keep_prob</code>为<code>1.0</code>，而神经元多的层则会设置比较小的<code>keep_prob</code>。<br><code>dropout</code>的一大缺点是成本函数无法被明确定义。因为每次迭代都会随机消除一些神经元结点的影响，因此无法确保成本函数单调递减。因此，使用<code>dropout</code>时，先将<code>keep_prob</code>全部设置为<code>1.0</code>后运行代码，确保<code>J(w,b)</code>函数单调递减，再打开 <code>dropout</code>。</p>
 <h2 id="其他正则化方法"><a href="#其他正则化方法" class="headerlink" title="其他正则化方法"></a>其他正则化方法</h2><ul>
 <li><strong>数据扩增(Data Augmentation)</strong>：通过图片的一些变换（翻转，局部放大后切割等），得到更多的训练集和验证集。</li>
-<li><strong>早停止法(Early Stopping)</strong>：将训练集和验证集进行梯度下降时的成本变化曲线画在同一个坐标轴内，在两者开始发生较大偏差时及时停止迭代，避免过拟合。这种方法的缺点是无法同时达成偏差和方差的最优。<img src="/images/deeplearning_ai_032.png" alt="早停止法"><h2 id="归一化输入-Normalizing-inputs"><a href="#归一化输入-Normalizing-inputs" class="headerlink" title="归一化输入(Normalizing inputs)"></a>归一化输入(Normalizing inputs)</h2><img src="/images/deeplearning_ai_033.png" alt="归一化输入">包含两步：零均值化和归一化。公式如下：$$x=\dfrac{x-\mu }{\sigma }$$其中$$\mu = \dfrac{1}{m}\sum _{i=1}^{m}x^{(i)}$$$$\sigma = \sqrt {\dfrac{1}{m}\sum _{i=1}^{m}x^{(i) 2}}$$</li>
+<li><strong>早停止法(Early Stopping)</strong>：将训练集和验证集进行梯度下降时的成本变化曲线画在同一个坐标轴内，在两者开始发生较大偏差时及时停止迭代，避免过拟合。这种方法的缺点是无法同时达成偏差和方差的最优。<img src="/images/deeplearning_ai_032.png" alt="早停止法"></li>
 </ul>
+<h2 id="归一化输入-Normalizing-inputs"><a href="#归一化输入-Normalizing-inputs" class="headerlink" title="归一化输入(Normalizing inputs)"></a>归一化输入(Normalizing inputs)</h2><p><img src="/images/deeplearning_ai_033.png" alt="归一化输入">包含两步：零均值化和归一化。公式如下：$$x=\dfrac{x-\mu }{\sigma }$$其中$$\mu = \dfrac{1}{m}\sum _{i=1}^{m}x^{(i)}$$$$\sigma = \sqrt {\dfrac{1}{m}\sum _{i=1}^{m}x^{(i) 2}}$$经过归一化后每个特征的方差都变为\(1\)。<strong>注意，测试集和训练集用相同的参数\(\mu \)和\(\sigma \)进行数据归一化</strong>。<br><strong>使用归一化的原因</strong></p>
 
       
     </div>
