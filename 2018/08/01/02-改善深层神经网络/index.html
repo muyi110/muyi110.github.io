@@ -131,7 +131,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_032.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_033.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_034.png">
-<meta property="og:updated_time" content="2018-08-02T02:47:31.971Z">
+<meta property="og:updated_time" content="2018-08-02T02:55:29.352Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.改善深层神经网络">
 <meta name="twitter:description" content="深度学习的实用层面数据集划分：训练/验证/测试 应用深度学习/机器学习是一个不断迭代的过程。  对于一个实际问题的样本数据，在建立模型的过程中，数据集会被划分为如下部分：  训练集：对模型进行训练，学习模型的参数； 验证集：用于交叉验证，选择最好的模型； 测试集：对学习到的模型进行测试，获取模型运行的无偏估计。  对小数据情况（如：100、1000、10000）数据集通常按照如下比例划分：">
@@ -458,12 +458,12 @@
 <li><strong>早停止法(Early Stopping)</strong>：将训练集和验证集进行梯度下降时的成本变化曲线画在同一个坐标轴内，在两者开始发生较大偏差时及时停止迭代，避免过拟合。这种方法的缺点是无法同时达成偏差和方差的最优。<img src="/images/deeplearning_ai_032.png" alt="早停止法"></li>
 </ul>
 <h2 id="归一化输入-Normalizing-inputs"><a href="#归一化输入-Normalizing-inputs" class="headerlink" title="归一化输入(Normalizing inputs)"></a>归一化输入(Normalizing inputs)</h2><p><img src="/images/deeplearning_ai_033.png" alt="归一化输入">包含两步：零均值化和归一化。公式如下：$$x=\dfrac{x-\mu }{\sigma }$$其中$$\mu = \dfrac{1}{m}\sum _{i=1}^{m}x^{(i)}$$$$\sigma = \sqrt {\dfrac{1}{m}\sum _{i=1}^{m}x^{(i) 2}}$$经过归一化后每个特征的方差都变为\(1\)。<strong>注意，测试集和训练集用相同的参数\(\mu \)和\(\sigma \)进行数据归一化</strong>。<br><strong>使用归一化的原因</strong><br><img src="/images/deeplearning_ai_034.png" alt="归一化原因">使用归一化后代价函数看起来更加对称。如果不使用归一化，需要设置一个非常小的学习率，因为初始值在某些位置时，梯度下降法可能需要更多次的迭代；如果归一化后，不论从哪个位置开始梯度下降法，可以更快找到最小值，可以在梯度下降中使用较大的步长。</p>
-<h2 id="梯度消失和梯度爆炸-Vanishing-Exploding-gradients"><a href="#梯度消失和梯度爆炸-Vanishing-Exploding-gradients" class="headerlink" title="梯度消失和梯度爆炸(Vanishing / Exploding gradients)"></a>梯度消失和梯度爆炸(Vanishing / Exploding gradients)</h2><p>在梯度函数上出现的以指数级递增或者递减的情况分别称为<strong>梯度爆炸或者梯度消失</strong>。<br>假定\(g(z)=z, b^{[l]}=0\)，对应的输出为：$$\widehat y = W^{[L]}W^{[L-1]}\dots \W^{[2]}W^{[1]}$$</p>
+<h2 id="梯度消失和梯度爆炸-Vanishing-Exploding-gradients"><a href="#梯度消失和梯度爆炸-Vanishing-Exploding-gradients" class="headerlink" title="梯度消失和梯度爆炸(Vanishing / Exploding gradients)"></a>梯度消失和梯度爆炸(Vanishing / Exploding gradients)</h2><p>在梯度函数上出现的以指数级递增或者递减的情况分别称为<strong>梯度爆炸或者梯度消失</strong>。<br>假定\(g(z)=z, b^{[l]}=0\)，对应的输出为：$$\widehat y = W^{[L]}W^{[L-1]}\ldots W^{[2]}W^{[1]}$$</p>
 <ul>
 <li>当\(W^{[l]}\)值大于\(1\)时，激活函数值以指数级递增；</li>
 <li>当\(W^{[l]}\)值小于\(1\)时，激活函数值以指数级递减。</li>
 </ul>
-<p><strong>对于导数同理</strong>。在计算梯度时，根据不同情况梯度函数会以指数级递增或递减，导致训练导数难度上升，当梯度很小时，梯度下降算法的步长会变得非常小，需要训练的时间将会非常长。<br><strong>神经网络权重初始化</strong></p>
+<p><strong>对于导数同理</strong>。在计算梯度时，根据不同情况梯度函数会以指数级递增或递减，导致训练难度上升，当梯度很小时，梯度下降算法的步长会变得非常小，需要训练的时间将会非常长。<br><strong>神经网络权重初始化</strong><br>对于出现的梯度消失或梯度爆炸问题，有一个不完整的解决方案（但有效）是<strong>谨慎选择随机初始化参数</strong>。</p>
 
       
     </div>
