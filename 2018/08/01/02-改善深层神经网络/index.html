@@ -138,7 +138,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_039.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_040.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_041.png">
-<meta property="og:updated_time" content="2018-08-03T08:16:56.700Z">
+<meta property="og:updated_time" content="2018-08-03T08:36:02.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.改善深层神经网络">
 <meta name="twitter:description" content="深度学习的实用层面数据集划分：训练/验证/测试 应用深度学习/机器学习是一个不断迭代的过程。  对于一个实际问题的样本数据，在建立模型的过程中，数据集会被划分为如下部分：  训练集：对模型进行训练，学习模型的参数； 验证集：用于交叉验证，选择最好的模型； 测试集：对学习到的模型进行测试，获取模型运行的无偏估计。  对小数据情况（如：100、1000、10000）数据集通常按照如下比例划分：">
@@ -531,6 +531,13 @@
 <h2 id="Adam-算法"><a href="#Adam-算法" class="headerlink" title="Adam 算法"></a>Adam 算法</h2><blockquote>
 <p>Adam 优化算法( Adaptive Moment Estimation )基本上是将 <code>Momentum</code> 和 <code>RMSProp</code> 算法结合在一起。在神经网络中是最有效的优化算法之一。</p>
 </blockquote>
+<p><code>Adam</code>算法工作流畅如下：</p>
+<ol>
+<li>It calculates an exponentially weighted average of past gradients, and stores it in variables \(v\) (before bias correction) and \(v^{\text {corrected}}\) (with bias correction). </li>
+<li>It calculates an exponentially weighted average of the squares of the past gradients, and  stores it in variables \(s\) (before bias correction) and \(s^{\text {corrected}}\) (with bias correction).</li>
+<li>It updates parameters in a direction based on combining information from “1” and “2”.</li>
+</ol>
+<p>更新公式如下( \(l=1, \ldots, L)\)：$$\begin{cases}<br>v_{dW^{[l]}} = \beta_1 v_{dW^{[l]}} + (1 - \beta_1) \frac{\partial \mathcal{J} }{ \partial W^{[l]} } \\ v^{\text {corrected}}<em>{dW^{[l]}} = \frac{v</em>{dW^{[l]}}}{1 - (\beta_1)^t} \\ s_{dW^{[l]}} = \beta_2 s_{dW^{[l]}} + (1 - \beta_2) (\frac{\partial \mathcal{J} }{\partial W^{[l]} })^2 \\ s^{\text {corrected}}<em>{dW^{[l]}} = \frac{s</em>{dW^{[l]}}}{1 - (\beta_1)^t} \\ W^{[l]} = W^{[l]} - \alpha \frac{v^{\text {corrected}}<em>{dW^{[l]}}}{\sqrt{s^{\text {corrected}}</em>{dW^{[l]}}} + \varepsilon} \end{cases}$$$$\begin{cases}<br>v_{db^{[l]}} = \beta_1 v_{db^{[l]}} + (1 - \beta_1) \frac{\partial \mathcal{J} }{ \partial b^{[l]} } \\ v^{\text {corrected}}<em>{db^{[l]}} = \frac{v</em>{db^{[l]}}}{1 - (\beta_1)^t} \\ s_{db^{[l]}} = \beta_2 s_{db^{[l]}} + (1 - \beta_2) (\frac{\partial \mathcal{J} }{\partial b^{[l]} })^2 \\ s^{\text {corrected}}<em>{db^{[l]}} = \frac{s</em>{db^{[l]}}}{1 - (\beta_1)^t} \\ b^{[l]} = b^{[l]} - \alpha \frac{v^{\text {corrected}}<em>{db^{[l]}}}{\sqrt{s^{\text {corrected}}</em>{db^{[l]}}} + \varepsilon} \end{cases}$$其中 \(t\) 表示 <code>Adam</code> 算法 <code>the number of steps</code>。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://pengzhendong.cn/2018/06/06/Optimization-algorithms/#more" target="_blank" rel="noopener">Randy’s Notes</a><br><a href="https://en.wikipedia.org/wiki/Moving_average" target="_blank" rel="noopener">Exponential moving average</a></p>
 
       
