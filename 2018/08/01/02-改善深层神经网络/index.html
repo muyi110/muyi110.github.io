@@ -136,7 +136,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_037.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_038.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_039.png">
-<meta property="og:updated_time" content="2018-08-03T03:24:46.812Z">
+<meta property="og:updated_time" content="2018-08-03T03:33:00.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.改善深层神经网络">
 <meta name="twitter:description" content="深度学习的实用层面数据集划分：训练/验证/测试 应用深度学习/机器学习是一个不断迭代的过程。  对于一个实际问题的样本数据，在建立模型的过程中，数据集会被划分为如下部分：  训练集：对模型进行训练，学习模型的参数； 验证集：用于交叉验证，选择最好的模型； 测试集：对学习到的模型进行测试，获取模型运行的无偏估计。  对小数据情况（如：100、1000、10000）数据集通常按照如下比例划分：">
@@ -514,8 +514,8 @@
 </blockquote>
 </li>
 </ul>
-<p><strong>指数加权平均优点</strong>：只需要一行代码（不断覆盖旧值），占用内存少，效率高。</p>
-<h3 id="指数加权平均偏差修正"><a href="#指数加权平均偏差修正" class="headerlink" title="指数加权平均偏差修正"></a>指数加权平均偏差修正</h3><p>通常有：$$v _0 = 0$$$$v _1 =0.98v _0 _0.02\theta _1$$因此，可知\(v _1\)仅为第一个数据的\(0.02\)（或者\(1-\beta \)），显示偏差较大。修改公式为：$$v _t =\dfrac{\beta v _{t-1}+(1-\beta )\theta _1}{1-\beta ^t}$$当\(t\)增大时，\(\beta ^t \to 0\)，所示当\(t\)较大时，修正偏差公式基本没作用，但在前期会帮助更好预测偏差。实际中，一般会忽略前期偏差的影响。</p>
+<p>指数加权平均优点：只需要一行代码（不断覆盖旧值），占用内存少，效率高。</p>
+<h3 id="指数加权平均偏差修正"><a href="#指数加权平均偏差修正" class="headerlink" title="指数加权平均偏差修正"></a>指数加权平均偏差修正</h3><p>通常有：$$v _0 = 0$$$$v _1 =0.98 v _0 + 0.02\theta _1$$因此，可知\(v _1\)仅为第一个数据的\(0.02\)（或者\(1-\beta \)），显示偏差较大。修改公式为：$$v _t =\dfrac{\beta v _{t-1}+(1-\beta )\theta _1}{1-\beta ^t}$$当\(t\)增大时，\(\beta ^t \to 0\)，所示当\(t\)较大时，修正偏差公式基本没作用，但在前期会帮助更好预测偏差。实际中，一般会忽略前期偏差的影响。</p>
 <h2 id="动量梯度下降法-Gradient-Descent-with-Momentum"><a href="#动量梯度下降法-Gradient-Descent-with-Momentum" class="headerlink" title="动量梯度下降法(Gradient Descent with Momentum)"></a>动量梯度下降法(Gradient Descent with Momentum)</h2><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://pengzhendong.cn/2018/06/06/Optimization-algorithms/#more" target="_blank" rel="noopener">Randy’s Notes</a><br><a href="https://en.wikipedia.org/wiki/Moving_average" target="_blank" rel="noopener">Exponential moving average</a></p>
 
       
