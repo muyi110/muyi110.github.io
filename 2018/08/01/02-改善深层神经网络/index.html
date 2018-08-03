@@ -138,7 +138,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_039.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_040.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_041.png">
-<meta property="og:updated_time" content="2018-08-03T08:11:32.446Z">
+<meta property="og:updated_time" content="2018-08-03T08:16:56.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.改善深层神经网络">
 <meta name="twitter:description" content="深度学习的实用层面数据集划分：训练/验证/测试 应用深度学习/机器学习是一个不断迭代的过程。  对于一个实际问题的样本数据，在建立模型的过程中，数据集会被划分为如下部分：  训练集：对模型进行训练，学习模型的参数； 验证集：用于交叉验证，选择最好的模型； 测试集：对学习到的模型进行测试，获取模型运行的无偏估计。  对小数据情况（如：100、1000、10000）数据集通常按照如下比例划分：">
@@ -527,9 +527,9 @@
 <li>Common values for \(\beta \) range from \(0.8\) to \(0.999\). If you don’t feel inclined to tune this, \(\beta =0.9\) is often a reasonable default.</li>
 <li>Tuning the optimal \(\beta \) for your model might need trying several values to see what works best in term of reducing the value of the cost function J.</li>
 </ul>
-<h2 id="RMSProp-算法"><a href="#RMSProp-算法" class="headerlink" title="RMSProp 算法"></a>RMSProp 算法</h2><p><code>RMSProp</code> 算法的更新公式为：$$s _{dW}=\beta s <em>{dW}+ (1-\beta )dW^2$$$$s</em>{db}=\beta s_{db}+ (1-\beta )db ^2$$$$W=W-\alpha \dfrac {dW}{\sqrt {s_{dW}}+\varepsilon}$$$$b=b-\alpha \dfrac {db}{\sqrt {s_{db}}+\varepsilon}$$其中\(\varepsilon \)是一个实际操作（编程）添加的较小的数（例如\(10^{-8}\)为了防止分母太小导致数值不稳定。（上式中\(dW^2\)操作是<strong>逐元素</strong>操作）</p>
+<h2 id="RMSProp-算法"><a href="#RMSProp-算法" class="headerlink" title="RMSProp 算法"></a>RMSProp 算法</h2><p><code>RMSProp</code> 算法的更新公式为：$$s_{dW}=\beta s_{dW}+ (1-\beta )dW ^2$$$$s_{db}=\beta s_{db}+ (1-\beta )db ^2$$$$W=W-\alpha \dfrac {dW}{\sqrt {s_{dW}}+\varepsilon }$$$$b=b-\alpha \dfrac {db}{\sqrt {s_{db}}+\varepsilon }$$其中\(\varepsilon \)是一个实际操作（编程）添加的较小的数（例如\(10^{-8}\)为了防止分母太小导致数值不稳定。（上式中\(dW ^2\)操作是<strong>逐元素</strong>操作）</p>
 <h2 id="Adam-算法"><a href="#Adam-算法" class="headerlink" title="Adam 算法"></a>Adam 算法</h2><blockquote>
-<p>Adam 优化算法( Adaptive Moment Estimation )基本上是将 <code>Momentum</code> 和 <code>RMSProp</code> 算法结合在一起。</p>
+<p>Adam 优化算法( Adaptive Moment Estimation )基本上是将 <code>Momentum</code> 和 <code>RMSProp</code> 算法结合在一起。在神经网络中是最有效的优化算法之一。</p>
 </blockquote>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://pengzhendong.cn/2018/06/06/Optimization-algorithms/#more" target="_blank" rel="noopener">Randy’s Notes</a><br><a href="https://en.wikipedia.org/wiki/Moving_average" target="_blank" rel="noopener">Exponential moving average</a></p>
 
