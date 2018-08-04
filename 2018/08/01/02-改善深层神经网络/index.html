@@ -138,7 +138,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_039.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_040.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_041.png">
-<meta property="og:updated_time" content="2018-08-04T03:41:59.440Z">
+<meta property="og:updated_time" content="2018-08-04T03:48:42.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02.改善深层神经网络">
 <meta name="twitter:description" content="深度学习的实用层面数据集划分：训练/验证/测试 应用深度学习/机器学习是一个不断迭代的过程。  对于一个实际问题的样本数据，在建立模型的过程中，数据集会被划分为如下部分：  训练集：对模型进行训练，学习模型的参数； 验证集：用于交叉验证，选择最好的模型； 测试集：对学习到的模型进行测试，获取模型运行的无偏估计。  对小数据情况（如：100、1000、10000）数据集通常按照如下比例划分：">
@@ -547,17 +547,17 @@
 <h1 id="超参数调试、Batch-归一化和编程框架"><a href="#超参数调试、Batch-归一化和编程框架" class="headerlink" title="超参数调试、Batch 归一化和编程框架"></a>超参数调试、Batch 归一化和编程框架</h1><h2 id="超参数调试"><a href="#超参数调试" class="headerlink" title="超参数调试"></a>超参数调试</h2><h3 id="超参数重要性排序如下（参考）"><a href="#超参数重要性排序如下（参考）" class="headerlink" title="超参数重要性排序如下（参考）"></a>超参数重要性排序如下（参考）</h3><ul>
 <li><strong>最重要</strong>：学习率 \(\alpha \)；</li>
 <li><strong>次重要</strong>：动量梯度下降法(Gradient Descent with Momentum)中的 \(\beta \)，常设置为 \(0.9\)；各隐藏层神经元数 <code>hidden units</code>；<code>mini-batch size</code>。</li>
-<li><strong>再次重要</strong>：<code>Adam</code>优化算法超参数 \(beta _1 \)，\(beta _2 \)，\(\varepsilon \)，常设为 \(0.9\)、\(0.999\)、\(10 ^{-8}\)；神经网络层数 <code>layers</code>；学习衰减率 <code>decay-rate</code>。</li>
+<li><strong>再次重要</strong>：<code>Adam</code>优化算法超参数 \(\beta _1 \)，\(\beta _2 \)，\(\varepsilon \)，常设为 \(0.9\)、\(0.999\)、\(10 ^{-8}\)；神经网络层数 <code>layers</code>；学习衰减率 <code>decay-rate</code>。</li>
 </ul>
 <h3 id="调参技巧（建议）"><a href="#调参技巧（建议）" class="headerlink" title="调参技巧（建议）"></a>调参技巧（建议）</h3><ul>
 <li><strong>随机选择点</strong>：在超参数组成的参数空间随机选择点进行实验；</li>
-<li>由粗超到精细：先粗略确定效果不错的小区域，再在小区域上精细实验。</li>
+<li>由粗糙到精细：先粗略确定效果不错的小区域，再在小区域上精细实验。</li>
 </ul>
 <h3 id="给超参数选择合适的范围"><a href="#给超参数选择合适的范围" class="headerlink" title="给超参数选择合适的范围"></a>给超参数选择合适的范围</h3><ul>
-<li><p>对于学习率 \(alpha \)，用<strong>对数标尺(log)</strong>而不是线性标尺。例如 \(\alpha \)的范围是 \(0.0001\)到 \(1\)，利用对数标尺，在 <code>python</code> 中实现如下：</p>
+<li><p>对于学习率 \(\alpha \)，用<strong>对数标尺(log)</strong>而不是线性标尺。例如 \(\alpha \)的范围是 \(0.0001\) 到 \(1\)，利用对数标尺，在 <code>python</code> 中实现如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r = <span class="number">-4</span> * np.random.rand()</span><br><span class="line">a = np.power(<span class="number">10</span>, r)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>对于 \(\beta\)（动量梯度下降法参数），可以考虑随机选取 \(1-\beta \)值。因为当 \(beta \)接近 \(1\)时，即使 \(beta \)有微小的变化，对结果的影响较大（当 \(beta \)取 \(0.9\)相当于在 \(10\) 个值取平均，当 \(beta \) 取 \(0.999\) 相当于在 \(1000\)个值中取平均，\(beta \)从 \(0.9\) 增加到 \(0.9005\) 对 \(\dfrac {1}{1-\beta }\) 基本没影响，但 \(beta \)从 \(0.999\) 增加到 \(0.9995\) 对 \(\dfrac {1}{1-\beta }\) 影响较大）</p>
+<li><p>对于 \(\beta\)（动量梯度下降法参数），可以考虑随机选取 \(1-\beta \)值。因为当 \(\beta \) 接近 \(1\) 时，即使 \(\beta \)有微小的变化，对结果的影响较大（当 \(\beta \) 取 \(0.9\) 相当于在 \(10\) 个值取平均，当 \(\beta \) 取 \(0.999\) 相当于在 \(1000\) 个值中取平均，\(\beta \)从 \(0.9\) 增加到 \(0.9005\) 对 \(\dfrac {1}{1-\beta }\) 基本没影响，但 \(\beta \) 从 \(0.999\) 增加到 \(0.9995\) 对 \(\dfrac {1}{1-\beta }\) 影响较大）</p>
 </li>
 </ul>
 <h3 id="超参数调试实践"><a href="#超参数调试实践" class="headerlink" title="超参数调试实践"></a>超参数调试实践</h3><ul>
