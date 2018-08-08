@@ -117,17 +117,19 @@
 
 
 
-<meta name="description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta name="description" content="机器学习 (ML) 策略 (1)当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。 正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈机器学习中应用的变分法">
-<meta property="og:url" content="https://muyi110.github.io/2018/07/13/浅谈机器学习中应用的变分法/index.html">
+<meta property="og:title" content="03-构建机器学习项目">
+<meta property="og:url" content="https://muyi110.github.io/2018/08/08/03-构建机器学习项目/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta property="og:description" content="机器学习 (ML) 策略 (1)当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。 正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-27T12:17:32.825Z">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_043.png">
+<meta property="og:updated_time" content="2018-08-08T12:43:33.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈机器学习中应用的变分法">
-<meta name="twitter:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta name="twitter:title" content="03-构建机器学习项目">
+<meta name="twitter:description" content="机器学习 (ML) 策略 (1)当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。 正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能：">
+<meta name="twitter:image" content="https://muyi110.github.io/images/deeplearning_ai_043.png">
 
 
 
@@ -157,13 +159,13 @@
 
 
 
-  <link rel="canonical" href="https://muyi110.github.io/2018/07/13/浅谈机器学习中应用的变分法/"/>
+  <link rel="canonical" href="https://muyi110.github.io/2018/08/08/03-构建机器学习项目/"/>
 
 
 
 
 
-  <title>浅谈机器学习中应用的变分法 | MuYi's Blog</title>
+  <title>03-构建机器学习项目 | MuYi's Blog</title>
   
 
 
@@ -300,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2018/07/13/浅谈机器学习中应用的变分法/">
+    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2018/08/08/03-构建机器学习项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="穆义">
@@ -317,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈机器学习中应用的变分法</h1>
+          <h1 class="post-title" itemprop="name headline">03-构建机器学习项目</h1>
         
 
         <div class="post-meta">
@@ -329,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-13T15:05:10+08:00">
-                2018-07-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T17:23:48+08:00">
+                2018-08-08
               </time>
             
 
@@ -352,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/深度学习课程-Andrew-Ng-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习课程(Andrew Ng)学习笔记</span>
                   </a>
                 </span>
 
@@ -392,26 +394,22 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="变分法"><a href="#变分法" class="headerlink" title="变分法"></a>变分法</h1><blockquote>
-<p>可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))</p>
-</blockquote>
-<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x)\)使泛函\(F[y]\)取最大值或最小值。<br>对于一元函数\(y(x)\)求导。可根据如下公式$$y(x+\varepsilon)=y(x)+\dfrac {dy}{dx}\varepsilon+O(\varepsilon ^2)$$令\(\varepsilon \rightarrow 0\)。同理，对于多元函数\(y(x_{1},\ldots ,x_{D})\)的偏导数根据如下公式定义$$y(x_{1}+\varepsilon_{1},\ldots ,x_{D}+\varepsilon_{D})=y(x_{1},\ldots ,x_{D})+\sum_{i=1}^{D}\dfrac {\partial y}{\partial x_{i}}\varepsilon_{i}+O(\varepsilon^2)$$同样的思想，用于泛函求导。类比上面的公式可写出如下公式$$F[y(x)+\varepsilon\eta (x)]=F[y(x)]+\varepsilon\int\dfrac {\partial F}{\partial y\left(x\right)}\eta (x)dx+O(\varepsilon^2)$$其中\(\eta (x)\)是\(x\)任意的函数。<strong>我们的目的是找到泛函\(F[y(x)]\)的极值；换句话说就是，当\(F[y]\)取极值时候，函数\(y(x)\)的微小变化(\(y(x)+\varepsilon\eta (x)\))不会使得\(F[y]\)的值发生改变。</strong>因此根据上面的公式，当泛函\(F[y(x)]\)取极值时，有下面的公式$$\int\dfrac {\partial F}{\partial y(x)}\eta (x)dx=0$$由于此公式必须对任意的\(\eta (x)\)都成立，<strong>因此得到泛函的导数\(\dfrac {\partial F}{\partial y(x)}=0\)(此时的\(y(x)\)使\(F[y]\)取极值）。</strong></p>
-<h2 id="变分法浅探究"><a href="#变分法浅探究" class="headerlink" title="变分法浅探究"></a>变分法浅探究</h2><p>考虑如下形式定义的泛函$$F[y]=\int G(y(x),y’(x),x)dx$$其中假设\(y(x)\)的值在积分边界处是固定的。考虑函数\(y(x)\)的变化，得到如下公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
+<h1 id="机器学习-ML-策略-1"><a href="#机器学习-ML-策略-1" class="headerlink" title="机器学习 (ML) 策略 (1)"></a>机器学习 (ML) 策略 (1)</h1><p>当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：<img src="/images/deeplearning_ai_043.png" alt="改善系统想法">如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。</p>
+<h2 id="正交化"><a href="#正交化" class="headerlink" title="正交化"></a>正交化</h2><p><strong>正交化</strong> (<code>Orthogonalization</code>)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。<br>机器学习（监督学习）系统中，需要确保四个功能：</p>
+<ol>
+<li>Fit training set well on cost function</li>
+<li>Fit dev set well on cost function</li>
+<li>Fit test set well on cost function</li>
+<li>Performs well in real world</li>
+</ol>
+<p>其中：</p>
 <ul>
-<li><strong>杂谈：对于上面公式的非正式说明</strong><blockquote>
-<p>根据定义$$F[y(x)+\varepsilon \eta (x)]=\int G[y(x)+\varepsilon \eta (x),y’(x)+\varepsilon \eta’(x),x]dx$$可以将函数\(G\)看成多元函数，所以可以得到“多元函数\(G\)”的偏导数为(这样的写法不对，但为了和引言中多元函数展开公式相对应，就这么写了，忽略系数\(\varepsilon\)）$$\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)$$我们知道，对于$$y(x)=\int f(x)dx$$有$$y’(x)=\int f’(x)dx$$所以可得到公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
-</blockquote>
-</li>
+<li>对于第一条，如果模型在训练集上表现不好，可以尝试训练更大的神经网络，或更换一种更好的优化算法（如 <code>Adam</code>）；</li>
+<li>对于第二条，如果模型在验证集上表现不好，在训练集上表现好，可以进行正则化处理或加入更多训练数据；</li>
+<li>对于第三条，如果模型在测试集上表现不好，在验证集上表现好，可以尝试使用更大的验证集进行验证；</li>
+<li>对于第四条，如果模型在实际应用中表现不好，在测试集上表现好，可能需要改变验证集或成本函数。</li>
 </ul>
-<p>对上面积分项中第二项利用分部积分可得$$\int\dfrac {\partial G}{\partial y’}\eta’(x)dx=\dfrac {\partial G}{\partial y’}\eta (x)\Big |-\int\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)\eta (x)dx$$由于函数\(y(x)\)在积分边界处是固定的，所以有$$\dfrac {\partial G}{\partial y’}\eta (x)\Big |=0$$</p>
-<ul>
-<li><strong>杂谈:关于函数\(y(x)\)在积分边界处是固定的，上式等于\(0\)</strong><blockquote>
-<p>由于函数\(y(x)\)在积分边界处是固定的，也就是说在积分边界处函数\(y(x)\)不会变化，因此在积分边界处有\(y(x)=y(x)+\varepsilon\eta (x)\)，进而可以得到在积分边界处函数\(\eta (x)\)必须消失。</p>
-</blockquote>
-</li>
-</ul>
-<p>因此可以得到如下公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int\Big\{\dfrac {\partial G}{\partial y}-\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)\Big\}\eta (x)dx+O(\varepsilon^2)$$根据以上分析，泛函在极值处导数为\(0\)可以得到如下公式$$\dfrac {\partial G}{\partial y}-\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)=0$$如果泛函的定义只是对函数\(G(y,x)\)的积分，只需要令\(\dfrac {\partial G}{\partial y}=0\)即可。</p>
-<p>结束<br>参考：PRML</p>
+<h2 id="单值评价指标"><a href="#单值评价指标" class="headerlink" title="单值评价指标"></a>单值评价指标</h2><p>构建机器学习系统时，设置<strong>单值评价指标</strong> (<code>single-number evaluation metric</code> )可帮助快速比较不同模型的优劣，选择最优模型，加速机器学习开发过程。<br>例如，对于分类问题，常用评价指标是<strong>精确率</strong>( <code>Precision</code> )和<strong>召回率</strong>( <code>Recall</code> )。$$\text {精确率}=\dfrac {\text {预测为阳性样本中真实阳性样本数}}{\text {预测为阳性样本数}}\times 100 \%$$$$\text {召回率}=\dfrac {\text {正确预测为阳性样本数}}{\text {所有阳性样本数}}\times 100 \%$$假如有 <code>A</code> 和 <code>B</code> 两个分类器，两项指标如下表所示：<br>| 分类器 |精确率|召回率|<br>|:——:|:——:|:——:|<br>|A|95%||90%|<br>|B|98%||85%|<br>如果用精确率和召回率两个指标，则很难判断 <code>A</code> 和 <code>B</code> 哪个指标更好。实际中，经常使用综合了精确率和召回率两个指标的 <code>F1 Score</code>评价模型， <code>F1 Score</code> 是精确率和召回率的<strong>调和平均数</strong>( <code>Harmonic Mean</code> ），公式如下：$$F _1 =\dfrac {2}{\dfrac {1}{P}+\dfrac {1}{R}}$$其中 <code>P</code> 表示精确率，<code>R</code> 表示召回率。</p>
 
       
     </div>
@@ -436,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/11/浅谈机器学习中Lagrange-Multipliers/" rel="next" title="浅谈机器学习中Lagrange-Multipliers">
-                <i class="fa fa-chevron-left"></i> 浅谈机器学习中Lagrange-Multipliers
+              <a href="/2018/08/01/02-改善深层神经网络/" rel="next" title="02.改善深层神经网络">
+                <i class="fa fa-chevron-left"></i> 02.改善深层神经网络
               </a>
             
           </div>
@@ -445,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/27/01-神经网络和深度学习/" rel="prev" title="01.神经网络和深度学习">
-                01.神经网络和深度学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -575,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变分法"><span class="nav-number">1.</span> <span class="nav-text">变分法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变分法浅探究"><span class="nav-number">1.2.</span> <span class="nav-text">变分法浅探究</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-ML-策略-1"><span class="nav-number">1.</span> <span class="nav-text">机器学习 (ML) 策略 (1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正交化"><span class="nav-number">1.1.</span> <span class="nav-text">正交化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单值评价指标"><span class="nav-number">1.2.</span> <span class="nav-text">单值评价指标</span></a></li></ol></li></ol></div>
             
 
           </div>
