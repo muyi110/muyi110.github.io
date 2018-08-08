@@ -117,18 +117,18 @@
 
 
 
-<meta name="description" content="机器学习 (ML) 策略 (1)当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。 正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能：">
+<meta name="description" content="机器学习 (ML) 策略 (1) 当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。  正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03-构建机器学习项目">
 <meta property="og:url" content="https://muyi110.github.io/2018/08/08/03-构建机器学习项目/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="机器学习 (ML) 策略 (1)当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。 正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能：">
+<meta property="og:description" content="机器学习 (ML) 策略 (1) 当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。  正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_043.png">
-<meta property="og:updated_time" content="2018-08-08T12:43:33.184Z">
+<meta property="og:updated_time" content="2018-08-08T12:50:50.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03-构建机器学习项目">
-<meta name="twitter:description" content="机器学习 (ML) 策略 (1)当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。 正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能：">
+<meta name="twitter:description" content="机器学习 (ML) 策略 (1) 当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。  正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能">
 <meta name="twitter:image" content="https://muyi110.github.io/images/deeplearning_ai_043.png">
 
 
@@ -394,7 +394,9 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="机器学习-ML-策略-1"><a href="#机器学习-ML-策略-1" class="headerlink" title="机器学习 (ML) 策略 (1)"></a>机器学习 (ML) 策略 (1)</h1><p>当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：<img src="/images/deeplearning_ai_043.png" alt="改善系统想法">如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。</p>
+<h1 id="机器学习-ML-策略-1"><a href="#机器学习-ML-策略-1" class="headerlink" title="机器学习 (ML) 策略 (1)"></a>机器学习 (ML) 策略 (1)</h1><blockquote>
+<p>当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：<img src="/images/deeplearning_ai_043.png" alt="改善系统想法">如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。</p>
+</blockquote>
 <h2 id="正交化"><a href="#正交化" class="headerlink" title="正交化"></a>正交化</h2><p><strong>正交化</strong> (<code>Orthogonalization</code>)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。<br>机器学习（监督学习）系统中，需要确保四个功能：</p>
 <ol>
 <li>Fit training set well on cost function</li>
@@ -409,7 +411,58 @@
 <li>对于第三条，如果模型在测试集上表现不好，在验证集上表现好，可以尝试使用更大的验证集进行验证；</li>
 <li>对于第四条，如果模型在实际应用中表现不好，在测试集上表现好，可能需要改变验证集或成本函数。</li>
 </ul>
-<h2 id="单值评价指标"><a href="#单值评价指标" class="headerlink" title="单值评价指标"></a>单值评价指标</h2><p>构建机器学习系统时，设置<strong>单值评价指标</strong> (<code>single-number evaluation metric</code> )可帮助快速比较不同模型的优劣，选择最优模型，加速机器学习开发过程。<br>例如，对于分类问题，常用评价指标是<strong>精确率</strong>( <code>Precision</code> )和<strong>召回率</strong>( <code>Recall</code> )。$$\text {精确率}=\dfrac {\text {预测为阳性样本中真实阳性样本数}}{\text {预测为阳性样本数}}\times 100 \%$$$$\text {召回率}=\dfrac {\text {正确预测为阳性样本数}}{\text {所有阳性样本数}}\times 100 \%$$假如有 <code>A</code> 和 <code>B</code> 两个分类器，两项指标如下表所示：<br>| 分类器 |精确率|召回率|<br>|:——:|:——:|:——:|<br>|A|95%||90%|<br>|B|98%||85%|<br>如果用精确率和召回率两个指标，则很难判断 <code>A</code> 和 <code>B</code> 哪个指标更好。实际中，经常使用综合了精确率和召回率两个指标的 <code>F1 Score</code>评价模型， <code>F1 Score</code> 是精确率和召回率的<strong>调和平均数</strong>( <code>Harmonic Mean</code> ），公式如下：$$F _1 =\dfrac {2}{\dfrac {1}{P}+\dfrac {1}{R}}$$其中 <code>P</code> 表示精确率，<code>R</code> 表示召回率。</p>
+<h2 id="单值评价指标"><a href="#单值评价指标" class="headerlink" title="单值评价指标"></a>单值评价指标</h2><p>构建机器学习系统时，设置<strong>单值评价指标</strong> (<code>single-number evaluation metric</code> )可帮助快速比较不同模型的优劣，选择最优模型，加速机器学习开发过程。<br>例如，对于分类问题，常用评价指标是<strong>精确率</strong>( <code>Precision</code> )和<strong>召回率</strong>( <code>Recall</code> )。$$\text {精确率}=\dfrac {\text {预测为阳性样本中真实阳性样本数}}{\text {预测为阳性样本数}}\times 100 \%$$$$\text {召回率}=\dfrac {\text {正确预测为阳性样本数}}{\text {所有阳性样本数}}\times 100 \%$$假如有 <code>A</code> 和 <code>B</code> 两个分类器，两项指标如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">分类器</th>
+<th style="text-align:center">精确率</th>
+<th style="text-align:center">召回率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">95%</td>
+<td style="text-align:center"></td>
+<td>90%</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">98%</td>
+<td style="text-align:center"></td>
+<td>85%</td>
+</tr>
+</tbody>
+</table>
+<p>如果用精确率和召回率两个指标，则很难判断 <code>A</code> 和 <code>B</code> 哪个指标更好。实际中，经常使用综合了精确率和召回率两个指标的 <code>F1 Score</code>评价模型， <code>F1 Score</code> 是精确率和召回率的<strong>调和平均数</strong>( <code>Harmonic Mean</code> ），公式如下：$$F _1 =\dfrac {2}{\dfrac {1}{P}+\dfrac {1}{R}}$$其中 <code>P</code> 表示精确率，<code>R</code> 表示召回率。<br>通过计算 <code>A</code> 和 <code>B</code> 两个分类器的 <code>F1 Score</code> ，可以看出模型 <code>A</code> 效果更好。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">分类器</th>
+<th style="text-align:center">精确率</th>
+<th style="text-align:center">召回率</th>
+<th style="text-align:center">F1 Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">95%</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">90%</td>
+<td>92.4%</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">98%</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">85%</td>
+<td>91.0%</td>
+</tr>
+</tbody>
+</table>
+<p>如果有多个指标，也考虑取平均值。<br>有一个开发集,加上单实数评估指标,迭代速度会很快,可以加速改进机器学习算法的迭代过程。</p>
 
       
     </div>
