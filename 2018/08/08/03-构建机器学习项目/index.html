@@ -125,7 +125,9 @@
 <meta property="og:description" content="机器学习 (ML) 策略 (1) 当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。  正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_043.png">
-<meta property="og:updated_time" content="2018-08-08T13:10:47.124Z">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_044.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_045.png">
+<meta property="og:updated_time" content="2018-08-08T14:15:58.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03-构建机器学习项目">
 <meta name="twitter:description" content="机器学习 (ML) 策略 (1) 当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。  正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能">
@@ -487,7 +489,30 @@
 </tbody>
 </table>
 <p>将运行时间设置为满足指标，小于 <code>100ms</code> 就行，准确率设为优化指标，则 <code>B</code> 分类器是最优的。<br>更一般地，如果考虑 <code>N</code> 个指标，考虑选择其中一个指标为优化指标，剩下 <code>N-1</code>个指标是满足指标是合理的。</p>
-<h2 id="训练-验证-测试集划分"><a href="#训练-验证-测试集划分" class="headerlink" title="训练/验证/测试集划分"></a>训练/验证/测试集划分</h2>
+<h2 id="训练-验证-测试集划分"><a href="#训练-验证-测试集划分" class="headerlink" title="训练/验证/测试集划分"></a>训练/验证/测试集划分</h2><blockquote>
+<p>构建机器学习系统时，我们采用不同的学习方法，在<strong>训练集</strong>上训练出不同的模型，然后使用<strong>验证集</strong>对模型的好坏进行评估，确信其中某个模型足够好时再用<strong>测试集</strong>对其进行测试。</p>
+</blockquote>
+<p>验证集和评估指标相当于目标（靶心）。若想在测试集上得到较好的结果，应该满足<strong>验证集和测试集来自于同一分布</strong>（相当于目标不变）。</p>
+<h2 id="验证集和测试集的大小"><a href="#验证集和测试集的大小" class="headerlink" title="验证集和测试集的大小"></a>验证集和测试集的大小</h2><p>较早时候，数据量小（小于 1 万），通常按照如下经验法则划分：</p>
+<ul>
+<li>无验证集：70% / 30%</li>
+<li>有验证集：60% / 20% / 20%</li>
+</ul>
+<p>这是为了保证验证集和测试集有足够的数据。在数据规模较大情况下，例如百万级数据量，应考虑将比例设置为 99% / 1% / 1% ，就可保证验证集和测试集规模足够。<br>测试集的大小应该设置得足够提高系统整体性能的可信度，验证集的大小也要设置得足够用于评估几个不同的模型。应该根据实际情况对数据集灵活地进行划分。</p>
+<h2 id="改变验证-测试集和指标"><a href="#改变验证-测试集和指标" class="headerlink" title="改变验证/测试集和指标"></a>改变验证/测试集和指标</h2><p>如果当前的指标和当前用来评估的数据和真正关心必须做好的事情关系不大,那就应该更改指标或者开发测试集,让它们能更够好地反映算法需要处理好的数据。</p>
+<h2 id="比较人类表现水平"><a href="#比较人类表现水平" class="headerlink" title="比较人类表现水平"></a>比较人类表现水平</h2><p>很多机器学习模型的诞生是为了取代人类的工作，因此会和人类的表现水平比较。<img src="/images/deeplearning_ai_044.png" alt="和人类比较">图中显示，当机器学习超过人类表现水平时，其进步变得缓慢，最终无法超过理论上限，此上限称为<strong>贝叶斯最优误差</strong>( <code>Bayes Optimal Error</code> )。贝叶斯最优误差一般认为是理论上可能达到的最优误差，换句话说，其就是理论最优函数。<br>因为人类对一些自然感知问题表现十分接近贝叶斯最优误差，只要机器学习模型表现没有超过人类表现水平时，可以通过各种手段提升它，例如采用人工标记数据训练，通过人工误差分析了解为什么人能够进行正确识别，或者进行偏差，方差分析。</p>
+<h2 id="可避免偏差"><a href="#可避免偏差" class="headerlink" title="可避免偏差"></a>可避免偏差</h2><blockquote>
+<p>通过与贝叶斯最优误差或者人类表现水平比较，可以表面一个机器学习模型表现的好坏程度，由此判断后续重点是注重减小偏差还是方差。</p>
+</blockquote>
+<p>模型在<strong>训练集</strong>上的误差和人类表现水平差值称为<strong>可避免偏差</strong>( <code>Avoidable Bias</code> )。可避免偏差小表明模型在训练集上表现好。<strong>训练集和验证集之间的错误率差值越小</strong>，说明模型在验证集上表现好。<br>若<strong>可避免偏差</strong>大于<strong>训练集和验证集之间的错误率差值</strong>，则之后应重点减小偏差，反之应重点减小方差。</p>
+<h2 id="理解人的表现"><a href="#理解人的表现" class="headerlink" title="理解人的表现"></a>理解人的表现</h2><p>我们一般用<strong>人类水平误差</strong>代表贝叶斯最优误差。对于不同领域的例子，不同人群由于其经验水平不一，错误率也不同。一般来说，<strong>将表现最好的作为人类水平误差</strong>。实际应用中，不同人选择不同人类水平误差基准不同，会造成一定的影响。</p>
+<h2 id="改善模型性能-Improving-your-model-performance"><a href="#改善模型性能-Improving-your-model-performance" class="headerlink" title="改善模型性能( Improving your model performance )"></a>改善模型性能( Improving your model performance )</h2><p>一个监督学习模型达到好的效果，应该满足：</p>
+<ol>
+<li>模型对训练集拟合很好，可以看作<strong>可避免偏差低</strong>；</li>
+<li>在验证集和测试集上效果也很好，可以看作<strong>方差不是很大</strong>。</li>
+</ol>
+<p><img src="/images/deeplearning_ai_045.png" alt="模型构建总结">将<strong>正交化</strong>思想应用到模型的构建上。</p>
+
       
     </div>
     
@@ -646,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-ML-策略-1"><span class="nav-number">1.</span> <span class="nav-text">机器学习 (ML) 策略 (1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正交化"><span class="nav-number">1.1.</span> <span class="nav-text">正交化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单值评价指标"><span class="nav-number">1.2.</span> <span class="nav-text">单值评价指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#满足和优化指标"><span class="nav-number">1.3.</span> <span class="nav-text">满足和优化指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练-验证-测试集划分"><span class="nav-number">1.4.</span> <span class="nav-text">训练/验证/测试集划分</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-ML-策略-1"><span class="nav-number">1.</span> <span class="nav-text">机器学习 (ML) 策略 (1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正交化"><span class="nav-number">1.1.</span> <span class="nav-text">正交化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单值评价指标"><span class="nav-number">1.2.</span> <span class="nav-text">单值评价指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#满足和优化指标"><span class="nav-number">1.3.</span> <span class="nav-text">满足和优化指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练-验证-测试集划分"><span class="nav-number">1.4.</span> <span class="nav-text">训练/验证/测试集划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证集和测试集的大小"><span class="nav-number">1.5.</span> <span class="nav-text">验证集和测试集的大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变验证-测试集和指标"><span class="nav-number">1.6.</span> <span class="nav-text">改变验证/测试集和指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较人类表现水平"><span class="nav-number">1.7.</span> <span class="nav-text">比较人类表现水平</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可避免偏差"><span class="nav-number">1.8.</span> <span class="nav-text">可避免偏差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解人的表现"><span class="nav-number">1.9.</span> <span class="nav-text">理解人的表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改善模型性能-Improving-your-model-performance"><span class="nav-number">1.10.</span> <span class="nav-text">改善模型性能( Improving your model performance )</span></a></li></ol></li></ol></div>
             
 
           </div>
