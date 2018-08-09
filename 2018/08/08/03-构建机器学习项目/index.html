@@ -127,7 +127,13 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_043.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_044.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_045.png">
-<meta property="og:updated_time" content="2018-08-08T14:28:09.014Z">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_046.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_047.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_048.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_049.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_050.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_051.png">
+<meta property="og:updated_time" content="2018-08-09T06:16:11.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.构建机器学习项目">
 <meta name="twitter:description" content="机器学习 (ML) 策略 (1) 当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。  正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能">
@@ -512,7 +518,80 @@
 <li>在验证集和测试集上效果也很好，可以看作<strong>方差不是很大</strong>。</li>
 </ol>
 <p><img src="/images/deeplearning_ai_045.png" alt="模型构建总结">将<strong>正交化</strong>思想应用到模型的构建上。</p>
-<h1 id="机器学习-ML-策略-2"><a href="#机器学习-ML-策略-2" class="headerlink" title="机器学习 (ML) 策略 (2)"></a>机器学习 (ML) 策略 (2)</h1><h2 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h2>
+<h1 id="机器学习-ML-策略-2"><a href="#机器学习-ML-策略-2" class="headerlink" title="机器学习 (ML) 策略 (2)"></a>机器学习 (ML) 策略 (2)</h1><h2 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h2><blockquote>
+<p>如果希望学习算法能够胜任人类能做的任务，但学习算法还没有达到人类的表现，此时人工检查下算法犯的错误也许可以了解接下来应该做的工作。这个过程称为<strong>误差分析</strong>。</p>
+</blockquote>
+<ul>
+<li>例如，可能会发现一个猫图片识别器错误地将一些看上去像猫的狗误识别为猫。这时，立即盲目地去研究一个能够精确识别出狗的算法不一定是最好的选择，因为我们不知道这样做会对提高分类器的准确率有多大的帮助。<br>这时，我们可以从分类错误的样本中统计出狗的样本数量。根据狗样本所占的比重来判断这一问题的重要性。假如狗类样本所占比重仅为 <code>5%</code> ，那么即使花费几个月的时间来提升模型对狗的识别率，改进后的模型错误率并没有显著改善；而如果错误样本中狗类所占比重为 <code>50%</code> ，那么改进后的模型性能会有较大的提升。因此，花费更多的时间去研究能够精确识别出狗的算法是值得的。</li>
+</ul>
+<p>在对输出结果中分类错误的样本进行人工分析时，可以建立一个表格来记录每一个分类错误的具体信息，例如某些图像是模糊的，或者是把狗识别成了猫等，并统计属于不同错误类型的错误数量。这样，分类结果会更加清晰。<img src="/images/deeplearning_ai_046.png" alt="错误分类">总结：进行错误分析，你应该找一组错误样本，可能在你的开发集里或者测试集里，观察错误标记的样本，看看假阳性( <code>false positives</code> )和假阴性( <code>false negatives</code> )，统计属于不同错误类型的错误数量。在这个过程中，你可能会得到启发，归纳出新的错误类型。</p>
+<h2 id="错误标注样本数据"><a href="#错误标注样本数据" class="headerlink" title="错误标注样本数据"></a>错误标注样本数据</h2><p>在训练集中，深度学习算法对训练集中随机误差是很具有鲁棒性( <code>robust</code> )的。只要出错的样本数据量较少，错误随机或近似随机，则不用花费太多时间修复他们。<br><strong>注</strong>：深度学习算法对随机误差很健壮，但对系统性的错误就没那么健壮了。比如说，如果做标记的人一直把白色的狗标记成猫，那就成问题了。因为你的分类器学习之后，会把所有白色的狗都分类为猫。<br>在验证集和测试集中，在进行误差分析时，通过统计人工标记出错占的比例来大致分析这种情况对模型的识别准确率的影响，并比较该比例的大小和其他错误类型的比例，以此判断是否值得去将错误的标记一一进行修正，还是忽略。<br>在验证集和测试集上进行错误样本修正时，有如下建议：</p>
+<ol>
+<li>在验证集和测试集上<strong>同时使用相同的修正手段</strong>，保证验证集和测试集来自相同的分布；</li>
+<li>同时检查判断正确和判断错误的样本（通常不用这么做）；</li>
+<li>修正验证集和测试集时，考虑到训练集分布和验证/测试集分布可以不同，因此可以不去修正训练集。</li>
+</ol>
+<h2 id="快速搭建系统并迭代"><a href="#快速搭建系统并迭代" class="headerlink" title="快速搭建系统并迭代"></a>快速搭建系统并迭代</h2><p><code>Bulid your first system quickly then iterate</code> 初始系统的全部意义在于，有一个学习过的系统，有一个训练过的系统，让你确定偏差方差的范围，就可以知道下一步应该优先做什么，让你能够进行错误分析，可以观察一些错误，然后想出所有能走的方向，哪些是实际上最有希望的方向。</p>
+<h2 id="在不同的分布上进行训练和测试"><a href="#在不同的分布上进行训练和测试" class="headerlink" title="在不同的分布上进行训练和测试"></a>在不同的分布上进行训练和测试</h2><p>有时，我们很难得到来自同一个分布的训练集和验证/测试集。例如在猫识别器中，训练集来自网络获取（规模大，例如 20 万张，图片清晰），验证集和测试集来自用户上传（规模小，例如 1 万张，图片模糊）。我们的目标是针对用户上传的图片进行分类，所以建议划分数据集如下：<strong>将 20 万张网络图片和 5000 张用户上传图片用作训练集，剩下 5000 张用户上床的图片一般作为验证集，一半作为训练集</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据集划分</th>
+<th style="text-align:center">训练集</th>
+<th style="text-align:center">验证集</th>
+<th style="text-align:center">测试集</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数量</td>
+<td style="text-align:center">20.5万</td>
+<td style="text-align:center">5000</td>
+<td style="text-align:center">5000</td>
+</tr>
+<tr>
+<td style="text-align:center">来源</td>
+<td style="text-align:center">20万来自网络，5000来自用户上传</td>
+<td style="text-align:center">用户上传</td>
+<td style="text-align:center">用户上传</td>
+</tr>
+</tbody>
+</table>
+<p>比起混合数据集所有样本再随机划分，这种分配方法虽然使训练集分布和验证/测试集的分布并不一样，但是能保证验证/测试集更接近实际应用场景，在长期能带来更好的系统性能。</p>
+<h2 id="不匹配数据分布偏差和方差"><a href="#不匹配数据分布偏差和方差" class="headerlink" title="不匹配数据分布偏差和方差"></a>不匹配数据分布偏差和方差</h2><blockquote>
+<p>之前的学习中，我们通过比较人类水平误差、训练集错误率、验证集错误率的相对差值来判断进行偏差/方差分析。但在训练集和验证/测试集分布不一致的情况下，无法根据相对差值来进行偏差/方差分析。因为训练集错误率和验证集错误率的差值可能来自于算法本身（归为方差），也可能来自于样本分布不同，和模型关系不大。</p>
+</blockquote>
+<p>在可能存在训练集和验证/测试集分布不一致的情况下，为了解决这个问题，可以再定义一个<strong>训练-验证集</strong>（ <code>Training-dev Set</code> ）。训练-验证集和训练集的分布相同（或者是训练集分割出的子集），但是不参与训练过程。<br>训练-验证集错误率和验证集错误率反映了样本分布不一致的问题，从而说明模型擅长处理的数据和我们关心的数据来自不同的分布，我们称之为<strong>数据不匹配</strong>（Data Mismatch）问题。<br>总结如下图<img src="/images/deeplearning_ai_047.png" alt="数据不匹配"></p>
+<h2 id="解决数据不匹配问题"><a href="#解决数据不匹配问题" class="headerlink" title="解决数据不匹配问题"></a>解决数据不匹配问题</h2><p>解决数据不匹配问题的建议如下：</p>
+<ul>
+<li>做错误分析，了解训练集和验证/测试集具体差异；</li>
+<li>尝试将训练集变得更加像验证集，或者搜集更多类似于验证/测试集的数据。</li>
+</ul>
+<p>若打算将训练数据调整得更像验证集，可以使用的一种技术是<strong>人工合成数据</strong>。要注意避免过拟合问题。（例如不能给每段语音都增加同一段背景噪声，因为这样模型会对这段背景噪音出现过拟合现象，使得效果不佳）</p>
+<h2 id="迁移学习"><a href="#迁移学习" class="headerlink" title="迁移学习"></a>迁移学习</h2><blockquote>
+<p>迁移学习( <code>Tranfer learning</code> )是通过将已训练好的神经网络模型的一部分网络结构应用到另一模型，将一个神经网络从某个任务中学到的知识和经验运用到另一个任务中，以显著提高学习任务的性能。</p>
+</blockquote>
+<ul>
+<li>例如，我们将为猫识别器构建的神经网络迁移应用到放射科诊断中。因为猫识别器的神经网络已经学习到了有关图像的结构和性质等方面的知识，所以只要先删除神经网络中原有的输出层，加入新的输出层并随机初始化权重系数（\(W ^L \)，\(b ^L \)），随后用新的训练集进行训练，就完成了以上的迁移学习。</li>
+</ul>
+<p>如果新的数据集很小，可能只需要重新训练输出层前的最后一层的权重，即 \(W ^L \)，\(b ^L \)，并保持其他参数不变；而如果有足够多的数据，可以只保留网络结构，重新训练神经网络中所有层的系数。这时初始权重由之前的模型训练得到，这个过程称为预训练（Pre-Training），之后的权重更新过程称为微调（Fine-Tuning）。<br>有时可能不止加入一个新的输出层，而是多加入几个新层。<img src="/images/deeplearning_ai_048.png" alt="迁移学习">迁移学习适用情况如下：</p>
+<ol>
+<li>两个任务有同样的输入（例如都是图形或者语音）；</li>
+<li>拥有更多数据的任务迁移到数据较少的任务；</li>
+<li>某一任务低层次特征对另一个任务学习有帮助。</li>
+</ol>
+<h2 id="多任务学习"><a href="#多任务学习" class="headerlink" title="多任务学习"></a>多任务学习</h2><p>多任务学习( <code>Multi-Task Learning</code> )是使用单个神经网络同时学习多个任务，其基本假设是<strong>多个任务之间具有相关性</strong>，且任务之间可以利用相关性相互促进。例如交通灯、汽车和行人对识别停车标志有一定的相关性。<br>以自动驾驶为例，实现的多任务是识别行人、车辆、交通标志和信号灯。例如在输入的图像检测出车辆和交通标志，则输出 \(y\) 是：$$y=\begin {bmatrix}0\\1\\1\\0 \end{bmatrix}$$其网络结构如下：<img src="/images/deeplearning_ai_049.png" alt="多任务学习">图中 \(j\) 表示任务下表，\(c\) 表示任务数。<br>多任务学习也可以处理只有部分物体被标记的情况，例如标签：$$y=\begin {bmatrix}?\\1\\?\\0 \end{bmatrix}$$求和时候，只需忽略带有 \(?\) 的项，不会影响多任务学习模型的训练。<br>多任务学习和 <code>Softmax</code> 区别是：<code>Softmax</code> 输出 y 中只有一个为 1 ，多任务学习可以有多个为 1 。<br>多任务学习适用情况如下：</p>
+<ol>
+<li>Training on a set of tasks that could benefit from having shared lower-level features.</li>
+<li>Usually: Amount of data you have for each tasks is quit similar.</li>
+<li>Can train a big enough neural network to do well on all the tasks.</li>
+</ol>
+<p>实际中，多任务学习使用频率要低于迁移学习。</p>
+<h2 id="端到端学习-end-to-end-deep-learning"><a href="#端到端学习-end-to-end-deep-learning" class="headerlink" title="端到端学习 (end-to-end deep learning)"></a>端到端学习 (end-to-end deep learning)</h2><blockquote>
+<p>在传统的机器学习分块模型中，每一个模块处理一种输入，然后其输出作为下一个模块的输入，构成一条流水线。而端到端深度学习（<code>End-to-end Deep Learning</code>）只用一个单一的神经网络模型来实现所有的功能。它将所有模块混合在一起，只关心输入和输出。</p>
+</blockquote>
+<p>如果数据量较少，传统机器学习分块模型所构成的流水线效果会很不错。但如果训练样本足够大，并且训练出的神经网络模型足够复杂，那么端到端深度学习模型的性能会比传统机器学习分块模型更好。<br>而如果数据集规模适中，还是可以使用流水线方法，但是可以混合端到端深度学习，通过神经网络绕过某些模块，直接输出某些特征。<br>总结如下图所示：<img src="/images/deeplearning_ai_050.png" alt="端到端学习"><strong>决定一个问题是否应用端到端学习的关键点是</strong>：是否有足够的数据，支持能够直接学习从 <code>x</code> 映射到  <code>y</code> 并且足够复杂的函数。<br><strong>有时比起一步到位学习，把问题分解为几个简单步骤可能效果更好。例如人类识别系统中，首先弄清脸在哪（人脸识别），然后弄清脸是谁（将识别的人脸放大，识别身份）。</strong><img src="/images/deeplearning_ai_051.png" alt="人脸识别"></p>
+
       
     </div>
     
@@ -671,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-ML-策略-1"><span class="nav-number">1.</span> <span class="nav-text">机器学习 (ML) 策略 (1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正交化"><span class="nav-number">1.1.</span> <span class="nav-text">正交化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单值评价指标"><span class="nav-number">1.2.</span> <span class="nav-text">单值评价指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#满足和优化指标"><span class="nav-number">1.3.</span> <span class="nav-text">满足和优化指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练-验证-测试集划分"><span class="nav-number">1.4.</span> <span class="nav-text">训练/验证/测试集划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证集和测试集的大小"><span class="nav-number">1.5.</span> <span class="nav-text">验证集和测试集的大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变验证-测试集和指标"><span class="nav-number">1.6.</span> <span class="nav-text">改变验证/测试集和指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较人类表现水平"><span class="nav-number">1.7.</span> <span class="nav-text">比较人类表现水平</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可避免偏差"><span class="nav-number">1.8.</span> <span class="nav-text">可避免偏差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解人的表现"><span class="nav-number">1.9.</span> <span class="nav-text">理解人的表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改善模型性能-Improving-your-model-performance"><span class="nav-number">1.10.</span> <span class="nav-text">改善模型性能( Improving your model performance )</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-ML-策略-2"><span class="nav-number">2.</span> <span class="nav-text">机器学习 (ML) 策略 (2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#误差分析"><span class="nav-number">2.1.</span> <span class="nav-text">误差分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-ML-策略-1"><span class="nav-number">1.</span> <span class="nav-text">机器学习 (ML) 策略 (1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正交化"><span class="nav-number">1.1.</span> <span class="nav-text">正交化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单值评价指标"><span class="nav-number">1.2.</span> <span class="nav-text">单值评价指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#满足和优化指标"><span class="nav-number">1.3.</span> <span class="nav-text">满足和优化指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练-验证-测试集划分"><span class="nav-number">1.4.</span> <span class="nav-text">训练/验证/测试集划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证集和测试集的大小"><span class="nav-number">1.5.</span> <span class="nav-text">验证集和测试集的大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变验证-测试集和指标"><span class="nav-number">1.6.</span> <span class="nav-text">改变验证/测试集和指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较人类表现水平"><span class="nav-number">1.7.</span> <span class="nav-text">比较人类表现水平</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可避免偏差"><span class="nav-number">1.8.</span> <span class="nav-text">可避免偏差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解人的表现"><span class="nav-number">1.9.</span> <span class="nav-text">理解人的表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改善模型性能-Improving-your-model-performance"><span class="nav-number">1.10.</span> <span class="nav-text">改善模型性能( Improving your model performance )</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习-ML-策略-2"><span class="nav-number">2.</span> <span class="nav-text">机器学习 (ML) 策略 (2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#误差分析"><span class="nav-number">2.1.</span> <span class="nav-text">误差分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误标注样本数据"><span class="nav-number">2.2.</span> <span class="nav-text">错误标注样本数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速搭建系统并迭代"><span class="nav-number">2.3.</span> <span class="nav-text">快速搭建系统并迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在不同的分布上进行训练和测试"><span class="nav-number">2.4.</span> <span class="nav-text">在不同的分布上进行训练和测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不匹配数据分布偏差和方差"><span class="nav-number">2.5.</span> <span class="nav-text">不匹配数据分布偏差和方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决数据不匹配问题"><span class="nav-number">2.6.</span> <span class="nav-text">解决数据不匹配问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移学习"><span class="nav-number">2.7.</span> <span class="nav-text">迁移学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多任务学习"><span class="nav-number">2.8.</span> <span class="nav-text">多任务学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端到端学习-end-to-end-deep-learning"><span class="nav-number">2.9.</span> <span class="nav-text">端到端学习 (end-to-end deep learning)</span></a></li></ol></li></ol></div>
             
 
           </div>
