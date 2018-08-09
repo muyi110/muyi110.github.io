@@ -133,7 +133,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_049.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_050.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_051.png">
-<meta property="og:updated_time" content="2018-08-09T06:16:11.808Z">
+<meta property="og:updated_time" content="2018-08-09T06:25:07.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03.构建机器学习项目">
 <meta name="twitter:description" content="机器学习 (ML) 策略 (1) 当优化一个深度学习系统时，可能有很多想法去改善系统，如下图所示：如果做出错误的选择方向，可能浪费大量的时间。因此，下面介绍一些构建机器学习工程常用的策略。  正交化正交化 (Orthogonalization)是指每次调整只影响模型某一方面的性能，对其他没有影响。此种方法可以有助于更有效进行机器学习模型调试和优化。机器学习（监督学习）系统中，需要确保四个功能">
@@ -574,7 +574,7 @@
 <ul>
 <li>例如，我们将为猫识别器构建的神经网络迁移应用到放射科诊断中。因为猫识别器的神经网络已经学习到了有关图像的结构和性质等方面的知识，所以只要先删除神经网络中原有的输出层，加入新的输出层并随机初始化权重系数（\(W ^L \)，\(b ^L \)），随后用新的训练集进行训练，就完成了以上的迁移学习。</li>
 </ul>
-<p>如果新的数据集很小，可能只需要重新训练输出层前的最后一层的权重，即 \(W ^L \)，\(b ^L \)，并保持其他参数不变；而如果有足够多的数据，可以只保留网络结构，重新训练神经网络中所有层的系数。这时初始权重由之前的模型训练得到，这个过程称为预训练（Pre-Training），之后的权重更新过程称为微调（Fine-Tuning）。<br>有时可能不止加入一个新的输出层，而是多加入几个新层。<img src="/images/deeplearning_ai_048.png" alt="迁移学习">迁移学习适用情况如下：</p>
+<p>如果新的数据集很小，可能只需要重新训练输出层前的最后一层的权重，即 \(W ^L \)，\(b ^L \)，并保持其他参数不变；而如果有足够多的数据，可以只保留网络结构，重新训练神经网络中所有层的系数。这时初始权重由之前的模型训练得到，这个过程称为预训练 (<code>Pre-Training</code> )，之后的权重更新过程称为微调 ( <code>Fine-Tuning</code> )。<br>有时可能不止加入一个新的输出层，而是多加入几个新层。<img src="/images/deeplearning_ai_048.png" alt="迁移学习">迁移学习适用情况如下：</p>
 <ol>
 <li>两个任务有同样的输入（例如都是图形或者语音）；</li>
 <li>拥有更多数据的任务迁移到数据较少的任务；</li>
