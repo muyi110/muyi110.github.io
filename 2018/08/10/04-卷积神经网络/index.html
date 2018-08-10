@@ -132,10 +132,11 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_056.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_057.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_058.png">
-<meta property="og:image" content="https://muyi110.github.io/images/deeplaening_ai_059.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_059.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_060.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_061.png">
-<meta property="og:updated_time" content="2018-08-10T11:51:34.618Z">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_062.png">
+<meta property="og:updated_time" content="2018-08-10T12:35:26.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04.卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
@@ -429,7 +430,7 @@
 <h2 id="卷积步长-Strided-convolutions"><a href="#卷积步长-Strided-convolutions" class="headerlink" title="卷积步长 ( Strided convolutions )"></a>卷积步长 ( Strided convolutions )</h2><blockquote>
 <p>卷积步长是另一个构建卷积神经网络的基本操作。</p>
 </blockquote>
-<p><strong>步长表示滤波器在原始图像上水平或垂直方向上每次移动的距离。</strong>之前的步常默认为 \(1\) 。如果将步长设置为 \(2\) ，则卷积过程如下图所示：<img src="/images/deeplaening_ai_059.png" alt="步长为2的卷积过程">设步长为 s ，填充像素量为 p ，输入图片大小为 \(n\times n \) ，滤波器大小为 \(f\times f \) ，则卷积后的输出大小为：$$\lfloor {\dfrac {n+2p-f}{s}+1}\rfloor \times \lfloor {\dfrac {n+2p-f}{s}+1}\rfloor$$公式中的符号表示取整符号。</p>
+<p><strong>步长表示滤波器在原始图像上水平或垂直方向上每次移动的距离。</strong>之前的步常默认为 \(1\) 。如果将步长设置为 \(2\) ，则卷积过程如下图所示：<img src="/images/deeplearning_ai_059.png" alt="步长为2的卷积过程">设步长为 s ，填充像素量为 p ，输入图片大小为 \(n\times n \) ，滤波器大小为 \(f\times f \) ，则卷积后的输出大小为：$$\lfloor {\dfrac {n+2p-f}{s}+1}\rfloor \times \lfloor {\dfrac {n+2p-f}{s}+1}\rfloor$$公式中的符号表示取整符号。</p>
 <ul>
 <li>杂谈：<blockquote>
 <p>在机器学习中谈论的<strong>卷积</strong>实际上被称为<strong>互相关 (cross-correlation)</strong>，不是数学意义上的卷积。数学上的卷积在做元素乘积求和之前，需要将滤波器沿水平和垂直轴翻转（相当于做镜像）。但按照机器学习惯例，通常不进行翻转操作。</p>
@@ -437,7 +438,21 @@
 </li>
 </ul>
 <h2 id="高维卷积"><a href="#高维卷积" class="headerlink" title="高维卷积"></a>高维卷积</h2><p><img src="/images/deeplearning_ai_060.png" alt="三通道卷积"><strong>如果对三通道的 <code>RGB</code> 的图像 (\(6\times 6 \times 3 \)) 进行卷积操作，则对应的滤波器也同样是三通道的 (\(3\times 3\times 3 \))卷积的结果输出是 (\(4\times 4 \times 1\))</strong>。实现过程：将每个单通道与对应的滤波器（单通道）进行卷积，然后将三个通道相加，将 \(27\) 个值求和作为一个输出值。<br>不同的通道对应的滤波器可以不同。例如，如果只检测 <code>R</code> 通道的垂直边缘，则 <code>G</code> 和 <code>B</code> 通道对应的滤波器值可以全部设置为 \(0\) 。<strong>当输入有特定的高度、宽度和通道数时，滤波器可以有不同的高、宽，但必须有相同的通道数。</strong><br>如果想同时检测垂直和水平边缘，或更多其他边缘（换句话说就是同时检测更多特征），可以增加滤波器个数。例如设置第一个滤波器检测垂直边缘，第二个滤波器检测水平边缘，最后将每个滤波器卷积的输出堆叠在一起，如下图所示：<img src="/images/deeplearning_ai_061.png" alt="多个滤波器">每个滤波器的输出对应一个特征。设输入的图像大小是 \(n\times n \times n_c\) (\(n_c \) 是通道数) ，滤波器大小是 \(f\times f \times n_c \) ，则卷积的输出是 \((n-f+1)\times (n-f+1)\times n _c ^{‘}\) ，其中 \(n’_c \) 为滤波器个数（默认步长为 \(1\)）。</p>
-<h2 id="单层卷积网络-one-layer-of-a-convolutional-network"><a href="#单层卷积网络-one-layer-of-a-convolutional-network" class="headerlink" title="单层卷积网络 (one layer of a convolutional network)"></a>单层卷积网络 (one layer of a convolutional network)</h2>
+<h2 id="单层卷积网络-one-layer-of-a-convolutional-network"><a href="#单层卷积网络-one-layer-of-a-convolutional-network" class="headerlink" title="单层卷积网络 (one layer of a convolutional network)"></a>单层卷积网络 (one layer of a convolutional network)</h2><p><img src="/images/deeplearning_ai_062.png" alt="单层卷积网络">与之前的卷积过程相比较，卷积神经网络的单层结构多了<strong>激活函数</strong>和<strong>偏移量</strong>；而与标准神经网络：$$Z ^{[l]} = W ^{[l]}A ^{[l-1]}+ b$$$$A ^{[l]}= g ^{[l]}(Z ^{[l]})$$相比，滤波器的数值对应权重 \(W ^{[l]}\) ，卷积运算对应 \(W ^{[l]}\) 与 \(A ^{[l]}\) 的乘积运算，激活函数选择 <code>Relu</code> 函数。<br>下面视频说明了单层卷积神经网络工作过程：</p>
+<p><div align="center"><video width="620" height="440" src="/images/conv_kiank.mp4" type="video/mp4" controls><br></video></div><br>对于一个 \(3\times 3 \times 3 \) 的滤波器，包括偏移量 \(b\) 在内共有 \(28\) 个参数，不论输入的图像多大，参数始终是 \(28\) 。即<strong>选定滤波器组后，参数的数目与输入的图片尺寸无关</strong>，因此对比标志神经网络，卷积神经网络的参数要少的多，这是卷积神经网络 (<code>CNN</code>) 的优点之一。<br><strong>符号总结</strong><br>设 \(l\) 层为卷积层，则：</p>
+<ul>
+<li>\(f ^{[l]}\) ：滤波器的高或宽；</li>
+<li>\(p ^{[l]}\) ：填充的像素数量；</li>
+<li>\(s ^{[l]}\) ：步长；</li>
+<li>\(n _c ^{[l]}\) ：滤波器的个数；</li>
+<li>输入维度：\(n _H ^{[l-1]}\times n _W ^{[l-1]}\times n _c ^{[l-1]}\) ，其中 \(n _H ^{[l-1]}\) 表示输入图像高度，\(n _W ^{[l-1]}\) 表示输入图像宽度。</li>
+<li>输出维度：\(n _H ^{[l]}\times n _W ^{[l]}\times n _c ^{[l]}\) ，其中：$$n _H ^{[l]} = \lfloor {\dfrac {n _H ^{[l-1]}+2p ^{[l]}-f ^{[l]}}{s ^{[l]}}+1}\rfloor$$$$n _W ^{[l]} = \lfloor {\dfrac {n _W ^{[l-1]}+2p ^{[l]}-f ^{[l]}}{s ^{[l]}}+1}\rfloor$$</li>
+<li>每个滤波器的维度是：\(f ^{[l]}\times f ^{[l]}\times n _c ^{[l-1]}\) ，其中 \(n _c ^{[l-1]}\) 为输入图像的通道数（也称为深度）；</li>
+<li>权重维度：\(f ^{[l]}\times f ^{[l]}\times n _c ^{[l-1]}times n _c ^{[l]}\) ；</li>
+<li>偏置维度：\(1\times 1 \times 1 \times n _c ^{[l]}\)。</li>
+</ul>
+<p>注：不同的文献可能对高度、宽度、通道数的顺序表示不同。</p>
+<h2 id="简单卷积网络示例"><a href="#简单卷积网络示例" class="headerlink" title="简单卷积网络示例"></a>简单卷积网络示例</h2>
       
     </div>
     
@@ -596,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积神经网络基础"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉"><span class="nav-number">1.1.</span> <span class="nav-text">计算机视觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边缘检测"><span class="nav-number">1.2.</span> <span class="nav-text">边缘检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多边缘检测例子"><span class="nav-number">1.3.</span> <span class="nav-text">更多边缘检测例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填充-Padding"><span class="nav-number">1.4.</span> <span class="nav-text">填充 ( Padding )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积步长-Strided-convolutions"><span class="nav-number">1.5.</span> <span class="nav-text">卷积步长 ( Strided convolutions )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高维卷积"><span class="nav-number">1.6.</span> <span class="nav-text">高维卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单层卷积网络-one-layer-of-a-convolutional-network"><span class="nav-number">1.7.</span> <span class="nav-text">单层卷积网络 (one layer of a convolutional network)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积神经网络基础"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉"><span class="nav-number">1.1.</span> <span class="nav-text">计算机视觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边缘检测"><span class="nav-number">1.2.</span> <span class="nav-text">边缘检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多边缘检测例子"><span class="nav-number">1.3.</span> <span class="nav-text">更多边缘检测例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填充-Padding"><span class="nav-number">1.4.</span> <span class="nav-text">填充 ( Padding )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积步长-Strided-convolutions"><span class="nav-number">1.5.</span> <span class="nav-text">卷积步长 ( Strided convolutions )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高维卷积"><span class="nav-number">1.6.</span> <span class="nav-text">高维卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单层卷积网络-one-layer-of-a-convolutional-network"><span class="nav-number">1.7.</span> <span class="nav-text">单层卷积网络 (one layer of a convolutional network)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单卷积网络示例"><span class="nav-number">1.8.</span> <span class="nav-text">简单卷积网络示例</span></a></li></ol></li></ol></div>
             
 
           </div>
