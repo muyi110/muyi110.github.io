@@ -117,17 +117,26 @@
 
 
 
-<meta name="description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta name="description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈机器学习中应用的变分法">
-<meta property="og:url" content="https://muyi110.github.io/2018/07/13/浅谈机器学习中应用的变分法/index.html">
+<meta property="og:title" content="04.卷积神经网络">
+<meta property="og:url" content="https://muyi110.github.io/2018/08/10/04-卷积神经网络/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta property="og:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-27T12:17:32.825Z">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_052.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_053.png">
+<meta property="og:image" content="https://muyi110.github.io/images/Convolution_schematic.gif">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_054.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_055.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_056.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_057.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_058.png">
+<meta property="og:updated_time" content="2018-08-10T09:42:08.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈机器学习中应用的变分法">
-<meta name="twitter:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta name="twitter:title" content="04.卷积神经网络">
+<meta name="twitter:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
+<meta name="twitter:image" content="https://muyi110.github.io/images/deeplearning_ai_052.png">
 
 
 
@@ -157,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="https://muyi110.github.io/2018/07/13/浅谈机器学习中应用的变分法/"/>
+  <link rel="canonical" href="https://muyi110.github.io/2018/08/10/04-卷积神经网络/"/>
 
 
 
 
 
-  <title>浅谈机器学习中应用的变分法 | MuYi's Blog</title>
+  <title>04.卷积神经网络 | MuYi's Blog</title>
   
 
 
@@ -300,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2018/07/13/浅谈机器学习中应用的变分法/">
+    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2018/08/10/04-卷积神经网络/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="穆义">
@@ -317,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈机器学习中应用的变分法</h1>
+          <h1 class="post-title" itemprop="name headline">04.卷积神经网络</h1>
         
 
         <div class="post-meta">
@@ -329,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-13T15:05:10+08:00">
-                2018-07-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T15:25:02+08:00">
+                2018-08-10
               </time>
             
 
@@ -352,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/深度学习课程-Andrew-Ng-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习课程(Andrew Ng)学习笔记</span>
                   </a>
                 </span>
 
@@ -392,26 +401,27 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="变分法"><a href="#变分法" class="headerlink" title="变分法"></a>变分法</h1><blockquote>
-<p>可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))</p>
+<h1 id="卷积神经网络基础"><a href="#卷积神经网络基础" class="headerlink" title="卷积神经网络基础"></a>卷积神经网络基础</h1><h2 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a>计算机视觉</h2><p>计算机视觉 ( <code>Computer Vision</code> )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( <code>Image Classification</code> ) 、目标检测 ( <code>Object detection</code> ) 、图片风格转换 ( <code>Neural Style Transfer</code> ) 等等。<br>应用计算机视觉时可能要面临的一个挑战是<strong>输入的数据可能会非常大</strong>。例如输入一张 \(1000\times 1000\times 3 \) 的图片，则神经网络的输入维度将达到 300 万，使得神经网络的权重 \(W\) 的参数非常多，会带来两个后果：</p>
+<ol>
+<li>难以获得足够数据来防止神经网络发生过拟合；</li>
+<li>需要很大的内存和计算代价。</li>
+</ol>
+<p>因此，需要利用<strong>卷积神经网络</strong> ( <code>Convolutional Neural Network, CNN</code> )。</p>
+<h2 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h2><blockquote>
+<p>卷积运算 (<code>Convolutional Operation</code>) 是卷积神经网络最基本的组成部分。（神经网络由浅层到深层，分别可以检测出图片的边缘特征、局部特征（例如眼睛、鼻子等）、到最后一层可由前面检测的特征识别整体面部轮廓。）</p>
 </blockquote>
-<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x)\)使泛函\(F[y]\)取最大值或最小值。<br>对于一元函数\(y(x)\)求导。可根据如下公式$$y(x+\varepsilon)=y(x)+\dfrac {dy}{dx}\varepsilon+O(\varepsilon ^2)$$令\(\varepsilon \rightarrow 0\)。同理，对于多元函数\(y(x_{1},\ldots ,x_{D})\)的偏导数根据如下公式定义$$y(x_{1}+\varepsilon_{1},\ldots ,x_{D}+\varepsilon_{D})=y(x_{1},\ldots ,x_{D})+\sum_{i=1}^{D}\dfrac {\partial y}{\partial x_{i}}\varepsilon_{i}+O(\varepsilon^2)$$同样的思想，用于泛函求导。类比上面的公式可写出如下公式$$F[y(x)+\varepsilon\eta (x)]=F[y(x)]+\varepsilon\int\dfrac {\partial F}{\partial y\left(x\right)}\eta (x)dx+O(\varepsilon^2)$$其中\(\eta (x)\)是\(x\)任意的函数。<strong>我们的目的是找到泛函\(F[y(x)]\)的极值；换句话说就是，当\(F[y]\)取极值时候，函数\(y(x)\)的微小变化(\(y(x)+\varepsilon\eta (x)\))不会使得\(F[y]\)的值发生改变。</strong>因此根据上面的公式，当泛函\(F[y(x)]\)取极值时，有下面的公式$$\int\dfrac {\partial F}{\partial y(x)}\eta (x)dx=0$$由于此公式必须对任意的\(\eta (x)\)都成立，<strong>因此得到泛函的导数\(\dfrac {\partial F}{\partial y(x)}=0\)(此时的\(y(x)\)使\(F[y]\)取极值）。</strong></p>
-<h2 id="变分法浅探究"><a href="#变分法浅探究" class="headerlink" title="变分法浅探究"></a>变分法浅探究</h2><p>考虑如下形式定义的泛函$$F[y]=\int G(y(x),y’(x),x)dx$$其中假设\(y(x)\)的值在积分边界处是固定的。考虑函数\(y(x)\)的变化，得到如下公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
+<p>图片常做的边缘检测有<strong>垂直边缘检测</strong>和<strong>水平边缘检测</strong>等，如下图所示。<img src="/images/deeplearning_ai_052.png" alt="边缘检测">图片的边缘检测可以通过与相应滤波器卷积来实现。例如在垂直边缘检测中，原始图片是 \(6\times 6 \) ，中间的矩阵称为<strong>滤波器</strong> (<code>filter</code>) ，大小为 \(3\times 3 \) ，卷积后的图片大小为 \(4\times 4\) ，如下图所示（以左上角和右下角为例，数值表示灰度）：<img src="/images/deeplearning_ai_053.png" alt="垂直边缘检测卷积运算">根据上图可知，卷积运算过程为从左到右，从上到下，每次在原始图中取与滤波器同等大小的一部分，每一部分中的值与滤波器中的值对应相乘（逐元素相乘）然后求和，将结果组成一个新的矩阵输出，为方便理解，下图是卷积运算实现动图：<img src="/images/Convolution_schematic.gif" alt="卷积运算实现动图">下图是垂直边缘检测的另一个例子，解释为什么下图中的滤波器可以做垂直边缘检测：<img src="/images/deeplearning_054.png" alt="垂直边缘检测解释">将上图中最右边的矩阵看作输出图片，则经过卷积后，输出图片中间白色区域对应输入图片中间的垂直边缘（区分白色和灰色的垂直线）。</p>
+<h2 id="更多边缘检测例子"><a href="#更多边缘检测例子" class="headerlink" title="更多边缘检测例子"></a>更多边缘检测例子</h2><p><img src="/images/deeplearning_ai_055.png" alt="边缘检测又例">如果将灰度图左右数值进行翻转，再与之前的滤波器进行卷积，得到结果有区别。实际中，反映了由明变暗和由暗变明的两种渐变方式。如果不在乎两者的区别，可以对输出取绝对值。<br>下图是垂直边缘检测和水平边缘检测滤波器：<img src="/images/deeplearning_ai_056.png" alt="垂直和水平边缘检测">还有其他的滤波器，如 <code>Sobel</code> 滤波器和 <code>Scharr</code> 滤波器，其增加了中间一行的权重，提高了结果的稳健性。<img src="/images/deeplearning_ai_057.png" alt="其它滤波器示例"><strong>注意</strong>：实际中，不一定去使用那些研究者选择的滤波器数字，<strong>可以将滤波器中的数字看成参数</strong>，之后可以通过反向传播去学习这些参数。</p>
+<h2 id="填充-Padding"><a href="#填充-Padding" class="headerlink" title="填充 ( Padding )"></a>填充 ( Padding )</h2><p>假如输入的图片大小是 \(n\times n \) 滤波器的大小是 \(f\times f \) ，则卷积后的输出大小是 \((n-f+1)\times (n-f+1)\) 。这样会存在两个缺点：</p>
+<ol>
+<li>每次卷积运算后，输出的图形会缩小，例如从 \(6\times 6 \) 缩小到 \(4\times 4 \)，经过几次后可能变为 \(1\times 1 \) 的大小。</li>
+<li>那些在角落或者边缘区域的像素在输出中采用较少，意味着丢掉了图像边缘位置的许多信息。</li>
+</ol>
+<p>为了解决这两个问题，需要在卷积操作之前对输入图像进行<strong>填充</strong>。就是在图像边缘再填充像素，<strong>通常填充 \(0\)</strong> 。如果用 <code>p</code> 表示每个方向填充的像素点的数量，下图的中 \(p=2 \) ：<img src="/images/deeplearning_ai_058.png" alt="填充事例">可知，填充后的图片大小是 \((n+2p)\times (n+2p)\) ，滤波器的大小是 \(f\times f \) ，则卷积后输出大小是 \((n+2p-f+1)\times (n+2p-f+1)\) 。<br>至于选择多少像素填充，有两种选择：</p>
 <ul>
-<li><strong>杂谈：对于上面公式的非正式说明</strong><blockquote>
-<p>根据定义$$F[y(x)+\varepsilon \eta (x)]=\int G[y(x)+\varepsilon \eta (x),y’(x)+\varepsilon \eta’(x),x]dx$$可以将函数\(G\)看成多元函数，所以可以得到“多元函数\(G\)”的偏导数为(这样的写法不对，但为了和引言中多元函数展开公式相对应，就这么写了，忽略系数\(\varepsilon\)）$$\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)$$我们知道，对于$$y(x)=\int f(x)dx$$有$$y’(x)=\int f’(x)dx$$所以可得到公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
-</blockquote>
-</li>
+<li><strong>Valid 填充</strong>：不填充( \(p=0 \) )，输出结果是 \((n-f+1)\times (n-f+1)\) 。</li>
+<li><strong>Same 填充</strong>：填充使得输入和卷积后的输出的大小一样，需要 \(p=\dfrac {f-1}{2}\) 。<br><strong>注意</strong>：一般情况下，\(f\) 通常是奇数。<h2 id="卷积步长-Strided-convolutions"><a href="#卷积步长-Strided-convolutions" class="headerlink" title="卷积步长 ( Strided convolutions )"></a>卷积步长 ( Strided convolutions )</h2></li>
 </ul>
-<p>对上面积分项中第二项利用分部积分可得$$\int\dfrac {\partial G}{\partial y’}\eta’(x)dx=\dfrac {\partial G}{\partial y’}\eta (x)\Big |-\int\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)\eta (x)dx$$由于函数\(y(x)\)在积分边界处是固定的，所以有$$\dfrac {\partial G}{\partial y’}\eta (x)\Big |=0$$</p>
-<ul>
-<li><strong>杂谈:关于函数\(y(x)\)在积分边界处是固定的，上式等于\(0\)</strong><blockquote>
-<p>由于函数\(y(x)\)在积分边界处是固定的，也就是说在积分边界处函数\(y(x)\)不会变化，因此在积分边界处有\(y(x)=y(x)+\varepsilon\eta (x)\)，进而可以得到在积分边界处函数\(\eta (x)\)必须消失。</p>
-</blockquote>
-</li>
-</ul>
-<p>因此可以得到如下公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int\Big\{\dfrac {\partial G}{\partial y}-\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)\Big\}\eta (x)dx+O(\varepsilon^2)$$根据以上分析，泛函在极值处导数为\(0\)可以得到如下公式$$\dfrac {\partial G}{\partial y}-\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)=0$$如果泛函的定义只是对函数\(G(y,x)\)的积分，只需要令\(\dfrac {\partial G}{\partial y}=0\)即可。</p>
-<p>结束<br>参考：PRML</p>
 
       
     </div>
@@ -436,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/11/浅谈机器学习中Lagrange-Multipliers/" rel="next" title="浅谈机器学习中Lagrange-Multipliers">
-                <i class="fa fa-chevron-left"></i> 浅谈机器学习中Lagrange-Multipliers
+              <a href="/2018/08/08/03-构建机器学习项目/" rel="next" title="03.构建机器学习项目">
+                <i class="fa fa-chevron-left"></i> 03.构建机器学习项目
               </a>
             
           </div>
@@ -445,10 +455,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/27/01-神经网络和深度学习/" rel="prev" title="01.神经网络和深度学习">
-                01.神经网络和深度学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -575,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变分法"><span class="nav-number">1.</span> <span class="nav-text">变分法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变分法浅探究"><span class="nav-number">1.2.</span> <span class="nav-text">变分法浅探究</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积神经网络基础"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉"><span class="nav-number">1.1.</span> <span class="nav-text">计算机视觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边缘检测"><span class="nav-number">1.2.</span> <span class="nav-text">边缘检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多边缘检测例子"><span class="nav-number">1.3.</span> <span class="nav-text">更多边缘检测例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填充-Padding"><span class="nav-number">1.4.</span> <span class="nav-text">填充 ( Padding )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积步长-Strided-convolutions"><span class="nav-number">1.5.</span> <span class="nav-text">卷积步长 ( Strided convolutions )</span></a></li></ol></li></ol></div>
             
 
           </div>
