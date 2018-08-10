@@ -127,12 +127,12 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_052.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_053.png">
 <meta property="og:image" content="https://muyi110.github.io/images/Convolution_schematic.gif">
-<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_054.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_054.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_055.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_056.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_057.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_058.png">
-<meta property="og:updated_time" content="2018-08-10T09:42:08.334Z">
+<meta property="og:updated_time" content="2018-08-10T09:49:41.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04.卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
@@ -410,7 +410,7 @@
 <h2 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h2><blockquote>
 <p>卷积运算 (<code>Convolutional Operation</code>) 是卷积神经网络最基本的组成部分。（神经网络由浅层到深层，分别可以检测出图片的边缘特征、局部特征（例如眼睛、鼻子等）、到最后一层可由前面检测的特征识别整体面部轮廓。）</p>
 </blockquote>
-<p>图片常做的边缘检测有<strong>垂直边缘检测</strong>和<strong>水平边缘检测</strong>等，如下图所示。<img src="/images/deeplearning_ai_052.png" alt="边缘检测">图片的边缘检测可以通过与相应滤波器卷积来实现。例如在垂直边缘检测中，原始图片是 \(6\times 6 \) ，中间的矩阵称为<strong>滤波器</strong> (<code>filter</code>) ，大小为 \(3\times 3 \) ，卷积后的图片大小为 \(4\times 4\) ，如下图所示（以左上角和右下角为例，数值表示灰度）：<img src="/images/deeplearning_ai_053.png" alt="垂直边缘检测卷积运算">根据上图可知，卷积运算过程为从左到右，从上到下，每次在原始图中取与滤波器同等大小的一部分，每一部分中的值与滤波器中的值对应相乘（逐元素相乘）然后求和，将结果组成一个新的矩阵输出，为方便理解，下图是卷积运算实现动图：<img src="/images/Convolution_schematic.gif" alt="卷积运算实现动图">下图是垂直边缘检测的另一个例子，解释为什么下图中的滤波器可以做垂直边缘检测：<img src="/images/deeplearning_054.png" alt="垂直边缘检测解释">将上图中最右边的矩阵看作输出图片，则经过卷积后，输出图片中间白色区域对应输入图片中间的垂直边缘（区分白色和灰色的垂直线）。</p>
+<p>图片常做的边缘检测有<strong>垂直边缘检测</strong>和<strong>水平边缘检测</strong>等，如下图所示。<img src="/images/deeplearning_ai_052.png" alt="边缘检测">图片的边缘检测可以通过与相应滤波器卷积来实现。例如在垂直边缘检测中，原始图片是 \(6\times 6 \) ，中间的矩阵称为<strong>滤波器</strong> (<code>filter</code>) ，大小为 \(3\times 3 \) ，卷积后的图片大小为 \(4\times 4\) ，如下图所示（以左上角和右下角为例，数值表示灰度）：<img src="/images/deeplearning_ai_053.png" alt="垂直边缘检测卷积运算">根据上图可知，卷积运算过程为从左到右，从上到下，每次在原始图中取与滤波器同等大小的一部分，每一部分中的值与滤波器中的值对应相乘（逐元素相乘）然后求和，将结果组成一个新的矩阵输出，为方便理解，下图是卷积运算实现动图：<img src="/images/Convolution_schematic.gif" alt="卷积运算实现动图">下图是垂直边缘检测的另一个例子，解释为什么下图中的滤波器可以做垂直边缘检测：<img src="/images/deeplearning_ai_054.png" alt="垂直边缘检测解释">将上图中最右边的矩阵看作输出图片，则经过卷积后，输出图片中间白色区域对应输入图片中间的垂直边缘（区分白色和灰色的垂直线）。</p>
 <h2 id="更多边缘检测例子"><a href="#更多边缘检测例子" class="headerlink" title="更多边缘检测例子"></a>更多边缘检测例子</h2><p><img src="/images/deeplearning_ai_055.png" alt="边缘检测又例">如果将灰度图左右数值进行翻转，再与之前的滤波器进行卷积，得到结果有区别。实际中，反映了由明变暗和由暗变明的两种渐变方式。如果不在乎两者的区别，可以对输出取绝对值。<br>下图是垂直边缘检测和水平边缘检测滤波器：<img src="/images/deeplearning_ai_056.png" alt="垂直和水平边缘检测">还有其他的滤波器，如 <code>Sobel</code> 滤波器和 <code>Scharr</code> 滤波器，其增加了中间一行的权重，提高了结果的稳健性。<img src="/images/deeplearning_ai_057.png" alt="其它滤波器示例"><strong>注意</strong>：实际中，不一定去使用那些研究者选择的滤波器数字，<strong>可以将滤波器中的数字看成参数</strong>，之后可以通过反向传播去学习这些参数。</p>
 <h2 id="填充-Padding"><a href="#填充-Padding" class="headerlink" title="填充 ( Padding )"></a>填充 ( Padding )</h2><p>假如输入的图片大小是 \(n\times n \) 滤波器的大小是 \(f\times f \) ，则卷积后的输出大小是 \((n-f+1)\times (n-f+1)\) 。这样会存在两个缺点：</p>
 <ol>
@@ -420,9 +420,10 @@
 <p>为了解决这两个问题，需要在卷积操作之前对输入图像进行<strong>填充</strong>。就是在图像边缘再填充像素，<strong>通常填充 \(0\)</strong> 。如果用 <code>p</code> 表示每个方向填充的像素点的数量，下图的中 \(p=2 \) ：<img src="/images/deeplearning_ai_058.png" alt="填充事例">可知，填充后的图片大小是 \((n+2p)\times (n+2p)\) ，滤波器的大小是 \(f\times f \) ，则卷积后输出大小是 \((n+2p-f+1)\times (n+2p-f+1)\) 。<br>至于选择多少像素填充，有两种选择：</p>
 <ul>
 <li><strong>Valid 填充</strong>：不填充( \(p=0 \) )，输出结果是 \((n-f+1)\times (n-f+1)\) 。</li>
-<li><strong>Same 填充</strong>：填充使得输入和卷积后的输出的大小一样，需要 \(p=\dfrac {f-1}{2}\) 。<br><strong>注意</strong>：一般情况下，\(f\) 通常是奇数。<h2 id="卷积步长-Strided-convolutions"><a href="#卷积步长-Strided-convolutions" class="headerlink" title="卷积步长 ( Strided convolutions )"></a>卷积步长 ( Strided convolutions )</h2></li>
+<li><strong>Same 填充</strong>：填充使得输入和卷积后的输出的大小一样，需要 \(p=\dfrac {f-1}{2}\) 。</li>
 </ul>
-
+<p><strong>注意</strong>：一般情况下，\(f\) 通常是奇数。</p>
+<h2 id="卷积步长-Strided-convolutions"><a href="#卷积步长-Strided-convolutions" class="headerlink" title="卷积步长 ( Strided convolutions )"></a>卷积步长 ( Strided convolutions )</h2>
       
     </div>
     
