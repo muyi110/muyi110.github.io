@@ -141,7 +141,15 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_065.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_066.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_067.png">
-<meta property="og:updated_time" content="2018-08-10T14:11:59.903Z">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_068.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_069.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_070.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_071.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_072.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_073.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_074.png">
+<meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_075.png">
+<meta property="og:updated_time" content="2018-08-11T09:07:06.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04.卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
@@ -476,7 +484,40 @@
 <li><strong>稀疏连接 (Sparsity of connections)</strong>：在每一层中，由于滤波器的尺寸限制，输入和输出之间的连接是稀疏的，每个输出值只取决于输入在局部的一小部分值。</li>
 </ul>
 <p><strong>池化过程则在卷积后很好地聚合了特征，通过降维来减少运算量。</strong><br>由于 <code>CNN</code> 参数数量较小，所需的训练样本就相对较少，因此在一定程度上不容易发生过拟合现象。并且 <code>CNN</code> 比较擅长捕捉区域位置偏移（捕捉平移不变）。即进行物体检测时，不太受物体在图片中位置的影响，增加检测的准确性和系统的健壮性。</p>
-<h1 id="深度卷积网络：实例探究"><a href="#深度卷积网络：实例探究" class="headerlink" title="深度卷积网络：实例探究"></a>深度卷积网络：实例探究</h1>
+<h1 id="深度卷积网络：实例探究"><a href="#深度卷积网络：实例探究" class="headerlink" title="深度卷积网络：实例探究"></a>深度卷积网络：实例探究</h1><p>本节涉及的神经网络实例包括：</p>
+<ul>
+<li>LeNet-5</li>
+<li>AlexNet</li>
+<li>VGG</li>
+</ul>
+<p>此外还涉及 Resnet (Residual Network, 残差网络) 和 Inception Neural Network 。</p>
+<h2 id="经典网络"><a href="#经典网络" class="headerlink" title="经典网络"></a>经典网络</h2><h3 id="LeNet-5"><a href="#LeNet-5" class="headerlink" title="LeNet-5"></a>LeNet-5</h3><p><img src="/images/deeplearning_ai_068.png" alt="LeNet-5">该网络具有的特点如下：</p>
+<ul>
+<li><code>LeNet-5</code> 针对灰度图像训练，输入图像的通道数为 \(1\) ；</li>
+<li>该网络模型包含参数少（此例中大约 \(6\) 万个），远少于现代神经网络的参数；</li>
+<li>针对分类问题，现代版本中输出层使用 <code>Softmax</code> 函数（图中含有 \(84\) 个节点的层作为 <code>Softmax</code> 的输入；</li>
+<li>该网络包含一种模式至今常用到，就是<strong>一个或多个卷积层后跟着一个池化层，然后又是若干个卷积层再接一个池化层，然后是全连接层，最后是输出</strong>；</li>
+<li><code>LeNet-5</code> 网络被提出时，其池化层使用平均池化，各层的激活函数一般选择 <code>Sigmoid</code> 和 <code>tanh</code> 。现在，根据需要可以做出改进，例如使用最大池化，激活函数选择 <code>Relu</code> 函数。</li>
+</ul>
+<h3 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h3><p><img src="/images/deeplearning_ai_069.png" alt="AlexNet">该网络具有的特点如下：</p>
+<ul>
+<li><code>AlexNet</code> 模型与 <code>LeNet-5</code> 模型类似，但更加复杂（此例中包含大约 \(6000\) 万个参数。 <code>AlexNet</code> 模型使用了 <code>Relu</code> 激活函数；</li>
+<li>当用于训练图像和数据集时， <code>AlexNet</code> 网络结构能够处理非常相似的基本构造块，这些模块往往包含大量的隐藏单元或数据。</li>
+</ul>
+<p>相关论文参考：<a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">Krizhevsky et al.,2012. ImageNet classification with deep convolutional neural networks</a></p>
+<h3 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h3><p><img src="/images/deeplearning_ai_070.png" alt="VGG">该网络具有的特点如下：</p>
+<ul>
+<li><code>VGG</code> 又称为 <code>VGG-16</code> ，其中数字 \(16\) 表示网络中包含 \(16\) 个卷积层和全连接层；</li>
+<li>结构不复杂且规整（都是几个卷积层后面跟着可以压缩图像大小的池化层），卷积层的滤波器数量在每一步翻倍，或者说在每一组卷积层进行过滤器翻倍操作。</li>
+<li>主要缺点是需要训练的特征数量非常大。</li>
+</ul>
+<p>相关论文参考：<a href="https://arxiv.org/pdf/1409.1556.pdf" target="_blank" rel="noopener">Simonvan &amp; Zisserman 2015. Very deep convolutional networks for large-scale image recognition</a></p>
+<h2 id="残差网络-Residual-Networks-ResNets"><a href="#残差网络-Residual-Networks-ResNets" class="headerlink" title="残差网络 (Residual Networks, ResNets)"></a>残差网络 (Residual Networks, ResNets)</h2><blockquote>
+<p>The main benefit of a very deep network is that it can represent very complex functions. It can also learn features at many different levels of abstraction, from edges (at the lower layers) to very complex features (at the deeper layers). However, using a deeper network doesn’t always help. A huge barrier to training them is vanishing gradients: very deep networks often have a gradient signal that goes to zero quickly, thus making gradient descent unbearably slow. More specifically, during gradient descent, as you backprop from the final layer back to the first layer, you are multiplying by the weight matrix on each step, and thus the gradient can decrease exponentially quickly to zero (or, in rare cases, grow exponentially quickly and “explode” to take very large values). </p>
+</blockquote>
+<p>由于存在梯度消失和梯度爆炸问题，很深的网络往往很难训练。<strong>残差网络 (ResNets)</strong>可有效解决这个问题。<br><img src="/images/deeplearning_ai_071.png" alt="残差块">上图是<strong>残差块 (Residual block)</strong>。通过<strong>捷径</strong> ( <code>Short cut</code>，或者称为 <code>Skip connections</code> 跳远连接)将 \(a ^{[l]}\) 添加到第二个 <code>Relu</code> 中，直接建立 \(a ^{[l]}\) 和 \(a ^{[l+2]}\) 的连接。对应的表达式如下：$$z ^{[l+1]}=W ^{[l+1]}a ^{[l]}+b ^{[l+1]}$$$$a ^{[l+1]}=g(z ^{[l+1]})$$$$z ^{[l+2]}=W ^{[l+2]}a ^{[l+1]}+b ^{[l+2]}$$$$a ^{[l+2]}=g(z ^{[l+2]}+a ^{[l]})$$构建一个残差网络就是将许多残差块堆叠在一起，形成一个很深的网络，如下图所示：<img src="/images/deeplearning_ai_072.png" alt="残差网络">理论上，随着网络深度的加深，性能应该越来越好。但实际中，一个普通网络，随着神经网络层数增加，训练误差会先下降后上升。残差网络在训练集上会表现越来越好。如下图所示：<img src="/images/deeplearning_ai_073.png" alt="误差分析"><strong>残差网络有助于解决梯度消失和梯度爆炸问题</strong>,让我们在训练更深网络的同时，又能保证良好的性能。</p>
+<h2 id="残差网络有效的原因"><a href="#残差网络有效的原因" class="headerlink" title="残差网络有效的原因"></a>残差网络有效的原因</h2><p>假设有一个大型神经网络，输入是 X ，输出是 \(a ^{[l]}\) 。给这个神经网络添加额外的两层，输出为 \(a ^{[l+2]}\) 。将这两层看层一个残差块，为便于说明，假设整个网络使用 <code>Relu</code> 激活函数。<img src="/images/deeplearning_ai_074.png" alt="解释残差网络">根据上图有：$$\begin {align} &amp; a ^{[l+2]}=g(z ^{[l+2]}+a ^{[l]}\\={} &amp; g(W ^{[l+2]}a ^{[l+1]}+ b ^{[l+2]}+ a ^{[l]}) \end {align}$$当发生梯度消失时，有 \(W ^{[l+2]}\approx 0\) 方便说明令 \(b ^{[l+2]}\approx 0\) 则有：$$a ^{[l+2]}=g(a ^{[l]})=\text {Relu}(a ^{[l]}= a ^{[l]}$$说明增加的两层至少不会降低神经网络的性能（不论是把残差块添加到神经网络的中间还是末端位置）。如果增加的两层隐藏单元学习到了一些有用的信息，则可能会使网络的表现进一步提高。<br>如果 \(a ^{[l]}\) 和 \(a ^{[l+2]}\) 的维度不同，需要引入矩阵 \(W _s \) 与 \(a ^{[l]}\) 相乘，使得二者的维度相同。矩阵 \(W _s \) 可以是模型学习得到，或者是一个固定矩阵，使得 \(a ^{[l]}\) 截断或补 \(0\) 。下图是论文中的残差网络的一个典型结构：<img src="/images/deeplearning_ai_075.png" alt="残差网络用于图像识别">卷积层通常使用 <code>same</code> 卷积以保持维度相同。<br>相关论文：<a href="https://arxiv.org/pdf/1512.03385.pdf" target="_blank" rel="noopener">He et al., 2015. Deep residual networks for image recognition</a></p>
+<h2 id="1-times-1-卷积"><a href="#1-times-1-卷积" class="headerlink" title="\(1\times 1\) 卷积"></a>\(1\times 1\) 卷积</h2>
       
     </div>
     
@@ -635,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积神经网络基础"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉"><span class="nav-number">1.1.</span> <span class="nav-text">计算机视觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边缘检测"><span class="nav-number">1.2.</span> <span class="nav-text">边缘检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多边缘检测例子"><span class="nav-number">1.3.</span> <span class="nav-text">更多边缘检测例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填充-Padding"><span class="nav-number">1.4.</span> <span class="nav-text">填充 ( Padding )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积步长-Strided-convolutions"><span class="nav-number">1.5.</span> <span class="nav-text">卷积步长 ( Strided convolutions )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高维卷积"><span class="nav-number">1.6.</span> <span class="nav-text">高维卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单层卷积网络-one-layer-of-a-convolutional-network"><span class="nav-number">1.7.</span> <span class="nav-text">单层卷积网络 (one layer of a convolutional network)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单卷积网络示例"><span class="nav-number">1.8.</span> <span class="nav-text">简单卷积网络示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#池化层"><span class="nav-number">1.9.</span> <span class="nav-text">池化层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积神经网络示例"><span class="nav-number">1.10.</span> <span class="nav-text">卷积神经网络示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用卷积神经网络原因"><span class="nav-number">1.11.</span> <span class="nav-text">使用卷积神经网络原因</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度卷积网络：实例探究"><span class="nav-number">2.</span> <span class="nav-text">深度卷积网络：实例探究</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积神经网络基础"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉"><span class="nav-number">1.1.</span> <span class="nav-text">计算机视觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边缘检测"><span class="nav-number">1.2.</span> <span class="nav-text">边缘检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多边缘检测例子"><span class="nav-number">1.3.</span> <span class="nav-text">更多边缘检测例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填充-Padding"><span class="nav-number">1.4.</span> <span class="nav-text">填充 ( Padding )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积步长-Strided-convolutions"><span class="nav-number">1.5.</span> <span class="nav-text">卷积步长 ( Strided convolutions )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高维卷积"><span class="nav-number">1.6.</span> <span class="nav-text">高维卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单层卷积网络-one-layer-of-a-convolutional-network"><span class="nav-number">1.7.</span> <span class="nav-text">单层卷积网络 (one layer of a convolutional network)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单卷积网络示例"><span class="nav-number">1.8.</span> <span class="nav-text">简单卷积网络示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#池化层"><span class="nav-number">1.9.</span> <span class="nav-text">池化层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积神经网络示例"><span class="nav-number">1.10.</span> <span class="nav-text">卷积神经网络示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用卷积神经网络原因"><span class="nav-number">1.11.</span> <span class="nav-text">使用卷积神经网络原因</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度卷积网络：实例探究"><span class="nav-number">2.</span> <span class="nav-text">深度卷积网络：实例探究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#经典网络"><span class="nav-number">2.1.</span> <span class="nav-text">经典网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeNet-5"><span class="nav-number">2.1.1.</span> <span class="nav-text">LeNet-5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AlexNet"><span class="nav-number">2.1.2.</span> <span class="nav-text">AlexNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VGG"><span class="nav-number">2.1.3.</span> <span class="nav-text">VGG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#残差网络-Residual-Networks-ResNets"><span class="nav-number">2.2.</span> <span class="nav-text">残差网络 (Residual Networks, ResNets)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#残差网络有效的原因"><span class="nav-number">2.3.</span> <span class="nav-text">残差网络有效的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-times-1-卷积"><span class="nav-number">2.4.</span> <span class="nav-text">\(1\times 1\) 卷积</span></a></li></ol></li></ol></div>
             
 
           </div>
