@@ -167,7 +167,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_091.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_092.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_093.png">
-<meta property="og:updated_time" content="2018-08-12T13:57:47.377Z">
+<meta property="og:updated_time" content="2018-08-12T14:02:54.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04.卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
@@ -572,7 +572,7 @@
 <h2 id="边框预测"><a href="#边框预测" class="headerlink" title="边框预测"></a>边框预测</h2><blockquote>
 <p>YOLO (“you only look once”) is a popular algoritm because it achieves high accuracy while also being able to run in real-time. This algorithm “only looks once” at the image in the sense that it requires only one forward propagation pass through the network to make predictions. After non-max suppression, it then outputs recognized objects together with the bounding boxes.</p>
 </blockquote>
-<p><strong>YOLO (You only look once)</strong>算法能得到更精确的边框。该算法的结构如下：<img src="/images/deeplearning_ai_090.png" alt="YOLO算法结构"><code>YOLO</code> 算法将原始图片划分为 \(n\times n\) 网格（上图 \(n=19\) ），并将图像分类和定位算法逐一应用在每个网格，每个网格都有标签：$$\begin {bmatrix}P _c\\b _x\\b _y\\b _n\\b _w\\c$$<strong>若某个目标的中心点落在某个网格，则该网格负责检测该对象</strong>。<br>这个算法的优点在于神经网络可以输出精确的边界框，测试的时候，输入图像 <code>x</code> ，跑正向传播，得到输出 <code>y</code> ，可以得到 \(n\times n\) 个网格哪个有对象，且对应网格的标号以及相应的边界框信息，只要每个网格中对象没超过 \(1\) 个，这个算法就没问题。<br>算法具有如下优点：</p>
+<p><strong>YOLO (You only look once)</strong>算法能得到更精确的边框。该算法的结构如下：<img src="/images/deeplearning_ai_090.png" alt="YOLO算法结构"><code>YOLO</code> 算法将原始图片划分为 \(n\times n\) 网格（上图 \(n=19\) ），并将图像分类和定位算法逐一应用在每个网格，每个网格都有标签：$$\begin {bmatrix}P _c\\b _x\\b _y\\b _n\\b _w\\c \end {bmatrix}$$<strong>若某个目标的中心点落在某个网格，则该网格负责检测该对象</strong>。<br>这个算法的优点在于神经网络可以输出精确的边界框，测试的时候，输入图像 <code>x</code> ，跑正向传播，得到输出 <code>y</code> 可以得到 \(n\times n\) 个网格哪个有对象，且对应网格的标号以及相应的边界框信息，只要每个网格中对象没超过 \(1\) 个，这个算法就没问题。<br>算法具有如下优点：</p>
 <ul>
 <li>与图像分类和目标定位算法类似，显示输出边框坐标和大小，不会受到滑动窗步幅大小的限制；</li>
 <li>进行一次 <code>CNN</code> 正向计算（单次卷积运算），效率很高，可以达到实时识别。</li>
@@ -590,7 +590,7 @@
 <li>重复 \(2-3\) 步，直到不存在未处理的网格。</li>
 </ol>
 <p>上述步骤适合于单类别目标检测，进行多个目标检测时，对于每个输出类别都分别做一次非极大值抑制。</p>
-<h2 id="Anchor-Boxes"><a href="#Anchor-Boxes" class="headerlink" title="Anchor Boxes"></a>Anchor Boxes</h2><p>到目前为止，对象检测存在的一个问题是每个格子只检测一个对象，让一个格子检测多个对象，可以考虑 <code>Anchor Boxes</code> 。<br><img src="/images/deeplearning_ai_092.png" alt="Anchor Boxes例子">在上图示例中，我们希望同时检测人和汽车。因此，每个网格的的标签中含有两个 <code>Anchor Box</code>（当然可以设置更多的 <code>Anchor Box</code> ） 。输出的标签结果大小从 \(3\times 3\times 8\) 变为 \(3\times 3\times 16\)。若两个 Pc 都大于预设阈值，则说明检测到了两个目标。<br><strong>在单目标检测中，图像中的目标被分配给了包含该目标中点的那个网格；引入 <code>Anchor Box</code> 进行多目标检测时，图像中的目标则被分配到了包含该目标中点的那个网格以及具有最高 <code>IoU</code> 值的该网格的 <code>Anchor Box</code>。</strong><br><code>Anchor Boxes</code> 也有局限性，对于同一网格有三个及以上目标（但你有两个 <code>Anchor Box</code> ），或者两个目标的 <code>Anchor Box</code> 高度重合的情况处理不好。<br><code>Anchor Box</code> 的形状一般通过人工选取。高级一点的方法是用 <code>k-means</code> 将两类对象形状聚类，选择最具代表性的 <code>Anchor Box</code>。</p>
+<h2 id="Anchor-Boxes"><a href="#Anchor-Boxes" class="headerlink" title="Anchor Boxes"></a>Anchor Boxes</h2><p>到目前为止，对象检测存在的一个问题是每个格子只检测一个对象，让一个格子检测多个对象，可以考虑 <code>Anchor Boxes</code> 。<br><img src="/images/deeplearning_ai_092.png" alt="Anchor Boxes例子">在上图示例中，我们希望同时检测人和汽车。因此，每个网格的的标签中含有两个 <code>Anchor Box</code>（当然可以设置更多的 <code>Anchor Box</code> ） 。输出的标签结果大小从 \(3\times 3\times 8\) 变为 \(3\times 3\times 16\)。若两个 \(P _c\) 都大于预设阈值，则说明检测到了两个目标。<br><strong>在单目标检测中，图像中的目标被分配给了包含该目标中点的那个网格；引入 <code>Anchor Box</code> 进行多目标检测时，图像中的目标则被分配到了包含该目标中点的那个网格以及具有最高 <code>IoU</code> 值的该网格的 <code>Anchor Box</code>。</strong><br><code>Anchor Boxes</code> 也有局限性，对于同一网格有三个及以上目标（但你有两个 <code>Anchor Box</code> ），或者两个目标的 <code>Anchor Box</code> 高度重合的情况处理不好。<br><code>Anchor Box</code> 的形状一般通过人工选取。高级一点的方法是用 <code>k-means</code> 将两类对象形状聚类，选择最具代表性的 <code>Anchor Box</code>。</p>
 <h2 id="YOLO-算法"><a href="#YOLO-算法" class="headerlink" title="YOLO 算法"></a>YOLO 算法</h2><p>将上述介绍的组合在一起，具体参考视频讲解。<br>相关论文：<br><a href="https://arxiv.org/pdf/1506.02640.pdf" target="_blank" rel="noopener">You Only Look Once: Unified, Real-Time Object Detection</a><br><a href="https://arxiv.org/pdf/1612.08242.pdf" target="_blank" rel="noopener"> YOLO9000: Better, Faster, Stronger</a></p>
 <h2 id="候选区域-Region-proposals"><a href="#候选区域-Region-proposals" class="headerlink" title="候选区域 (Region proposals)"></a>候选区域 (Region proposals)</h2><p>前面介绍的滑动窗口目标检测算法对一些明显没有目标的区域也进行了扫描，这降低了算法的运行效率。为了解决这个问题，<code>R-CNN（Region CNN，带区域的 CNN）</code> 被提出。通过对输入图片运行<strong>图像分割算法</strong>，在不同的色块上找出<strong>候选区域</strong>（ <code>Region Proposal</code> ），就只需要在这些区域上运行分类器。<img src="/images/deeplearning_ai_093.png" alt="R-CNN"><code>R-CNN</code> 的缺点是运行速度慢，所以有一系列后续研究工作改进。例如 <code>Fast R-CNN</code>（与基于卷积的滑动窗口实现相似，但得到候选区域的聚类步骤依然很慢）、<code>Faster R-CNN</code>（使用卷积对图片进行分割）。不过大多数时候还是比 <code>YOLO</code> 算法慢。<br><strong>相关论文</strong>：</p>
 <ul>
