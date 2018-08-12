@@ -163,7 +163,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_087.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_088.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_088.png">
-<meta property="og:updated_time" content="2018-08-12T09:45:05.257Z">
+<meta property="og:updated_time" content="2018-08-12T09:49:48.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04.卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
@@ -550,7 +550,7 @@
 <blockquote>
 <p>If you have 80 classes that you want YOLO to recognize, you can represent the class label c either as an integer from 1 to 80, or as an 80-dimensional vector (with 80 numbers) one component of which is 1 and the rest of which are 0. The video lectures had used the latter representation.</p>
 </blockquote>
-<p>图中 \(P _c \) 表示是否含有物体，若含有物体则 \(P _c =1\) 若不含物体则 \(P _c =0\) 。对应的 \(y\) 标签如下：$$P _c =1, y=\begin {bmatrix}1 \\ b _x \\ b _y \\ b _h \\ b _w \\ c \end {bmatrix}&amp;  &amp;P _c =0, y=\begin {bmatrix}0 \\ ? \\ ? \\ ? \\ ? \\ ? \end {bmatrix}$$损失函数表示为 \(L(\widehat y , y)\) 若采用平方误差损失，则计算损失函数如下：</p>
+<p>图中 \(P _c \) 表示是否含有物体，若含有物体则 \(P _c =1\) 若不含物体则 \(P _c =0\) 。对应的 \(y\) 标签如下：$$\begin {align}P _c =1, y=\begin {bmatrix}1 \\ b _x \\ b _y \\ b _h \\ b _w \\ c \end {bmatrix}&amp;  &amp;P _c =0, y=\begin {bmatrix}0 \\ ? \\ ? \\ ? \\ ? \\ ? \end {bmatrix}\end {align}$$损失函数表示为 \(L(\widehat y , y)\) 若采用平方误差损失，则计算损失函数如下：</p>
 <ol>
 <li>当 \(P _c =1 \) 即 \(y _1 =1\)：\(L(\widehat y , y)=(\widehat {y} _1 - y _1) ^2 + \ldots + (\widehat {y} _n - y _n) ^2\) ；</li>
 <li>当 \(P _c =0 \) 即 \(y _1 =0\)：\(L(\widehat {y} , y)=(\widehat {y} _1 - y _1) ^2\)。</li>
