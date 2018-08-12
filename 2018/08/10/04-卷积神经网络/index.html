@@ -163,7 +163,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_087.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_088.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_088.png">
-<meta property="og:updated_time" content="2018-08-12T09:23:47.232Z">
+<meta property="og:updated_time" content="2018-08-12T09:45:05.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04.卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络基础计算机视觉计算机视觉 ( Computer Vision )是一个飞速发展的领域，其中深度学习技术起到重要作用。计算机视觉中有许多的应用，例如图片分类 ( Image Classification ) 、目标检测 ( Object detection ) 、图片风格转换 ( Neural Style Transfer ) 等等。应用计算机视觉时可能要面临的一个挑战是输入的数据">
@@ -550,10 +550,10 @@
 <blockquote>
 <p>If you have 80 classes that you want YOLO to recognize, you can represent the class label c either as an integer from 1 to 80, or as an 80-dimensional vector (with 80 numbers) one component of which is 1 and the rest of which are 0. The video lectures had used the latter representation.</p>
 </blockquote>
-<p>图中 \(P _c \) 表示是否含有物体，若含有物体则 \(P _c =1\) 若不含物体则 \(P _c =0\) 。对应的 \(y\) 标签如下：$$P _c =1, \begin {matrix} y=1 \\ b _x \\ b _y \\ b _h \\ b _w \\ c \end {case}&amp;  &amp;P _c =0, \begin {case} y=0 \\ ? \\ ? \\ ? \\ ? \\ ? \end {case}$$损失函数表示为 \(L(\widehat y , y)\) 若采用平方误差损失，则计算损失函数如下：</p>
+<p>图中 \(P _c \) 表示是否含有物体，若含有物体则 \(P _c =1\) 若不含物体则 \(P _c =0\) 。对应的 \(y\) 标签如下：$$P _c =1, y=\begin {bmatrix}1 \\ b _x \\ b _y \\ b _h \\ b _w \\ c \end {bmatrix}&amp;  &amp;P _c =0, y=\begin {bmatrix}0 \\ ? \\ ? \\ ? \\ ? \\ ? \end {bmatrix}$$损失函数表示为 \(L(\widehat y , y)\) 若采用平方误差损失，则计算损失函数如下：</p>
 <ol>
-<li>当 \(P _c =1 \) 即 \(y _1 =1\)：\(L(\widehat y , y)=(\widehat y _1 - y _1) ^2 + \ldots + (\widehat y _n - y _n) ^2 ；</li>
-<li>当 \(P _c =0 \) 即 \(y _1 =0\)：\(L(\widehat y , y)=(\widehat y _1 - y _1) ^2。</li>
+<li>当 \(P _c =1 \) 即 \(y _1 =1\)：\(L(\widehat y , y)=(\widehat {y} _1 - y _1) ^2 + \ldots + (\widehat {y} _n - y _n) ^2\) ；</li>
+<li>当 \(P _c =0 \) 即 \(y _1 =0\)：\(L(\widehat {y} , y)=(\widehat {y} _1 - y _1) ^2\)。</li>
 </ol>
 <p>对于损失函数，通常做法是对边界框坐标应用平方差或类似方法，对 \(P _c =1\) 应用逻辑回归函数，甚至采用平方预测误差也是可以的。</p>
 <h2 id="特征点检测"><a href="#特征点检测" class="headerlink" title="特征点检测"></a>特征点检测</h2><p>神经网络可以输出图片上的特征点来实现对目标特征的识别（类似于标识对象的中心点位置那样）。在标签中（预测标签和实际标签），特征点以多个二维坐标的形式表示。<br>检测人脸的特征点可以进行情绪分类与判断，或者应用 <code>AR</code> 等领域。也可以通过特征点检测人体的姿态。</p>
@@ -561,10 +561,10 @@
 <ol>
 <li>创建一个标签数据集，即适当剪切汽车图片样本，使得汽车位于中间位置（整张图片几乎被汽车占据）；<img src="/images/deeplearning_ai_086.png" alt="汽车样本标签"></li>
 <li>利用构建的标签数据集训练 <code>CNN</code> 网络；</li>
-<li>选择大小合适窗口和适当的步幅，对测试图片从左到右，从上到下滑动遍历。每个窗口都输入到训练好的 <code>CNN</code> 神经网络进行预测；<img src="/images/deeplearning_ai_087.png" alt="滑动窗口预测"></li>
+<li>选择大小合适窗口和适当的步幅，对测试图片从左到右，从上到下滑动遍历。每个窗口都输入到训练好的 <code>CNN</code> 神经网络进行预测。<img src="/images/deeplearning_ai_087.png" alt="滑动窗口预测"></li>
 </ol>
 <p>滑动窗口目标检测的<strong>缺点</strong>是计算成本高，因为每次滑动都要进行一次 <code>CNN</code> 网络计算。增大步幅可以减小计算，但可能会影响性能。</p>
-<h2 id="卷积的滑动窗口实现"><a href="#卷积的滑动窗口实现" class="headerlink" title="卷积的滑动窗口实现"></a>卷积的滑动窗口实现</h2><p>相较于普通的滑动窗口目标检测（从较大的图片多次截取，分别输入网络计算），<strong>基于卷积的滑动窗口目标检测可以提高运行速度</strong>。为了实现基于卷积的滑动窗口目标检测，首先需要将全连接 (<code>FC</code>)层转化为卷积层，如下图所示：<img src="/images/deeplearning_ai_088.png" alt="FC转化为卷积层">对于全连接层，用 \(5\times 5\times 16\) 的滤波器，数量为 \(400\) 个来实现，输出维度为 \(1\times 1\times 400\) 。从数学上看，经过卷积的输出和全连接层一样，因为这 \(400\) 个节点中每一个都有一个 \(5\times 5\times 16\) 的滤波器，其每个值都是上一层这些 \(5\times 5\times 16\) 激活值经过某个线性函数的输出结果。对于下一个全连接层，用 \(1\times 1\times 400) 的滤波器，数量为 \(400\) 来实现，输出维度为 \(1\times 1\times 400\)。<br>卷积滑动窗口的示例如下图所示：<img src="/images/deeplearning_ai_088.png" alt="卷积滑动窗口">如图，对于 \(16\times 16\times 3\) 的图片，将其<strong>整张输入给网络进行计算</strong>（不是把输入图形分割为四个子集，分别执行前向传播）。输出是维度是 \(2\times 2\times 4\) （步长为 \(2\) ）,其中 \(2\times 2\) 表示有 \(4\) 个窗口结果。对于更大的 \(28\times 28\times 3\) 图片，输出是 \(8\times 8\times 4\) 对应有 \(64\) 个窗口结果。<br>卷积滑动窗口效率高的原因：<strong>各个窗口公共区域的计算可以共享，降低运算成本</strong>。但存在一个缺点就是边界框的位置可能不够准确。<br>相关论文：<a href="https://arxiv.org/pdf/1312.6229.pdf" target="_blank" rel="noopener">Sermanet et al., 2014. OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks</a></p>
+<h2 id="卷积的滑动窗口实现"><a href="#卷积的滑动窗口实现" class="headerlink" title="卷积的滑动窗口实现"></a>卷积的滑动窗口实现</h2><p>相较于普通的滑动窗口目标检测（从较大的图片多次截取，分别输入网络计算），<strong>基于卷积的滑动窗口目标检测可以提高运行速度</strong>。为了实现基于卷积的滑动窗口目标检测，首先需要将全连接 (<code>FC</code>)层转化为卷积层，如下图所示：<img src="/images/deeplearning_ai_088.png" alt="FC转化为卷积层">对于全连接层，用 \(5\times 5\times 16\) 的滤波器，数量为 \(400\) 个来实现，输出维度为 \(1\times 1\times 400\) 。从数学上看，经过卷积的输出和全连接层一样，因为这 \(400\) 个节点中每一个都有一个 \(5\times 5\times 16\) 的滤波器，其每个值都是上一层这些 \(5\times 5\times 16\) 激活值经过某个线性函数的输出结果。对于下一个全连接层，用 \(1\times 1\times 400\) 的滤波器，数量为 \(400\) 来实现，输出维度为 \(1\times 1\times 400\)。<br>卷积滑动窗口的示例如下图所示：<img src="/images/deeplearning_ai_088.png" alt="卷积滑动窗口">如图，对于 \(16\times 16\times 3\) 的图片，将其<strong>整张输入给网络进行计算</strong>（不是把输入图形分割为四个子集，分别执行前向传播）。输出维度是 \(2\times 2\times 4\) （步长为 \(2\) ），其中 \(2\times 2\) 表示有 \(4\) 个窗口结果。对于更大的 \(28\times 28\times 3\) 图片，输出是 \(8\times 8\times 4\) ，对应有 \(64\) 个窗口结果。<br>卷积滑动窗口效率高的原因：<strong>各个窗口公共区域的计算可以共享，降低运算成本</strong>。但存在一个缺点就是边界框的位置可能不够准确。<br>相关论文：<a href="https://arxiv.org/pdf/1312.6229.pdf" target="_blank" rel="noopener">Sermanet et al., 2014. OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks</a></p>
 <h2 id="边框预测"><a href="#边框预测" class="headerlink" title="边框预测"></a>边框预测</h2>
       
     </div>
