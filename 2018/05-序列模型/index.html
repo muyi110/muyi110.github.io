@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_100.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_101.png">
-<meta property="og:updated_time" content="2018-08-19T14:12:27.632Z">
+<meta property="og:updated_time" content="2018-08-19T14:21:59.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="05.序列模型">
 <meta name="twitter:description" content="循环序列模型序列模型的应用下图是序列模型的部分应用场景：在深度学习中，序列模型的代表是循环神经网络（ Recurrent NeuralNetwork, RNN ） 数学符号对于某一个序列数据 \(x\) （输入时间序列数据）相关符号约定如下：  \(x ^{\langle t\rangle}\) ：表示这个数据中的第 \(t\) 的元素； \(y ^{\langle t\rangle}\)">
@@ -402,12 +402,12 @@
 <li>\(y ^{\langle t\rangle}\) ：表示这个数据中的对应的第 \(t\) 的标签；</li>
 <li>\(T _x\) ：输入的数据长度；</li>
 <li>\(T _y\) ：输出的数据长度；</li>
-<li>\(x ^{\left (i\right )\langle t\rangle}：第 \(i\) 个输入序列数据（第 \(i\) 个样本）的第 \(t\) 个元素；</li>
-<li>\(y ^{\left (i\right )\langle t\rangle}：第 \(i\) 个输出（第 \(i\) 个样本对应的输出）的第 \(t\) 个标签；</li>
+<li>\(x ^{\left (i\right )\langle t\rangle}\)：第 \(i\) 个输入序列数据（第 \(i\) 个样本）的第 \(t\) 个元素；</li>
+<li>\(y ^{\left (i\right )\langle t\rangle}\)：第 \(i\) 个输出（第 \(i\) 个样本对应的输出）的第 \(t\) 个标签；</li>
 <li>\(T _x ^{(i)}\) ：第 \(i\) 个输入序列数据（第 \(i\) 个样本）的长度；</li>
 <li>\(T _y ^{(i)}\) ：第 \(i\) 个输出（第 \(i\) 个样本）的长度。</li>
 </ul>
-<p>例如输入是一段话， \(x ^{\langle t\rangle}\) 的表示方式为：首先建立一个<strong>词汇表</strong>（或者称为<strong>字典</strong>），根据要表示单词在词汇表中的位置，采用 <code>one-hot</code> 编码表示 \(x ^{\langle t\rangle}\) 对应的单词。例如单词 <code>zulu</code> 在词汇表的最后一位，则 \(x ^{\langle T _x\rangle}\) 表示为：$$\begin {bmatrix} 0\\0\\vdots\\1\end {bmatrix}$$</p>
+<p>例如输入是一段话， \(x ^{\langle t\rangle}\) 的表示方式为：首先建立一个<strong>词汇表</strong>（或者称为<strong>字典</strong>），根据要表示单词在词汇表中的位置，采用 <code>one-hot</code> 编码表示 \(x ^{\langle t\rangle}\) 对应的单词。例如单词 <code>zulu</code> 在词汇表的最后一位，则 \(x ^{\langle T _x\rangle}\) 表示为：$$\begin {bmatrix} 0\\0\\\vdots\\1\end {bmatrix}$$</p>
 <ul>
 <li>杂谈： <code>one-hot</code> 编码的缺点：<br>每个单词被表示为完全独立的个体， 因此单词间的相似度无法体现。例如单词 <code>hotel</code> 和 <code>motel</code> 意思相近，但与 <code>cat</code> 不同，但：$$(x ^{\langle \text {hotel}\rangle}) ^T x ^{\langle \text {motel}\rangle} = (x ^{\langle \text {hotel}\rangle}) ^T x ^{\langle \text {cat}\rangle} = 0$$</li>
 </ul>
@@ -417,7 +417,7 @@
 <li>从文本的不同位置学习到的特征无法共享；</li>
 <li>模型参数多，计算量大。</li>
 </ul>
-<p><strong>循环神经网络</strong>（ <code>Recurrent Neural Network, RNN</code> ）则没有上述问题。基本的 <code>RNN</code> 网络结构如下图所示：<img src="/images/deeplearning_ai_101.png" alt="基本RNN结构">当元素 \(x ^{\langle t\rangle}\) <strong>输入相对应的时间步的隐藏层的同时</strong>，该隐藏层同时接收上一时间步的隐藏层的激活值 \(a ^{\angle t-1\rangle}\) 。图中的 \(a ^ {\langle 0\rangle}\) 一般初始化为零向量，每个时间步对应输出一个预测值 \(\widehat y ^{\langle t\rangle}\) 。<br><code>RNN</code> 网络从左到右扫描输入数据，<strong>每个时间步对应参数共享</strong>。输入、激活、输出对应的参数分别为：\(W _{ax}\)、\(W _{aa}\)、\(W _{ya}\)（<strong>注：图中是 \(W _{ay}\) 最好改可视频一致</strong>）。</p>
+<p><strong>循环神经网络</strong>（ <code>Recurrent Neural Network, RNN</code> ）则没有上述问题。基本的 <code>RNN</code> 网络结构如下图所示：<img src="/images/deeplearning_ai_101.png" alt="基本RNN结构">当元素 \(x ^{\langle t\rangle}\) <strong>输入相对应的时间步的隐藏层的同时</strong>，该隐藏层同时接收上一时间步的隐藏层的激活值 \(a ^{\langle t-1\rangle}\) 。图中的 \(a ^ {\langle 0\rangle}\) 一般初始化为零向量，每个时间步对应输出一个预测值 \(\widehat y ^{\langle t\rangle}\) 。<br><code>RNN</code> 网络从左到右扫描输入数据，<strong>每个时间步对应参数共享</strong>。输入、激活、输出对应的参数分别为：\(W _{ax}\)、\(W _{aa}\)、\(W _{ya}\)（<strong>注：图中是 \(W _{ay}\) 最好改过来和视频一致</strong>）。</p>
 
       
     </div>
