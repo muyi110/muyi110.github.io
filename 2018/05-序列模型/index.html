@@ -150,7 +150,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_123.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_124.png">
 <meta property="og:image" content="https://muyi110.github.io/images/deeplearning_ai_125.png">
-<meta property="og:updated_time" content="2018-08-21T14:44:07.786Z">
+<meta property="og:updated_time" content="2018-08-21T14:46:41.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="05.序列模型">
 <meta name="twitter:description" content="循环序列模型序列模型的应用下图是序列模型的部分应用场景：在深度学习中，序列模型的代表是循环神经网络（ Recurrent NeuralNetwork, RNN ） 数学符号对于某一个序列数据 \(x\) （输入时间序列数据）相关符号约定如下：  \(x ^{\langle t\rangle}\) ：表示这个数据中的第 \(t\) 的元素； \(y ^{\langle t\rangle}\)">
@@ -495,7 +495,7 @@
 <p><strong>长度标准化</strong> ( <code>Length Normalization</code> ) 是对集束搜索算法的优化方式</p>
 </blockquote>
 <p>对于公式：$$\text {arg max}\prod _{t=1} ^{T _y}P(\widehat y ^{\langle t\rangle}|x, \widehat y ^{\langle 1\rangle}, \ldots , \widehat y ^{\langle t-1\rangle})$$当有多个小于 \(1\) 的概率值相乘时，可能会有<strong>数值下溢</strong>的问题，实际中会取 \(\log\) 将乘法变为加法。$$\text {arg max}\sum _{t=1} ^{T _y}\log P(\widehat y ^{\langle t\rangle}|x, \widehat y ^{\langle 1\rangle}, \ldots , \widehat y ^{\langle t-1\rangle})$$但上面两个式子存在问题，即当输出的句子比较长时，上式变得更小，因此上式趋向于更短的输出。因此需要归一化，即：$$\text {arg max}\dfrac {1}{T _y ^{\alpha}}\sum _{t=1} ^{T _y}\log P(\widehat y ^{\langle t\rangle}|x, \widehat y ^{\langle 1\rangle}, \ldots , \widehat y ^{\langle t-1\rangle})$$其中 \(T _y\) 表示输出结果单词数，\(\alpha\) 是一个需要调整的超参数（\(0-1\) 之间）。归一化用于减少对输出长的结果的惩罚（因为翻译结果一般没有长度限制）。<br>关于集束宽 \(B\) 的取值，较大的 \(B\) 值意味着可能更好的结果和巨大的计算成本；而较小的 \(B\) 值代表较小的计算成本和可能表现较差的结果。对于产品来说，\(B\) 可以取 \(10\) 。</p>
-<h2 id="集束搜索的误差分析"><a href="#集束搜索的误差分析" class="headerlink" title="集束搜索的误差分析"></a>集束搜索的误差分析</h2><p>集束搜索是一种启发式搜索算法，不总是输出可能性最大的句子。当结合 <code>Seq2Seq</code> 模型和集束搜索算法所构建的系统出错（没有输出最佳翻译结果）时，我们通过误差分析来分析错误出现在 <code>RNN</code> 模型还是集束搜索算法中。<br>例如对于下面的人工翻译和模型输出结果：$$\text{Human: Jane visits Africa in September. (\(y ^*\))}$$$$\text{Human: Jane visits Africa last September. (\(\widehat y\))}$$将翻译中没有太大差别的前三个单词作为解码器前三个时间步的输入，得到第四个时间步的条件概率 \(P(y ^*|x)\)、\(P(\widehat y|x)\) 比较大小分析：</p>
+<h2 id="集束搜索的误差分析"><a href="#集束搜索的误差分析" class="headerlink" title="集束搜索的误差分析"></a>集束搜索的误差分析</h2><p>集束搜索是一种启发式搜索算法，不总是输出可能性最大的句子。当结合 <code>Seq2Seq</code> 模型和集束搜索算法所构建的系统出错（没有输出最佳翻译结果）时，我们通过误差分析来分析错误出现在 <code>RNN</code> 模型还是集束搜索算法中。<br>例如对于下面的人工翻译和模型输出结果：$$\text{Human: Jane visits Africa in September. (\(y ^*\))}$$$$\text{Algorithm: Jane visits Africa last September. (\(\widehat y\))}$$将翻译中没有太大差别的前三个单词作为解码器前三个时间步的输入，得到第四个时间步的条件概率 \(P(y ^*|x)\)、\(P(\widehat y|x)\) 比较大小分析：</p>
 <ul>
 <li>若 \(P(y ^*|x) &gt; P(\widehat y|x)\) 说明集束搜索算法出错；</li>
 <li>若 \(P(y ^*|x) \leq P(\widehat y|x)\) 说明 <code>RNN</code> 模型效果不好。</li>
