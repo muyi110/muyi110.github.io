@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-28T13:33:30.462Z">
+<meta property="og:updated_time" content="2019-07-28T13:48:53.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中独立成分分析-ICA">
 <meta name="twitter:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
@@ -403,7 +403,7 @@
 <li>源信号需要是<strong>非高斯分布</strong>，如果源信号是高斯分布，例如\(n=2\)，\(s\sim\mathcal{N}(0, I)\)其中\(I\)是一个\(2\times 2\)的单位阵。根据\(x=As\)可知\(x\)也是一个高斯分布（高斯分布的线性组合还是高斯分布）有均值\(0\)，协方差为\(E(xx^T)=E(Ass^TA^T)=AA^T\)。现在令\(R\)是任意的正交矩阵\(RR^T=R^TR=I\)，令\(A’=AR\)，如果源数据被混合根据\(A’\)而不是\(A\)，可以得到观测\(x’=A’s\)，\(x’\)也是高斯分布，有均值\(0\)，协方差\(E(x’(x’)^T)=E(A’ss^T(A’)^T)=E(ARss^T(AR)^T)=ARR^TA^T=AA^T\)，因此混合矩阵不管是\(A\)还是\(A’\)，都可以观测数据\(x\sim\mathcal{N}(0, AA^T)\)，因此不能确定混合矩阵\(A\)，无法确定源信号\(s\)</li>
 </ul>
 <h2 id="密度函数和线性变换"><a href="#密度函数和线性变换" class="headerlink" title="密度函数和线性变换"></a>密度函数和线性变换</h2><p>假设有随机变量\(s\)，其密度函数为\(p_s(s)\)，有随机变量\(x=As\)，则\(p_x(x) = p_s(Wx)\cdot |W|\)其中\(W=A^{-1}\)，推导如下：概率的定义为$$P(X\le a)=\int_{-\infty}^{a}f(x)dx$$则有$$P(X\le a)=P(As\le x)=P(s\le Wx)$$则$$p_x(x)=P’(X)=P’(Wx)|W|=p_s(Wx)|W|$$</p>
-<h2 id="ICA算法"><a href="#ICA算法" class="headerlink" title="ICA算法"></a>ICA算法</h2><p>假设每一个源信号\(s_i\)的概率密度为\(p_s\)，则源信号的联合分布为$$p(s)=\prod_{i=1}^{n}p_s(s_i)$$前提假设为<strong>源信号是独立</strong>的。根据\(p_x(x) = p_s(Wx)\cdot |W|\)得到$$p(x)=p_s(Wx)|W|=\prod_{i=1}^{n}p_s(w_i ^Tx)\cdot |W|$$</p>
+<h2 id="ICA算法"><a href="#ICA算法" class="headerlink" title="ICA算法"></a>ICA算法</h2><p>假设每一个源信号\(s_i\)的概率密度为\(p_s\)，则源信号的联合分布为$$p(s)=\prod_{i=1}^{n}p_s(s_i)$$前提假设为<strong>源信号是独立</strong>的。根据\(p_x(x) = p_s(Wx)\cdot |W|\)得到$$p(x)=p_s(Wx)|W|=\prod_{i=1}^{n}p_s(w_i ^Tx)\cdot |W|$$根据之前讨论，若没有关于源信号(\(s\))和混合矩阵(\(A\))的先验知识，只根据观测信号(\(x\))不能准确恢复源信号，因此需要知道\(p_s(s_i)\)，根据之前讨论，不能选取高斯分布密度函数，默认选择<code>sigmoid</code>作为累积分布函数(<code>cdf</code>)$$g(s)=\dfrac{1}{1+e^{-s}}$$其导数为$$p_s(s)=g’(s)=\dfrac{e^s}{(1+e^s)^2}$$方阵\(W\)是需要求的参数，被给一个训练集\(\{x^{(i)};i=1, 2, \dots，m\}\)，对数似然函数为$$l(W)=\sigma_{i=1}^{m}\big(\sigma_{j=1}^{n}\log g’(w_j^T x^{(i)})+\log|W|\big)$$</p>
 
       
     </div>
