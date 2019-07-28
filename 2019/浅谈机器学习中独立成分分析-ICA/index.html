@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-28T14:48:49.462Z">
+<meta property="og:updated_time" content="2019-07-28T14:52:25.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中独立成分分析-ICA">
 <meta name="twitter:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
@@ -408,6 +408,7 @@
 <li>如果有关于源信号密度函数的先验知识，直接带入似然函数求解即可，若没有相关的先验知识，则<code>sigmoid</code>函数被认为是合理的默认，对于大多是情形工作不错。同样，上述<code>ICA</code>算法讨论基于一个假设：数据\(x^{(i)}\)被<strong>预处理为有\(0\)均值</strong>，这是必要的，因为上述讨论假设\(p_s(s)=g’(s)\)，有\(E[s]=0\)（<code>sigmoid</code>函数的导数是关于\(x=0\)对称，因此有关于\(s\)的随机变量均值为\(0\)），得到\(E[x]=E[As]=0\)</li>
 <li>上述<code>ICA</code>算法的讨论，当写下似然函数，隐式假设观测数据\(x^{(i)}\)是独立的（针对不同的\(i\)，<strong>注意不是说\(x^{(i)}\)的不同坐标是独立的</strong>），但是这个假设对于语音信号和其他的时间序列(各个时刻不是独立的)是不正确的</li>
 </ul>
+<p>参考：Independent Components Analysis (CS229)</p>
 
       
     </div>
