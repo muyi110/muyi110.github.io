@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-28T12:22:40.107Z">
+<meta property="og:updated_time" content="2019-07-28T12:56:49.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中独立成分分析-ICA">
 <meta name="twitter:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
@@ -402,7 +402,8 @@
 <li>如果\(A\)扩大两倍为\(2A\)，\(s\)变为\(0.5s\)，则等式\(x=2A\cdot(0.5)s\)依然成立。一般来说，如果\(A\)的某一列被缩放通过一个因子\(\alpha\)则对应的源信号被缩放通过因子\(\dfrac{1}{\alpha}\)，则等式\(x=As\)依然成立，因此无法确定源信号\(s\)。具体来说，如果\(w_i\)通过算法被缩放\(\alpha\)，则源信号\(s_i=w_i^T x\)也缩放相同的倍数，然而对于一些应用（声音、EEG等）这并不影响</li>
 <li>源信号需要是<strong>非高斯分布</strong>，如果源信号是高斯分布，例如\(n=2\)，\(s\sim\mathcal{N}(0, I)\)其中\(I\)是一个\(2\times 2\)的单位阵。根据\(x=As\)可知\(x\)也是一个高斯分布（高斯分布的线性组合还是高斯分布）有均值\(0\)，协方差为\(E(xx^T)=E(Ass^TA^T)=AA^T\)。现在令\(R\)是任意的正交矩阵\(RR^T=R^TR=I\)，令\(A’=AR\)，如果源数据被混合根据\(A’\)而不是\(A\)，可以得到观测\(x’=A’s\)，\(x’\)也是高斯分布，有均值\(0\)，协方差\(E(x’(x’)^T)=E(A’ss^T(A’)^T)=E(ARss^T(AR)^T)=ARR^TA^T=AA^T\)，因此混合矩阵不管是\(A\)还是\(A’\)，都可以观测数据\(x\sim\mathcal{N}(0, AA^T)\)，因此不能确定混合矩阵\(A\)，无法确定源信号\(s\)</li>
 </ul>
-<h2 id="密度函数和线性变换"><a href="#密度函数和线性变换" class="headerlink" title="密度函数和线性变换"></a>密度函数和线性变换</h2>
+<h2 id="密度函数和线性变换"><a href="#密度函数和线性变换" class="headerlink" title="密度函数和线性变换"></a>密度函数和线性变换</h2><p>假设有随机变量\(s\)，其密度函数为\(p_s(s)\)，有随机变量\(x=As\)，则\(p_x(x) = p_s(Wx)\cdot |W|\)其中\(W=A^{-1}\)，推导如下：概率的定义为$$P(X\le a)=\int_{-\inf}^{a}f(x)dx$$则有$$P(X\le a)=P(As\le x)=P(s\le Wx)$$则$$p_x(x)=P’(X)=P’(Wx)|W|=p_s(Wx)|W|$$</p>
+<h2 id="ICA算法"><a href="#ICA算法" class="headerlink" title="ICA算法"></a>ICA算法</h2>
       
     </div>
     
@@ -561,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#独立成分分析"><span class="nav-number">1.</span> <span class="nav-text">独立成分分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICA的不确定性-ICA-ambiguities"><span class="nav-number">1.2.</span> <span class="nav-text">ICA的不确定性(ICA ambiguities)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密度函数和线性变换"><span class="nav-number">1.3.</span> <span class="nav-text">密度函数和线性变换</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#独立成分分析"><span class="nav-number">1.</span> <span class="nav-text">独立成分分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICA的不确定性-ICA-ambiguities"><span class="nav-number">1.2.</span> <span class="nav-text">ICA的不确定性(ICA ambiguities)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密度函数和线性变换"><span class="nav-number">1.3.</span> <span class="nav-text">密度函数和线性变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICA算法"><span class="nav-number">1.4.</span> <span class="nav-text">ICA算法</span></a></li></ol></li></ol></div>
             
 
           </div>
