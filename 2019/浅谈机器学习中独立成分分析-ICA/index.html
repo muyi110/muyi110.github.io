@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-28T12:09:35.667Z">
+<meta property="og:updated_time" content="2019-07-28T12:14:24.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中独立成分分析-ICA">
 <meta name="twitter:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
@@ -399,8 +399,8 @@
 <h2 id="ICA的不确定性-ICA-ambiguities"><a href="#ICA的不确定性-ICA-ambiguities" class="headerlink" title="ICA的不确定性(ICA ambiguities)"></a>ICA的不确定性(ICA ambiguities)</h2><p>如果没有关于源信号(\(s\))和混合矩阵(\(A\))的先验知识，只根据观测信号(\(x\))不能准确恢复源信号。</p>
 <ul>
 <li>如果将\(s\)的顺序打乱，只需要将\(A\)乘置换矩阵（实现交换矩阵的行或列功能），等式依然成立，因此源信号\(s\)无法确定，幸运的是，对于大多数应用，这并没有影响</li>
-<li>如果\(A\)扩大两倍为\(2A\)，\(s\)变为\(0.5s\)，则等式\(x=2A\dot (0.5)s依然成立。一般来说，如果\(A\)的某一列被缩放通过一个因子\(\alpha\)则对应的源信号被缩放通过因子\(\dfrac{1}{\alpha}\)，则等式\(x=As\)依然成立，因此无法确定源信号\(s\)。具体来说，如果\(w_i\)通过算法被缩放\(\alpha\)，则源信号\(s_i=W_i^T x\)也缩放相同的倍数，然而对于一些应用（声音、EEG等）这并不影响</li>
-<li>源信号需要是<strong>非高斯分布</strong>，如果源信号是高斯分布，例如\(n=2\)，\(s\sim\mathcal{N}(0, I)\)其中\(I\)是一个\(2\times 2\)的单位阵。根据\(x=As\)可知\(x\)也是一个高斯分布（高斯分布的线性组合还是高斯分布）有均值\(0\)，协方差为\(E(xx^T)=E(Ass^TA^T)=AA^T\)。现在令\(R\)是任意的正交矩阵\(RR^T=R^TR=I\)，令\(A^’=AR\)，如果源数据被混合根据\(A^’\)而不是\(A\)，可以得到观测\(x^’=A^’s\)，\(x^’\)也是高斯分布，有均值\(0\)，协方差\(E(x^’(x^’)^T)=E(A^’ss^T(A^’)^T)=E(ARss^T(AR)^T)=ARR^TA^T=AA^T\)，因此混合矩阵不管是\(A\)还是\(A^’\)，都可以观测数据\(x\sim\mathcal{N}(0, AA^T)\)，因此不能确定混合矩阵\(A\)，无法确定源信号\(s\)</li>
+<li>如果\(A\)扩大两倍为\(2A\)，\(s\)变为\(0.5s\)，则等式\(x=2A\dot(0.5)s\)依然成立。一般来说，如果\(A\)的某一列被缩放通过一个因子\(\alpha\)则对应的源信号被缩放通过因子\(\dfrac{1}{\alpha}\)，则等式\(x=As\)依然成立，因此无法确定源信号\(s\)。具体来说，如果\(w_i\)通过算法被缩放\(\alpha\)，则源信号\(s_i=W_i^T x\)也缩放相同的倍数，然而对于一些应用（声音、EEG等）这并不影响</li>
+<li>源信号需要是<strong>非高斯分布</strong>，如果源信号是高斯分布，例如\(n=2\)，\(s\sim\mathcal{N}(0, I)\)其中\(I\)是一个\(2\times 2\)的单位阵。根据\(x=As\)可知\(x\)也是一个高斯分布（高斯分布的线性组合还是高斯分布）有均值\(0\)，协方差为\(E(xx^T)=E(Ass^TA^T)=AA^T\)。现在令\(R\)是任意的正交矩阵\(RR^T=R^TR=I\)，令\(A^{‘}=AR\)，如果源数据被混合根据\(A^{‘}\)而不是\(A\)，可以得到观测\(x^{‘}=A^{‘}s\)，\(x^{‘}\)也是高斯分布，有均值\(0\)，协方差\(E(x^{‘}(x^{‘})^T)=E(A^{‘}ss^T(A^{‘})^T)=E(ARss^T(AR)^T)=ARR^TA^T=AA^T\)，因此混合矩阵不管是\(A\)还是\(A^{‘}\)，都可以观测数据\(x\sim\mathcal{N}(0, AA^T)\)，因此不能确定混合矩阵\(A\)，无法确定源信号\(s\)</li>
 </ul>
 <h2 id="密度函数和线性变换"><a href="#密度函数和线性变换" class="headerlink" title="密度函数和线性变换"></a>密度函数和线性变换</h2>
       
