@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-28T14:52:25.574Z">
+<meta property="og:updated_time" content="2019-07-29T09:28:39.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中独立成分分析-ICA">
 <meta name="twitter:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
@@ -406,7 +406,7 @@
 <h2 id="ICA算法"><a href="#ICA算法" class="headerlink" title="ICA算法"></a>ICA算法</h2><p>假设每一个源信号\(s_i\)的概率密度为\(p_s\)，则源信号的联合分布为$$p(s)=\prod_{i=1}^{n}p_s(s_i)$$前提假设为<strong>源信号是独立</strong>的。根据\(p_x(x) = p_s(Wx)\cdot |W|\)得到$$p(x)=p_s(Wx)|W|=\prod_{i=1}^{n}p_s(w_i ^Tx)\cdot |W|$$根据之前讨论，若没有关于源信号(\(s\))和混合矩阵(\(A\))的先验知识，只根据观测信号(\(x\))不能准确恢复源信号，因此需要知道\(p_s(s_i)\)，根据之前讨论，不能选取高斯分布密度函数，默认选择<code>sigmoid</code>作为累积分布函数(<code>cdf</code>)$$g(s)=\dfrac{1}{1+e^{-s}}$$其导数为$$p_s(s)=g’(s)=\dfrac{e^s}{(1+e^s)^2}$$方阵\(W\)是需要求的参数，被给一个训练集\(\{x^{(i)};i=1, 2, \dots，m\}\)，对数似然函数为$$l(W)=\sum_{i=1}^{m}\big(\sum_{j=1}^{n}\log g’(w_j^T x^{(i)})+\log|W|\big)$$对\(W\)求导，其中对行列式的求导如下$$\bigtriangledown_W|W|=|W|(W^{-1})^T$$得到随机梯度下降的学习规则如下<br>$$W:=W+\alpha\Bigg({\begin{bmatrix}<br>1-2g(w_1^T x^{(i)})\\<br>1-2g(w_2^T x^{(i)})\\<br>\vdots \\<br>1-2g(w_n^T x^{(i)})<br>\end {bmatrix}}<br>x^{(i)^T}+(W^T)^{-1}\Bigg)$$<br>其中\(\log g’(s)\)的导数为\(1-2g(s)\)，\(\alpha\)为学习率</p>
 <h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><ul>
 <li>如果有关于源信号密度函数的先验知识，直接带入似然函数求解即可，若没有相关的先验知识，则<code>sigmoid</code>函数被认为是合理的默认，对于大多是情形工作不错。同样，上述<code>ICA</code>算法讨论基于一个假设：数据\(x^{(i)}\)被<strong>预处理为有\(0\)均值</strong>，这是必要的，因为上述讨论假设\(p_s(s)=g’(s)\)，有\(E[s]=0\)（<code>sigmoid</code>函数的导数是关于\(x=0\)对称，因此有关于\(s\)的随机变量均值为\(0\)），得到\(E[x]=E[As]=0\)</li>
-<li>上述<code>ICA</code>算法的讨论，当写下似然函数，隐式假设观测数据\(x^{(i)}\)是独立的（针对不同的\(i\)，<strong>注意不是说\(x^{(i)}\)的不同坐标是独立的</strong>），但是这个假设对于语音信号和其他的时间序列(各个时刻不是独立的)是不正确的</li>
+<li>上述<code>ICA</code>算法的讨论，当写下似然函数，隐式假设观测数据\(x^{(i)}\)是独立的（针对不同的\(i\)，<strong>注意不是说\(x^{(i)}\)的不同坐标是独立的</strong>），但是这个假设对于语音信号和其他的时间序列(各个时刻不是独立的)是不正确的，但是在样本足够多时，假设独立对效果影响不大</li>
 </ul>
 <p>参考：Independent Components Analysis (CS229)</p>
 
