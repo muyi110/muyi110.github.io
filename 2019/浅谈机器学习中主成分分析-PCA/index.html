@@ -125,7 +125,7 @@
 <meta property="og:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/pca_0.png">
-<meta property="og:updated_time" content="2019-07-29T14:24:40.446Z">
+<meta property="og:updated_time" content="2019-07-29T14:26:28.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中主成分分析-PCA">
 <meta name="twitter:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
@@ -405,8 +405,8 @@
 <li>\(\boldsymbol y\)的协方差矩阵为对角矩阵$$\text{cov}(\boldsymbol y) = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_m) \\ \lambda_1\ge\lambda_2\ge\dots\ge\lambda_m$$其中\(\lambda_k\)是\(\Sigma\)（\(\boldsymbol x\)的协方差矩阵）第\(k\)个特征值，\(\alpha_k\)是对应的单位特征向量</li>
 </ol>
 </blockquote>
-<p>根据之前证明可知，有\(\Sigma \alpha_k = \lambda_k \alpha_k \) 写成矩阵的形式为$$\Sigma A = A\Lambda$$其中\(\Lambda\)是对角矩阵（即\(\boldsymbol y\)的协方差矩阵），因为\(A\)是正交矩阵，有\(A^T A = AA^T = I\)，可得到\(A^T\Sigma A = A^T A\Lambda = \Lambda\)和\(\Sigma = A\Lambda A^T\)<br>总体主成分\(\boldsymbol y\)的方差之和等于随机变量\(\boldsymbol x\)的方差之和，即\(\sum_{i=1}^{m}\lambda_i = \sum_{i=1}^{m}\sigma_{ii}\)其中\(\sigma_{ii}\)是\(boldsymbol x\)的协方差矩阵\(Sigma\)的对角元素（证明就不写了，比较简单，利用上一段讨论的结论）</p>
-<h2 id="主成分的个数"><a href="#主成分的个数" class="headerlink" title="主成分的个数"></a>主成分的个数</h2>
+<p>根据之前证明可知，有\(\Sigma \alpha_k = \lambda_k \alpha_k \) 写成矩阵的形式为$$\Sigma A = A\Lambda$$其中\(\Lambda\)是对角矩阵（即\(\boldsymbol y\)的协方差矩阵），因为\(A\)是正交矩阵，有\(A^T A = AA^T = I\)，可得到\(A^T\Sigma A = A^T A\Lambda = \Lambda\)和\(\Sigma = A\Lambda A^T\)<br>总体主成分\(\boldsymbol y\)的方差之和等于随机变量\(\boldsymbol x\)的方差之和，即\(\sum_{i=1}^{m}\lambda_i = \sum_{i=1}^{m}\sigma_{ii}\)其中\(\sigma_{ii}\)是\(\boldsymbol x\)的协方差矩阵\(\Sigma\)的对角元素（证明就不写了，比较简单，利用上一段讨论的结论）</p>
+<h3 id="主成分的个数"><a href="#主成分的个数" class="headerlink" title="主成分的个数"></a>主成分的个数</h3>
       
     </div>
     
@@ -565,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#主成分分析-PCA"><span class="nav-number">1.</span> <span class="nav-text">主成分分析(PCA)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总体主成分分析"><span class="nav-number">1.2.</span> <span class="nav-text">总体主成分分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主成分的个数"><span class="nav-number">1.3.</span> <span class="nav-text">主成分的个数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#主成分分析-PCA"><span class="nav-number">1.</span> <span class="nav-text">主成分分析(PCA)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总体主成分分析"><span class="nav-number">1.2.</span> <span class="nav-text">总体主成分分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主成分的个数"><span class="nav-number">1.2.1.</span> <span class="nav-text">主成分的个数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
