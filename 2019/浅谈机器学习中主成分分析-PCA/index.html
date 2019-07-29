@@ -125,7 +125,7 @@
 <meta property="og:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/pca_0.png">
-<meta property="og:updated_time" content="2019-07-29T14:42:18.788Z">
+<meta property="og:updated_time" content="2019-07-29T14:46:18.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中主成分分析-PCA">
 <meta name="twitter:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
@@ -406,12 +406,12 @@
 </ol>
 </blockquote>
 <p>根据之前证明可知，有\(\Sigma \alpha_k = \lambda_k \alpha_k \) 写成矩阵的形式为$$\Sigma A = A\Lambda$$其中\(\Lambda\)是对角矩阵（即\(\boldsymbol y\)的协方差矩阵），因为\(A\)是正交矩阵，有\(A^T A = AA^T = I\)，可得到\(A^T\Sigma A = A^T A\Lambda = \Lambda\)和\(\Sigma = A\Lambda A^T\)<br>总体主成分\(\boldsymbol y\)的方差之和等于随机变量\(\boldsymbol x\)的方差之和，即\(\sum_{i=1}^{m}\lambda_i = \sum_{i=1}^{m}\sigma_{ii}\)其中\(\sigma_{ii}\)是\(\boldsymbol x\)的协方差矩阵\(\Sigma\)的对角元素（证明就不写了，比较简单，利用上一段讨论的结论）</p>
-<h3 id="主成分的个数"><a href="#主成分的个数" class="headerlink" title="主成分的个数"></a>主成分的个数</h3><p><code>PCA</code>的主要目的是降维，所以一般选择\(k\)(k \ll m\)（线性无关）代替原来的\(m\)（线性相关）变量，同时保留原有变量的大部分信息（信息指原有变量的方差），给出两个定义</p>
+<h3 id="主成分的个数"><a href="#主成分的个数" class="headerlink" title="主成分的个数"></a>主成分的个数</h3><p><code>PCA</code>的主要目的是降维，所以一般选择\(k\)(\(k \ll m\))（线性无关）代替原来的\(m\)（线性相关）个变量，同时保留原有变量的大部分信息（信息指原有变量的方差），给出两个定义</p>
 <ol>
 <li>第\(k\)个主成分\(y_k\)的方差贡献率定义为\(y_k\)的方差与所有方差之和的比，即$$\eta_k = \dfrac{\lambda_k}{\sum_{i=1}^{m}\lambda_i}$$</li>
 <li>\(k\)个主成分\(y_1, y_2, \dots, y_k\)累积方差贡献率定义为\(k\)个方差之和与所有方差之和的比值，即$$\sum_{i=1}^{k}\eta_i = \dfrac{\sum_{i=1}^{k}\lambda_i}{\sum_{i=1}^{m}\lambda_i}$$</li>
 </ol>
-<p>通常取\(k\)使得累积方差贡献率达到规定百分比以上，例如\(70%\sim 80%\)以上，累积方差贡献率反映主成分保留信息比例。</p>
+<p>通常取\(k\)使得累积方差贡献率达到规定百分比以上，例如\(70\%\sim 80\%\)以上，累积方差贡献率反映主成分保留信息比例。</p>
 
       
     </div>
