@@ -125,7 +125,7 @@
 <meta property="og:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/pca_0.png">
-<meta property="og:updated_time" content="2019-07-30T05:08:53.739Z">
+<meta property="og:updated_time" content="2019-07-30T05:10:24.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中主成分分析-PCA">
 <meta name="twitter:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
@@ -419,7 +419,7 @@
 <p>假设对\(m\)维随机变量\(\boldsymbol x = (x_1, x_2, \dots, x_m)^T\)进行\(n\)次的独立观测，\(\boldsymbol x_1, \boldsymbol x_2, \dots, \boldsymbol x_n\)表示观测样本，其中\(\boldsymbol x_j = (x_{1j}, x_{2j}, \dots, x_{mj})^T\)表示第\(j\)个观测样本，观测数据用样本矩阵\(\boldsymbol X\)表示为$$\boldsymbol X = [\boldsymbol x_1, \boldsymbol x_2, \dots, \boldsymbol x_n]=<br>\begin{bmatrix}<br>x_{11} &amp; x_{12} &amp; \dots &amp; x_{1n}\\<br>x_{21} &amp; x_{22} &amp; \dots &amp; x_{2n}\\<br>\vdots &amp; \vdots &amp; &amp; \vdots \\<br>x_{m1} &amp; x_{m2} &amp; \dots &amp; x_{mn}<br>\end{bmatrix}$$给定样本矩阵\(\boldsymbol X\)，可以估计样本均值\(\bar{x}\)及样本协方差矩阵\(S\)<br>$$\begin{equation}\begin{aligned}\bar{x}&amp;=\dfrac{1}{n}\sum_{j=1}^{n}\boldsymbol x_j \\<br>S &amp;= [s_{ij}]<em>{m\times m} \\<br>s</em>{ij} &amp;= \dfrac{1}{n-1}\sum_{k=1}^{n}(x_{ik}-\bar{x_i})(x_{jk}-\bar{x_j}),\quad i, j = 1, 2, \dots, m<br>\end{aligned}\end{equation}$$其中\(\bar{x_i} = \dfrac{1}{n}\sum_{k=1}^{n}x_{ik}\) 是第\(i\)个变量样本均值，\(\bar{x_j} = \dfrac{1}{n}\sum_{k=1}^{n}x_{jk}\) 是第\(j\)个变量样本均值。<br>样本矩阵的相关矩阵\(R\)（<code>也叫相关系数矩阵，由矩阵各行的相关系数组成</code>）$$R = [r_{ij}]<em>{m\times m}, \quad r</em>{ij}=\dfrac{s_{ij}{\sqrt{s_{ii}s_{jj}}}, \quad i, j = 1, 2, \dots, m$$</p>
 <h3 id="相关矩阵的特征值分解算法"><a href="#相关矩阵的特征值分解算法" class="headerlink" title="相关矩阵的特征值分解算法"></a>相关矩阵的特征值分解算法</h3><ol>
 <li>对观测数据进行规范化处理，得到规范化数据矩阵，以\(\boldsymbol X\)表示$$\begin{equation}\begin{aligned}x_{ij}^* &amp;= \dfrac{x_{ij}-\bar{x_i}}{\sqrt{s_{ii}}}\\<br>\bar{x_i} &amp;= \dfrac{1}{n}\sum_{j=1}^{n}x_{ij}, \quad i = 1, 2, \dots, m \\<br>s_{ii} &amp;= \dfrac{1}{n-1}\sum_{j=1}^{n}(x_{ij}-\bar{x_{i}})^2<br>\end{aligned}\end{equation}$$</li>
-<li>根据规范化数据矩阵计算样本相关矩阵\(R\)$$R = [r_{ij}]<em>{m\times m} = r</em>{ij} = \dfrac{1}{n-1}\sum_{l=1}^{n}x_{il}x_{lj}, \quad i, j = 1, 2, \dots, m$$</li>
+<li>根据规范化数据矩阵计算样本相关矩阵\(R\)$$R = [r_{ij}]_{m\times m} = A$$</li>
 <li>求样本相关矩阵\(R\)的\(k\)个特征值，和对应的\(k\)个单位特征向量，根据$$|R-\lambda I| = 0$$得到\(R\)的\(m\)个特征值$$\lambda_1 \ge\lambda_2\ge\dots\ge\lambda_m$$并求累积方差贡献率\(\sum_{i=1}^{k}\eta _i\)达到预定值的主成分个数\(k\)，并求前\(k\)个特征值对应的单位特征向量$$\alpha_i = (\alpha_{1i}, \alpha_{2i}, \dots, \alpha_{mi})^T, \quad i = 1, 2, \dots, k$$</li>
 <li>求\(k\)个样本主成分$$y_i = \alpha_i ^T\boldsymbol x , \quad i=1, 2, \dots, k$$</li>
 <li>计算\(k\)个主成分\(y_i\)与原变量\(x_i\)的相关系数\(\rho (x_i, y_i)\)，以及\(k\)个主成分对原变量\(x_i\)的贡献率\(\nu_i\)</li>
