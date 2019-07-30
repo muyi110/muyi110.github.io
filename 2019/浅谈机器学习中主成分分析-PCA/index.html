@@ -125,7 +125,7 @@
 <meta property="og:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/pca_0.png">
-<meta property="og:updated_time" content="2019-07-30T02:27:51.150Z">
+<meta property="og:updated_time" content="2019-07-30T02:33:53.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中主成分分析-PCA">
 <meta name="twitter:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
@@ -414,9 +414,9 @@
 <p>通常取\(k\)使得累积方差贡献率达到规定百分比以上，例如\(70\%\sim 80\%\)以上，累积方差贡献率反映主成分保留信息比例。</p>
 <h3 id="规范化变量"><a href="#规范化变量" class="headerlink" title="规范化变量"></a>规范化变量</h3><p>在实际问题中，不同变量可能有不同的量纲，直接求主成分有时产生不合理的结果，为了消除这个影响，通常对各个随机变量实施标准化，使其均值为\(0\)，方差为\(1\)，即$$x_i ^* = \dfrac{x_i - E(x_i)}{\sqrt{\text{var}(x_i)}}$$</p>
 <h2 id="样本主成分分析"><a href="#样本主成分分析" class="headerlink" title="样本主成分分析"></a>样本主成分分析</h2><blockquote>
-<p>实际问题中，需要在观测数据上进行主成分分析，也就是在样本上进行主成分分析，因此有样本主成分分析</p>
+<p>实际问题中，需要在观测数据上进行主成分分析，也就是在样本上进行主成分分析</p>
 </blockquote>
-<p>假设对\(m\)维随机变量\(\boldsymbol x = (x_1, x_2, \dots, x_m)^T\)进行\(n\)次的独立观测，\(\boldsymbol x_1, \boldsymbol x_2, \dots, \boldsymbol x_n\)表示观测样本，其中\(\boldsymbol x_j = (x_{1j}, x_{2j}, \dots, x_{mj})^T\)表示第\(j\)个观测样本，观测数据用样本矩阵\(\boldsymbol X\)表示为$$\boldsymbol X = [\boldsymbol x_1, \boldsymbol x_2, \dots, \boldsymbol x_n]=<br>\begin{bmatrix}<br>x_{11} &amp; x_{12} &amp; \dots &amp; x_{1n}\\<br>x_{21} &amp; x_{22} &amp; \dots &amp; x_{2n}\\<br>\vdots &amp; \vdots &amp; &amp; \vdots \\<br>x_{m1} &amp; x_{m2} &amp; \dots &amp; x_{mn}<br>\end{bmatrix}$$给定样本矩阵\(boldsymbol X\)，可以估计样本均值\(bar{x}\)及样本协方差矩阵\(S\)<br>$$\begin{equation}\begin{aligned}<br>\bar{x}&amp;=\dfrac{1}{n}\sum_{j=1}^{n}\boldsymbol x_j \\<br>S &amp;= [s_{ij}]<em>{m\times m} \\<br>s</em>{ij} &amp;= \dfrac{1}{n-1}\sum_{k=1}^{n}(x_{ik}-\bar{x_i})(x_{jk}-\bar{x_j}),\quad i, j = 1, 2, \dots, m \\<br>\end{aligned}\end{equation}$$其中\(\bar{x_i} = \dfrac{1}{n}\sum_{k=1}^{n}x_{ik} 是第\(i\)个变量样本均值，\(\bar{x_j} = \dfrac{1}{n}\sum_{k=1}^{n}x_{jk} 是第\(j\)个变量样本均值。<br>样本矩阵的相关矩阵\(R\)（<code>也叫相关系数矩阵，由矩阵各行的相关系数组成</code>）$$R = [r_{ij}]<em>{m\times m}, \quad r</em>{ij}=\dfrac{s_{ij}{\sqrt{s_{ii}s_{jj}}}, \quad i, j = 1, 2, \dots, m$$</p>
+<p>假设对\(m\)维随机变量\(\boldsymbol x = (x_1, x_2, \dots, x_m)^T\)进行\(n\)次的独立观测，\(\boldsymbol x_1, \boldsymbol x_2, \dots, \boldsymbol x_n\)表示观测样本，其中\(\boldsymbol x_j = (x_{1j}, x_{2j}, \dots, x_{mj})^T\)表示第\(j\)个观测样本，观测数据用样本矩阵\(\boldsymbol X\)表示为$$\boldsymbol X = [\boldsymbol x_1, \boldsymbol x_2, \dots, \boldsymbol x_n]=<br>\begin{bmatrix}<br>x_{11} &amp; x_{12} &amp; \dots &amp; x_{1n}\\<br>x_{21} &amp; x_{22} &amp; \dots &amp; x_{2n}\\<br>\vdots &amp; \vdots &amp; &amp; \vdots \\<br>x_{m1} &amp; x_{m2} &amp; \dots &amp; x_{mn}<br>\end{bmatrix}$$给定样本矩阵\(\boldsymbol X\)，可以估计样本均值\(\bar{x}\)及样本协方差矩阵\(S\)<br>$$\begin{equation}\begin{aligned}<br>\bar{x}&amp;=\dfrac{1}{n}\sum_{j=1}^{n}\boldsymbol x_j \\<br>S &amp;= [s_{ij}]<em>{m\times m} \\<br>s</em>{ij} &amp;= \dfrac{1}{n-1}\sum_{k=1}^{n}(x_{ik}-\bar{x_i})(x_{jk}-\bar{x_j}),\quad i, j = 1, 2, \dots, m \\<br>\end{aligned}\end{equation}$$其中\(\bar{x_i} = \dfrac{1}{n}\sum_{k=1}^{n}x_{ik} 是第\(i\)个变量样本均值，\(\bar{x_j} = \dfrac{1}{n}\sum_{k=1}^{n}x_{jk} 是第\(j\)个变量样本均值。<br>样本矩阵的相关矩阵\(R\)（<code>也叫相关系数矩阵，由矩阵各行的相关系数组成</code>）$$R = [r_{ij}]<em>{m\times m}, \quad r</em>{ij}=\dfrac{s_{ij}{\sqrt{s_{ii}s_{jj}}}, \quad i, j = 1, 2, \dots, m$$</p>
 
       
     </div>
