@@ -125,7 +125,7 @@
 <meta property="og:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/pca_0.png">
-<meta property="og:updated_time" content="2019-07-30T05:00:55.921Z">
+<meta property="og:updated_time" content="2019-07-30T05:02:59.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中主成分分析-PCA">
 <meta name="twitter:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
@@ -425,7 +425,7 @@
 <li>计算\(k\)个主成分\(y_i\)与原变量\(x_i\)的相关系数\(\rho (x_i, y_i)\)，以及\(k\)个主成分对原变量\(x_i\)的贡献率\(\nu_i\)</li>
 <li>计算\(n\)个样本的\(k\)个主成分值，第\(j\)个样本\(\boldsymbol x_j = (x_{1j}, x_{2j}, \dots, x_{mj})^T\)第\(i\)个主成分$$y_{ij} = (\alpha_{1i}, \alpha_{2i}, \dots, \alpha_{mi})(x_{1j}, x_{2j}, \dots, x_{mj})^T = \sum_{l=1}^{m}a_{li}x_{lj}\\i = 1, 2, \dots, k, \quad j = 1, 2, \dots, n$$</li>
 </ol>
-<p>主成分分析结果可以用于其他机器学习算法的输入$$[2_{ij}]_{m\times m}$$</p>
+<p>主成分分析结果可以用于其他机器学习算法的输入$$A = [2_{ij}]_{m\times m}$$</p>
 <h3 id="数据矩阵奇异值分解算法"><a href="#数据矩阵奇异值分解算法" class="headerlink" title="数据矩阵奇异值分解算法"></a>数据矩阵奇异值分解算法</h3>
       
     </div>
