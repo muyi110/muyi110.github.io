@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-30T14:23:51.710Z">
+<meta property="og:updated_time" content="2019-07-30T14:38:49.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈奇异值分解-SVD">
 <meta name="twitter:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
@@ -402,7 +402,7 @@
 <blockquote>
 <p>对矩阵数据进行压缩，奇异值分解提供一种解决方式，紧奇异值分解对应无损压缩，截断奇异值分解对应有损压缩</p>
 </blockquote>
-<h2 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h2><p>从线性变化的角度理解奇异值分解，\(m\times n\)矩阵\(A\)表示从\(n\)维空间\(\mathbb{R}^n\)到\(m\)维空间\(\mathbb{R}^m\)的一个线性变换，即$$T:x\rightarrow Ax$$其中\(x\in \mathbb{R}^n\)， \(Ax\in \mathbb{R}^m\)，\(x\)和\(Ax\)分别为各自空间的向量。线性变换可以分解为三个简单的变换：一个坐标系的旋转变换，一个坐标轴的缩放变换，另一个坐标系的旋转变换，根据奇异值分解定理，这种分解变换一定存在<br>对矩阵\(A\)进行奇异值分解，得到\(A = U\Sigma V^T\)，其中\(U\)和\(V\)都是正交矩阵，所以\(V\)的列向量\(v_1, v_2, \dots, v_n\)构成\(\mathbb{R}^n\)空间的一组标准正交积，表示\(\mathbb{R}^n\)空间中的正交坐标系的旋转变换；\(U\)的列向量\(u_1, u_2, \dots, u_m\)构成\(\mathbb{R}^m\)空间的一组标准正交积，表示\(\mathbb{R}^m\)空间中的正交坐标系的旋转变换；\(\Sigma \)的对角元素\(\sigma_1, \sigma_2, \dots, \sigma_n\)是一组非负实数，表示\(\mathbb{R}^n\)中的原始正交坐标系坐标轴的\(\sigma_1, \sigma_2, \dots, \sigma_n\)倍的缩放变换</p>
+<h2 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h2><p>从线性变化的角度理解奇异值分解，\(m\times n\)矩阵\(A\)表示从\(n\)维空间\(\mathbb{R}^n\)到\(m\)维空间\(\mathbb{R}^m\)的一个线性变换，即$$T:x\rightarrow Ax$$其中\(x\in \mathbb{R}^n\)， \(Ax\in \mathbb{R}^m\)，\(x\)和\(Ax\)分别为各自空间的向量。线性变换可以分解为三个简单的变换：一个坐标系的旋转变换，一个坐标轴的缩放变换，另一个坐标系的旋转变换，根据奇异值分解定理，这种分解变换一定存在<br>对矩阵\(A\)进行奇异值分解，得到\(A = U\Sigma V^T\)，其中\(U\)和\(V\)都是正交矩阵，所以\(V\)的列向量\(v_1, v_2, \dots, v_n\)构成\(\mathbb{R}^n\)空间的一组标准正交积，表示\(\mathbb{R}^n\)空间中的正交坐标系的旋转变换；\(U\)的列向量\(u_1, u_2, \dots, u_m\)构成\(\mathbb{R}^m\)空间的一组标准正交积，表示\(\mathbb{R}^m\)空间中的正交坐标系的旋转变换；\(\Sigma \)的对角元素\(\sigma_1, \sigma_2, \dots, \sigma_n\)是一组非负实数，表示\(\mathbb{R}^n\)中的原始正交坐标系坐标轴的\(\sigma_1, \sigma_2, \dots, \sigma_n\)倍的缩放变换<br>任意一个向量\(x\in \mathbb{R}^n\)，经过基于\(A = U\Sigma V^T\)的线性变换</p>
 
       
     </div>
