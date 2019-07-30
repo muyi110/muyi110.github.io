@@ -125,7 +125,7 @@
 <meta property="og:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/pca_0.png">
-<meta property="og:updated_time" content="2019-07-30T08:22:26.176Z">
+<meta property="og:updated_time" content="2019-07-30T09:03:32.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中主成分分析-PCA">
 <meta name="twitter:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
@@ -426,7 +426,11 @@
 <li>计算\(n\)个样本的\(k\)个主成分值，第\(j\)个样本\(\boldsymbol x_j = (x_{1j}, x_{2j}, \dots, x_{mj})^T\)第\(i\)个主成分$$y_{ij} = (\alpha_{1i}, \alpha_{2i}, \dots, \alpha_{mi})(x_{1j}, x_{2j}, \dots, x_{mj})^T = \sum_{l=1}^{m}a_{li}x_{lj}\\i = 1, 2, \dots, k, \quad j = 1, 2, \dots, n$$</li>
 </ol>
 <p>主成分分析结果可以用于其他机器学习算法的输入</p>
-<h3 id="数据矩阵奇异值分解算法"><a href="#数据矩阵奇异值分解算法" class="headerlink" title="数据矩阵奇异值分解算法"></a>数据矩阵奇异值分解算法</h3>
+<h3 id="数据矩阵奇异值分解算法"><a href="#数据矩阵奇异值分解算法" class="headerlink" title="数据矩阵奇异值分解算法"></a>数据矩阵奇异值分解算法</h3><blockquote>
+<p>给定样本矩阵\(\boldsymbol X\)，利用数据矩阵奇异值分解进行主成分分析</p>
+</blockquote>
+<p>假设有\(k\)个主成分，对于\(m\times n\)的实矩阵\(A\)，假设其秩为\(r\)，有\(0 &lt; k &lt; r\)，可将矩阵\(A\)进行<strong>截断奇异值分解</strong>$$A\approx U_k\Sigma_k V_k ^T$$其中\(U_k\)是\(m\times n\)矩阵，\(V_k\)是\(n\times k\)矩阵，\(\Sigma_k\)是\(k\)阶对角矩阵，\(U_k\)，\(V_k\)分别取矩阵\(A\)的完全奇异值分解矩阵\(U\)，\(V\)的前\(k\)列，\(\Sigma_k\)由矩阵\(A\)的完全奇异值分解矩阵\(\Sigma\)的前\(k\)个对角元素<br>定义一个新的矩阵\(\boldsymbol {X’}\)$$\boldsymbol {X’}=\dfrac{1}{\sqrt{n-1}}\boldsymbol {X^T}$$其中\(\boldsymbol {X’}\)的<strong>每一列均值为\(0\)</strong>，可得到$$\begin{equation}\begin{aligned}\boldsymbol {X’ ^T}\boldsymbol {X’} &amp;= \Bigg(\dfrac{1}{\sqrt{n-1}}X^T\Bigg)^T\Bigg(\dfrac{1}{\sqrt{n-1}}X^T\Bigg)\\ &amp;= \dfrac{1}{\sqrt{n-1}}XX^T$$即\(\boldsymbol {X’ ^T}\boldsymbol {X’}\)等于样本矩阵\(boldsymbol X\)的协方差矩阵\(S_X\)，\(S_X = \boldsymbol {X’ ^T}\boldsymbol {X’}\)<br>主</p>
+
       
     </div>
     
