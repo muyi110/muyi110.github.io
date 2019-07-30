@@ -125,7 +125,7 @@
 <meta property="og:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/pca_0.png">
-<meta property="og:updated_time" content="2019-07-30T09:43:00.502Z">
+<meta property="og:updated_time" content="2019-07-30T09:46:58.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中主成分分析-PCA">
 <meta name="twitter:description" content="主成分分析(PCA) 常用的无监督学习方法，利用正交变换将线性相关变量表示的观测数据转换为少数几个线性无关变量表示的数据，功能有降维和去相关性  引言主成分分析中，首先对给定数据进行规范化，使得数据各个变量均值为\(0\)，方差为\(1\)，之后对数据进行正交变换（理解为旋转），将原来由线性相关变量表示数据变为若干个线性无关新变量表示的数据。新变量是可能的正交变换中变量方差和最大的（在信号处">
@@ -431,7 +431,7 @@
 </blockquote>
 <p>假设有\(k\)个主成分，对于\(m\times n\)的实矩阵\(A\)，假设其秩为\(r\)，有\(0 &lt; k &lt; r\)，可将矩阵\(A\)进行<strong>截断奇异值分解</strong>$$A\approx U_k\Sigma_k V_k ^T$$其中\(U_k\)是\(m\times n\)矩阵，\(V_k\)是\(n\times k\)矩阵，\(\Sigma_k\)是\(k\)阶对角矩阵，\(U_k\)，\(V_k\)分别取矩阵\(A\)的完全奇异值分解矩阵\(U\)，\(V\)的前\(k\)列，\(\Sigma_k\)由矩阵\(A\)的完全奇异值分解矩阵\(\Sigma\)的前\(k\)个对角元素<br>定义一个新的矩阵\(\boldsymbol {X’}\)$$\boldsymbol {X’}=\dfrac{1}{\sqrt{n-1}}\boldsymbol {X^T}$$其中\(\boldsymbol {X’}\)的<strong>每一列均值为\(0\)</strong>，可得到$$\begin{equation}\begin{aligned}\boldsymbol {X’ ^T}\boldsymbol {X’} &amp;= \Bigg(\dfrac{1}{\sqrt{n-1}}X^T\Bigg)^T\Bigg(\dfrac{1}{\sqrt{n-1}}X^T\Bigg)\\ &amp;= \dfrac{1}{\sqrt{n-1}}XX^T\end{aligned}\end{equation}$$即\(\boldsymbol {X’ ^T}\boldsymbol {X’}\)等于样本矩阵\(\boldsymbol X\)的协方差矩阵\(S_X\)，\(S_X = \boldsymbol {X’ ^T}\boldsymbol {X’}\)<br>根据之前讨论，主成分分析是求协方差矩阵\(S_X\)的特征值和对应的单位特征向量，因此问题转化为求矩阵\(\boldsymbol {X’ ^T}\boldsymbol {X’}\)的特征值和对应的单位特征向量<br>假设\(\boldsymbol {X’}\)的截断奇异值分解为\(\boldsymbol {X’} = U\Sigma V^T\)，则\(V\)的列向量就是\(S_X = \boldsymbol {X’ ^T}\boldsymbol {X’}\)的单位特征向量。因此求\(\boldsymbol X\)的主成分可以通过求\(\boldsymbol {X’}\)的奇异值来实现</p>
 <blockquote>
-<p>证明：$$S_X = \boldsymbol {X’ ^T}\boldsymbol {X’} = (U\Sigma V^T)^T(U\Sigma V^T)=V\Sigma ^2 V^T$$所以\(V\)的列向量是\(S_X\)的单位特征向量</p>
+<p>证明：$$S_X = \boldsymbol {X’ ^T}\boldsymbol {X’} = (U\Sigma V^T)^T(U\Sigma V^T)=V\Sigma ^2 V^T$$由于\(VV^T = I\)，上式满足特征值分解公式，所以\(V\)的列向量是\(S_X\)的单位特征向量</p>
 </blockquote>
 <p><strong>算法</strong></p>
 
