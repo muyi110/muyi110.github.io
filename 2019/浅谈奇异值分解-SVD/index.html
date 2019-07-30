@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-30T13:39:49.571Z">
+<meta property="og:updated_time" content="2019-07-30T13:45:17.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈奇异值分解-SVD">
 <meta name="twitter:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
@@ -399,7 +399,10 @@
 <h2 id="紧奇异值分解与截断奇异值分解"><a href="#紧奇异值分解与截断奇异值分解" class="headerlink" title="紧奇异值分解与截断奇异值分解"></a>紧奇异值分解与截断奇异值分解</h2><p>\(A = U\Sigma V^T\)称为矩阵的完全奇异值分解(full singular value decomposition)，实际中常用的奇异值分解是紧奇异值分解和截断奇异值分解。紧奇异值分解是与原始矩阵等秩的奇异值分解，截断奇异值分解是比原始矩阵低秩的奇异值分解</p>
 <h3 id="紧奇异值分解"><a href="#紧奇异值分解" class="headerlink" title="紧奇异值分解"></a>紧奇异值分解</h3><p>设有\(m\times n\)的实矩阵\(A\)，其秩为\(\text{rank}(A)=r, \quad r\le \text{min}(m, n)\)，称\(U_r\Sigma_r V_r ^T\)为矩阵\(A\)的紧奇异值分解，即$$A = U_r\Sigma _r V_r ^T\$$其中\(U_r\)是\(m\times r\)的矩阵，\(V_r\)是\(n\times r\)的矩阵，\(\Sigma_r\)是\(r\)阶对角矩阵。矩阵\(U_r\)由完全奇异值分解中\(U\)的前\(r\)列，\(V_r\)由\(V\)的前\(r\)列，\(\Sigma_r\)由\(\Sigma\)的前\(r\)个对角元素得到。紧奇异值分解对角矩阵\(\Sigma_r\)的秩与原始矩阵的秩相同</p>
 <h3 id="截断奇异值分解"><a href="#截断奇异值分解" class="headerlink" title="截断奇异值分解"></a>截断奇异值分解</h3><p>在矩阵的奇异值分解中只取最大的\(k\)个奇异值（\(k &lt; r, r\)为矩阵的秩）对应的部分得到截断奇异值分解，实际中奇异值分解通常指截断奇异值分解<br>设有\(m\times n\)的实矩阵\(A\)，其秩为\(\text{rank}(A)=r\)，且\(0 &lt; k &lt; r\)，则称\(U_k\Sigma_k V_k ^T\)为矩阵\(A\)的截断异值分解(truncated singular value decomposition)，即$$A \approx U_k\Sigma_k V_k ^T\$$其中\(U_k\)是\(m\times k\)的矩阵，\(V_k\)是\(n\times k\)的矩阵，\(\Sigma_k\)是\(k\)阶对角矩阵。矩阵\(U_k\)由完全奇异值分解中\(U\)的前\(k\)列，\(V_k\)由\(V\)的前\(k\)列，\(\Sigma_k\)由\(\Sigma\)的前\(k\)个对角元素得到，对角矩阵\(\Sigma_k\)的秩比原始矩阵的秩低</p>
-
+<blockquote>
+<p>对矩阵数据进行压缩，奇异值分解提供一种解决方式，紧奇异值分解对应无损压缩，截断奇异值分解对应有损压缩</p>
+</blockquote>
+<h2 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h2>
       
     </div>
     
@@ -558,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#奇异值分解"><span class="nav-number">1.</span> <span class="nav-text">奇异值分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#紧奇异值分解与截断奇异值分解"><span class="nav-number">1.1.</span> <span class="nav-text">紧奇异值分解与截断奇异值分解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#紧奇异值分解"><span class="nav-number">1.1.1.</span> <span class="nav-text">紧奇异值分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#截断奇异值分解"><span class="nav-number">1.1.2.</span> <span class="nav-text">截断奇异值分解</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#奇异值分解"><span class="nav-number">1.</span> <span class="nav-text">奇异值分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#紧奇异值分解与截断奇异值分解"><span class="nav-number">1.1.</span> <span class="nav-text">紧奇异值分解与截断奇异值分解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#紧奇异值分解"><span class="nav-number">1.1.1.</span> <span class="nav-text">紧奇异值分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#截断奇异值分解"><span class="nav-number">1.1.2.</span> <span class="nav-text">截断奇异值分解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几何解释"><span class="nav-number">1.2.</span> <span class="nav-text">几何解释</span></a></li></ol></li></ol></div>
             
 
           </div>
