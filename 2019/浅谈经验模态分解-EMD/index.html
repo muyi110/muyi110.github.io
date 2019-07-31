@@ -125,7 +125,7 @@
 <meta property="og:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/emd_0.png">
-<meta property="og:updated_time" content="2019-07-31T14:25:28.050Z">
+<meta property="og:updated_time" content="2019-07-31T14:40:09.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈经验模态分解-EMD">
 <meta name="twitter:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
@@ -426,7 +426,12 @@
 <p>定义为过零点和极值点相等或者至多差\(1\)的连续筛选数目。一个<code>S-Number</code>被提前设置，只有当\(S\)次连续筛选后，每一次过零点和极值点保持相同（相等或者至多差\(1\)），筛选过程才停止</p>
 </blockquote>
 </li>
+<li>阈值方法<blockquote>
+<p><a href="http://perso.ens-lyon.fr/patrick.flandrin/NSIP03.pdf" target="_blank" rel="noopener">阈值方法</a>设置两个阈值，确保全局小的扰动同时考虑局部大的偏移</p>
+</blockquote>
+</li>
 </ul>
+<p>选择停机准则后，第一个<code>IMF</code>(\(c_1\))可以获得，\(c_1\)为包含输入信号<strong>最大频率的成分</strong>(component)，之后分离\(c_1\)$$X(t)-c_1=r_1$$利用\(r_1\)作为输入，获得其他的本征模函数</p>
 
       
     </div>
