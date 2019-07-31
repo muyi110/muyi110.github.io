@@ -125,7 +125,7 @@
 <meta property="og:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/svd_0.png">
-<meta property="og:updated_time" content="2019-07-31T06:51:21.217Z">
+<meta property="og:updated_time" content="2019-07-31T06:52:34.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈奇异值分解-SVD">
 <meta name="twitter:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
@@ -418,7 +418,7 @@
 <ol>
 <li><p>首先求\(A^T A\)的特征值和特征向量</p>
 <blockquote>
-<p>计算对称矩阵\(W=A^TA\)，并求特征方程$$W-\lambda I)x = 0$$得到特征值\(\lambda_i (i=1, 2, \dots, n)\)，将特征值由大到小排列$$\lambda_1\ge\lambda_2\ge\dots\ge\lambda_n\ge 0$$并带入求对应的特征向量</p>
+<p>计算对称矩阵\(W=A^TA\)，并求特征方程$$(W-\lambda I)x = 0$$得到特征值\(\lambda_i (i=1, 2, \dots, n)\)，将特征值由大到小排列$$\lambda_1\ge\lambda_2\ge\dots\ge\lambda_n\ge 0$$并带入求对应的特征向量</p>
 </blockquote>
 </li>
 <li><p>求\(n\)阶正交矩阵\(V\)</p>
@@ -426,7 +426,7 @@
 <p>将得到的特征向量单位化，得到单位特征向量\(v_1, v_2, \dots, v_n\)，构成\(n\)阶正交矩阵\(V\)$$V = \big[v_1, v_2, \dots, v_n\big]$$</p>
 </blockquote>
 </li>
-<li><p>求\(m\times n\)对角矩阵\(Sigma\)</p>
+<li><p>求\(m\times n\)对角矩阵\(\Sigma\)</p>
 </li>
 </ol>
 <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ol>
