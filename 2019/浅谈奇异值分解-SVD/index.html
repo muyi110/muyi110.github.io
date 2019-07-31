@@ -125,7 +125,7 @@
 <meta property="og:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/svd_0.png">
-<meta property="og:updated_time" content="2019-07-31T06:52:34.671Z">
+<meta property="og:updated_time" content="2019-07-31T10:05:06.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈奇异值分解-SVD">
 <meta name="twitter:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
@@ -427,6 +427,16 @@
 </blockquote>
 </li>
 <li><p>求\(m\times n\)对角矩阵\(\Sigma\)</p>
+<blockquote>
+<p>计算矩阵\(A\)的奇异值$$\sigma_i = \sqrt{\lambda_i}, \quad i = 1, 2, \dots, n$$构造\(m\times n\)矩形对角矩阵\(Sigma\)，主对角线元素是奇异值，其余元素为\(0\)$$\Sigma = \text{diag}(\sigma_1, \sigma_2, \dots, \sigma_n)$$</p>
+</blockquote>
+</li>
+<li><p>求\(m\)阶正交矩阵\(U\)</p>
+<blockquote>
+<p>对矩阵\(A\)的前\(r\)个正奇异值（也就是所有的正奇异值），根据\(Av_j = \sigma_j u_j, \quad j = 1, 2, \dots, n\)令$$u_j = \dfrac{1}{\sigma_j}Av_j, \quad j = 1, 2, \dots, r$$可得到$$U_1 = \big[u_1, u_2, \dots, u_r\big]$$求\(A^T\)的零空间的一组标准正交基\({u_{r+1}, u_{r+2}, \dots, u_m}\)令$$U_2 = \big[u_{r+1}, u_{r+2}, \dots, u_m\big]$$令\(U = [U_1, U_2]\)</p>
+</blockquote>
+</li>
+<li><p>得到奇异值分解$$A = U\Sigma V^T$$</p>
 </li>
 </ol>
 <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ol>
