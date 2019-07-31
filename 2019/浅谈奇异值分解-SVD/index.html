@@ -125,7 +125,7 @@
 <meta property="og:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/svd_0.png">
-<meta property="og:updated_time" content="2019-07-31T06:34:34.620Z">
+<meta property="og:updated_time" content="2019-07-31T06:36:46.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈奇异值分解-SVD">
 <meta name="twitter:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
@@ -408,10 +408,10 @@
 <h2 id="SVD的主要性质"><a href="#SVD的主要性质" class="headerlink" title="SVD的主要性质"></a>SVD的主要性质</h2><ol>
 <li>设矩阵\(A\)的奇异值分解为\(A=U\Sigma V^T\)，则以下关系成立$$\begin{equation}\begin{aligned}&amp; A^T A = (U\Sigma V^T)^T(U\Sigma V^T) = V(\Sigma ^T \Sigma)V^T\\&amp; AA^T = (U\Sigma V^T)(U\Sigma V^T)^T = U(\Sigma \Sigma ^T)U^T\end{aligned}\end{equation}$$可知矩阵\(AA^T\)和\(A^T A\)的特征分解存在，可由矩阵\(A\)的奇异值分解表示。\(V\)的列向量是\(A^T A\)的特征向量，\(U\)的列向量是\(AA^T\)的特征向量，\(\Sigma \)的奇异值是\(A^T A\)和\(AA^T\)的特征值平方根</li>
 <li>在矩阵\(A\)的奇异值分解中，奇异值，左奇异向量，右奇异向量之间存在对应关系<blockquote>
-<p>由\(A=U\Sigma V^T\)可知\(AV=U\Sigma\)，观测等式两端的第\(j\)列可得到$$Av_j = \sigma_j u_j, \quad j = 1, 2, \dots, n$$类似有\(A^T U = V\Sigma ^T\)，可得到$$A^T u_j = \sigma_i v_j, \quad j = 1, 2, \dots, n \\ A^T u_j = 0, \quad j = n+1, \dots, m$$</p>
+<p>由\(A=U\Sigma V^T\)可知\(AV=U\Sigma\)，观测等式两端的第\(j\)列可得到$$Av_j = \sigma_j u_j, \quad j = 1, 2, \dots, n$$类似有\(A^T U = V\Sigma ^T\)，可得到$$A^T u_j = \sigma_j v_j, \quad j = 1, 2, \dots, n \\ A^T u_j = 0, \quad j = n+1, \dots, m$$</p>
 </blockquote>
 </li>
-<li>矩阵\(A\)的奇异值分解中，奇异值\(sigma_1, \sigma_2, \dots, \sigma_n\)是唯一的，而矩阵\(U\)和\(V\)是不唯一的</li>
+<li>矩阵\(A\)的奇异值分解中，奇异值\(\sigma_1, \sigma_2, \dots, \sigma_n\)是唯一的，而矩阵\(U\)和\(V\)是不唯一的</li>
 <li>矩阵\(A\)和\(\Sigma\)秩相等，等于正奇异值\(\sigma_i\)的个数（包含重复的奇异值）<h2 id="SVD-算法"><a href="#SVD-算法" class="headerlink" title="SVD 算法"></a>SVD 算法</h2><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1></li>
 <li>奇异值分解可以被用来计算矩阵的<strong>广义逆阵（伪逆）</strong>。若矩阵\(M\)的奇异值分解为\(M = U\Sigma V^T\)那么\(M\)的伪逆为$$M^+ = V \Sigma^+ U^T$$其中\(\Sigma^+\)是\(\Sigma\)的伪逆，是将\(\Sigma\)主对角线上每个非零元素都求倒数之后再转置得到的。求伪逆通常可以用来求解<strong>最小二乘法</strong>问题。</li>
 <li>奇异值分解在统计中的主要应用为<strong>主成分分析</strong>（<code>PCA</code>）。数据集的特征值（在<code>SVD</code>中用奇异值表征）按照重要性排列，降维的过程就是舍弃不重要的特征向量的过程，而剩下的特征向量张成空间为降维后的空间。</li>
