@@ -125,7 +125,7 @@
 <meta property="og:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/svd_0.png">
-<meta property="og:updated_time" content="2019-07-31T03:40:59.938Z">
+<meta property="og:updated_time" content="2019-07-31T05:12:56.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈奇异值分解-SVD">
 <meta name="twitter:description" content="奇异值分解 奇异值分解(singular value decomposition, SVD)是一种矩阵因子分解方法，任意一个\(m\times n\)矩阵，都可以表示为三个矩阵的乘积形式（因子分解）。矩阵的奇异值分解一定存在，但不唯一，奇异值分解可以看作矩阵数据压缩的一种方式，即用因子分解近似表示原始矩阵  定义：矩阵的奇异值分解是指将一个非零的\(m\times n\)实矩阵\(A\)，\">
@@ -405,7 +405,9 @@
 <p>对矩阵数据进行压缩，奇异值分解提供一种解决方式，紧奇异值分解对应无损压缩，截断奇异值分解对应有损压缩</p>
 </blockquote>
 <h2 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h2><p>从线性变化的角度理解奇异值分解，\(m\times n\)矩阵\(A\)表示从\(n\)维空间\(\mathbb{R}^n\)到\(m\)维空间\(\mathbb{R}^m\)的一个线性变换，即$$T:x\rightarrow Ax$$其中\(x\in \mathbb{R}^n\)， \(Ax\in \mathbb{R}^m\)，\(x\)和\(Ax\)分别为各自空间的向量。线性变换可以分解为三个简单的变换：一个坐标系的旋转变换，一个坐标轴的缩放变换，另一个坐标系的旋转变换，根据奇异值分解定理，这种分解变换一定存在<br>对矩阵\(A\)进行奇异值分解，得到\(A = U\Sigma V^T\)，其中\(U\)和\(V\)都是正交矩阵，所以\(V\)的列向量\(v_1, v_2, \dots, v_n\)构成\(\mathbb{R}^n\)空间的一组标准正交积，表示\(\mathbb{R}^n\)空间中的正交坐标系的旋转变换；\(U\)的列向量\(u_1, u_2, \dots, u_m\)构成\(\mathbb{R}^m\)空间的一组标准正交积，表示\(\mathbb{R}^m\)空间中的正交坐标系的旋转变换；\(\Sigma \)的对角元素\(\sigma_1, \sigma_2, \dots, \sigma_n\)是一组非负实数，表示\(\mathbb{R}^n\)中的原始正交坐标系坐标轴的\(\sigma_1, \sigma_2, \dots, \sigma_n\)倍的缩放变换<br>任意一个向量\(x\in \mathbb{R}^n\)，经过基于\(A = U\Sigma V^T\)的线性变换，等价于经过坐标系的旋转变换\(V^T\)，坐标轴的缩放变换\(\Sigma\)及坐标系的旋转变换\(U\)得到向量\(Ax\in \mathbb{R}\)。下图直观给出几何解释<img src="/images/svd_0.png" alt="奇异值分解几何解释"></p>
-<h2 id="SVD的主要性质"><a href="#SVD的主要性质" class="headerlink" title="SVD的主要性质"></a>SVD的主要性质</h2><h2 id="SVD-算法"><a href="#SVD-算法" class="headerlink" title="SVD 算法"></a>SVD 算法</h2><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ol>
+<h2 id="SVD的主要性质"><a href="#SVD的主要性质" class="headerlink" title="SVD的主要性质"></a>SVD的主要性质</h2><ol>
+<li>设矩阵\(A\)的奇异值分解为\(A=U\Sigma V^T\)，则以下关系成立$$\begin{equation}\begin{aligned}&amp; A^T A = (U\Sigma V^T)^T(U\Sigam V^T) = V(\Sigma ^T \Sigma)V^T\\&amp; AA^T = (U\Sigma V^T)(U\Sigam V^T)^T = U(\Sigma \Sigma ^T)U^T\end{aligned}\end{equation}$$可知矩阵\(AA^T\)和\(A^T A\)的特征分解存在，可由矩阵\(A\)的奇异值分解表示。\(V\)的列向量是\(A^T A\)的特征向量，\(U\)的列向量是\(AA^T\)的特征向量，\(\Sigma \)的奇异值是\(A^T A\)和\(AA^T\)的特征值平方根</li>
+<li>在矩阵<h2 id="SVD-算法"><a href="#SVD-算法" class="headerlink" title="SVD 算法"></a>SVD 算法</h2><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1></li>
 <li>奇异值分解可以被用来计算矩阵的<strong>广义逆阵（伪逆）</strong>。若矩阵\(M\)的奇异值分解为\(M = U\Sigma V^T\)那么\(M\)的伪逆为$$M^+ = V \Sigma^+ U^T$$其中\(\Sigma^+\)是\(\Sigma\)的伪逆，是将\(\Sigma\)主对角线上每个非零元素都求倒数之后再转置得到的。求伪逆通常可以用来求解<strong>最小二乘法</strong>问题。</li>
 <li>奇异值分解在统计中的主要应用为<strong>主成分分析</strong>（<code>PCA</code>）。数据集的特征值（在<code>SVD</code>中用奇异值表征）按照重要性排列，降维的过程就是舍弃不重要的特征向量的过程，而剩下的特征向量张成空间为降维后的空间。</li>
 </ol>
