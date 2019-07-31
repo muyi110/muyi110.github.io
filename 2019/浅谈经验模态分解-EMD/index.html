@@ -125,7 +125,7 @@
 <meta property="og:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/emd_0.png">
-<meta property="og:updated_time" content="2019-07-31T14:05:41.876Z">
+<meta property="og:updated_time" content="2019-07-31T14:25:28.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈经验模态分解-EMD">
 <meta name="twitter:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
@@ -416,6 +416,17 @@
 </blockquote>
 </li>
 </ol>
+<p><strong>停机准则</strong><br>停机准则决定了产生一个本征模函数(<code>IMF</code>)筛选过程执行的数目，有如下停机准则</p>
+<ul>
+<li>标准偏差(Standard Deviation, SD)<blockquote>
+<p>$$SD_k=\sum_{t=0}^{T}\dfrac{|h_{k-1}(t)-h_k(t)|^2}{h_{k-1}^2 (t)}$$当\(SD\)的值小于给定的阈值时，筛选过程停止</p>
+</blockquote>
+</li>
+<li>S Number准则<blockquote>
+<p>定义为过零点和极值点相等或者至多差\(1\)的连续筛选数目。一个<code>S-Number</code>被提前设置，只有当\(S\)次连续筛选后，每一次过零点和极值点保持相同（相等或者至多差\(1\)），筛选过程才停止</p>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
