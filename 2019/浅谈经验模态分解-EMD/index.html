@@ -125,7 +125,7 @@
 <meta property="og:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/emd_0.png">
-<meta property="og:updated_time" content="2019-07-31T14:40:09.248Z">
+<meta property="og:updated_time" content="2019-07-31T14:51:19.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈经验模态分解-EMD">
 <meta name="twitter:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
@@ -396,6 +396,9 @@
 
 <h1 id="经验模态分解"><a href="#经验模态分解" class="headerlink" title="经验模态分解"></a>经验模态分解</h1><blockquote>
 <p>经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。<code>EMD</code>在处理非平稳及非线性数据上具有明显的优势，<strong>适合分析非线性非平稳的信号序列</strong>，具有较高的信噪比。<br><strong>平稳信号</strong>：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化<br><strong>非平稳信号</strong>：分布参数（均值，方差，协方差等）或者分布规律随着时间发生变化<br>该方法关键是经验模式分解，使复杂的信号分解为有限个本征模函数(Intrinsic Mode Function, IMF)，分解出来的各个<code>IMF</code>分量包含了原信号的不同时间尺度的局部特征信息。通俗理解就是，<code>EMD</code>是一台机器，将一堆混杂的硬币投进去，其会自动按照1角、5毛、1元等分好</p>
+<blockquote>
+<p>Since the signal is decomposed in time domain and the length of the IMFs is the same as the original signal, HHT preserves the characteristics of the varying frequency. This is an important advantage of HHT since real-world signal usually has multiple causes happening in different time intervals.<br>Because the first IMF usually carries the most oscillating (high-frequency) components, it can be rejected to remove high-frequency components (e.g., random noise). EMD based smoothing algorithms have been widely used in seismic data processing, where high-quality seismic records are highly demanded. Without leaving the time domain, EMD is adaptive and highly efficient. Since the decomposition is based on the local characteristic time scale of the data, it provides analyzing nonstationary and nonlinear time series data.</p>
+</blockquote>
 </blockquote>
 <h2 id="EMD原理"><a href="#EMD原理" class="headerlink" title="EMD原理"></a>EMD原理</h2><p>在物理上，如果瞬时频率有意义，那么函数必须是对称的，局部均值为零，并且具有相同的过零点和极值点数目。任何信号都是由若干本征模函数组成，一个<strong>本征模函数</strong>必须满足以下两个条件：</p>
 <ol>
