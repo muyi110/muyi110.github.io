@@ -117,17 +117,17 @@
 
 
 
-<meta name="description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta name="description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈机器学习中应用的变分法">
-<meta property="og:url" content="https://muyi110.github.io/2018/浅谈机器学习中应用的变分法/index.html">
+<meta property="og:title" content="浅谈机器学习中的决策树">
+<meta property="og:url" content="https://muyi110.github.io/2019/浅谈机器学习中的决策树/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-27T12:17:32.825Z">
+<meta property="og:updated_time" content="2019-08-01T08:59:10.427Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈机器学习中应用的变分法">
-<meta name="twitter:description" content="变分法 可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))  引子在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x">
+<meta name="twitter:title" content="浅谈机器学习中的决策树">
+<meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
 
 
 
@@ -157,13 +157,13 @@
 
 
 
-  <link rel="canonical" href="https://muyi110.github.io/2018/浅谈机器学习中应用的变分法/"/>
+  <link rel="canonical" href="https://muyi110.github.io/2019/浅谈机器学习中的决策树/"/>
 
 
 
 
 
-  <title>浅谈机器学习中应用的变分法 | MuYi's Blog</title>
+  <title>浅谈机器学习中的决策树 | MuYi's Blog</title>
   
 
 
@@ -300,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2018/浅谈机器学习中应用的变分法/">
+    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2019/浅谈机器学习中的决策树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="穆义">
@@ -317,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈机器学习中应用的变分法</h1>
+          <h1 class="post-title" itemprop="name headline">浅谈机器学习中的决策树</h1>
         
 
         <div class="post-meta">
@@ -329,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-13T15:05:10+08:00">
-                2018-07-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T11:49:25+08:00">
+                2019-08-01
               </time>
             
 
@@ -392,26 +392,13 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="变分法"><a href="#变分法" class="headerlink" title="变分法"></a>变分法</h1><blockquote>
-<p>可以将函数\(y(x)\)看成一个对于任何输入\(x\)，返回一个输出值\(y\)的运算符(operator)。用相同的方式可以定义一个泛函\(F[y]\)，将其看成一个运算符(operator)。(输入是一个函数\(y(x)\)，输出值是\(F\))</p>
+<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><blockquote>
+<p>决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪</p>
 </blockquote>
-<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>在机器学习领域，泛函主要应用在熵中，比如概率\(p(x)\)的熵可以写成\(H[p]\)。变分法的目的是找到一个函数\(y(x)\)使泛函\(F[y]\)取最大值或最小值。<br>对于一元函数\(y(x)\)求导。可根据如下公式$$y(x+\varepsilon)=y(x)+\dfrac {dy}{dx}\varepsilon+O(\varepsilon ^2)$$令\(\varepsilon \rightarrow 0\)。同理，对于多元函数\(y(x_{1},\ldots ,x_{D})\)的偏导数根据如下公式定义$$y(x_{1}+\varepsilon_{1},\ldots ,x_{D}+\varepsilon_{D})=y(x_{1},\ldots ,x_{D})+\sum_{i=1}^{D}\dfrac {\partial y}{\partial x_{i}}\varepsilon_{i}+O(\varepsilon^2)$$同样的思想，用于泛函求导。类比上面的公式可写出如下公式$$F[y(x)+\varepsilon\eta (x)]=F[y(x)]+\varepsilon\int\dfrac {\partial F}{\partial y\left(x\right)}\eta (x)dx+O(\varepsilon^2)$$其中\(\eta (x)\)是\(x\)任意的函数。<strong>我们的目的是找到泛函\(F[y(x)]\)的极值；换句话说就是，当\(F[y]\)取极值时候，函数\(y(x)\)的微小变化(\(y(x)+\varepsilon\eta (x)\))不会使得\(F[y]\)的值发生改变。</strong>因此根据上面的公式，当泛函\(F[y(x)]\)取极值时，有下面的公式$$\int\dfrac {\partial F}{\partial y(x)}\eta (x)dx=0$$由于此公式必须对任意的\(\eta (x)\)都成立，<strong>因此得到泛函的导数\(\dfrac {\partial F}{\partial y(x)}=0\)(此时的\(y(x)\)使\(F[y]\)取极值）。</strong></p>
-<h2 id="变分法浅探究"><a href="#变分法浅探究" class="headerlink" title="变分法浅探究"></a>变分法浅探究</h2><p>考虑如下形式定义的泛函$$F[y]=\int G(y(x),y’(x),x)dx$$其中假设\(y(x)\)的值在积分边界处是固定的。考虑函数\(y(x)\)的变化，得到如下公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
-<ul>
-<li><strong>杂谈：对于上面公式的非正式说明</strong><blockquote>
-<p>根据定义$$F[y(x)+\varepsilon \eta (x)]=\int G[y(x)+\varepsilon \eta (x),y’(x)+\varepsilon \eta’(x),x]dx$$可以将函数\(G\)看成多元函数，所以可以得到“多元函数\(G\)”的偏导数为(这样的写法不对，但为了和引言中多元函数展开公式相对应，就这么写了，忽略系数\(\varepsilon\)）$$\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)$$我们知道，对于$$y(x)=\int f(x)dx$$有$$y’(x)=\int f’(x)dx$$所以可得到公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int \Big\{\dfrac {\partial G}{\partial y}\eta (x)+\dfrac {\partial G}{\partial y’}\eta’(x)\Big\}dx+O(\varepsilon^2)$$</p>
+<h2 id="分类决策树"><a href="#分类决策树" class="headerlink" title="分类决策树"></a>分类决策树</h2><blockquote>
+<p>分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类</p>
 </blockquote>
-</li>
-</ul>
-<p>对上面积分项中第二项利用分部积分可得$$\int\dfrac {\partial G}{\partial y’}\eta’(x)dx=\dfrac {\partial G}{\partial y’}\eta (x)\Big |-\int\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)\eta (x)dx$$由于函数\(y(x)\)在积分边界处是固定的，所以有$$\dfrac {\partial G}{\partial y’}\eta (x)\Big |=0$$</p>
-<ul>
-<li><strong>杂谈:关于函数\(y(x)\)在积分边界处是固定的，上式等于\(0\)</strong><blockquote>
-<p>由于函数\(y(x)\)在积分边界处是固定的，也就是说在积分边界处函数\(y(x)\)不会变化，因此在积分边界处有\(y(x)=y(x)+\varepsilon\eta (x)\)，进而可以得到在积分边界处函数\(\eta (x)\)必须消失。</p>
-</blockquote>
-</li>
-</ul>
-<p>因此可以得到如下公式$$F[y(x)+\varepsilon \eta (x)]=F[y(x)]+\varepsilon \int\Big\{\dfrac {\partial G}{\partial y}-\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)\Big\}\eta (x)dx+O(\varepsilon^2)$$根据以上分析，泛函在极值处导数为\(0\)可以得到如下公式$$\dfrac {\partial G}{\partial y}-\dfrac {d}{dx}\Big(\dfrac {\partial G}{\partial y’}\Big)=0$$如果泛函的定义只是对函数\(G(y,x)\)的积分，只需要令\(\dfrac {\partial G}{\partial y}=0\)即可。</p>
-<p>结束<br>参考：PRML</p>
+<p>用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将实例分配到子节点，如此递归对测试实例进行分配，直到到达叶节点，将实例分配到叶节点的类中</p>
 
       
     </div>
@@ -436,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/浅谈机器学习中Lagrange-Multipliers/" rel="next" title="浅谈机器学习中Lagrange-Multipliers">
-                <i class="fa fa-chevron-left"></i> 浅谈机器学习中Lagrange-Multipliers
+              <a href="/2019/浅谈经验模态分解-EMD/" rel="next" title="浅谈经验模态分解-EMD">
+                <i class="fa fa-chevron-left"></i> 浅谈经验模态分解-EMD
               </a>
             
           </div>
@@ -445,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01-神经网络和深度学习/" rel="prev" title="01.神经网络和深度学习">
-                01.神经网络和深度学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -575,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变分法"><span class="nav-number">1.</span> <span class="nav-text">变分法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变分法浅探究"><span class="nav-number">1.2.</span> <span class="nav-text">变分法浅探究</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策树"><span class="nav-number">1.1.</span> <span class="nav-text">分类决策树</span></a></li></ol></li></ol></div>
             
 
           </div>
