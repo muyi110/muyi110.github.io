@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/emd_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/emd_1.png">
-<meta property="og:updated_time" content="2019-08-01T02:34:30.891Z">
+<meta property="og:updated_time" content="2019-08-01T02:51:06.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈经验模态分解-EMD">
 <meta name="twitter:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
@@ -446,14 +446,18 @@
 <p>模态混叠问题发生在<code>EMD</code>的执行过程中。出现下列情况之一就称为模态混合</p>
 <ol>
 <li>在同一个<code>IMF</code>分量中,存在尺度分布范围很宽却又各不相同的信号</li>
-<li>在不同的<code>IMF</code>分量中,存在着尺度相近的信号</li>
+<li>在不同的<code>IMF</code>分量中,存在着尺度相近的信号<br>模态混叠问题使得特征提取、模型训练、模式识别变得困难，<code>IMF</code>失去了单一特征尺度的特征。集成经验模态分解(Ensemble empirical mode decomposition, EEMD)被提出用来解决模态混叠问题</li>
 </ol>
 </blockquote>
-</li>
+<h2 id="EMD和其他方法对比"><a href="#EMD和其他方法对比" class="headerlink" title="EMD和其他方法对比"></a>EMD和其他方法对比</h2><img src="/images/emd_1.png" alt="结果对比"><h1 id="集成经验模态分解-EEMD"><a href="#集成经验模态分解-EEMD" class="headerlink" title="集成经验模态分解(EEMD)"></a>集成经验模态分解(EEMD)</h1>分解过程</li>
 </ul>
-<p>模态混叠问题使得特征提取、模型训练、模式识别变得困难，<code>IMF</code>失去了单一特征尺度的特征。集成经验模态分解(Ensemble empirical mode decomposition, EEMD)被提出用来解决模态混叠问题</p>
-<h2 id="EMD和其他方法对比"><a href="#EMD和其他方法对比" class="headerlink" title="EMD和其他方法对比"></a>EMD和其他方法对比</h2><p><img src="/images/emd_1.png" alt="结果对比"></p>
-<h1 id="集成经验模态分解-EEMD"><a href="#集成经验模态分解-EEMD" class="headerlink" title="集成经验模态分解(EEMD)"></a>集成经验模态分解(EEMD)</h1>
+<ol>
+<li>给原始信号添加白噪声序列</li>
+<li>分解带有白噪声序列的输入信号，得到<code>IMFs</code></li>
+<li>重复第一和第二步，每次添加不同的白噪声序列</li>
+<li>获取相关<code>IMF</code>集成的均值最为最后的结果</li>
+</ol>
+
       
     </div>
     
