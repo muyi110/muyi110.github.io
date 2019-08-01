@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T08:59:10.427Z">
+<meta property="og:updated_time" content="2019-08-01T09:34:19.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中的决策树">
 <meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
@@ -399,6 +399,8 @@
 <p>分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类</p>
 </blockquote>
 <p>用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将实例分配到子节点，如此递归对测试实例进行分配，直到到达叶节点，将实例分配到叶节点的类中</p>
+<h3 id="决策树学习"><a href="#决策树学习" class="headerlink" title="决策树学习"></a>决策树学习</h3><p>决策树学习的本质是从训练数据集中归纳出一组分类规则。与训练数据集不矛盾的决策树（对训练数据集能正确分类）可能有多个，也可能一个都没有，需要<strong>找一个与训练数据集矛盾较小的决策树，同时具有很好的泛化能力</strong>。如果特征数量较多，可以在决策树学习开始的时候，<strong>对特征进行选择</strong>，保留对训练数据有足够分类能力的特征<br><strong>决策树的生成对应模型的局部选择，决策树的剪枝对应模型的全局选择，决策树的生成只考虑局部最优，决策树的剪枝则考虑全局最优</strong></p>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>参考：统计学习方法（第二版）–李航</p>
 
       
     </div>
@@ -558,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策树"><span class="nav-number">1.1.</span> <span class="nav-text">分类决策树</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策树"><span class="nav-number">1.1.</span> <span class="nav-text">分类决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树学习"><span class="nav-number">1.1.1.</span> <span class="nav-text">决策树学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择"><span class="nav-number">1.1.2.</span> <span class="nav-text">特征选择</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
