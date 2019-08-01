@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/emd_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/emd_1.png">
-<meta property="og:updated_time" content="2019-08-01T01:57:25.343Z">
+<meta property="og:updated_time" content="2019-08-01T02:27:16.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈经验模态分解-EMD">
 <meta name="twitter:description" content="经验模态分解 经验模态分解(Empirical Mode Decomposition, EMD)是依据数据自身的时间尺度特征来进行信号分解，无需预先设定任何基函数，是一种时频域信号处理方式。EMD在处理非平稳及非线性数据上具有明显的优势，适合分析非线性非平稳的信号序列，具有较高的信噪比。平稳信号：分布参数（均值，方差，协方差等）或者分布规律随着时间不发生变化非平稳信号：分布参数（均值，方差，">
@@ -436,7 +436,21 @@
 </li>
 </ul>
 <p>选择停机准则后，第一个<code>IMF</code>(\(c_1\))可以获得，\(c_1\)为包含输入信号<strong>最大频率的成分</strong>(component)，之后分离\(c_1\)$$X(t)-c_1=r_1$$利用\(r_1\)作为输入，获得其他的本征模函数</p>
-<h2 id="EMD限制-Limitations"><a href="#EMD限制-Limitations" class="headerlink" title="EMD限制(Limitations)"></a>EMD限制(Limitations)</h2><h2 id="EMD和其他方法对比"><a href="#EMD和其他方法对比" class="headerlink" title="EMD和其他方法对比"></a>EMD和其他方法对比</h2><p><img src="/images/emd_1.png" alt="结果对比"></p>
+<h2 id="EMD限制-Limitations"><a href="#EMD限制-Limitations" class="headerlink" title="EMD限制(Limitations)"></a>EMD限制(Limitations)</h2><p><code>EMD</code>的主要缺点有如下</p>
+<ul>
+<li>末端效应<blockquote>
+<p>末端效应发生在信号的开始和结尾，因为在在信号开始之前和结尾之后没有样本点被考虑。大多数情况下，末端点并不是信号的极值，但是在执行<code>EMD</code>的过程中，极值包络线会在末断点发散(diverge)，导致错误，进而扭曲了<code>IMF</code>在末端点的波形，而且这种错误在<code>EMD</code>分解过程中会累积。</p>
+</blockquote>
+</li>
+<li>模态混叠问题<blockquote>
+<p>模态混叠问题发生在<code>EMD</code>的执行过程中。出现下列情况之一就称为模态混合:</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>在同一个<code>IMF</code>分量中,存在尺度分布范围很宽却又各不相同的信号</li>
+<li>在不同的<code>IMF</code>分量中,存在着尺度相近的信号<br>模态混叠问题使得特征提取、模型训练、模式识别变得困难，<code>IMF</code>失去了单一特征尺度的特征。<h2 id="EMD和其他方法对比"><a href="#EMD和其他方法对比" class="headerlink" title="EMD和其他方法对比"></a>EMD和其他方法对比</h2><img src="/images/emd_1.png" alt="结果对比"></li>
+</ol>
 
       
     </div>
