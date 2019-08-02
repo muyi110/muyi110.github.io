@@ -125,7 +125,7 @@
 <meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/cart_0.png">
-<meta property="og:updated_time" content="2019-08-02T14:02:30.498Z">
+<meta property="og:updated_time" content="2019-08-02T14:04:01.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中的决策树">
 <meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
@@ -476,7 +476,7 @@
 <blockquote>
 <p><strong>基尼指数</strong>：分类问题中，假设有\(K\)个类别，样本点属于第\(k\)个类的概率为\(p_k\)，则概率分布的基尼指数为$$\text{Gini}(p)=\sum_{k=1}^{K}p_k(1-p_k)=1-\sum_{k=1}^{K}p_k ^2$$对于二分类问题，若样本点属于第一个类的概率为\(p\)，则概率分布的基尼指数为$$\text{Gini}(p)=2p(1-p)$$对于给定的样本集合\(D\)，其基尼指数为$$\text{Gini}(D)=1-\sum_{k=1}^{K}\big(\dfrac{|C_k|}{|D|}\big)^2$$其中\(C_k\)表示属于第\(k\)类的样本子集，\(K\)为类别个数</p>
 </blockquote>
-<p>如果样本集合\(D\)根据特征\(A\)是否取某一可能值\(a\)被分为\(D_1\)和\(D_2\)两部分，即$$D_1=\{(x, y)\in D|A(x)=a\}, \quad D_2 = D-D_1$$则在特征\(A\)的条件下，集合\(D\)的基尼指数定义为$$\text{Gini}(D, A)=\dfrac{|D_1|}{|D|}\text{Gini}(D_1)+\dfrac{|D_2|}{|D|}\text{Gini}(D_2)$$基尼指数\(\text{Gini}(D)\)表示集合\(D\)的不确定性，\(\text{Gini}(D, A)表示经\(A=a\)分割后集合\(D\)的不确定性。基尼指数越大，样本集合的不确定性就越大，与熵相似</p>
+<p>如果样本集合\(D\)根据特征\(A\)是否取某一可能值\(a\)被分为\(D_1\)和\(D_2\)两部分，即$$D_1=\{(x, y)\in D|A(x)=a\}, \quad D_2 = D-D_1$$则在特征\(A\)的条件下，集合\(D\)的基尼指数定义为$$\text{Gini}(D, A)=\dfrac{|D_1|}{|D|}\text{Gini}(D_1)+\dfrac{|D_2|}{|D|}\text{Gini}(D_2)$$基尼指数\(\text{Gini}(D)\)表示集合\(D\)的不确定性，\(\text{Gini}(D, A)\)表示经\(A=a\)分割后集合\(D\)的不确定性。基尼指数越大，样本集合的不确定性就越大，与熵相似</p>
 <p>参考：统计学习方法（第二版）–李航</p>
 
       
