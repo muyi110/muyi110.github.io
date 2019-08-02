@@ -125,7 +125,7 @@
 <meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/cart_0.png">
-<meta property="og:updated_time" content="2019-08-02T12:02:50.277Z">
+<meta property="og:updated_time" content="2019-08-02T12:04:56.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中的决策树">
 <meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
@@ -465,7 +465,7 @@
 <li>决策树生成：基于训练数据集生成决策树，生成的决策树要尽量大</li>
 <li>决策树剪枝：用验证集对已生成的树进行剪枝，并选择最优子树，用损失函数最小作为剪枝标准</li>
 </ol>
-<h3 id="text-CART-生成"><a href="#text-CART-生成" class="headerlink" title="\(\text{CART}\)生成"></a>\(\text{CART}\)生成</h3><p><code>CART</code>决策树的生成就是递归构建<strong>二叉决策树</strong>的过程。对回归树用平方误差最小化准则，对分类树用<strong>基尼指数(Gini index)最小化准则</strong>进行特征选择。<br><strong>回归树生成</strong><br>假设\(X\)与\(Y\)分别为输入和输出变量，并且\(Y\)是连续变量，给定训练数据集$$D=\{(x_1, y_1), (x_2, y_2), \dots, (x_N, y_N)\}$$考虑如何生成回归树。一棵回归树对应输入空间（特征空间）的一个划分及在划分单元上的输出值。假设将输入空间划分为\(M\)个单元\(R_1, R_2, \dots, \R_M\)，且在每个单元\(R_m\)上有一个固定的输出值\(c_m\)，回归树可以表示为$$f(x)=\sum_{i=1}^{M}c_mI(x\in R_m)$$当输入空间划分确定时，可用平方误差\(\sum_{x_i\in R_m}(y_i - f(x_i))^2\)表示回归树对训练集的误差，基于平方误差最小准则求解每个单元上的最优输出值。可知，单元\(R_m\)上的\(c_m\)最优输出值\(\hat{c_m}\)是\(R_m\)上所有输入\(x_i\)对应输出\(y_i\)的均值，即$$\hat{c_m} = \text{ave}(y_i|x_i\in R_m)$$问题转为如何对输入空间划分</p>
+<h3 id="text-CART-生成"><a href="#text-CART-生成" class="headerlink" title="\(\text{CART}\)生成"></a>\(\text{CART}\)生成</h3><p><code>CART</code>决策树的生成就是递归构建<strong>二叉决策树</strong>的过程。对回归树用平方误差最小化准则，对分类树用<strong>基尼指数(Gini index)最小化准则</strong>进行特征选择。<br><strong>回归树生成</strong><br>假设\(X\)与\(Y\)分别为输入和输出变量，并且\(Y\)是连续变量，给定训练数据集$$D=\{(x_1, y_1), (x_2, y_2), \dots, (x_N, y_N)\}$$考虑如何生成回归树。一棵回归树对应输入空间（特征空间）的一个划分及在划分单元上的输出值。假设将输入空间划分为\(M\)个单元\(R_1, R_2, \dots, R_M\)，且在每个单元\(R_m\)上有一个固定的输出值\(c_m\)，回归树可以表示为$$f(x)=\sum_{m=1}^{M}c_mI(x\in R_m)$$当输入空间划分确定时，可用平方误差\(\sum_{x_i\in R_m}(y_i - f(x_i))^2\)表示回归树对训练集的误差，基于平方误差最小准则求解每个单元上的最优输出值。可知，单元\(R_m\)上的\(c_m\)最优输出值\(\hat{c_m}\)是\(R_m\)上所有输入\(x_i\)对应输出\(y_i\)的均值，即$$\hat{c_m} = \text{ave}(y_i|x_i\in R_m)$$问题转为如何对输入空间划分。</p>
 <p>参考：统计学习方法（第二版）–李航</p>
 
       
