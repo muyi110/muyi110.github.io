@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T08:34:42.855Z">
+<meta property="og:updated_time" content="2019-08-02T08:43:51.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中的决策树">
 <meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
@@ -435,7 +435,19 @@
 <li>对第\(i\)个子节点，以\(D_i\)为训练集，以\(A-\{A_g\}\)为特征集，递归调用\(1\backsim 5\)，得到子树\(T_i\)，返回\(T_i\)</li>
 </ol>
 <blockquote>
-<p><code>ID3</code>算法的核心是在决策树各个节点上应用<strong>信息增益准则选择特征</strong>，递归构建决策树，<code>ID3</code>相当于用极大似然法进行概率模型的选择</p>
+<p><code>ID3</code>算法的核心是在决策树各个节点上应用<strong>信息增益准则选择特征</strong>，递归构建决策树，<code>ID3</code>相当于用极大似然法进行概率模型的选择。<code>ID3</code>算法只有树的生成，该算法生成的树容易产生过拟合</p>
+</blockquote>
+<p><strong>\(C4.5\)算法</strong><br>输入：训练数据集\(D\)，特征集\(A\)和阈值\(\varepsilon\)<br>输出：决策树\(T\)</p>
+<ol>
+<li>若集合\(D\)中所有实例属于同一个类别\(C_k\)，则决策树\(T\)为单节点树，将类别\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
+<li>若\(A=\varnothing\)，则\(T\)为单节点树，将\(D\)中具有实例数最大的类\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
+<li>计算\(A\)中各个特征对数据集\(D\)的信息增益比，选择信息增益比最大的特征\(A_g\)</li>
+<li>如果\(A_g\)的信息增益比小于阈值\(\varepsilon\)，则置\(T\)为单节点树，将\(D\)中实例数最大的类\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
+<li>否则，对\(A_g\)的每一个可能取值\(a_i\)，依\(A_g=a_i\)将\(D\)分割为若干个非空子集\(D_i\)，将\(D_i\)中实例数最大的类作为标记，构建子节点，由节点及其子节点构成树\(T\)，返回\(T\)</li>
+<li>对第\(i\)个子节点，以\(D_i\)为训练集，以\(A-\{A_g\}\)为特征集，递归调用\(1\backsim 5\)，得到子树\(T_i\)，返回\(T_i\)</li>
+</ol>
+<blockquote>
+<p>和<code>ID3</code>算法相似，<code>C4.5</code>在生成树的过程中，用<strong>信息增益比来选择特征</strong></p>
 </blockquote>
 <h3 id="决策树剪枝"><a href="#决策树剪枝" class="headerlink" title="决策树剪枝"></a>决策树剪枝</h3><p>参考：统计学习方法（第二版）–李航</p>
 
