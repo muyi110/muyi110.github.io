@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T03:32:45.361Z">
+<meta property="og:updated_time" content="2019-08-02T08:32:25.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中的决策树">
 <meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
@@ -422,7 +422,22 @@
 <p>解释：样本总个数是一定的，当某一特征取值较多时候，则分配到每一个特征取值的样本变少，而计算条件熵$$H(D|A)=\sum_{i=1}^{n}\dfrac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}^{n}\dfrac{|D_i|}{|D|}\sum_{k=1}^{K}\dfrac{|D_{ik}|}{|D_i|}\log_2 \dfrac{|D_{ik}|}{|D_i|}$$需要计算某一特征取值为\(i\)时对应的各个类别的概率，而实际用频率，即\(\dfrac{|D_{ik}|}{|D_i|}\)来估计概率，当对应的样本少时，这种估计并不准确（可以类比投硬币实验，实验次数少，估计的结果不准确），存在偏差，使得分布不均匀，而分布不均匀导致计算的熵偏低，进而使得信息增益较大，所以有以信息增益作为划分训练数据集的特征，存在偏向于选择取值较多的特征问题<br>拓展：如果每一个特征取值下样本数目足够多，则用频率可近似估计概率，每一个特征计算的条件熵基本一样，就不存在所谓的以信息增益作为划分训练数据集的特征，存在偏向于选择取值较多的特征问题</p>
 </blockquote>
 <p>信息增益比\(g_R(D, A)\)定义为信息增益\(g(D, A)\)与训练集\(D\)关于特征\(A\)的值的熵\(H_A(D)\)之比$$g_R(D, A)=\dfrac{g(D, A)}{H_A(D)}$$其中\(H_A(D) = -\sum_{i=1}^{n}\dfrac{|D_i|}{|D|}\log_2 \dfrac{|D_i|}{|D|}\)，\(n\)是特征\(A\)取值的个数</p>
-<h3 id="决策树的生成"><a href="#决策树的生成" class="headerlink" title="决策树的生成"></a>决策树的生成</h3><p>参考：统计学习方法（第二版）–李航</p>
+<blockquote>
+<p>如果\(i\)的取值越多，则\(H_A(D)\)的值越大</p>
+</blockquote>
+<h3 id="决策树的生成"><a href="#决策树的生成" class="headerlink" title="决策树的生成"></a>决策树的生成</h3><p><strong>\(\text{ID3}\)算法</strong><br>输入：训练数据集\(D\)，特征集\(A\)和阈值\(\varepsilon\)<br>输出：决策树\(T\)</p>
+<ol>
+<li>若集合\(D\)中所有实例属于同一个类别\(C_k\)，则决策树\(T\)为单节点树，将类别\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
+<li>若\(A=\varnothing\)，则\(T\)为单节点树，将\(D\)中具有实例数最大的类\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
+<li>计算\(A\)中各个特征对数据集\(D\)的信息增益，选择信息增益最大的特征\(A_g\)</li>
+<li>如果\(A_g\)的信息增益小于阈值\(varepsilon\)，则置\(T\)为单节点树，将\(D\)中实例数最大的类\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
+<li>否则，对\(A_g\)的每一个可能取值\(a_i\)，依\(A_g=a_i\)将\(D\)分割为若干个非空子集\(D_i\)，将\(D_i\)中实例数最大的类作为标记，构建子节点，由节点及其子节点构成树\(T\)，返回\(T\)</li>
+<li>对第\(i\)个子节点，以\(D_i\)为训练集，以\(A-{A_g}\)为特征集，递归调用\(1\backsim 5\)，得到子树\(T_i\)，返回\(T_i\)</li>
+</ol>
+<blockquote>
+<p><code>ID3</code>算法的核心是在决策树各个节点上应用<strong>信息增益准则选择特征</strong>，递归构建决策树，<code>ID3</code>相当于用极大似然法进行概率模型的选择</p>
+</blockquote>
+<h3 id="决策树剪枝"><a href="#决策树剪枝" class="headerlink" title="决策树剪枝"></a>决策树剪枝</h3><p>参考：统计学习方法（第二版）–李航</p>
 
       
     </div>
@@ -582,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策树"><span class="nav-number">1.1.</span> <span class="nav-text">分类决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树学习"><span class="nav-number">1.1.1.</span> <span class="nav-text">决策树学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择"><span class="nav-number">1.1.2.</span> <span class="nav-text">特征选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树的生成"><span class="nav-number">1.1.3.</span> <span class="nav-text">决策树的生成</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策树"><span class="nav-number">1.1.</span> <span class="nav-text">分类决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树学习"><span class="nav-number">1.1.1.</span> <span class="nav-text">决策树学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择"><span class="nav-number">1.1.2.</span> <span class="nav-text">特征选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树的生成"><span class="nav-number">1.1.3.</span> <span class="nav-text">决策树的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树剪枝"><span class="nav-number">1.1.4.</span> <span class="nav-text">决策树剪枝</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
