@@ -117,18 +117,18 @@
 
 
 
-<meta name="description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
+<meta name="description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈机器学习中的决策树">
 <meta property="og:url" content="https://muyi110.github.io/2019/浅谈机器学习中的决策树/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
+<meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/cart_0.png">
-<meta property="og:updated_time" content="2019-08-02T10:04:38.197Z">
+<meta property="og:updated_time" content="2019-08-02T11:44:43.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中的决策树">
-<meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪  分类决策树 分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类">
+<meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
 <meta name="twitter:image" content="https://muyi110.github.io/images/cart_0.png">
 
 
@@ -395,17 +395,14 @@
 </script>
 
 <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><blockquote>
-<p>决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪</p>
-</blockquote>
-<h2 id="分类决策树"><a href="#分类决策树" class="headerlink" title="分类决策树"></a>分类决策树</h2><blockquote>
-<p>分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类</p>
+<p>决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪<br>分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类</p>
 </blockquote>
 <p>用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将实例分配到子节点，如此递归对测试实例进行分配，直到到达叶节点，将实例分配到叶节点的类中</p>
-<h3 id="决策树学习"><a href="#决策树学习" class="headerlink" title="决策树学习"></a>决策树学习</h3><p>决策树学习的本质是从训练数据集中归纳出一组分类规则。与训练数据集不矛盾的决策树（对训练数据集能正确分类）可能有多个，也可能一个都没有，需要<strong>找一个与训练数据集矛盾较小的决策树，同时具有很好的泛化能力</strong>。如果特征数量较多，可以在决策树学习开始的时候，<strong>对特征进行选择</strong>，保留对训练数据有足够分类能力的特征<br><strong>决策树的生成对应模型的局部选择，决策树的剪枝对应模型的全局选择，决策树的生成只考虑局部最优，决策树的剪枝则考虑全局最优</strong></p>
-<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><blockquote>
+<h2 id="决策树学习"><a href="#决策树学习" class="headerlink" title="决策树学习"></a>决策树学习</h2><p>决策树学习的本质是从训练数据集中归纳出一组分类规则。与训练数据集不矛盾的决策树（对训练数据集能正确分类）可能有多个，也可能一个都没有，需要<strong>找一个与训练数据集矛盾较小的决策树，同时具有很好的泛化能力</strong>。如果特征数量较多，可以在决策树学习开始的时候，<strong>对特征进行选择</strong>，保留对训练数据有足够分类能力的特征<br><strong>决策树的生成对应模型的局部选择，决策树的剪枝对应模型的全局选择，决策树的生成只考虑局部最优，决策树的剪枝则考虑全局最优</strong></p>
+<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><blockquote>
 <p>特征选择在于选取对训练数据具有分类能力的特征，以提高决策树学习的效率。如果利用一个特征进行分类的结果与随机分类的结果差别不大，则称这个特征没有分类能力，经验上扔掉这样的特征对决策树学习的精度影响不大。特征选择的准则是<strong>信息增益</strong>或者<strong>信息增益比</strong></p>
 </blockquote>
-<p><strong>信息增益</strong><br>基于信息增益准则的特征选择算法：对训练数据集\(D\)计算每个特征的信息增益，比较大小，选择信息增益最大的特征</p>
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>基于信息增益准则的特征选择算法：对训练数据集\(D\)计算每个特征的信息增益，比较大小，选择信息增益最大的特征</p>
 <blockquote>
 <p>熵的定义如下$$H(X) = -\sum_{i=1}^{n}p_i\log p_i$$其中\(P(X=x_i)=p_i, \quad i = 1, 2, \dots, n\)，若\(p_i=0\)则定义\(0\log 0 = 0\)。熵只依赖于\(X\)的分布，与\(X\)的取值无关，所以可将\(X\)的熵记作$$H(p)=-\sum_{i=1}^{n}p_i\log p_i$$<strong>熵越大，随机变量的不确定性就越大</strong><br>例：当随机变量只取两个值\(0\)和\(1\)时，则熵为\(H(p)=-p\log_2 p - (1-p)\log_2 (1-p)\)当\(p=0.5\)时，熵取最大值，随机变量的不确定性最大<br>条件熵的定义如下$$H(Y|X)=\sum_{i=1}^{n}p_i H(Y|X=x_i)$$其中\(p_i = P(X=x_i)\)，表示给定\(X\)条件下\(Y\)的条件概率分布的熵对\(X\)的数学期望</p>
 </blockquote>
@@ -419,7 +416,7 @@
 <li>计算特征\(A\)对数据集\(D\)的条件熵\(H(D|A)\)$$H(D|A)=\sum_{i=1}^{n}\dfrac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}^{n}\dfrac{|D_i|}{|D|}\sum_{k=1}^{K}\dfrac{|D_{ik}|}{|D_i|}\log_2 \dfrac{|D_{ik}|}{|D_i|}$$其中\(n\)表示特征取值个数，\(|D_i|\)表示具有特征\(i\)取值样本个数，\(|D_{ik}|\)表示具有特征\(i\)取值的样本中属于类别\(k\)的样本个数</li>
 <li>计算信息增益$$g(D, A)=H(D)-H(D|A)$$</li>
 </ol>
-<p><strong>信息增益比</strong><br>以信息增益作为划分训练数据集的特征，存在偏向于选择取值较多的特征问题，使用信息增益比对其进行校正</p>
+<h3 id="信息增益比"><a href="#信息增益比" class="headerlink" title="信息增益比"></a>信息增益比</h3><p>以信息增益作为划分训练数据集的特征，存在偏向于选择取值较多的特征问题，使用信息增益比对其进行校正</p>
 <blockquote>
 <p>解释：样本总个数是一定的，当某一特征取值较多时候，则分配到每一个特征取值的样本变少，而计算条件熵$$H(D|A)=\sum_{i=1}^{n}\dfrac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}^{n}\dfrac{|D_i|}{|D|}\sum_{k=1}^{K}\dfrac{|D_{ik}|}{|D_i|}\log_2 \dfrac{|D_{ik}|}{|D_i|}$$需要计算某一特征取值为\(i\)时对应的各个类别的概率，而实际用频率，即\(\dfrac{|D_{ik}|}{|D_i|}\)来估计概率，当对应的样本少时，这种估计并不准确（可以类比投硬币实验，实验次数少，估计的结果不准确），存在偏差，使得分布不均匀，而分布不均匀导致计算的熵偏低，进而使得信息增益较大，所以有以信息增益作为划分训练数据集的特征，存在偏向于选择取值较多的特征问题<br>拓展：如果每一个特征取值下样本数目足够多，则用频率可近似估计概率，每一个特征计算的条件熵基本一样，就不存在所谓的以信息增益作为划分训练数据集的特征，存在偏向于选择取值较多的特征问题</p>
 </blockquote>
@@ -427,7 +424,7 @@
 <blockquote>
 <p>如果\(i\)的取值越多，则\(H_A(D)\)的值越大</p>
 </blockquote>
-<h3 id="决策树的生成"><a href="#决策树的生成" class="headerlink" title="决策树的生成"></a>决策树的生成</h3><p><strong>\(\text{ID3}\)算法</strong><br>输入：训练数据集\(D\)，特征集\(A\)和阈值\(\varepsilon\)<br>输出：决策树\(T\)</p>
+<h2 id="决策树的生成"><a href="#决策树的生成" class="headerlink" title="决策树的生成"></a>决策树的生成</h2><h3 id="text-ID3-算法"><a href="#text-ID3-算法" class="headerlink" title="\(\text{ID3}\)算法"></a>\(\text{ID3}\)算法</h3><p>输入：训练数据集\(D\)，特征集\(A\)和阈值\(\varepsilon\)<br>输出：决策树\(T\)</p>
 <ol>
 <li>若集合\(D\)中所有实例属于同一个类别\(C_k\)，则决策树\(T\)为单节点树，将类别\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
 <li>若\(A=\varnothing\)，则\(T\)为单节点树，将\(D\)中具有实例数最大的类\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
@@ -439,7 +436,7 @@
 <blockquote>
 <p><code>ID3</code>算法的核心是在决策树各个节点上应用<strong>信息增益准则选择特征</strong>，递归构建决策树，<code>ID3</code>相当于用极大似然法进行概率模型的选择。<code>ID3</code>算法只有树的生成，该算法生成的树容易产生过拟合</p>
 </blockquote>
-<p><strong>\(\text{C4.5}\)算法</strong><br>输入：训练数据集\(D\)，特征集\(A\)和阈值\(\varepsilon\)<br>输出：决策树\(T\)</p>
+<h3 id="text-C4-5-算法"><a href="#text-C4-5-算法" class="headerlink" title="\(\text{C4.5}\)算法"></a>\(\text{C4.5}\)算法</h3><p>输入：训练数据集\(D\)，特征集\(A\)和阈值\(\varepsilon\)<br>输出：决策树\(T\)</p>
 <ol>
 <li>若集合\(D\)中所有实例属于同一个类别\(C_k\)，则决策树\(T\)为单节点树，将类别\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
 <li>若\(A=\varnothing\)，则\(T\)为单节点树，将\(D\)中具有实例数最大的类\(C_k\)作为该节点的类标记，返回\(T\)（递归基准条件）</li>
@@ -451,7 +448,7 @@
 <blockquote>
 <p>和<code>ID3</code>算法相似，<code>C4.5</code>在生成树的过程中，用<strong>信息增益比来选择特征</strong></p>
 </blockquote>
-<h3 id="决策树剪枝"><a href="#决策树剪枝" class="headerlink" title="决策树剪枝"></a>决策树剪枝</h3><blockquote>
+<h2 id="决策树剪枝"><a href="#决策树剪枝" class="headerlink" title="决策树剪枝"></a>决策树剪枝</h2><blockquote>
 <p>决策树生成算法递归产生决策树，直到不能继续进行下去为止，容易产生过拟合，因为在学习过程中，过多考虑对训练数据的正确分类，从而构造出复杂的决策树，解决的方法是考虑决策树的复杂度，对已生成的决策树进行剪枝，进而简化决策树模型</p>
 </blockquote>
 <p>决策树的剪枝往往通过<strong>极小化决策树整体损失函数</strong>实现。设树\(T\)的叶节点个数为\(|T|\)，\(t\)是树\(T\)的叶节点，该叶节点有\(N_t\)个样本，其中第\(k\)类的样本有\(N_{tk}\)个，\(k=1, 2\dots, K\)，\(H_t(T)\)为叶节点\(t\)上的经验熵，\(\alpha \ge 0\)为超参数，决策树的损失函数定义为$$C_{\alpha}(T)=\sum_{t=1}^{|T|}N_tH_t(T)+\alpha |T|$$其中熵为$$H_t(T)=-\sum_{k}\dfrac{N_{tk}}{N_t}\log\dfrac{N_{tk}}{N_t}$$将损失函数的第一项定义为$$C(T)=\sum_{t=1}^{|T|}N_tH_t(T) = -\sum_{t=1}^{|T|}\sum_{k=1}^{K}N_{tk}\log\dfrac{N_{tk}}{N_t}$$则损失函数可以写为$$C_{\alpha}(T)=C(T)+\alpha |T|$$其中\(C(T)\)表示对训练数据的预测误差（如果每一个叶节点可以较好分类，则对应的熵较小，理想情况下熵为\(0\)，即叶节点中只有一个类别），即模型对训练数据的拟合程度，\(|T|\)表示模型复杂度，\(\alpha\)较大，则促使选择简单模型，\(\alpha\)较小，促使选择复杂模型<br>剪枝就是当\(\alpha\)确定时，选择使得损失函数最小的模型，即损失函数最小的子树。决策树生成只考虑提高信息增益（或者信息增益比）来对训练数据进行拟合，而决策树的剪枝通过优化损失函数考虑减小模型复杂度，<strong>决策树生成学习局部模型，决策树剪枝学习整体模型</strong><br><strong>决策树剪枝算法</strong><br><img src="/images/cart_0.png" alt="决策树剪枝">输入：生成算法产生的整个树\(T\)，参数\(\alpha\)<br>输出：剪枝后的子树\(T_{\alpha}\)</p>
@@ -463,7 +460,12 @@
 <blockquote>
 <p>第\(2\)步中只考虑两个树的损失函数之差，其计算可以在局部进行，因此，决策树剪枝算法可以通过<strong>动态规划算法</strong>实现</p>
 </blockquote>
-<h3 id="text-CART-算法"><a href="#text-CART-算法" class="headerlink" title="\(\text{CART}\)算法"></a>\(\text{CART}\)算法</h3><p>参考：统计学习方法（第二版）–李航</p>
+<h2 id="text-CART-算法"><a href="#text-CART-算法" class="headerlink" title="\(\text{CART}\)算法"></a>\(\text{CART}\)算法</h2><p>分类与回归树(classification and regression tree, CART)是在给定输入随机变量\(X\)的条件下输出随机变量\(Y\)的条件概率分布的学习方法。<code>CART</code>假设决策树是<strong>二叉树</strong>，<code>CART</code>算法由以下两步组成</p>
+<ol>
+<li>决策树生成：基于训练数据集生成决策树，生成的决策树要尽量大</li>
+<li>决策树剪枝：用验证集对已生成的树进行剪枝，并选择最优子树，用损失函数最小作为剪枝标准</li>
+</ol>
+<h3 id="CART生成"><a href="#CART生成" class="headerlink" title="CART生成"></a><code>CART</code>生成</h3><p>参考：统计学习方法（第二版）–李航</p>
 
       
     </div>
@@ -623,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策树"><span class="nav-number">1.1.</span> <span class="nav-text">分类决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树学习"><span class="nav-number">1.1.1.</span> <span class="nav-text">决策树学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择"><span class="nav-number">1.1.2.</span> <span class="nav-text">特征选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树的生成"><span class="nav-number">1.1.3.</span> <span class="nav-text">决策树的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树剪枝"><span class="nav-number">1.1.4.</span> <span class="nav-text">决策树剪枝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-CART-算法"><span class="nav-number">1.1.5.</span> <span class="nav-text">\(\text{CART}\)算法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树学习"><span class="nav-number">1.1.</span> <span class="nav-text">决策树学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">1.2.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">1.2.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益比"><span class="nav-number">1.2.2.</span> <span class="nav-text">信息增益比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的生成"><span class="nav-number">1.3.</span> <span class="nav-text">决策树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#text-ID3-算法"><span class="nav-number">1.3.1.</span> <span class="nav-text">\(\text{ID3}\)算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-C4-5-算法"><span class="nav-number">1.3.2.</span> <span class="nav-text">\(\text{C4.5}\)算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树剪枝"><span class="nav-number">1.4.</span> <span class="nav-text">决策树剪枝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#text-CART-算法"><span class="nav-number">1.5.</span> <span class="nav-text">\(\text{CART}\)算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CART生成"><span class="nav-number">1.5.1.</span> <span class="nav-text">CART生成</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
