@@ -125,7 +125,7 @@
 <meta property="og:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/cart_0.png">
-<meta property="og:updated_time" content="2019-08-02T14:23:22.938Z">
+<meta property="og:updated_time" content="2019-08-03T02:53:08.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中的决策树">
 <meta name="twitter:description" content="决策树 决策树(decision tree)是一种基本的分类与回归方法。主要优点是模型具有可读性、分类速度快。决策树学习包括三个步骤：特征选择、决策树生成、决策树修剪分类决策树模型是一种描述对实例进行分类的树形结构，决策树由节点和有向边组成。节点有两种类型：内部节点和叶节点，内部节点表示一个特征或者属性、外部节点表示一个类  用决策树分类从根节点开始，对实例的某一特征进行分类，根据测试结果将">
@@ -486,7 +486,15 @@
 <blockquote>
 <p>算法停止条件：节点中样本个数小于预定阈值，样本集的基尼指数小于阈值（样本基本属于同一个类），或者没有更多特征</p>
 </blockquote>
-<h3 id="text-CART-剪枝"><a href="#text-CART-剪枝" class="headerlink" title="\(\text{CART}\)剪枝"></a>\(\text{CART}\)剪枝</h3><p>参考：统计学习方法（第二版）–李航</p>
+<h3 id="text-CART-剪枝"><a href="#text-CART-剪枝" class="headerlink" title="\(\text{CART}\)剪枝"></a>\(\text{CART}\)剪枝</h3><blockquote>
+<p><code>CART</code>剪枝算法从“完全生长”的决策树的底端剪去一些子树，使模型变得简单，提高模型的泛化能力。由两步组成：首先从生成树\(T_0\)底端开始不断剪枝，直到\(T_0\)的根节点，构成一个子树序列\(\{T_0, T_1, \dots, T_n\}\)；然后通过<strong>交叉验证法</strong>在独立的验证集上对子树序列进行测试，选择最优子树</p>
+</blockquote>
+<p><strong>剪枝形成一个子树序列</strong><br>在剪枝过程中，计算子树的损失函数$$C_{\alpha}(T)=C(T)+\alpha |T|$$其中，\(T\)为任意子树，\(C(T)\)为对训练数据的预测误差（例如基尼指数），\(|T|\)为子树的叶节点个数，\(\alpha \le 0\)为超参数。对于固定的\(\alpha\)，一定存在使损失函数\(C_{\alpha}(T)\)最小的子树，表示为\(T_{\alpha}\)。这样的子树\(T_{\alpha}\)是唯一的</p>
+<blockquote>
+<p><code>Breiman</code>等人证明：可以用递归的方法对树进行剪枝，将\(\alpha\)从小增大，\(0=\alpha_0 &lt; \alpha_1 &lt; \dots &lt; \alpha_n &lt; \infty\)，产生一系列的区间\([\alpha_i, \alpha_{i+1}), \quad, i = 0, 1, \dots, n\)。剪枝得到的子树序列对应着区间\(\alpha \in [\alpha_i, \alpha_{i+1}), \quad, i = 0, 1, \dots, n\)的最优子树序列\(\{T_0, T_1, \dots, T_n\}\)，序列中的子树是嵌套的</p>
+</blockquote>
+<p>具体来说，从整体树\(T_0\)开始剪枝，对\(T_0\)的任意内部节点\(t\)，以\(t\)为单节点树的损失函数为$$C_{\alpha}(t)=C(t)+\alpha$$以\(t\)为根节点的子树\(T_t\)的损失函数为$$C_{\alpha}(T_t)=C(T_t)+\alpha |T_t|$$当\(\alpha = 0\)或者\(\alpha\)充分小时，有$$C_{\alpha}(T_t) &lt; C_{\alpha}(t)$$当\(\alpha\)增大时，存在某一\(\alpha\)有$$C_{\alpha}(T_t)=C_{\alpha}(t)$$继续增大\(\alpha\)，有$$C_{\alpha}(T_t) &gt; C_{\alpha}(t)$$只要\(\alpha = \dfrac{C(t)-C(T_t)}{|T_t|-1}\)，\(T_t\)与\(t\)有相同的损失函数值，而\(t\)的节点少，所有\(t\)比\(T_t\)更加可取，对\(T_t\)进行剪枝<br>为此，对\(T_0\)内部的每一个节点\(t\)计算$$g(t)=\dfrac{C(t)-C(T_t)}{|T_t|-1}$$其表示剪枝后整体损失函数减少的程度。在\(T_0\)中剪去\(g(t)\)最小的\(T_t\)得到的子树作为\(T_1\)，同时将最小的\(g(t)\)设为\(\alpha_1\)。\(T_1\)为区间\([\alpha_1, \alpha_2)\)的最优子树。如此进行下去，知道根节点，在这一过程中不断增加\(\alpha\)的值，产生新的区间<br><strong>在剪枝得到的子树序列\(T_0, T_1, \dots, T_n\)通过交叉验证选取最优子树</strong></p>
+<p>参考：统计学习方法（第二版）–李航</p>
 
       
     </div>
