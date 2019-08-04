@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-04T09:28:41.597Z">
+<meta property="og:updated_time" content="2019-08-04T13:33:03.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -403,6 +403,8 @@
 <li>使用相同的训练算法，但是训练它们在整个训练集的不同的随机子集上。<strong>如果采用有放回方法获取子集样本，则称为bagging，当采用无放回方法获取子集样本，则称为pasting</strong></li>
 </ol>
 <p>每一个独立的预测器有更高的偏差比起在原始的训练集上训练的样本（样本少，学习到的偏差也就大），但是通过集成减少方差和偏差。一般情况下，和在原始训练集上训练的单个预测器比，集成学习得到相似的偏差，但是有更低的方差<br>对于bagging and pasting，预测器可以并行训练，可以较好处理大样本，这是其优势</p>
+<h3 id="Out-of-Bag-Evaluation"><a href="#Out-of-Bag-Evaluation" class="headerlink" title="Out-of-Bag Evaluation"></a>Out-of-Bag Evaluation</h3><p>对于bagging（有放回抽样），一些样本可能被采用几次，一些样本可能重来没有被采样。对于每个预测器，采用\(m\)次得到\(m\)个训练样本，有平均大约\(63\%\)的样本会被采用到（随着\(m\)的增大，比例接近\(1-e^{-1}\approx 63.212\%\)），剩下的\(37\%\)不会被采样到，称不被采样的\(37\%\)样本为out-of-bag(oob)<br>由于一个预测器不会看到oob样本，因此可以用此样本评估预测器，不需要单独划分验证集或者使用交叉验证。也可以评估集成方法本身，通过平均每个预测器的oob估计值</p>
+<p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
     </div>
@@ -562,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
