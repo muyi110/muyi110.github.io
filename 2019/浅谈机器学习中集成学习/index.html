@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习\(\text{Voting Classifiers}\)假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the mos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-04T07:45:32.813Z">
+<meta property="og:updated_time" content="2019-08-04T08:25:55.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习\(\text{Voting Classifiers}\)假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the mos">
@@ -392,7 +392,10 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h1><h2 id="text-Voting-Classifiers"><a href="#text-Voting-Classifiers" class="headerlink" title="\(\text{Voting Classifiers}\)"></a>\(\text{Voting Classifiers}\)</h2><p>假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(aggregate)每个分类器的预测输出。基于多数投票的方法称为<code>hard voting classifier</code><br>基于投票集成的分类器方法(voting classifiers)经常得到比单一最好的分类器更好的分类准确率。事实上，即使每个单一的分类器是弱分类器(weak learner)（即其仅仅比随机猜测好点），通过集成可以得到强的分类器，<strong>假如有足够多的弱分类器且每个都是独立的</strong></p>
+<h1 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h1><h2 id="text-Voting-Classifiers"><a href="#text-Voting-Classifiers" class="headerlink" title="\(\text{Voting Classifiers}\)"></a>\(\text{Voting Classifiers}\)</h2><p>假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(aggregate)每个分类器的预测输出。基于多数投票的方法称为\(\text{hard voting classifier}\)<br>基于投票集成的分类方法(voting classifiers)经常得到比单一最好的分类器更好的分类准确率。事实上，即使每个单一的分类器是弱分类器(weak learner)（即其仅仅比随机猜测好点），通过集成可以得到强的分类器，<strong>假如有足够多的弱分类器且每个都是独立的</strong></p>
+<blockquote>
+<p>解释：以投掷硬币为例。假如有一个不均匀硬币，其正面出现的概率为\(51\%\)，反面出现的概率为\(49\%\)，则投掷\(1000\)次后，一般情况下会得到大约\(510\)次正面，\(490\)次反面，也就是正面占多数（基于多数投票法会得到正的结果）。通过数学计算，可以得到投掷\(1000\)次后，最后获得正面结果（基于多数投票法）大约\(75\%\)左右，投掷的总次数越多，得到正面的概率越大（投掷\(10000\)得到结果接近\(97\%\)）。因为由于大数定律可知，投掷的次数足够多时，基于频率估计的概率值和真实值比较接近。在本例中，投掷的次数越多，每次投掷出现证正面的概率为\(51\%\)<br>类比：如果集成包含\(1000\)个独立的分类器，每一个准确率大约\(51\%\)，则基于多数投票法可以达到约\(75\%\)的准确率，前提条件是各个分类器是完全独立的，产生不相关的错误(making uncorrelated errors)，实际中由于每个分类器在相同的训练集上训练，很可能产生相同类型的错误，使得对于错误类别产生多数相同结果，影响性能。<br>建议：当各个分类器是独立的时候，集成方法产生较好的结果。因此一种方法获得独立的分类器是训练不同的算法（例如SVM，决策树等等），这增加各个分类器产生不同类型错误的机会，改善集成方法的性能</p>
+</blockquote>
 
       
     </div>
