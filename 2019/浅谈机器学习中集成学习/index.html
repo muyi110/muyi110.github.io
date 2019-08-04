@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-04T09:24:27.539Z">
+<meta property="og:updated_time" content="2019-08-04T09:28:41.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -402,7 +402,7 @@
 <li>使用不同的训练算法（例如：SVM， LR， 决策树等等），上面已经讨论</li>
 <li>使用相同的训练算法，但是训练它们在整个训练集的不同的随机子集上。<strong>如果采用有放回方法获取子集样本，则称为bagging，当采用无放回方法获取子集样本，则称为pasting</strong></li>
 </ol>
-<p>每一个独立的预测器有更高的偏差比起在原始的训练集上训练的样本（样本少，学习到的偏差也就大），但是通过集成减少方差和偏差。</p>
+<p>每一个独立的预测器有更高的偏差比起在原始的训练集上训练的样本（样本少，学习到的偏差也就大），但是通过集成减少方差和偏差。一般情况下，和在原始训练集上训练的单个预测器比，集成学习得到相似的偏差，但是有更低的方差<br>对于bagging and pasting，预测器可以并行训练，可以较好处理大样本，这是其优势</p>
 
       
     </div>
