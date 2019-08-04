@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-04T14:31:32.463Z">
+<meta property="og:updated_time" content="2019-08-04T14:42:01.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -408,7 +408,10 @@
 <h3 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h3><p>随机森林是决策树的集成，通常通过bagging方法训练（有时候是pasting)。随机森林算法在生成树过程中引入额外的随机性，其划分节点并不是选择最好的特征，而是在一个随机特征子集上选择最好特征，这得到更大的树的差异性，导致更高的偏差（对于单个树而言）和更低的方差（对于整体，也就是集成），进而产生一个更好的模型</p>
 <h3 id="Extra-Trees"><a href="#Extra-Trees" class="headerlink" title="Extra-Trees"></a>Extra-Trees</h3><p>对于常规的随机森林，在每一个节点仅仅一个随机特征子集被用来划分。使得树更具有随机性是可能的，通过对每一个特征使用一个随机阈值，而不是选择最好的阈值（决策树采用的），这样的方法称为Extremely Randomized Trees集成。这导致更多的偏差（对于单个树而言）和低的方差（对于整体，也就是集成）。Extra-Trees训练更快比起常规的随机森林（在每个节点选择最好的特征阈值）。<br>注意：并不能说明Extra-Trees和常规随机森林哪个更好，通常情况下，通过交叉验证比较两种方法</p>
 <h3 id="特征重要性"><a href="#特征重要性" class="headerlink" title="特征重要性"></a>特征重要性</h3><p>对于决策树，重要的特征很可能出现的更靠近树根，不重要的特征经常出现在靠近叶节点。因此，特征重要性的估计可以通过计算其出现在随机森林中所有树中的平均深度。<strong>随机森林是非常方便的对于去快速理解什么特征重要，可以用于特征选择</strong></p>
-<h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
+<h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><blockquote>
+<p>大多数提升方法(boosting)是按照序列(sequentially)训练预测器，每一个尝试修正其预测器</p>
+</blockquote>
+<p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
     </div>
