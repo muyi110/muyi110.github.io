@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-04T13:33:03.106Z">
+<meta property="og:updated_time" content="2019-08-04T14:09:28.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -403,8 +403,10 @@
 <li>使用相同的训练算法，但是训练它们在整个训练集的不同的随机子集上。<strong>如果采用有放回方法获取子集样本，则称为bagging，当采用无放回方法获取子集样本，则称为pasting</strong></li>
 </ol>
 <p>每一个独立的预测器有更高的偏差比起在原始的训练集上训练的样本（样本少，学习到的偏差也就大），但是通过集成减少方差和偏差。一般情况下，和在原始训练集上训练的单个预测器比，集成学习得到相似的偏差，但是有更低的方差<br>对于bagging and pasting，预测器可以并行训练，可以较好处理大样本，这是其优势</p>
-<h3 id="Out-of-Bag-Evaluation"><a href="#Out-of-Bag-Evaluation" class="headerlink" title="Out-of-Bag Evaluation"></a>Out-of-Bag Evaluation</h3><p>对于bagging（有放回抽样），一些样本可能被采用几次，一些样本可能重来没有被采样。对于每个预测器，采用\(m\)次得到\(m\)个训练样本，有平均大约\(63\%\)的样本会被采用到（随着\(m\)的增大，比例接近\(1-e^{-1}\approx 63.212\%\)），剩下的\(37\%\)不会被采样到，称不被采样的\(37\%\)样本为out-of-bag(oob)<br>由于一个预测器不会看到oob样本，因此可以用此样本评估预测器，不需要单独划分验证集或者使用交叉验证。也可以评估集成方法本身，通过平均每个预测器的oob估计值</p>
-<p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
+<h3 id="Out-of-Bag-Evaluation"><a href="#Out-of-Bag-Evaluation" class="headerlink" title="Out-of-Bag Evaluation"></a>Out-of-Bag Evaluation</h3><p>对于bagging（有放回抽样），一些样本可能被采用几次，一些样本可能从来没有被采样。对于每个预测器，采用\(m\)次得到\(m\)个训练样本，有平均大约\(63\%\)的样本会被采用到（随着\(m\)的增大，比例接近\(1-e^{-1}\approx 63.212\%\)），剩下的\(37\%\)不会被采样到，称不被采样的\(37\%\)样本为out-of-bag(oob)<br>由于一个预测器不会看到oob样本，因此可以用此样本评估预测器，不需要单独划分验证集或者使用交叉验证。也可以评估集成方法本身，通过平均每个预测器的oob估计值</p>
+<h3 id="Random-Patches-and-Random-Subspaces"><a href="#Random-Patches-and-Random-Subspaces" class="headerlink" title="Random Patches and Random Subspaces"></a>Random Patches and Random Subspaces</h3><p>可以直接对特征进行采样（之前是对样本实例进行采样），这样每个预测器被训练在输入特征的一个随机子集上，对于处理高维数据（例如：图像），这特别有用。如果对训练实例（样本）和特征同时采样，称为Random Patches方法。如果只是对特征进行采样称为Random Subspaces方法</p>
+<h3 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h3><p>随机森林是决策树的集成，通常通过bagging方法训练（有时候是pasting)。随机森林算法在生成树过程中引入额外的随机性，其划分节点并不是选择最好的特征，而是在一个随机特征子集上选择最好特征，这得到更大的树的差异性，导致更高的偏差（对于单个树而言）和更低的方差（对于整体，也就是集成），进而产生一个更好的模型</p>
+<h3 id="Extra-Trees"><a href="#Extra-Trees" class="headerlink" title="Extra-Trees"></a>Extra-Trees</h3><p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
     </div>
@@ -564,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Patches-and-Random-Subspaces"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random Patches and Random Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林"><span class="nav-number">1.2.3.</span> <span class="nav-text">随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-Trees"><span class="nav-number">1.2.4.</span> <span class="nav-text">Extra-Trees</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
