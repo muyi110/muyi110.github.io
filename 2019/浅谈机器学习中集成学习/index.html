@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T13:25:47.924Z">
+<meta property="og:updated_time" content="2019-08-05T13:31:11.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -418,10 +418,10 @@
 <li>使用具有权值分布\(D_m\)的训练数据学习，得到基本分类器\(G_m(x)\)</li>
 <li>计算\(G_m(x)\)在训练数据集上的分类误差率$$e_m = \sum_{i=1}^{N}P(G_m (x_i) \not = y_i) = \sum_{i=1}^{N}\omega_{mi}I(G_m (x_i) \not = y_i)$$</li>
 <li>计算\(G_m(x)\)的系数$$\alpha_m = \dfrac{1}{2}\ln\dfrac{1-e_m}{e_m}$$</li>
-<li>更新训练数据集的权值分布$$D_{m+1} = (\omega_{m+1, 1}, \dots, \omega_{m+1, i}, \dots, \omega_{m+1, N}\\\omega_{m+1, i} = \dfrac{\omega_{mi}}{Z_m}e^{-\alpha_m y_iG_m(x_i)}, \quad i = 1, 2, \dots, N$$其中\(Z_m\)是规范化因子$$Z_m = \sum_{i=1}^{N}\omega_{mi}e^{-\alpha_m y_i G_m(x_i)}$$其使得\(D_m+1\)是一个概率分布</li>
+<li>更新训练数据集的权值分布$$D_{m+1} = (\omega_{m+1, 1}, \dots, \omega_{m+1, i}, \dots, \omega_{m+1, N}\\\omega_{m+1, i} = \dfrac{\omega_{mi}}{Z_m}e^{-\alpha_m y_iG_m(x_i)}, \quad i = 1, 2, \dots, N$$其中\(Z_m\)是规范化因子$$Z_m = \sum_{i=1}^{N}\omega_{mi}e^{-\alpha_m y_i G_m(x_i)}$$其使得\(D_{m+1}\)是一个概率分布</li>
 </ul>
 </li>
-<li>构建 </li>
+<li>构建基本分类器线性组合$$f(x) = \sum_{m=1}^{M}\alpha_mG_m(x)$$得到最终的分类器$$\begin{equation}\begin{aligned}G(x)&amp;=\text{sign}(f(x))\\&amp;= \text{sign}\Big(\sum_{m=1}^{M}\alpha_mG_m(x)\Big)\end{aligned}\end{equation}$$</li>
 </ol>
 <p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
