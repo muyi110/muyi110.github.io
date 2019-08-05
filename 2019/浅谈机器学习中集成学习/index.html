@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-04T14:42:01.465Z">
+<meta property="og:updated_time" content="2019-08-05T08:04:26.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -409,8 +409,9 @@
 <h3 id="Extra-Trees"><a href="#Extra-Trees" class="headerlink" title="Extra-Trees"></a>Extra-Trees</h3><p>对于常规的随机森林，在每一个节点仅仅一个随机特征子集被用来划分。使得树更具有随机性是可能的，通过对每一个特征使用一个随机阈值，而不是选择最好的阈值（决策树采用的），这样的方法称为Extremely Randomized Trees集成。这导致更多的偏差（对于单个树而言）和低的方差（对于整体，也就是集成）。Extra-Trees训练更快比起常规的随机森林（在每个节点选择最好的特征阈值）。<br>注意：并不能说明Extra-Trees和常规随机森林哪个更好，通常情况下，通过交叉验证比较两种方法</p>
 <h3 id="特征重要性"><a href="#特征重要性" class="headerlink" title="特征重要性"></a>特征重要性</h3><p>对于决策树，重要的特征很可能出现的更靠近树根，不重要的特征经常出现在靠近叶节点。因此，特征重要性的估计可以通过计算其出现在随机森林中所有树中的平均深度。<strong>随机森林是非常方便的对于去快速理解什么特征重要，可以用于特征选择</strong></p>
 <h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><blockquote>
-<p>大多数提升方法(boosting)是按照序列(sequentially)训练预测器，每一个尝试修正其预测器</p>
+<p>大多数提升方法(boosting)是按照序列(sequentially)训练预测器，每一个尝试修正其前任(predecessor)。<strong>大多数提升方法都是改变训练数据的概率分布（训练数据的权值分布），针对不同的训练数据分布调用弱学习算法学习一系列弱分类器</strong></p>
 </blockquote>
+<h3 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h3><p>对于AdaBoost算法，提高那些被前一轮弱分类器错误分类样本权重，从而降低那些被正确分类的样本权重，这样一来，那些没有得到正确分类的数据，由于其权重加大而受到后一轮弱分类器的更大关注。于是问题被一系列的弱分类器分而治之。<br>一旦所有的弱分类器被训练完成，AdaBoost采用加权多数表决方法进行组合。具体地，加大分类误差率小的弱分类器的权值，使其在表决中起到较大作用，减小分类误差率大的弱分类器权值，使其在表决中起较小的作用</p>
 <p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
@@ -571,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Patches-and-Random-Subspaces"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random Patches and Random Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林"><span class="nav-number">1.2.3.</span> <span class="nav-text">随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-Trees"><span class="nav-number">1.2.4.</span> <span class="nav-text">Extra-Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征重要性"><span class="nav-number">1.2.5.</span> <span class="nav-text">特征重要性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">1.3.</span> <span class="nav-text">Boosting</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Patches-and-Random-Subspaces"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random Patches and Random Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林"><span class="nav-number">1.2.3.</span> <span class="nav-text">随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-Trees"><span class="nav-number">1.2.4.</span> <span class="nav-text">Extra-Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征重要性"><span class="nav-number">1.2.5.</span> <span class="nav-text">特征重要性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">1.3.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AdaBoost"><span class="nav-number">1.3.1.</span> <span class="nav-text">AdaBoost</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
