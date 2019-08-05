@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T08:04:26.374Z">
+<meta property="og:updated_time" content="2019-08-05T13:09:30.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -411,7 +411,11 @@
 <h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><blockquote>
 <p>大多数提升方法(boosting)是按照序列(sequentially)训练预测器，每一个尝试修正其前任(predecessor)。<strong>大多数提升方法都是改变训练数据的概率分布（训练数据的权值分布），针对不同的训练数据分布调用弱学习算法学习一系列弱分类器</strong></p>
 </blockquote>
-<h3 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h3><p>对于AdaBoost算法，提高那些被前一轮弱分类器错误分类样本权重，从而降低那些被正确分类的样本权重，这样一来，那些没有得到正确分类的数据，由于其权重加大而受到后一轮弱分类器的更大关注。于是问题被一系列的弱分类器分而治之。<br>一旦所有的弱分类器被训练完成，AdaBoost采用加权多数表决方法进行组合。具体地，加大分类误差率小的弱分类器的权值，使其在表决中起到较大作用，减小分类误差率大的弱分类器权值，使其在表决中起较小的作用</p>
+<h3 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h3><p>对于AdaBoost算法，提高那些被前一轮弱分类器错误分类样本权重，从而降低那些被正确分类的样本权重，这样一来，那些没有得到正确分类的数据，由于其权重加大而受到后一轮弱分类器的更大关注。于是问题被一系列的弱分类器分而治之。<br>一旦所有的弱分类器被训练完成，AdaBoost采用加权多数表决方法进行组合。具体地，加大分类误差率小的弱分类器的权值，使其在表决中起到较大作用，减小分类误差率大的弱分类器权值，使其在表决中起较小的作用<br><strong>算法</strong><br>输入：训练数据集\(T=\{(x_1, y_1), (x_2, y_2), \dots, (X_N, y_N)\}\)，其中\(x_i\in R^n\)，\(y_i\in \{-1, +1\}\)；弱分类算法<br>输出：最终分类器\(G(x)\)</p>
+<ol>
+<li>初始化训练数据的权值分布$$D_1 = (\omega_{11}, \omega_{12}, \dots, \omega_{1N}), \quad \omega_{1i}=\frac{1}{N}$$</li>
+<li>对于\(m=1, 2, \dots, M\)</li>
+</ol>
 <p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
