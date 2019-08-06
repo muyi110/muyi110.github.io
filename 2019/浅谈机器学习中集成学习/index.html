@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T02:38:40.962Z">
+<meta property="og:updated_time" content="2019-08-06T03:03:40.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -437,7 +437,11 @@
 <li>步骤3中，线性组合\(f(x)\)实现\(M\)个基本分类器的加权表决，系数\(\alpha_m\)表示基本分类器\(G_m(x)\)的重要性，注意这里\(\alpha_m\)之和并不是\(1\)，\(f(x)\)的绝对值越大，表示分类的置信度越高，利用基本分类器的线性组合得到最终分类器是AdaBoost的另一个特点</li>
 </ul>
 </blockquote>
-<p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
+<p><strong>AdaBoost最基本的性质是它在学习过程中不断减小训练误差，即在训练数据集上的分类误差率</strong>（证明参考统计学习方法）</p>
+<blockquote>
+<p>AdaBoost算法是前向分布加法算法的特例，模型是基本分类器组成加法模型，损失函数是指数函数。<br>前向分布算法思想：因为学习是加法模型，如果能够从前向后，每一步只学习一个基函数及其系数，逐步逼近最终加法模型目标函数，可以简化优化的复杂度</p>
+</blockquote>
+<h3 id="提升树"><a href="#提升树" class="headerlink" title="提升树"></a>提升树</h3><p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
     </div>
@@ -597,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Patches-and-Random-Subspaces"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random Patches and Random Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林"><span class="nav-number">1.2.3.</span> <span class="nav-text">随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-Trees"><span class="nav-number">1.2.4.</span> <span class="nav-text">Extra-Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征重要性"><span class="nav-number">1.2.5.</span> <span class="nav-text">特征重要性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">1.3.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AdaBoost"><span class="nav-number">1.3.1.</span> <span class="nav-text">AdaBoost</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Patches-and-Random-Subspaces"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random Patches and Random Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林"><span class="nav-number">1.2.3.</span> <span class="nav-text">随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-Trees"><span class="nav-number">1.2.4.</span> <span class="nav-text">Extra-Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征重要性"><span class="nav-number">1.2.5.</span> <span class="nav-text">特征重要性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">1.3.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AdaBoost"><span class="nav-number">1.3.1.</span> <span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升树"><span class="nav-number">1.3.2.</span> <span class="nav-text">提升树</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
