@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T02:32:01.203Z">
+<meta property="og:updated_time" content="2019-08-06T02:36:13.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -429,9 +429,9 @@
 <li>步骤1中，假设训练数据集具有均匀的权值分布，即每个训练样本在基本分类器的学习中作用相同，保证第一步能够在原始数据集上学习基本分类器\(G_1(x)\)</li>
 <li>步骤2中，AdaBoost反复学习基本分类器，在每一轮\(m=1, 2, \dots, M\)顺序执行以下操作<ul>
 <li>使用当前分布\(D_m\)加权的训练数据集，学习基本分类器\(G_m(x)\)</li>
-<li>计算基本分类器\(G_m(x)\)在加权训练数据集上的分类误差率$$\begin{equation}\begin{aligned}e_m &amp;= \sum_{i=1}^{N}P(G_m(x_i) \not = y_i)\\\sum_{G_m(x_i)\not = y_i}\omega_{mi}$$其中\(\omega_{mi}\)表示第\(m\)轮中第\(i\)个实例的权值，有\(\sum_{i=1}^{N}\omega_{mi}=1\)</li>
-<li>计算基本分类器\(G_m(x)的系数\(\alpha_m\)，\(\alpha_m\)表示\(G_m(x)\)在最终分类器中的重要性。根据算法第2步中计算\(\alpha_m\)的公式可知，当\(e_m\le \dfrac{1}{2}\)时，\(\alpha_m\ge 0\)，且\(\alpha_m\)随着\(e_m\)的减小而增大，所以分类误差率越小的基本分类器在最终的分类器中作用越大</li>
-<li>更新训练数据的权值分布$$\begin{equation}\omega_{m+1,i}=\begin{cases}\dfrac{\omega_{mi}}{Z_m}e^{-\alpha_m}, &amp;G_m(x_i)=y_i\\\dfrac{\omega_{mi}}{Z_m}e^{\alpha_m}, &amp;G_m(x_i)\not =y_i$$可知被基本分类器\(G_m(x)\)误分类样本的权值得以扩大，被正确分类样本权值得以缩小，因此误分类样本在下一轮学习中起到更大作用。不改变训练数据集，只是改变训练数据的权值分布，使得训练数据在基本分类器的学习中起不同的作用，是AdaBoost的一个特点<br><strong>说明</strong>：由于基本分类器是弱分类器（比随机猜测好点），因此其分类误差率\(e_m\le \frac{1}{2}\)，得到\(\alpha_m\ge 0\)</li>
+<li>计算基本分类器\(G_m(x)\)在加权训练数据集上的分类误差率$$\begin{equation}\begin{aligned}e_m &amp;= \sum_{i=1}^{N}P(G_m(x_i) \not = y_i)\\\sum_{G_m(x_i)\not = y_i}\omega_{mi}\end{aligned}\end{equation}$$其中\(\omega_{mi}\)表示第\(m\)轮中第\(i\)个实例的权值，有\(\sum_{i=1}^{N}\omega_{mi}=1\)</li>
+<li>计算基本分类器\(G_m(x)\)的系数\(\alpha_m\)，\(\alpha_m\)表示\(G_m(x)\)在最终分类器中的重要性。根据算法第2步中计算\(\alpha_m\)的公式可知，当\(e_m\le \dfrac{1}{2}\)时，\(\alpha_m\ge 0\)，且\(\alpha_m\)随着\(e_m\)的减小而增大，所以分类误差率越小的基本分类器在最终的分类器中作用越大</li>
+<li>更新训练数据的权值分布$$\begin{equation}\omega_{m+1,i}=\begin{cases}\dfrac{\omega_{mi}}{Z_m}e^{-\alpha_m}, &amp;G_m(x_i)=y_i\\\dfrac{\omega_{mi}}{Z_m}e^{\alpha_m}, &amp;G_m(x_i)\not =y_i\end{cases}\end{equation}$$可知被基本分类器\(G_m(x)\)误分类样本的权值得以扩大，被正确分类样本权值得以缩小，因此误分类样本在下一轮学习中起到更大作用。不改变训练数据集，只是改变训练数据的权值分布，使得训练数据在基本分类器的学习中起不同的作用，是AdaBoost的一个特点<br><strong>说明</strong>：由于基本分类器是弱分类器（比随机猜测好点），因此其分类误差率\(e_m\le \dfrac{1}{2}\)，得到\(\alpha_m\ge 0\)</li>
 </ul>
 </li>
 <li>步骤3中，线性组合\(f(x)\)实现\(M\)个基本分类器的加权表决，系数\(\alpha_m\)表示基本分类器\(G_m(x)\)的重要性，注意这里\(\alpha_m\)之和并不是\(1\)，\(f(x)\)的绝对值越大，表示分类的置信度越高，利用基本分类器的线性组合得到最终分类器是AdaBoost的另一个特点</li>
