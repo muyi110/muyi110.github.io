@@ -125,7 +125,8 @@
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/stack_0.png">
-<meta property="og:updated_time" content="2019-08-06T13:28:17.503Z">
+<meta property="og:image" content="https://muyi110.github.io/images/stack_1.png">
+<meta property="og:updated_time" content="2019-08-06T13:59:41.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -478,7 +479,12 @@
 <blockquote>
 <p>算法第1步，估计损失函数极小化的常数值，是一个只有根节点的树，第2步首先计算损失函数负梯度在当前模型的值，作为残差的近似值</p>
 </blockquote>
-<h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p><strong>基本思想</strong>：并不是使用trivial functions（例如：hard voting）集成所有预测器的预测结果，而是训练一个模型去执行集成（也就是将其他基类预测器结果作为输入），下图是一个回归任务的最后结果集成说明<img src="/images/stack_0.png" alt="stack">底层每个基本预测器产生一个输出，并作为上层的预测器(blending)的输入，最后给出结果</p>
+<h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p><strong>基本思想</strong>：并不是使用trivial functions（例如：hard voting）集成所有预测器的预测结果，而是训练一个模型去执行集成（也就是将其他基类预测器结果作为输入），下图是一个回归任务的最后结果集成说明<img src="/images/stack_0.png" alt="stack">底层每个基本预测器产生一个输出，并作为上层的预测器(blending)的输入，最后给出结果<br>一种常用的方法训练blender是使用hold-out set</p>
+<ol>
+<li>首先训练数据被划分为两个子集</li>
+<li>第一个子集被用来训练在第一层的预测器（基本预测器），如下左图所示</li>
+<li>将第二个子集作为训练好的第一层基本预测器的输入，并将其输出作为blender的输入，如下右图所示。根据第一层的输出创建一个新的训练数据集（图中新的训练集是3维的），作为blender的训练数据集<br><img src="/images/stack_1.png" alt="训练过程"><br>实际中可以用这种方式训练几个不同的blender（例如：一个使用LR，另一个使用随机森林等等），因此我们可以得到一层的blenders，需要将训练数据划分为\(3\)个子集，第一个子集被用来训练第一层的基本预测器；第二个子集被用来创建新的训练数据，用于训练第二层（将第一层的输出作为输入）；第三个子集被用来创建一个新的训练数据用于训练第三层（使用第二层的输出作为输入）</li>
+</ol>
 <p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
