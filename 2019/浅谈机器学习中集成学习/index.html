@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T08:24:53.071Z">
+<meta property="og:updated_time" content="2019-08-06T08:37:07.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -455,7 +455,10 @@
 </li>
 <li>得到回归提升树$$f_M(x)=\sum_{m=1}^{M}T(x;\theta_m)$$</li>
 </ol>
-<p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
+<blockquote>
+<p>平方误差损失\(L(y,f_M(x))=\sum_{i=1}^{N}(y_i-f_M(x_i))^2满足要求可以退出</p>
+</blockquote>
+<h3 id="梯度提升"><a href="#梯度提升" class="headerlink" title="梯度提升"></a>梯度提升</h3><p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
     </div>
@@ -615,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Patches-and-Random-Subspaces"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random Patches and Random Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林"><span class="nav-number">1.2.3.</span> <span class="nav-text">随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-Trees"><span class="nav-number">1.2.4.</span> <span class="nav-text">Extra-Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征重要性"><span class="nav-number">1.2.5.</span> <span class="nav-text">特征重要性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">1.3.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AdaBoost"><span class="nav-number">1.3.1.</span> <span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升树"><span class="nav-number">1.3.2.</span> <span class="nav-text">提升树</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集成学习"><span class="nav-number">1.</span> <span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Voting-Classifiers"><span class="nav-number">1.1.</span> <span class="nav-text">Voting Classifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging-and-Pasting"><span class="nav-number">1.2.</span> <span class="nav-text">Bagging and Pasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Out-of-Bag-Evaluation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Out-of-Bag Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Patches-and-Random-Subspaces"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random Patches and Random Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林"><span class="nav-number">1.2.3.</span> <span class="nav-text">随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extra-Trees"><span class="nav-number">1.2.4.</span> <span class="nav-text">Extra-Trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征重要性"><span class="nav-number">1.2.5.</span> <span class="nav-text">特征重要性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">1.3.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AdaBoost"><span class="nav-number">1.3.1.</span> <span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升树"><span class="nav-number">1.3.2.</span> <span class="nav-text">提升树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度提升"><span class="nav-number">1.3.3.</span> <span class="nav-text">梯度提升</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
