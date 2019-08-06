@@ -125,7 +125,7 @@
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/stack_0.png">
-<meta property="og:updated_time" content="2019-08-06T13:25:49.461Z">
+<meta property="og:updated_time" content="2019-08-06T13:28:17.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -478,7 +478,7 @@
 <blockquote>
 <p>算法第1步，估计损失函数极小化的常数值，是一个只有根节点的树，第2步首先计算损失函数负梯度在当前模型的值，作为残差的近似值</p>
 </blockquote>
-<h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p><strong>基本思想</strong>：并不是使用trivial functions（例如：hard voting）集成所有预测器的预测结果，而是训练一个模型去执行集成（也就是将其他基类预测器结果作为输入），下图是一个回归任务的最后结果集成说明<img src="/images/stack_0.png" alt="底层每个基本预测器产生一个输出，并作为上层的预测器(blending)的输入，最后给出结果"></p>
+<h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p><strong>基本思想</strong>：并不是使用trivial functions（例如：hard voting）集成所有预测器的预测结果，而是训练一个模型去执行集成（也就是将其他基类预测器结果作为输入），下图是一个回归任务的最后结果集成说明<img src="/images/stack_0.png" alt="stack">底层每个基本预测器产生一个输出，并作为上层的预测器(blending)的输入，最后给出结果</p>
 <p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
