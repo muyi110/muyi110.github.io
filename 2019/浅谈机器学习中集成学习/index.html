@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T08:39:05.220Z">
+<meta property="og:updated_time" content="2019-08-06T08:51:43.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -458,7 +458,10 @@
 <blockquote>
 <p>平方误差损失\(L(y,f_M(x))=\sum_{i=1}^{N}(y_i-f_M(x_i))^2\)满足要求可以退出</p>
 </blockquote>
-<h3 id="梯度提升"><a href="#梯度提升" class="headerlink" title="梯度提升"></a>梯度提升</h3><p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
+<h3 id="梯度提升"><a href="#梯度提升" class="headerlink" title="梯度提升"></a>梯度提升</h3><blockquote>
+<p>提升树利用加法模型和前向分布算法实现学习的优化过程。当损失函数是平方损失或者指数损失，每一步优化很简单。对于一般的损失函数，每一步的优化并不容易，针对此问题，Freidman提出梯度提升(gradient boosting)算法。这是利用最速下降的近似方法，其关键是利用损失函数的负梯度在当前模型的值$$-[\dfrac{\partial L(y,f(x_i))}{\partial f(x_i)}]<em>{f(x)=f</em>{m-1}(x)}$$</p>
+</blockquote>
+<p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
     </div>
