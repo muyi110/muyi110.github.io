@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-06T03:03:40.813Z">
+<meta property="og:updated_time" content="2019-08-06T07:53:29.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中集成学习">
 <meta name="twitter:description" content="集成学习Voting Classifiers假如有几个训练好的分类器，例如：\(\text{Logistic Regression classifier}\)，\(\text{SVM classifier}\)，随机森林和\(\text{K-Nearest}\)等等，每一个实现大约\(80\%\)分类准确率。创建一个更好的分类器的简单方法是根据多数投票法(the most votes)集成(">
@@ -441,7 +441,11 @@
 <blockquote>
 <p>AdaBoost算法是前向分布加法算法的特例，模型是基本分类器组成加法模型，损失函数是指数函数。<br>前向分布算法思想：因为学习是加法模型，如果能够从前向后，每一步只学习一个基函数及其系数，逐步逼近最终加法模型目标函数，可以简化优化的复杂度</p>
 </blockquote>
-<h3 id="提升树"><a href="#提升树" class="headerlink" title="提升树"></a>提升树</h3><p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
+<h3 id="提升树"><a href="#提升树" class="headerlink" title="提升树"></a>提升树</h3><blockquote>
+<p>提升树是以分类树或回归树为基本分类器的提升方法，其被认为是统计学习中性能最好的方法之一</p>
+</blockquote>
+<p><strong>提升树算法</strong><br>提升树采用前向分布算法，和加法模型。首先确定初始提升树\(f_0(x)=0\)，第\(m\)步的模型为$$f_m(x)=f_{m-1}(x)+T(x;\theta_m)$$其中\(T(x;\theta_m)表示决策树，\(\theta_m\)是决策树参数，\(f_{m-1}(x)\)表示当前模型，通过经验风险极小化确定确定下一颗决策树的参数\(\theta_m\)$$\hat{\theta_m}=\text{arg}\mathop{\text{min}}\limits_{\theta_m}\sum_{i=1}^{N}L(y_i, f_{m-1}(x_i)+T(x_i;\theta_m))$$由于树的线性组合可以很好拟合训练数据，即使数据中的输入和输出之间的关系很复杂也是如此，因此提升树是一个高功能提升算法<br>对于二分类问题，提升树算法只需要将AdaBoost算法中基本分类器限制为二类分类决策树即可，下面主要讨论对于回归问题的提升树</p>
+<p>参考：Hands-On Machine Learning with Scikit-Learning &amp; TensorFlow<br>      统计学习方法（第二版）</p>
 
       
     </div>
