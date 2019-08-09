@@ -129,7 +129,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/lcs_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/obst_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/obst_1.png">
-<meta property="og:updated_time" content="2019-08-09T07:24:33.042Z">
+<meta property="og:updated_time" content="2019-08-09T07:26:21.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划">
 <meta name="twitter:description" content="动态规划 动态规划(dynamic programming)与分治算法相似，都是通过组合子问题的解来求解原问题（这里programming指的是一种表格法）。分治算法将问题划分为互不相交的子问题，递归求解子问题，再将它们的解组合起来，求出原问题的解。与之相反，动态规划应用于子问题重叠的情况，即不同子问题具有公共的子子问题（子问题的求解是递归的，将其划为更小的子子问题），在这种情况下，分治算法">
@@ -505,92 +505,7 @@
 </tr>
 </tbody>
 </table>
-<p>则\(a\)中期望搜索代价为\(2.80\)，\(b\)期望搜索代价为\(2.75\)（最优）<br>假设一次搜索的代价等于访问的节点数，即此次搜索找到的节点在\(T\)中的深度加\(1\)，那么在\(T\)中进行一次搜索的期望代价为$$\begin{equation}\begin{aligned}E[\text{T中搜索代价}] &amp;= \sum_{i=1}^{n}(\text{depth}_T (k_i) + 1)\times p_i + \sum_{i=0}^{n}(\text{depth}_T (d_i) + 1) \times q_i \\ &amp;=1 + sum_{i=1}^{n}\text{depth}_T (k_i)\times p_i + \sum_{i=0}^{n}\text{depth}_T (d_i) \times q_i\end{aligned}\end{equation}$$其中\(\text{depth}_T\)表示一个节点在\(T\)中的深度。对于上图\(a\)，有如下计算代价<img src="/images/obst_1.png" alt="计算代价"></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">节点</th>
-<th style="text-align:center">深度</th>
-<th style="text-align:center">频率</th>
-<th style="text-align:center">贡献</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\(k_1\)</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0.15</td>
-<td style="text-align:center">0.30</td>
-</tr>
-<tr>
-<td style="text-align:center">\(k_2\)</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0.10</td>
-<td style="text-align:center">0.10</td>
-</tr>
-<tr>
-<td style="text-align:center">\(k_3\)</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">0.05</td>
-<td style="text-align:center">0.15</td>
-</tr>
-<tr>
-<td style="text-align:center">\(k_4\)</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0.10</td>
-<td style="text-align:center">0.20</td>
-</tr>
-<tr>
-<td style="text-align:center">\(k_5\)</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">0.20</td>
-<td style="text-align:center">0.60</td>
-</tr>
-<tr>
-<td style="text-align:center">\(d_0\)</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">0.05</td>
-<td style="text-align:center">0.15</td>
-</tr>
-<tr>
-<td style="text-align:center">\(d_1\)</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">0.10</td>
-<td style="text-align:center">0.30</td>
-</tr>
-<tr>
-<td style="text-align:center">\(d_2\)</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">0.05</td>
-<td style="text-align:center">0.20</td>
-</tr>
-<tr>
-<td style="text-align:center">\(d_3\)</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">0.05</td>
-<td style="text-align:center">0.20</td>
-</tr>
-<tr>
-<td style="text-align:center">\(d_4\)</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">0.05</td>
-<td style="text-align:center">0.20</td>
-</tr>
-<tr>
-<td style="text-align:center">\(d_5\)</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">0.10</td>
-<td style="text-align:center">0.40</td>
-</tr>
-<tr>
-<td style="text-align:center">合计</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">2.80</td>
-</tr>
-</tbody>
-</table>
-<p>最优二叉搜索树不一定是高度最矮，且频率最高的关键字不一定出现在树的根节点上，如上图\(b\)</p>
+<p>则\(a\)中期望搜索代价为\(2.80\)，\(b\)期望搜索代价为\(2.75\)（最优）<br>假设一次搜索的代价等于访问的节点数，即此次搜索找到的节点在\(T\)中的深度加\(1\)，那么在\(T\)中进行一次搜索的期望代价为$$\begin{equation}\begin{aligned}E[\text{T中搜索代价}] &amp;= \sum_{i=1}^{n}(\text{depth}_T (k_i) + 1)\times p_i + \sum_{i=0}^{n}(\text{depth}_T (d_i) + 1) \times q_i \\ &amp;=1 + \sum_{i=1}^{n}\text{depth}_T (k_i)\times p_i + \sum_{i=0}^{n}\text{depth}_T (d_i) \times q_i\end{aligned}\end{equation}$$其中\(\text{depth}_T\)表示一个节点在\(T\)中的深度。对于上图\(a\)，有如下计算代价<img src="/images/obst_1.png" alt="计算代价"><br>最优二叉搜索树不一定是高度最矮，且频率最高的关键字不一定出现在树的根节点上，如上图\(b\)</p>
 <p>参考：算法导论</p>
 
       
