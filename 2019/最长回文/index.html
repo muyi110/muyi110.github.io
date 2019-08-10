@@ -117,20 +117,17 @@
 
 
 
-<meta name="description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  等式限制的情况考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol">
+<meta name="description" content="最长回文子串 题目：给定一个字符串\(s\)，找到\(s\)中最长回文子串例如:    输入：babad    输出：bab或者aba  动态规划解在验证一个子串是不是回文时候，应该避免不必要的重复计算。以ababa为例，如果已经知道bab是回文，则ababa一定是回文，因为子串首和尾是相同的a。有如下定义$$P(i, j) = \begin{cases}\text{true}, \quad">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈机器学习中Lagrange-Multipliers">
-<meta property="og:url" content="https://muyi110.github.io/2018/浅谈机器学习中Lagrange-Multipliers/index.html">
+<meta property="og:title" content="最长回文">
+<meta property="og:url" content="https://muyi110.github.io/2019/最长回文/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  等式限制的情况考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol">
+<meta property="og:description" content="最长回文子串 题目：给定一个字符串\(s\)，找到\(s\)中最长回文子串例如:    输入：babad    输出：bab或者aba  动态规划解在验证一个子串是不是回文时候，应该避免不必要的重复计算。以ababa为例，如果已经知道bab是回文，则ababa一定是回文，因为子串首和尾是相同的a。有如下定义$$P(i, j) = \begin{cases}\text{true}, \quad">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://muyi110.github.io/images/2018.png">
-<meta property="og:image" content="https://muyi110.github.io/images/20180712.png">
-<meta property="og:updated_time" content="2018-07-27T12:17:18.785Z">
+<meta property="og:updated_time" content="2019-08-10T13:35:06.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈机器学习中Lagrange-Multipliers">
-<meta name="twitter:description" content="拉格朗日数乘 Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.  等式限制的情况考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol">
-<meta name="twitter:image" content="https://muyi110.github.io/images/2018.png">
+<meta name="twitter:title" content="最长回文">
+<meta name="twitter:description" content="最长回文子串 题目：给定一个字符串\(s\)，找到\(s\)中最长回文子串例如:    输入：babad    输出：bab或者aba  动态规划解在验证一个子串是不是回文时候，应该避免不必要的重复计算。以ababa为例，如果已经知道bab是回文，则ababa一定是回文，因为子串首和尾是相同的a。有如下定义$$P(i, j) = \begin{cases}\text{true}, \quad">
 
 
 
@@ -160,13 +157,13 @@
 
 
 
-  <link rel="canonical" href="https://muyi110.github.io/2018/浅谈机器学习中Lagrange-Multipliers/"/>
+  <link rel="canonical" href="https://muyi110.github.io/2019/最长回文/"/>
 
 
 
 
 
-  <title>浅谈机器学习中Lagrange-Multipliers | MuYi's Blog</title>
+  <title>最长回文 | MuYi's Blog</title>
   
 
 
@@ -303,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2018/浅谈机器学习中Lagrange-Multipliers/">
+    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2019/最长回文/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="穆义">
@@ -320,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈机器学习中Lagrange-Multipliers</h1>
+          <h1 class="post-title" itemprop="name headline">最长回文</h1>
         
 
         <div class="post-meta">
@@ -332,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T21:05:03+08:00">
-                2018-07-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-10T20:57:57+08:00">
+                2019-08-10
               </time>
             
 
@@ -355,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
                   </a>
                 </span>
 
@@ -395,39 +392,13 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="拉格朗日数乘"><a href="#拉格朗日数乘" class="headerlink" title="拉格朗日数乘"></a>拉格朗日数乘</h1><blockquote>
-<p>Lagrange multipliers are used to find the stationary points of a function of several variables subject to one or more constrains.</p>
+<h1 id="最长回文子串"><a href="#最长回文子串" class="headerlink" title="最长回文子串"></a>最长回文子串</h1><blockquote>
+<p>题目：给定一个字符串\(s\)，找到\(s\)中最长回文<strong>子串</strong><br>例如:<br>    输入：babad<br>    输出：bab或者aba</p>
 </blockquote>
-<h2 id="等式限制的情况"><a href="#等式限制的情况" class="headerlink" title="等式限制的情况"></a>等式限制的情况</h2><p>考虑变量\(\boldsymbol x\in R^{D}\)，限制条件是\(g(\boldsymbol x) = 0\)。限制条件表示为在\(\boldsymbol x\)空间里的\(D-1\)维表面。在限制表面上的任何点，其梯度\(\nabla g\left(\boldsymbol x\right)\)都和限制表面正交。下图是对此说明。<br><img src="/images/2018.png" alt="有等式约束的拉格朗日数乘图例"></p>
-<ul>
-<li><strong>对上面一句话（其梯度\(\nabla g\left(\boldsymbol x\right)\)都和限制表面正交）证明:</strong><br>考虑限制表面上的一个点\(\boldsymbol x\)，同时考虑一个相邻的点\(\boldsymbol x+\boldsymbol \varepsilon\)也在限制表面上，利用泰勒展开公式得到$$g\left(\boldsymbol x+\boldsymbol \varepsilon\right)=g\left(\boldsymbol x\right) +\boldsymbol \varepsilon^{T}\nabla g\left(\boldsymbol x\right)$$由于\(\boldsymbol x\)与\(\boldsymbol x+\boldsymbol \varepsilon\)都在限制表面上，得到\(g(\boldsymbol x)=g(\boldsymbol x+\boldsymbol \varepsilon)\)，因此有\(\boldsymbol \varepsilon^{T}\nabla g\left(\boldsymbol x\right)=0\)当\(\lim \left| \boldsymbol \varepsilon\right| \rightarrow 0\)。由于\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行，所以梯度\(\nabla g\left(\boldsymbol x\right)\)都和限制表面正交。</li>
-<li><strong>杂谈：为什么有\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行？</strong><blockquote>
-<p>由于\(\boldsymbol x\)与\(\boldsymbol x+\boldsymbol \varepsilon\)都在限制表面上，说明向量\(\boldsymbol \varepsilon\)的”头”和”尾”都在限制表面上，因此有\(\boldsymbol \varepsilon\)和限制表面\(g(\boldsymbol x) = 0\)平行。</p>
-</blockquote>
-</li>
-</ul>
-<p>接下来的目的是要在限制表面\(g(\boldsymbol x) = 0\)上寻找一点\(\boldsymbol x^\ast\)，使得目标函数\(f\left(\boldsymbol x\right)\)取最大值。<strong>像这样的点满足一个属性：向量\(\nabla f\left(\boldsymbol x\right)\)也和限制表面正交。</strong></p>
-<ul>
-<li><strong>如何理解向量\(\nabla f\left(\boldsymbol x^\ast\right)\)也和限制表面正交？</strong><br>非正式的解释如下：\(\boldsymbol x\)在限制表面\(g(\boldsymbol x) = 0\)上移动，直到找到使目标函数\(f\left(\boldsymbol x\right)\)取最大值时停止，若\(\nabla f\left(\boldsymbol x\right)\)与\(\nabla g\left(\boldsymbol x\right)\)不共线，则\(\nabla f\left(\boldsymbol x\right)\)在该点有一个切向分量，\(\boldsymbol x\)沿着该分量移动使得\(f\left(\boldsymbol x\right)\)可以取得更大的值，最终会稳定在一个使得\(\nabla f\left(\boldsymbol x\right)\)与\(\nabla g\left(\boldsymbol x\right)\)共线的位置。（可以类比梯度法（上升/下降）找极值理解）</li>
-</ul>
-<p>因此存在一个参数\(\lambda\)使得$$\nabla f\left(\boldsymbol x\right)+\lambda \nabla g\left(\boldsymbol x\right)=0$$进而自然引出拉格朗日函数$$L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)+\lambda g\left(\boldsymbol x\right)$$通过令\(\nabla _{\boldsymbol x}L=0\)得到所求的极值点。(在等式限制条件下，\(\min f(\boldsymbol x)\)与\(\max f(\boldsymbol x)\)应用拉格朗日是对等的，没啥区别）</p>
-<h2 id="不等式限制条件"><a href="#不等式限制条件" class="headerlink" title="不等式限制条件"></a>不等式限制条件</h2><p>接下来探讨\(\max f\left(\boldsymbol x\right)\)，限制条件为\(g\left(\boldsymbol x\right)\geq 0\)，下图是对不等式约束情况说明。<br><img src="/images/20180712.png" alt="不等式约束的拉格朗日数乘法图例"><br>针对不等式约束情况的解有两种情况：</p>
-<ol>
-<li>落在\(g(\boldsymbol x)&gt;0\)的区域。在此种情况下限制函数\(g(\boldsymbol x)\)不起作用，只需简单令\(\nabla f(\boldsymbol x)=0\)求解即可，这和等式限制条件下的拉格朗日函数中\(\lambda =0\)等价。</li>
-<li>落在\(g(\boldsymbol x)=0\)的区域。这和之前讨论的等式约束条件类似，此时\(\lambda \neq 0\)。注意此时只有函数\(f(\boldsymbol x)\)的梯度\(\nabla f\left(\boldsymbol x\right)\)指向远离\(g(\boldsymbol x)&gt;0\)的区域，才有函数\(f(\boldsymbol x)\)取极大值（上图有说明，解释可参考上面等式约束部分“非正式的解释”）。于是有\(\nabla f(\boldsymbol x)=-\lambda\nabla g(\boldsymbol x)\)，其中\(\lambda &gt;0\)。</li>
-</ol>
-<ul>
-<li><strong>杂谈：</strong>如何确定限制面上的点的梯度\(\nabla g(\boldsymbol x)\)的指向（图中示例都是指向限制面包裹区域的内部)<blockquote>
-<p>梯度：函数在某一点的梯度是这样一个向量，它的方向与取得最大<a href="http://math.fudan.edu.cn/gdsx/KEJIAN/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E5%92%8C%E6%A2%AF%E5%BA%A6.pdf" target="_blank" rel="noopener">方向导数</a>的方向一致，而它的模为<a href="http://math.fudan.edu.cn/gdsx/KEJIAN/%E6%96%B9%E5%90%91%E5%AF%BC%E6%95%B0%E5%92%8C%E6%A2%AF%E5%BA%A6.pdf" target="_blank" rel="noopener">方向导数</a>的最大值。<strong>沿梯度方向，函数值增加最快（此时方向导数是正值，取最大）</strong>，为更好理解考虑下面用泰勒公式展开的一元函数$$f(x+\nabla x)\approx f(x)+f’(x)\nabla x$$当\(f’(x)&gt;0\)时，函数值增加。当\(f’(x)&lt;0\)时，函数值减小，多元函数类似。<br>回归正题：由刚才的分析可知，沿梯度的方向，函数值增加最快，因此可得到梯度的方向就是函数值增加的方向。由于上面图给出\(g(\boldsymbol x)&gt;0\)在内部，因此梯度方向也就指向内部了。（若\(g(\boldsymbol x)&gt;0\)在外部，那梯度方向就指向外部了，之前的所有分析都是还成立的）</p>
-</blockquote>
-</li>
-</ul>
-<p>以上两种情况都有\(\lambda g(\boldsymbol x)=0\)，因此问题转为下式带约束的极大值$$L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)+\lambda g\left(\boldsymbol x\right)$$$$s.t.\begin{cases}g\left( x\right) =0\\ \lambda \geq 0\\ \lambda g\left( x\right) =0\end{cases}$$约束条件为KKT条件。<br><strong>注意如果是\(\min f\left(\boldsymbol x\right)\)，限制条件为\(g\left(\boldsymbol x\right)\geq 0\)，则拉格朗日函数应该为\(L\left(\boldsymbol x,\lambda\right)=f\left(\boldsymbol x\right)-\lambda g\left(\boldsymbol x\right)\)其中\(\lambda \geq 0\)</strong></p>
-<ul>
-<li><strong>对上面注意事项解释如下</strong><br>如果限制条件成立，则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)\);但是若限制条件不满足，即\(g(\boldsymbol x)&lt;0\)，则需要惩罚，由于\(\lambda\geq 0\)则惩罚项\(\lambda g(\boldsymbol x)=-\infty\)。则\(L(\boldsymbol x,\lambda)=f(\boldsymbol x)-(-\infty)\)，因此问题转为$$L\left(\boldsymbol x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\\ +\infty ,不满足限制\end{cases}$$在这种情况下最小化才有意义（和原文题\(\min f\left(\boldsymbol x\right)\)保持一致）。如果拉格朗日数乘算子前还是”+”的话，则问题转为$$L\left(\boldsymbol x,\lambda\right) =\begin{cases}f\left( x\right) ,满足限制\\ -\infty ,不满足限制\end{cases}$$此时最小化无意义。（此思想对于其他的情况也适用）</li>
-</ul>
-<p>将上述等式约束和不等式约束组合可得到拉格朗日数乘公式的一般形式，具体就不写了，注意KKT条件。</p>
-<p>参考:PRML<br>结束</p>
+<p><strong>动态规划解</strong><br>在验证一个子串是不是回文时候，应该避免不必要的重复计算。以ababa为例，如果已经知道bab是回文，则ababa一定是回文，因为子串首和尾是相同的a。有如下定义$$P(i, j) = \begin{cases}\text{true}, \quad &amp;\text{如果子串\(s_i\dots s_j\)是回文}\\ \text{false}, \quad &amp;\text{其它}\end{cases}$$进而有如下的递推公式$$\begin{cases}P(i, j) = (P(i+1, j-1) and s_i == s_j)\\P(i,i)=true\\P(i,i+1)=(s_i==s_j)$$需要一个\(n\times n\)的表table，其中\(text{table}[i, j] = P(i, j), \quad i \le j\)时间复杂度为\(O(n^2)\)，空间复杂度为\(O(n^2)\)</p>
+<details><br><summary>C++实现（递归实现）</summary><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = s.size();</span><br><span class="line">    <span class="keyword">if</span>(n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> s;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; table(n, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">    <span class="keyword">int</span> maxLength = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> old_i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        table[i][i] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(s[i+<span class="number">1</span>] == s[i])</span><br><span class="line">        &#123;</span><br><span class="line">            table[i][i+<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">            old_i = i;</span><br><span class="line">            maxLength = <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    table[n<span class="number">-1</span>][n<span class="number">-1</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">2</span>; l &lt; n; ++l)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - l; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i + l;</span><br><span class="line">            <span class="keyword">if</span>(table[i+<span class="number">1</span>][j<span class="number">-1</span>] &amp;&amp; s[i] == s[j])</span><br><span class="line">            &#123;</span><br><span class="line">                table[i][j] = <span class="literal">true</span>;</span><br><span class="line">                old_i = i;</span><br><span class="line">                maxLength = j - i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s.substr(old_i, maxLength);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></details>
+
+<p>运行时间：\(216\text{ms}\) 超过\(17.70\%\); 内存：\(18.9\text{MB}\) 少于\(29.65\%)</p>
 
       
     </div>
@@ -452,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/python中内置函数map与模块concurrent-futures中map函数探讨/" rel="next" title="python中内置函数map与模块concurrent.futures中map函数探讨">
-                <i class="fa fa-chevron-left"></i> python中内置函数map与模块concurrent.futures中map函数探讨
+              <a href="/2019/最短路径/" rel="next" title="最短路径">
+                <i class="fa fa-chevron-left"></i> 最短路径
               </a>
             
           </div>
@@ -461,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/浅谈机器学习中应用的变分法/" rel="prev" title="浅谈机器学习中应用的变分法">
-                浅谈机器学习中应用的变分法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#拉格朗日数乘"><span class="nav-number">1.</span> <span class="nav-text">拉格朗日数乘</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#等式限制的情况"><span class="nav-number">1.1.</span> <span class="nav-text">等式限制的情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不等式限制条件"><span class="nav-number">1.2.</span> <span class="nav-text">不等式限制条件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最长回文子串"><span class="nav-number">1.</span> <span class="nav-text">最长回文子串</span></a></li></ol></div>
             
 
           </div>
