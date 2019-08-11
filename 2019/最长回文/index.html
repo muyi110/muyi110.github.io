@@ -131,7 +131,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/ma_2.png">
 <meta property="og:image" content="https://muyi110.github.io/images/ma_3.png">
 <meta property="og:image" content="https://muyi110.github.io/images/ma_4.png">
-<meta property="og:updated_time" content="2019-08-11T10:57:23.788Z">
+<meta property="og:updated_time" content="2019-08-11T11:03:33.872Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最长回文">
 <meta name="twitter:description" content="最长回文子串 题目：给定一个字符串\(s\)，找到\(s\)中最长回文子串输入：babad输出：bab或者aba  动态规划解在验证一个子串是不是回文时候，应该避免不必要的重复验证计算。以ababa为例，如果已经知道bab是回文，则ababa一定是回文，因为子串首和尾是相同的a。有如下定义$$P(i, j) = \begin{cases}\text{true}, \quad &amp;amp;\te">
@@ -414,7 +414,7 @@
 <li>当\(i\)在maxRight的左边时候，如下图<img src="/images/ma_1.png" alt="左边">图中红色块之间（包括）串是回文的，以\(i\)为对称轴的回文串与红色块之间有重叠。可以找到\(i\)关于pos的对称位置\(j\)，其中\(RL[j]\)已经计算过，根据对称性，以\(i\)为对称轴的回文串和以\(j\)为对称轴的回文串有部分相同<br>当以\(j\)为对称轴回文串较短时候，如下图<img src="/images/ma_2.png" alt="短回文">有\(RL[i] \ge RL[j]\)，令\(RL[i] = RL[j]\)，同时试着以\(i\)为对称轴，向两边拓展，知道左右字符不同或者到达边界，更新maxRight和pos<br>当以\(j\)为对称轴回文串较长时候，如下图<img src="/images/ma_3.png" alt="长回文">只能确定在蓝色虚线之间是回文的（不超过maxRight)，同时从这个长度开始，试着以\(i\)为对称轴，向两边拓展，知道左右字符不同或者到达边界，更新maxRight和pos</li>
 <li>当\(i\)在maxRight的右边时候，如下图<img src="/images/ma_4.png" alt="右边">以\(i\)为对称轴，向两边拓展，知道左右字符不同或者到达边界，更新maxRight和pos</li>
 </ol>
-<p>时间复杂度\(O(n)\)，空间复杂度\(O(n)\)</p>
+<p>时间复杂度\(O(n)\)，空间复杂度\(O(n)\)$$#a#b$$</p>
 <details><br><summary>C++实现</summary><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">`</span><br></pre></td></tr></table></figure><br><br></details>
 
 <p>参考：<a href="https://segmentfault.com/a/1190000003914228" target="_blank" rel="noopener">Manacher 算法</a></p>
