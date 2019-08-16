@@ -117,17 +117,17 @@
 
 
 
-<meta name="description" content="模型训练线性模型">
+<meta name="description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theat = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(x=[1, x_1, x_2, \dots, x_n]^T\) 迭代优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈机器学习中优化方法">
 <meta property="og:url" content="https://muyi110.github.io/2019/浅谈机器学习中优化方法/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="模型训练线性模型">
+<meta property="og:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theat = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(x=[1, x_1, x_2, \dots, x_n]^T\) 迭代优化">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-15T14:02:16.974Z">
+<meta property="og:updated_time" content="2019-08-16T02:33:32.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中优化方法">
-<meta name="twitter:description" content="模型训练线性模型">
+<meta name="twitter:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theat = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(x=[1, x_1, x_2, \dots, x_n]^T\) 迭代优化">
 
 
 
@@ -392,7 +392,14 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h1><h2 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h2>
+<h1 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h1><h2 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h2><h3 id="解析解"><a href="#解析解" class="headerlink" title="解析解"></a>解析解</h3><blockquote>
+<p>直接使用解析解(closed-form)计算模型参数</p>
+</blockquote>
+<p>线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theat = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(x=[1, x_1, x_2, \dots, x_n]^T\)</p>
+<h3 id="迭代优化"><a href="#迭代优化" class="headerlink" title="迭代优化"></a>迭代优化</h3><blockquote>
+<p>使用迭代的优化方法，例如梯度下降(GD)，实际使用中有Batch GD、Mini-batch GD和Stochastic GD</p>
+</blockquote>
+
       
     </div>
     
@@ -555,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模型训练"><span class="nav-number">1.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.1.</span> <span class="nav-text">线性模型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模型训练"><span class="nav-number">1.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.1.</span> <span class="nav-text">线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析解"><span class="nav-number">1.1.1.</span> <span class="nav-text">解析解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代优化"><span class="nav-number">1.1.2.</span> <span class="nav-text">迭代优化</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
