@@ -125,7 +125,7 @@
 <meta property="og:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/mse_cost.png">
-<meta property="og:updated_time" content="2019-08-16T09:03:39.650Z">
+<meta property="og:updated_time" content="2019-08-16T09:07:35.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中优化方法">
 <meta name="twitter:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]">
@@ -404,7 +404,7 @@
 <h3 id="迭代优化"><a href="#迭代优化" class="headerlink" title="迭代优化"></a>迭代优化</h3><blockquote>
 <p>使用迭代的优化方法，例如梯度下降(GD)，实际使用中有Batch GD、Mini-batch GD和Stochastic GD</p>
 </blockquote>
-<p>梯度下降的一般思路是通过迭代微调参数，使得损失函数最小化。沿着梯度最大的方向下降：计算损失函数对模型参数的局部梯度，然后沿着其梯度方向下降，一旦梯度为\(0\)，则优化停止（开始时，模型参数需要随机初始化）<strong>学习率（步长）是一个重要的超参数，如果太小，算法收敛慢，如果太大，算法可能不收敛</strong><br>损失函数非凸，不能保证找到全局最优解。MSE损失函数为凸函数，可以保证找到全局最优解，事实上MSE的损失函数像一个碗，如下图<img src="/images/mse_cost.png" alt="MSE损失">左边特征\(1\)和特征\(2\)有相同的尺度，右边特征\(1\)的尺度比特征\(2\)的尺度小。左边梯度下降算法直接朝向损失函数最小值方向，可以较快收敛，右边首先沿着和全局最小值几乎正交的方向，然后在较平的部分花费许多步，最终会达到最小值，但花费更多时间。<strong>当使用梯度下降时候，应该保证所有的特征有相似的尺度</strong><br><strong>批梯度下降(Batch Gradient Descent)</strong><br>应用梯度下降法，需要计算损失函数对每一个参数\(\theta_j\)的梯度，然后更新每一个参数。下面是计算损失函数对参数\(j\)的梯度$$\dfrac{\partial}{\partial\theta_j}\text{MSE}(\theta) = \dfrac{2}{m}\sum_{i=1}^{m}(\theta ^T\mathbf{x^{(i)}}-y^{(i)})x_j ^{(i)}$$实际中常计算梯度向量$$<br>\bigtriangledown _{\theta}\text{MSE}(\theta} =<br>\begin{bmatrix}\dfrac{\partial}{\partial \theta_0}\text{MSE}(\theta)\\<br>\dfrac{\partial}{\partial \theta_1}\text{MSE}(\theta)\\<br>\vdots \\<br>\dfrac{\partial}{\partial \theta_n}\text{MSE}(\theta)\end{bmatrix}$$此公式在每次梯度下降都使用整个训练数据，对于大规模数据，此算法较慢$$\bigtriangledown _{\theta} = \dfrac{2}{m}\mathbf{X}^T(\mathbf{X}\theta-\mathbf{y})$$</p>
+<p>梯度下降的一般思路是通过迭代微调参数，使得损失函数最小化。沿着梯度最大的方向下降：计算损失函数对模型参数的局部梯度，然后沿着其梯度方向下降，一旦梯度为\(0\)，则优化停止（开始时，模型参数需要随机初始化）<strong>学习率（步长）是一个重要的超参数，如果太小，算法收敛慢，如果太大，算法可能不收敛</strong><br>损失函数非凸，不能保证找到全局最优解。MSE损失函数为凸函数，可以保证找到全局最优解，事实上MSE的损失函数像一个碗，如下图<img src="/images/mse_cost.png" alt="MSE损失">左边特征\(1\)和特征\(2\)有相同的尺度，右边特征\(1\)的尺度比特征\(2\)的尺度小。左边梯度下降算法直接朝向损失函数最小值方向，可以较快收敛，右边首先沿着和全局最小值几乎正交的方向，然后在较平的部分花费许多步，最终会达到最小值，但花费更多时间。<strong>当使用梯度下降时候，应该保证所有的特征有相似的尺度</strong><br><strong>批梯度下降(Batch Gradient Descent)</strong><br>应用梯度下降法，需要计算损失函数对每一个参数\(\theta_j\)的梯度，然后更新每一个参数。下面是计算损失函数对参数\(j\)的梯度$$\dfrac{\partial}{\partial\theta_j}\text{MSE}(\theta) = \dfrac{2}{m}\sum_{i=1}^{m}(\theta ^T\mathbf{x^{(i)}}-y^{(i)})x_j ^{(i)}$$实际中常计算梯度向量$$<br>\bigtriangledown _{\theta}\text{MSE}(\theta) =<br>\begin{bmatrix}<br>\dfrac{\partial}{\partial \theta_0}\text{MSE}(\theta)\\<br>\dfrac{\partial}{\partial \theta_1}\text{MSE}(\theta)\\<br>\vdots \\<br>\dfrac{\partial}{\partial \theta_n}\text{MSE}(\theta)<br>\end{bmatrix}$$其中\(\mathbf{X} \in (m\times n)\)，\(m\)是样本个数，\(n\)是特征个数。此公式在每次梯度下降都使用整个训练数据，对于大规模数据，此算法较慢$$\bigtriangledown _{\theta} = \dfrac{2}{m}\mathbf{X}^T(\mathbf{X}\theta-\mathbf{y})$$</p>
 
       
     </div>
