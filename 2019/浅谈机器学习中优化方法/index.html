@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-16T03:02:38.349Z">
+<meta property="og:updated_time" content="2019-08-16T03:05:58.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中优化方法">
 <meta name="twitter:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]">
@@ -395,7 +395,7 @@
 <h1 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h1><h2 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h2><h3 id="解析解"><a href="#解析解" class="headerlink" title="解析解"></a>解析解</h3><blockquote>
 <p>直接使用解析解(closed-form)计算模型参数</p>
 </blockquote>
-<p>线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]^T\)<br>训练一个模型意味着学习模型参数，使其尽可能拟合训练数据。因此需要寻找一种度量手段（损失函数），用来度量模型拟合数据的程度。对于线性回归模型，选择平方误差损失(MSE)，其表达式如下$$\text{MSE}(\mathbf{X}, h_{\theta})=\dfrac{1}{m}\sum_{i=1}^{m}(\theta ^T\dot \mathbf{x}^{(i)}-y^{(i)})^2$$对参数\(theta\)求导，得到$$\hat{\theta}=(\mathbf{X^T}{\mathbf{X}})^{-1}\mathbf{X}^T\mathbf(y)$$</p>
+<p>线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]^T\)<br>训练一个模型意味着学习模型参数，使其尽可能拟合训练数据。因此需要寻找一种度量手段（损失函数），用来度量模型拟合数据的程度。对于线性回归模型，选择平方误差损失(MSE)，其表达式如下$$\text{MSE}(\mathbf{X}, h_{\theta})=\dfrac{1}{m}\sum_{i=1}^{m}(\theta ^T \mathbf{x}^{(i)}-y^{(i)})^2$$对参数\(\theta\)求导，得到$$\hat{\theta}=(\mathbf{X^T}{\mathbf{X}})^{-1}\mathbf{X}^T\mathbf{y}$$</p>
 <h3 id="迭代优化"><a href="#迭代优化" class="headerlink" title="迭代优化"></a>迭代优化</h3><blockquote>
 <p>使用迭代的优化方法，例如梯度下降(GD)，实际使用中有Batch GD、Mini-batch GD和Stochastic GD</p>
 </blockquote>
