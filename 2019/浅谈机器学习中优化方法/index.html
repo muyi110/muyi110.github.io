@@ -130,7 +130,8 @@
 <meta property="og:image" content="https://muyi110.github.io/images/compare_1.png">
 <meta property="og:image" content="https://muyi110.github.io/images/learning_curves_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/bias_var_0.png">
-<meta property="og:updated_time" content="2019-08-17T11:42:27.868Z">
+<meta property="og:image" content="https://muyi110.github.io/images/early_stopping_0.png">
+<meta property="og:updated_time" content="2019-08-17T11:46:31.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中优化方法">
 <meta name="twitter:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]">
@@ -445,6 +446,7 @@
 <blockquote>
 <p>一般来说，Ridge回归是默认的选择，但当猜想只有几个特征是重要的时候，应该使用Lasso回归或Elastic Net（通常来说，最好使用Elastic Net，因为当特征数目比训练样本多或者有些特征是有相关关系）</p>
 </blockquote>
+<h2 id="Early-Stopping"><a href="#Early-Stopping" class="headerlink" title="Early Stopping"></a>Early Stopping</h2><p>当验证集误差达到最小时（之后模型会过拟合训练数据），停止训练，如下图所示<img src="/images/early_stopping_0.png" alt="早停"></p>
 
       
     </div>
@@ -608,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模型训练"><span class="nav-number">1.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.1.</span> <span class="nav-text">线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析解"><span class="nav-number">1.1.1.</span> <span class="nav-text">解析解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代优化"><span class="nav-number">1.1.2.</span> <span class="nav-text">迭代优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型评估"><span class="nav-number">2.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习曲线"><span class="nav-number">2.1.</span> <span class="nav-text">学习曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏差方差权衡"><span class="nav-number">2.2.</span> <span class="nav-text">偏差方差权衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型正则化"><span class="nav-number">3.</span> <span class="nav-text">模型正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ridge-Regression"><span class="nav-number">3.1.</span> <span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lasso-Regression"><span class="nav-number">3.2.</span> <span class="nav-text">Lasso Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Net"><span class="nav-number">3.3.</span> <span class="nav-text">Elastic Net</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模型训练"><span class="nav-number">1.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.1.</span> <span class="nav-text">线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析解"><span class="nav-number">1.1.1.</span> <span class="nav-text">解析解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代优化"><span class="nav-number">1.1.2.</span> <span class="nav-text">迭代优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型评估"><span class="nav-number">2.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习曲线"><span class="nav-number">2.1.</span> <span class="nav-text">学习曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏差方差权衡"><span class="nav-number">2.2.</span> <span class="nav-text">偏差方差权衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型正则化"><span class="nav-number">3.</span> <span class="nav-text">模型正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ridge-Regression"><span class="nav-number">3.1.</span> <span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lasso-Regression"><span class="nav-number">3.2.</span> <span class="nav-text">Lasso Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Net"><span class="nav-number">3.3.</span> <span class="nav-text">Elastic Net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Early-Stopping"><span class="nav-number">3.4.</span> <span class="nav-text">Early Stopping</span></a></li></ol></li></ol></div>
             
 
           </div>
