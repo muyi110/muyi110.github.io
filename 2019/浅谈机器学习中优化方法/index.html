@@ -130,7 +130,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/compare_1.png">
 <meta property="og:image" content="https://muyi110.github.io/images/learning_curves_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/bias_var_0.png">
-<meta property="og:updated_time" content="2019-08-17T11:32:59.083Z">
+<meta property="og:updated_time" content="2019-08-17T11:42:27.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中优化方法">
 <meta name="twitter:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]">
@@ -441,7 +441,10 @@
 <p>建议：为了逐渐收敛到全局最小值，需要逐渐减小学习率</p>
 </blockquote>
 <p>由于Lasso cost 函数在\(\theta_i = 0\)不可导，当\(\theta_i = 0\)，使用一个subgradient vector$$g(\theta,J) = \bigtriangledown _{\theta}\text{MSE}(\theta) + \alpha\begin{bmatrix}\text{sign}(\theta_1) \\<br>\text{sign}(\theta_2) \\<br>\vdots \\<br>\text{sign}(\theta_n) \\<br>\end{bmatrix} \quad \text{where  sign}(\theta_i) = \begin{cases}-1 \quad \text{if} \quad \theta_i &lt; 0 \\<br>0 \quad \text{if} \quad \theta_i = 0 \\<br>+1 \quad \text{if} \quad \theta_i &gt; 0<br>\end{cases}$$</p>
-<h2 id="Elastic-Net"><a href="#Elastic-Net" class="headerlink" title="Elastic Net"></a>Elastic Net</h2><p>其损失函数如下$$J(\theta) = \text{MSE(\theta)} + \gamma\alpha\sum_{i=1}^{n}|\theta_i| + \dfrac{1-\gamma}{2}\alpha\sum_{i=1}^{n}\theta_i ^2$$其中\(\gamma\)是Lasso回归和Ridge回归的权衡参数</p>
+<h2 id="Elastic-Net"><a href="#Elastic-Net" class="headerlink" title="Elastic Net"></a>Elastic Net</h2><p>其损失函数如下$$J(\theta) = \text{MSE}(\theta) + \gamma\alpha\sum_{i=1}^{n}|\theta_i| + \dfrac{1-\gamma}{2}\alpha\sum_{i=1}^{n}\theta_i ^2$$其中\(\gamma\)是Lasso回归和Ridge回归的权衡参数</p>
+<blockquote>
+<p>一般来说，Ridge回归是默认的选择，但当猜想只有几个特征是重要的时候，应该使用Lasso回归或Elastic Net（通常来说，最好使用Elastic Net，因为当特征数目比训练样本多或者有些特征是有相关关系）</p>
+</blockquote>
 
       
     </div>
