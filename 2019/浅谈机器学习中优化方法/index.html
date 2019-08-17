@@ -128,7 +128,9 @@
 <meta property="og:image" content="https://muyi110.github.io/images/sgd_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/compare_0.png">
 <meta property="og:image" content="https://muyi110.github.io/images/compare_1.png">
-<meta property="og:updated_time" content="2019-08-16T14:00:32.457Z">
+<meta property="og:image" content="https://muyi110.github.io/images/learning_curves_0.png">
+<meta property="og:image" content="https://muyi110.github.io/images/bias_var_0.png">
+<meta property="og:updated_time" content="2019-08-17T11:22:30.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习中优化方法">
 <meta name="twitter:description" content="模型训练线性模型解析解 直接使用解析解(closed-form)计算模型参数  线性回归模型如下$$\hat{y}=h_{\theta}(\mathbf{x}) = \theta ^T\mathbf{x}$$其中\(\theta = [\theta_0, \theta_1, \dots, \theta_n]^T\)，\(\mathbf{x}=[1, x_1, x_2, \dots, x_n]">
@@ -417,6 +419,28 @@
 <details><br><summary>python实现</summary><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">X = <span class="number">2</span>*np.random.rand(<span class="number">100</span>, <span class="number">1</span>) <span class="comment"># 100个样本，每个样本有一个特征</span></span><br><span class="line">y = <span class="number">4</span> + <span class="number">3</span>*X + np.random.randn(<span class="number">100</span>, <span class="number">1</span>) <span class="comment"># 添加高斯噪声</span></span><br><span class="line">X_b = np.c_[np.ones((<span class="number">100</span>, <span class="number">1</span>)), X] <span class="comment"># 对每个实例添加 x0 = 1 （偏置项）</span></span><br><span class="line">n_epochs = <span class="number">50</span></span><br><span class="line">t0, t1 = <span class="number">5</span>, <span class="number">50</span> <span class="comment"># 学习率表超参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">learning_schedule</span><span class="params">(t)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> t0 / (t + t1)</span><br><span class="line">theta = np.random.randn(<span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(n_epochs):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        random_index = np.random.randint(m) <span class="comment"># 在[0, m)之间随机返回随机返回一个整数</span></span><br><span class="line">        xi = X_b[random_index:random_index+<span class="number">1</span>]</span><br><span class="line">        yi = y[random_index:random_index+<span class="number">1</span>]</span><br><span class="line">        gradients = <span class="number">2</span>*xi.T.dot(xi.dot(theta) - yi)</span><br><span class="line">        eta = learning_schedule(epoch*m + i)</span><br><span class="line">        theta = theta - eta*gradients</span><br></pre></td></tr></table></figure><br><br></details>
 
 <p>上述程序中每一个样本会被随机选择，有些样本可能被选择多次，有些样本可能不会被选择。如果想确保每一个样本都会被选择，可以在每个epoch先打乱训练集(shuffle the training set)，然后依次选择样本<br><strong>Mini-batch 梯度下降</strong><br>在每一步计算梯度时，随机选择训练集的随机子集(mini-batches)用来计算梯度。<strong>mini-batch GD和SGD对比的一个优势是通过矩阵操作，可以得到性能上的提升</strong>。下图是mini-batch GD、SGD和BGD训练过程比较<img src="/images/compare_0.png" alt="比较">下面的表总结了不同的训练方法比较结果<img src="/images/compare_1.png" alt="不同比较">其中\(m\)表示样本的个数，\(n\)表示特征的个数</p>
+<h1 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h1><h2 id="学习曲线"><a href="#学习曲线" class="headerlink" title="学习曲线"></a>学习曲线</h2><p>判断一个模型是过拟合还是欠拟合的一个方法是使用交叉验证：如果模型在训练集上表现好，但根据交叉验证表现差，则模型过拟合；如果模型在两者上都表现差，则模型欠拟合<br>另一个方法是看学习曲线：即将模型在训练集和验证集上的性能绘图（横轴表示训练集大小，纵轴表示误差），如下图所示<img src="/images/learning_curves_0.png" alt="学习曲线">对于训练集的性能，开始时只有一个或者两个样本，模型可以完美拟合，因此训练误差从\(0\)开始；随着训练样本的增多，模型不能很好拟合训练集，即因为数据是有噪声的，也因为数据是非线性的（此模型是线性模型），因此训练误差增加，直到稳定。对于验证集误差，开始时，模型只在很少的训练集上训练，模型的泛化能力差，因此验证集的误差大，随着训练数据的增加，模型的泛化能力增加，验证集误差下降，直到稳定。图中模型欠拟合，因为两者最终的误差都很大</p>
+<blockquote>
+<p>当模型欠拟合时候，增加训练样本并没有作用，需要使用一个更加复杂的模型或者选择更好的特征；当模型过拟合时候，可以增加训练样本，或者限制模型复杂度</p>
+</blockquote>
+<h2 id="偏差方差权衡"><a href="#偏差方差权衡" class="headerlink" title="偏差方差权衡"></a>偏差方差权衡</h2><p>模型的泛化错误可以分解为\(3\)部分之和：偏差(bias)、方差(variance)、残差(irreducible error)</p>
+<ul>
+<li>偏差：由于错误的假设，例如假设数据是线性的，实际上是非线性的。高的偏差模型很可能对训练数据欠拟合</li>
+<li>方差：由于模型对训练数据中小的变换的过度敏感，一个复杂的模型很可能有高的方差，导致过拟合</li>
+<li>残差：由于数据本身具有的噪声，减少此误差的唯一方式是清洗数据，例如移除异常值，修复坏的数据源等</li>
+</ul>
+<p>模型偏差方差示意图如下<img src="/images/bias_var_0.png" alt="偏差方差示意图"></p>
+<h1 id="模型正则化"><a href="#模型正则化" class="headerlink" title="模型正则化"></a>模型正则化</h1><p>以线性模型为例，通过约束模型的权重来起到正则化的作用，有Ridge Regression、Lasso Regression和Elastic Net。正则化应该只在训练过程中</p>
+<h2 id="Ridge-Regression"><a href="#Ridge-Regression" class="headerlink" title="Ridge Regression"></a>Ridge Regression</h2><p>其损失函数如下$$J(\theta) = \text{MSE(\theta)} + \alpha \dfrac{1}{2}\sum_{i=1}^{n}\theta_{i} ^2$$偏置项\(\theta_0\)不需要正则化</p>
+<blockquote>
+<p><strong>Ridge Regression 对输入特征的尺度比较敏感，因此需要对输入数据进行标准化处理，对于大多数正则化模型都应该做标准化处理</strong></p>
+</blockquote>
+<p>其解析解如下$$\hat{\theta} = (\mathbf{X}^T \mathbf{X} + \alpha \mathbf{A})^{-1}\mathbf{X}^T\mathbf{y}$$其中\(mathbf{A}\)是\(n\times n\)的单位阵（除了左上角的一个元素为\(0\)）。实际中一般使用梯度下降训练模型</p>
+<h2 id="Lasso-Regression"><a href="#Lasso-Regression" class="headerlink" title="Lasso Regression"></a>Lasso Regression</h2><p>其损失函数如下$$J(\theta) = \text{MSE(\theta)} + \alpha \sum_{i=1}^{n}|\theta_{i}|$$Lasso Regression 回归的一个重要特点是完全消除不重要特征的权重（将其权重设置为\(0\)），自动执行特征选择输出一个稀疏模型</p>
+<blockquote>
+<p>建议：为了逐渐收敛到全局最小值，需要逐渐减小学习率</p>
+</blockquote>
+<p>由于Lasso cost 函数在\(\theta_i = 0\)不可导，当\(theta_i = 0\)，使用一个subgradient vector$$g(\theta,J) = \bigtriangledown _{\theta}\text{MSE}(\theta) + \alpha\begin{bmatrix}\text{sign}(\theta_1) \\<br>\text{sign}(\theta_2) \\<br>\vdots \\<br>\text{sign}(\theta_n) \\<br>\end{bmatrix} \quad \text{where  sign}(\theta_i) = \begin{cases}-1 \quad \text{if} \theta_i &lt; 0 \\<br>0 \quad \text{if} \theta_i = 0 \\<br>+1 \quad \text{if} \theta_i &gt; 0<br>\end{cases}$$</p>
 
       
     </div>
@@ -580,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模型训练"><span class="nav-number">1.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.1.</span> <span class="nav-text">线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析解"><span class="nav-number">1.1.1.</span> <span class="nav-text">解析解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代优化"><span class="nav-number">1.1.2.</span> <span class="nav-text">迭代优化</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模型训练"><span class="nav-number">1.</span> <span class="nav-text">模型训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.1.</span> <span class="nav-text">线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析解"><span class="nav-number">1.1.1.</span> <span class="nav-text">解析解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代优化"><span class="nav-number">1.1.2.</span> <span class="nav-text">迭代优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型评估"><span class="nav-number">2.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习曲线"><span class="nav-number">2.1.</span> <span class="nav-text">学习曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏差方差权衡"><span class="nav-number">2.2.</span> <span class="nav-text">偏差方差权衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型正则化"><span class="nav-number">3.</span> <span class="nav-text">模型正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ridge-Regression"><span class="nav-number">3.1.</span> <span class="nav-text">Ridge Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lasso-Regression"><span class="nav-number">3.2.</span> <span class="nav-text">Lasso Regression</span></a></li></ol></li></ol></div>
             
 
           </div>
