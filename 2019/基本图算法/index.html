@@ -117,17 +117,20 @@
 
 
 
-<meta name="description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
+<meta name="description" content="首先介绍图的表示和图的搜索。图的搜索指的是系统化跟随图中的边来访问图中每个节点  图的表示对于图\(G=(V, E)\)，有两种表示方法：邻接链表和邻接矩阵，两者都可以表示有向图和无向图。邻接链表在表示稀疏图（边数\(|E|\)远远小于\(|V|^2)\)的图）时非常紧凑而称为通常的选择。在稠密图中（边数\(|E|\)接近\(|V|^2)\)的图）倾向于使用邻接矩阵表示法。如果需要快速判断">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈机器学习中独立成分分析-ICA">
-<meta property="og:url" content="https://muyi110.github.io/2019/浅谈机器学习中独立成分分析-ICA/index.html">
+<meta property="og:title" content="基本图算法">
+<meta property="og:url" content="https://muyi110.github.io/2019/基本图算法/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
+<meta property="og:description" content="首先介绍图的表示和图的搜索。图的搜索指的是系统化跟随图中的边来访问图中每个节点  图的表示对于图\(G=(V, E)\)，有两种表示方法：邻接链表和邻接矩阵，两者都可以表示有向图和无向图。邻接链表在表示稀疏图（边数\(|E|\)远远小于\(|V|^2)\)的图）时非常紧凑而称为通常的选择。在稠密图中（边数\(|E|\)接近\(|V|^2)\)的图）倾向于使用邻接矩阵表示法。如果需要快速判断">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-29T09:28:39.987Z">
+<meta property="og:image" content="https://muyi110.github.io/images/graph_0.png">
+<meta property="og:image" content="https://muyi110.github.io/images/graph_1.png">
+<meta property="og:updated_time" content="2019-08-18T02:22:53.806Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈机器学习中独立成分分析-ICA">
-<meta name="twitter:description" content="独立成分分析 Independent Components Analysis(ICA) 找到一组新的基表示原始数据（和PCA相似），但有不同的目标。  引子考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\">
+<meta name="twitter:title" content="基本图算法">
+<meta name="twitter:description" content="首先介绍图的表示和图的搜索。图的搜索指的是系统化跟随图中的边来访问图中每个节点  图的表示对于图\(G=(V, E)\)，有两种表示方法：邻接链表和邻接矩阵，两者都可以表示有向图和无向图。邻接链表在表示稀疏图（边数\(|E|\)远远小于\(|V|^2)\)的图）时非常紧凑而称为通常的选择。在稠密图中（边数\(|E|\)接近\(|V|^2)\)的图）倾向于使用邻接矩阵表示法。如果需要快速判断">
+<meta name="twitter:image" content="https://muyi110.github.io/images/graph_0.png">
 
 
 
@@ -157,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="https://muyi110.github.io/2019/浅谈机器学习中独立成分分析-ICA/"/>
+  <link rel="canonical" href="https://muyi110.github.io/2019/基本图算法/"/>
 
 
 
 
 
-  <title>浅谈机器学习中独立成分分析-ICA | MuYi's Blog</title>
+  <title>基本图算法 | MuYi's Blog</title>
   
 
 
@@ -300,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2019/浅谈机器学习中独立成分分析-ICA/">
+    <link itemprop="mainEntityOfPage" href="https://muyi110.github.io/2019/基本图算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="穆义">
@@ -317,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈机器学习中独立成分分析-ICA</h1>
+          <h1 class="post-title" itemprop="name headline">基本图算法</h1>
         
 
         <div class="post-meta">
@@ -329,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-28T15:10:20+08:00">
-                2019-07-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-18T09:39:41+08:00">
+                2019-08-18
               </time>
             
 
@@ -352,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/数据结构与算法分析/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法分析</span>
                   </a>
                 </span>
 
@@ -392,24 +395,11 @@
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h1 id="独立成分分析"><a href="#独立成分分析" class="headerlink" title="独立成分分析"></a>独立成分分析</h1><blockquote>
-<p><code>Independent Components Analysis(ICA)</code> 找到一组新的基表示原始数据（和<code>PCA</code>相似），但有不同的目标。</p>
+<blockquote>
+<p>首先介绍图的表示和图的搜索。图的搜索指的是系统化跟随图中的边来访问图中每个节点</p>
 </blockquote>
-<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>考虑一个鸡尾酒聚会问题。在一个聚会上有\(n\)个人在同时说话，同时有\(n\)个麦克风放在不同的位置，每个麦克风记录\(n\)个说话者的混合声音，由于每个麦克风距离说话者的距离不同，因此每个麦克风记录的声音都不同。如何使用记录的\(n\)个麦克风声音分离出\(n\)个说话者的声音？<br>将问题公式化：假设有\(n\)个独立的源产生数据\(s\in \mathbb{R}^n\)，观察到的数据表示为$$x = As$$其中\(A\)表示混合矩阵（方阵），重复观测得到观测数据集\(\{x^{(i)};i=1, 2, \dots，m\}\)我们的目标是恢复源数据\(s^{(i)}\)(\(x^{(i)}=As^{(i)}\))<br>对应于鸡尾酒聚会例子，\(s^{(i)}\)是一个\(n\)维的列向量，\(s_j^{(i)}\)是第\(j\)个人在\(i\)时刻说的声音信号，\(x^{(i)}\)也是一个\(n\)维的列向量，\(x_j^{(i)}\)是第\(j\)个麦克风在\(i\)时刻记录的声音信号。<br>定义\(W = A^{-1}\)是逆混合矩阵。我们的目标是找到\(W\)使得根据观测数据\(x^{(i)}\)恢复源数据\(s^{(i)} = Wx^{(i)}\)。其中符号约定如下：<br>$$\begin {bmatrix}<br>\dots &amp; \omega _1^T &amp; \dots \\<br>&amp; \vdots &amp; \\<br>\dots &amp; \omega _n^T &amp; \dots<br>\end {bmatrix}$$其中\(\omega _i \in \mathbb{R}^n\)，且<code>j-th</code>源数据可以通过\(s_j^{(i)}=\omega_j^T x^{(i)}\)恢复。</p>
-<h2 id="ICA的不确定性-ICA-ambiguities"><a href="#ICA的不确定性-ICA-ambiguities" class="headerlink" title="ICA的不确定性(ICA ambiguities)"></a>ICA的不确定性(ICA ambiguities)</h2><p>如果没有关于源信号(\(s\))和混合矩阵(\(A\))的先验知识，只根据观测信号(\(x\))不能准确恢复源信号。</p>
-<ul>
-<li>如果将\(s\)的顺序打乱，只需要将\(A\)乘置换矩阵（实现交换矩阵的行或列功能），等式依然成立，因此源信号\(s\)无法确定，幸运的是，对于大多数应用，这并没有影响</li>
-<li>如果\(A\)扩大两倍为\(2A\)，\(s\)变为\(0.5s\)，则等式\(x=2A\cdot(0.5)s\)依然成立。一般来说，如果\(A\)的某一列被缩放通过一个因子\(\alpha\)则对应的源信号被缩放通过因子\(\dfrac{1}{\alpha}\)，则等式\(x=As\)依然成立，因此无法确定源信号\(s\)。具体来说，如果\(w_i\)通过算法被缩放\(\alpha\)，则源信号\(s_i=w_i^T x\)也缩放相同的倍数，然而对于一些应用（声音、EEG等）这并不影响</li>
-<li>源信号需要是<strong>非高斯分布</strong>，如果源信号是高斯分布，例如\(n=2\)，\(s\sim\mathcal{N}(0, I)\)其中\(I\)是一个\(2\times 2\)的单位阵。根据\(x=As\)可知\(x\)也是一个高斯分布（高斯分布的线性组合还是高斯分布）有均值\(0\)，协方差为\(E(xx^T)=E(Ass^TA^T)=AA^T\)。现在令\(R\)是任意的正交矩阵\(RR^T=R^TR=I\)，令\(A’=AR\)，如果源数据被混合根据\(A’\)而不是\(A\)，可以得到观测\(x’=A’s\)，\(x’\)也是高斯分布，有均值\(0\)，协方差\(E(x’(x’)^T)=E(A’ss^T(A’)^T)=E(ARss^T(AR)^T)=ARR^TA^T=AA^T\)，因此混合矩阵不管是\(A\)还是\(A’\)，都可以观测数据\(x\sim\mathcal{N}(0, AA^T)\)，因此不能确定混合矩阵\(A\)，无法确定源信号\(s\)</li>
-</ul>
-<h2 id="密度函数和线性变换"><a href="#密度函数和线性变换" class="headerlink" title="密度函数和线性变换"></a>密度函数和线性变换</h2><p>假设有随机变量\(s\)，其密度函数为\(p_s(s)\)，有随机变量\(x=As\)，则\(p_x(x) = p_s(Wx)\cdot |W|\)其中\(W=A^{-1}\)，推导如下：概率的定义为$$P(X\le a)=\int_{-\infty}^{a}f(x)dx$$则有$$P(X\le a)=P(As\le x)=P(s\le Wx)$$则$$p_x(x)=P’(X)=P’(Wx)|W|=p_s(Wx)|W|$$</p>
-<h2 id="ICA算法"><a href="#ICA算法" class="headerlink" title="ICA算法"></a>ICA算法</h2><p>假设每一个源信号\(s_i\)的概率密度为\(p_s\)，则源信号的联合分布为$$p(s)=\prod_{i=1}^{n}p_s(s_i)$$前提假设为<strong>源信号是独立</strong>的。根据\(p_x(x) = p_s(Wx)\cdot |W|\)得到$$p(x)=p_s(Wx)|W|=\prod_{i=1}^{n}p_s(w_i ^Tx)\cdot |W|$$根据之前讨论，若没有关于源信号(\(s\))和混合矩阵(\(A\))的先验知识，只根据观测信号(\(x\))不能准确恢复源信号，因此需要知道\(p_s(s_i)\)，根据之前讨论，不能选取高斯分布密度函数，默认选择<code>sigmoid</code>作为累积分布函数(<code>cdf</code>)$$g(s)=\dfrac{1}{1+e^{-s}}$$其导数为$$p_s(s)=g’(s)=\dfrac{e^s}{(1+e^s)^2}$$方阵\(W\)是需要求的参数，被给一个训练集\(\{x^{(i)};i=1, 2, \dots，m\}\)，对数似然函数为$$l(W)=\sum_{i=1}^{m}\big(\sum_{j=1}^{n}\log g’(w_j^T x^{(i)})+\log|W|\big)$$对\(W\)求导，其中对行列式的求导如下$$\bigtriangledown_W|W|=|W|(W^{-1})^T$$得到随机梯度下降的学习规则如下<br>$$W:=W+\alpha\Bigg({\begin{bmatrix}<br>1-2g(w_1^T x^{(i)})\\<br>1-2g(w_2^T x^{(i)})\\<br>\vdots \\<br>1-2g(w_n^T x^{(i)})<br>\end {bmatrix}}<br>x^{(i)^T}+(W^T)^{-1}\Bigg)$$<br>其中\(\log g’(s)\)的导数为\(1-2g(s)\)，\(\alpha\)为学习率</p>
-<h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><ul>
-<li>如果有关于源信号密度函数的先验知识，直接带入似然函数求解即可，若没有相关的先验知识，则<code>sigmoid</code>函数被认为是合理的默认，对于大多是情形工作不错。同样，上述<code>ICA</code>算法讨论基于一个假设：数据\(x^{(i)}\)被<strong>预处理为有\(0\)均值</strong>，这是必要的，因为上述讨论假设\(p_s(s)=g’(s)\)，有\(E[s]=0\)（<code>sigmoid</code>函数的导数是关于\(x=0\)对称，因此有关于\(s\)的随机变量均值为\(0\)），得到\(E[x]=E[As]=0\)</li>
-<li>上述<code>ICA</code>算法的讨论，当写下似然函数，隐式假设观测数据\(x^{(i)}\)是独立的（针对不同的\(i\)，<strong>注意不是说\(x^{(i)}\)的不同坐标是独立的</strong>），但是这个假设对于语音信号和其他的时间序列(各个时刻不是独立的)是不正确的，但是在样本足够多时，假设独立对效果影响不大</li>
-</ul>
-<p>参考：Independent Components Analysis (CS229)</p>
-
+<h1 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h1><p>对于图\(G=(V, E)\)，有两种表示方法：邻接链表和邻接矩阵，两者都可以表示有向图和无向图。邻接链表在表示<strong>稀疏图</strong>（边数\(|E|\)远远小于\(|V|^2)\)的图）时非常紧凑而称为通常的选择。在<strong>稠密图</strong>中（边数\(|E|\)接近\(|V|^2)\)的图）倾向于使用邻接矩阵表示法。如果需要快速判断两个节点之间是否有边相连，需要使用邻接矩阵表示法<br>对于图\(G=(V, E)\)，<strong>邻接链表表示</strong>由一个包含\(|V|\)条链表数组\(Adj\)构成，每个节点有一条链表。\(Adj[u])\)包含图\(G\)中所有与\(u\)邻接的结点（有边相连的节点，也可以说链表里包含指向这些节点的指针）。下图是有向图和无向图两种表示（上面是有向图，下面是无向图）<img src="/images/graph_0.png" alt="无向图的表示"><img src="/images/graph_1.png" alt="有向图表示">如果图\(G\)是一个有向图，对于边\((u, v)\)来说，节点\(v\)将出现在链表\(Adj[u]\)里面，因此所有的链表长度之和为\(|E|\)。如果图\(G\)是一个无向图，对于边\((u, v)\)来说，节点\(v\)将出现在\(Adj[u]\)和\(Adj[v]\)里面，因此所有邻接链表的长度为\(2|E|\)，邻接链表表示法的空间均为\(O(V+E)\)<br>可以直接将边\((u, v))\)的权重值\(\omega\)存放在节点\(u\)的接链表里，用来表示<strong>权重图</strong>。邻接链表的一个缺点是无法快速判断一条边\((u, v)\)是否是图中的一条边，唯一的方法是在邻接链表\(Adj[u]\)里搜索节点\(v\)。邻接矩阵可以克服这个确定，代价是更高的空间复杂度<br>对于<strong>邻接矩阵</strong>来说，通常会将图中的节点编号为\(1, 2, \dots, |V|\)，则图\(G\)的邻接矩阵由一个\(|V|\times |V|\)矩阵\(A = (a_{ij})\)表示，满足$$a_{ij} = \begin{cases}1 \quad \text{若}(i, j)\in E \\ 0 \quad \text{其他}\end{cases}$$空间复杂度为\(O|V|^2\)<br>无向图的邻接矩阵是对称矩阵，即\(A = A^T\)，在某些应用中可以只存储上三角矩阵（加主对角线），从而减小空间需求。邻接矩阵也可以用来表示<strong>权重图</strong>，可以直接将边\((u, v)\)的权重\(\omega\)放在第\(u\)行第\(v\)列，对于不存在的边用\(0\)或者\(\infty\)来表示</p>
+<h1 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h1>
       
     </div>
     
@@ -433,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05-序列模型/" rel="next" title="05.序列模型">
-                <i class="fa fa-chevron-left"></i> 05.序列模型
+              <a href="/2019/最长回文/" rel="next" title="最长回文">
+                <i class="fa fa-chevron-left"></i> 最长回文
               </a>
             
           </div>
@@ -442,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/浅谈机器学习中主成分分析-PCA/" rel="prev" title="浅谈机器学习中主成分分析-PCA">
-                浅谈机器学习中主成分分析-PCA <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -572,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#独立成分分析"><span class="nav-number">1.</span> <span class="nav-text">独立成分分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICA的不确定性-ICA-ambiguities"><span class="nav-number">1.2.</span> <span class="nav-text">ICA的不确定性(ICA ambiguities)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密度函数和线性变换"><span class="nav-number">1.3.</span> <span class="nav-text">密度函数和线性变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICA算法"><span class="nav-number">1.4.</span> <span class="nav-text">ICA算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讨论"><span class="nav-number">1.5.</span> <span class="nav-text">讨论</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图的表示"><span class="nav-number">1.</span> <span class="nav-text">图的表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">2.</span> <span class="nav-text">广度优先搜索</span></a></li></ol></div>
             
 
           </div>
