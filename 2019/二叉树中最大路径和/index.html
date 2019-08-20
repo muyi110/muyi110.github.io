@@ -117,17 +117,19 @@
 
 
 
-<meta name="description" content="给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。输入: [1 2 3]         1       2   3输出：6">
+<meta name="description" content="LeetCode124: 给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。  在样例1中，路径可以看成从节点3出发，沿着树的父子关系经过节点1到达节点2。例2中，路径可以看成从节点7出发，沿着树的父子关系经过节点20到达节点15123456789101112131415161718192021">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树中最大路径和">
 <meta property="og:url" content="https://muyi110.github.io/2019/二叉树中最大路径和/index.html">
 <meta property="og:site_name" content="MuYi&#39;s Blog">
-<meta property="og:description" content="给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。输入: [1 2 3]         1       2   3输出：6">
+<meta property="og:description" content="LeetCode124: 给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。  在样例1中，路径可以看成从节点3出发，沿着树的父子关系经过节点1到达节点2。例2中，路径可以看成从节点7出发，沿着树的父子关系经过节点20到达节点15123456789101112131415161718192021">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-19T14:54:20.078Z">
+<meta property="og:image" content="https://muyi110.github.io/images/binTreepathsum_0.png">
+<meta property="og:updated_time" content="2019-08-20T02:08:13.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树中最大路径和">
-<meta name="twitter:description" content="给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。输入: [1 2 3]         1       2   3输出：6">
+<meta name="twitter:description" content="LeetCode124: 给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。  在样例1中，路径可以看成从节点3出发，沿着树的父子关系经过节点1到达节点2。例2中，路径可以看成从节点7出发，沿着树的父子关系经过节点20到达节点15123456789101112131415161718192021">
+<meta name="twitter:image" content="https://muyi110.github.io/images/binTreepathsum_0.png">
 
 
 
@@ -393,8 +395,10 @@
 </script>
 
 <blockquote>
-<p>给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。<br><strong>输入</strong>: [1 2 3]<br>         <strong>1</strong><br>       <strong>2   3</strong><br><strong>输出</strong>：6</p>
+<p>LeetCode124: 给定一个非空二叉树，返回其最大路径和。本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。<img src="/images/binTreepathsum_0.png" alt="样例"></p>
 </blockquote>
+<p>在样例1中，路径可以看成从节点3出发，沿着树的父子关系经过节点1到达节点2。例2中，路径可以看成从节点7出发，沿着树的父子关系经过节点20到达节点15<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode* root, <span class="keyword">int</span>&amp; maxsum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l = max(<span class="number">0</span>,dfs(root-&gt;left,maxsum));</span><br><span class="line">        <span class="keyword">int</span> r = max(<span class="number">0</span>,dfs(root-&gt;right,maxsum));</span><br><span class="line">        maxsum = max(l+r+root-&gt;val, maxsum);</span><br><span class="line">        <span class="keyword">return</span> root-&gt;val + max(l,r);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxsum = INT_MIN;</span><br><span class="line">        dfs(root,maxsum);</span><br><span class="line">        <span class="keyword">return</span> maxsum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>利用深度优先搜索，沿着叶节点依次向上考查节点。如果要考查祖父节点，需要选择左子节点和右子节点中较大的一个。例如样例2中，如果考查节点-10，需要选择左子节点15。利用一个全局变量maxsum记录搜索过程中的最大值，对于路径和小于0的子树，直接返回0，也就是路径中不包含此子树的节点</p>
 
       
     </div>
