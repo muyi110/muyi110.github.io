@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="进程间的通信方式  进程间有\(6\)种通信方式  管道(pipe)及有名管道(named pipe)：管道可用于具有亲缘关系的父子进程间的通信，有名管道除了具有管道所具有的功能外，它还允许无亲缘关系进程间的通信 信号(signal)：信号是在软件层次上对中断机制的一种模拟，它是比较复杂的通信方式，用于通知进程有某事件发生，一个进程收到一个信号与处理器收到一个中断请求效果上可以说是一致的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-29T08:11:43.941Z">
+<meta property="og:updated_time" content="2019-09-01T13:38:03.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯一面">
 <meta name="twitter:description" content="进程间的通信方式  进程间有\(6\)种通信方式  管道(pipe)及有名管道(named pipe)：管道可用于具有亲缘关系的父子进程间的通信，有名管道除了具有管道所具有的功能外，它还允许无亲缘关系进程间的通信 信号(signal)：信号是在软件层次上对中断机制的一种模拟，它是比较复杂的通信方式，用于通知进程有某事件发生，一个进程收到一个信号与处理器收到一个中断请求效果上可以说是一致的">
@@ -419,8 +419,12 @@
 <blockquote>
 <p>子进程死亡需要父进程来处理，那么意味着正常的进程应该是子进程先于父进程死亡。当父进程先于子进程死亡时，子进程死亡时没父进程处理，这个死亡的子进程就是孤儿进程。<br>但孤儿进程与僵尸进程不同的是，由于父进程已经死亡，系统会帮助父进程回收处理孤儿进程。所以孤儿进程实际上是不占用资源的，因为它终究是被系统回收了。不会像僵尸进程那样占用ID，损害运行系统</p>
 </blockquote>
+<blockquote>
 <p><strong>TCP为啥需要3次握手</strong><br>从TCP全双工的角度回答，都需要知道对方的序列号<a href="https://blog.csdn.net/lengxiao1993/article/details/82771768" target="_blank" rel="noopener">TCP 为什么三次握手而不是两次握手</a>和<a href="https://cloud.tencent.com/developer/article/1444010" target="_blank" rel="noopener">tcp为什么是三次握手</a></p>
-<p><strong>static_assert</strong><br>static_assert这个关键字，用来做编译期间的断言，因此叫做静态断言。<br>语法：static_assert(常量表达式，提示字符串)—-如果第一个参数常量表达式的值为真(true或者非零值)，那么static_assert不做任何事情，就像它不存在一样，否则会产生一条编译错误，错误位置就是该static_assert语句所在行，错误提示就是第二个参数提示字符串<br>编译器在遇到一个static_assert语句时，通常立刻将其第一个参数作为常量表达式进行演算，但如果该常量表达式依赖于某些模板参数，则延迟到模板实例化时再进行演算，这就让检查模板参数成为了可能<br><strong>wirte和fwrite</strong><br>fwrite: 带缓冲区；write: 不带缓冲区<br><strong>std::move</strong><br>函数原型<br>‘’’C++<br>template <typename t=""><br>typename remove_reference<t>::type&amp;&amp; move(T&amp;&amp; t)<br>{<br>    return static_cast&lt;typename remove_reference<t>::type&amp;&amp;&gt;(t);<br>}<br>‘’’</t></t></typename></p>
+</blockquote>
+<blockquote>
+<p><strong>static_assert</strong><br>static_assert这个关键字，用来做编译期间的断言，因此叫做静态断言。<br>语法：static_assert(常量表达式，提示字符串)—-如果第一个参数常量表达式的值为真(true或者非零值)，那么static_assert不做任何事情，就像它不存在一样，否则会产生一条编译错误，错误位置就是该static_assert语句所在行，错误提示就是第二个参数提示字符串<br>编译器在遇到一个static_assert语句时，通常立刻将其第一个参数作为常量表达式进行演算，但如果该常量表达式依赖于某些模板参数，则延迟到模板实例化时再进行演算，这就让检查模板参数成为了可能<br><strong>wirte和fwrite</strong><br>fwrite: 带缓冲区；write: 不带缓冲区<br><strong>std::move</strong><br>函数原型<br>‘’’C++<br>template <typename t=""><br>typename remove_reference<t>::type&amp;&amp; move(T&amp;&amp; t)<br>{<br>    return static_cast&lt;typename remove_reference<t>::type&amp;&amp;&gt;(t);<br>}<br>‘’’<br><strong>程序中//(\dfrac{1}{0}\)是在编译期出错还是在运行时候出错</strong><br>在linux系统g++编译器测试：编译可以通过，运行时报错</t></t></typename></p>
+</blockquote>
 
       
     </div>
