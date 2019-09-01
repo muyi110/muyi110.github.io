@@ -124,7 +124,7 @@
 <meta property="og:site_name" content="MuYi&#39;s Blog">
 <meta property="og:description" content="进程间的通信方式  进程间有\(6\)种通信方式  管道(pipe)及有名管道(named pipe)：管道可用于具有亲缘关系的父子进程间的通信，有名管道除了具有管道所具有的功能外，它还允许无亲缘关系进程间的通信 信号(signal)：信号是在软件层次上对中断机制的一种模拟，它是比较复杂的通信方式，用于通知进程有某事件发生，一个进程收到一个信号与处理器收到一个中断请求效果上可以说是一致的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-01T13:40:32.221Z">
+<meta property="og:updated_time" content="2019-09-01T13:43:36.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯一面">
 <meta name="twitter:description" content="进程间的通信方式  进程间有\(6\)种通信方式  管道(pipe)及有名管道(named pipe)：管道可用于具有亲缘关系的父子进程间的通信，有名管道除了具有管道所具有的功能外，它还允许无亲缘关系进程间的通信 信号(signal)：信号是在软件层次上对中断机制的一种模拟，它是比较复杂的通信方式，用于通知进程有某事件发生，一个进程收到一个信号与处理器收到一个中断请求效果上可以说是一致的">
@@ -434,9 +434,9 @@
 <blockquote>
 <p><strong>std::move</strong></p>
 </blockquote>
-<p>函数原型<br>‘’’C++<br>template <typename t=""><br>typename remove_reference<t>::type&amp;&amp; move(T&amp;&amp; t)<br>{<br>    return static_cast&lt;typename remove_reference<t>::type&amp;&amp;&gt;(t);<br>}<br>‘’’</t></t></typename></p>
+<p>函数原型<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> remove_reference&lt;T&gt;::<span class="function">type&amp;&amp; <span class="title">move</span><span class="params">(T&amp;&amp; t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;&gt;(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p><strong>程序中//(\dfrac{1}{0}\)是在编译期出错还是在运行时候出错</strong></p>
+<p><strong>程序中\(\dfrac{1}{0}\)是在编译期出错还是在运行时候出错</strong></p>
 </blockquote>
 <p>在linux系统g++编译器测试：编译可以通过，运行时报错</p>
 
