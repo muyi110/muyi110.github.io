@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://muyi110.github.io/images/initialization.png">
 <meta property="og:image" content="https://muyi110.github.io/images/leaky_relu.png">
 <meta property="og:image" content="https://muyi110.github.io/images/elu.png">
-<meta property="og:updated_time" content="2019-09-02T07:04:58.495Z">
+<meta property="og:updated_time" content="2019-09-02T08:06:16.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习中的模型训练">
 <meta name="twitter:description" content="梯度消失和梯度爆炸在反向传播算法中，在计算的梯度从输出层到输入层的传播过程中，梯度经常变得越来越小，这种称为梯度消失。相反，在梯度传播过程中，梯度变得越来越大，导致模型发散，这种称为梯度爆炸（在RNN中最可能遇到）。一般情况下，神经网络经常遭遇不稳定的梯度，即不同的层可能以不同的速度学习 缓解方法Xavier和He初始化由于不想信号在网络传播过程中（前向传播和反向传播）死掉或者出现爆炸或者饱">
@@ -402,8 +402,12 @@
 <blockquote>
 <p>建议：选择激活函数ELU &gt; leakyReLU &gt; ReLu &gt; tanh &gt; sigmoid</p>
 </blockquote>
-<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p>尽管使用非饱和激活函数和He初始化可以在训练开始减小梯度消失和梯度爆炸问题，但是不能保证训练过程中不会出现<br>Batch Normalization用来缓解梯度消失和梯度爆炸问题。在训练过程中，由于之前的网络参数改变，每一层的输入分布也改变（Internal Covariate Shift问题）<br>这种技术主要包括：在每一层的激活函数之前添加一个操作，0中心化和正太化输入，然后缩放和平移。为了0中心化和正太化输入，算法需要估计输入的均值和标准差。实际中，通过估计当前的mini-batch的均值和标准差。其算法如下$$\begin{aligned}\mu_B &amp;= \dfrac{1}{m_B}\sum_{i=1}^{m_B}\mathbf{x}^{(i)}\\\sigma_B ^2 &amp;= \dfrac{1}{m_B}\sum_{i=1}^{m_B}(\mathbf{x}^{(i)}-\mu_B)^2\\\hat{\mathbf{x}}^{(i)} &amp;= \dfrac{\mathbf{x}^{(i)}-\mu_B}{\sqrt{\sigma_B ^2 + \epsilon}}\\\mathbf{z}^{(i)} &amp;= \gamma \hat{\mathbf{x}}^(i) + \beta\end{aligned}$$其中\(\mu_B, \sigma_B, m_B\)分别是mini-batch的均值，方差，和样本个数，\(\mathbf{x}^{(i)}\)是0均值和正太化的输入，\(\gamma, \beta\)分别是缩放参数和平移参数，\(\mathbf{z}^{(i)}\)是BN的输出，\(\epsilon\)是为了防止除0操作<br>在测试阶段，使用整个训练集的均值和方差。在训练阶段，使用移动平均方法计算均值\(\mu\)和方差\(\sigma\)</p>
-<h1 id="快速优化"><a href="#快速优化" class="headerlink" title="快速优化"></a>快速优化</h1><h1 id="正则化技术"><a href="#正则化技术" class="headerlink" title="正则化技术"></a>正则化技术</h1>
+<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p>尽管使用非饱和激活函数和He初始化可以在训练开始减小梯度消失和梯度爆炸问题，但是不能保证训练过程中不会出现<br>Batch Normalization用来缓解梯度消失和梯度爆炸问题。在训练过程中，由于之前的网络参数改变，每一层的输入分布也改变（Internal Covariate Shift问题）<br>这种技术主要包括：在每一层的激活函数之前添加一个操作，0中心化和正太化输入，然后缩放和平移。为了0中心化和正太化输入，算法需要估计输入的均值和标准差。实际中，通过估计当前的mini-batch的均值和标准差。其算法如下$$\begin{aligned}\mu_B &amp;= \dfrac{1}{m_B}\sum_{i=1}^{m_B}\mathbf{x}^{(i)}\\\sigma_B ^2 &amp;= \dfrac{1}{m_B}\sum_{i=1}^{m_B}(\mathbf{x}^{(i)}-\mu_B)^2\\\hat{\mathbf{x}}^{(i)} &amp;= \dfrac{\mathbf{x}^{(i)}-\mu_B}{\sqrt{\sigma_B ^2 + \epsilon}}\\\mathbf{z}^{(i)} &amp;= \gamma \hat{\mathbf{x}}^{(i)} + \beta\end{aligned}$$其中\(\mu_B, \sigma_B, m_B\)分别是mini-batch的均值，方差，和样本个数，\(\mathbf{x}^{(i)}\)是0均值和正太化的输入，\(\gamma, \beta\)分别是缩放参数和平移参数，\(\mathbf{z}^{(i)}\)是BN的输出，\(\epsilon\)是为了防止除0操作<br>在测试阶段，使用整个训练集的均值和方差。在训练阶段，使用移动平均方法计算均值\(\mu\)和方差\(\sigma\)</p>
+<h3 id="解决梯度爆炸"><a href="#解决梯度爆炸" class="headerlink" title="解决梯度爆炸"></a>解决梯度爆炸</h3><ul>
+<li>梯度裁剪</li>
+<li>迁移学习（重用预训练层）</li>
+</ul>
+<h1 id="快速优化算法"><a href="#快速优化算法" class="headerlink" title="快速优化算法"></a>快速优化算法</h1><h1 id="正则化技术"><a href="#正则化技术" class="headerlink" title="正则化技术"></a>正则化技术</h1>
       
     </div>
     
@@ -562,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#梯度消失和梯度爆炸"><span class="nav-number">1.</span> <span class="nav-text">梯度消失和梯度爆炸</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓解方法"><span class="nav-number">1.1.</span> <span class="nav-text">缓解方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xavier和He初始化"><span class="nav-number">1.1.1.</span> <span class="nav-text">Xavier和He初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非饱和的激活函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">非饱和的激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch-Normalization"><span class="nav-number">1.1.3.</span> <span class="nav-text">Batch Normalization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速优化"><span class="nav-number">2.</span> <span class="nav-text">快速优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则化技术"><span class="nav-number">3.</span> <span class="nav-text">正则化技术</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#梯度消失和梯度爆炸"><span class="nav-number">1.</span> <span class="nav-text">梯度消失和梯度爆炸</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓解方法"><span class="nav-number">1.1.</span> <span class="nav-text">缓解方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xavier和He初始化"><span class="nav-number">1.1.1.</span> <span class="nav-text">Xavier和He初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非饱和的激活函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">非饱和的激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch-Normalization"><span class="nav-number">1.1.3.</span> <span class="nav-text">Batch Normalization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决梯度爆炸"><span class="nav-number">1.1.4.</span> <span class="nav-text">解决梯度爆炸</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速优化算法"><span class="nav-number">2.</span> <span class="nav-text">快速优化算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则化技术"><span class="nav-number">3.</span> <span class="nav-text">正则化技术</span></a></li></ol></div>
             
 
           </div>
