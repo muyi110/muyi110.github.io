@@ -4,8 +4,26 @@
 
     
   <url>
+    <loc>https://muyi110.github.io/2019/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/</loc>
+    <lastmod>2019-09-12T12:08:20.986Z</lastmod>
+    <data>
+        <display>
+        <title>约瑟夫环</title>
+        <pubTime>2019-09-12T11:14:57.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="leetcode" url="https://muyi110.github.io/categories/leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://muyi110.github.io/2019/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E4%B8%8E%E5%A4%A7%E5%B0%8F%E7%AB%AF/</loc>
-    <lastmod>2019-09-12T09:17:55.021Z</lastmod>
+    <lastmod>2019-09-12T09:30:02.607Z</lastmod>
     <data>
         <display>
         <title>计算机中的内存对齐与大小端</title>

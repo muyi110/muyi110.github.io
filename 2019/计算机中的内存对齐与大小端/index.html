@@ -125,7 +125,7 @@
 <meta property="og:description" content="内存对齐内存对齐的原因 内存对齐后，提高CPU的访问速度。从程序员的角度，内存是一个一个字节组成，但是CPU把内存看成一块一块的，块的大小可以是2、4、8、16个字节，因此CPU读取内存的时候是一块一块进行的，块的大小称为内存读取粒度（memory granularity） 平台原因（移植原因）：不是所有的硬件平台都能访问任意地址上的任意数据，某些硬件平台只能在某些地址处取某些特定类型的数据">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/big_little.png">
-<meta property="og:updated_time" content="2019-09-12T09:17:55.021Z">
+<meta property="og:updated_time" content="2019-09-12T09:30:02.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机中的内存对齐与大小端">
 <meta name="twitter:description" content="内存对齐内存对齐的原因 内存对齐后，提高CPU的访问速度。从程序员的角度，内存是一个一个字节组成，但是CPU把内存看成一块一块的，块的大小可以是2、4、8、16个字节，因此CPU读取内存的时候是一块一块进行的，块的大小称为内存读取粒度（memory granularity） 平台原因（移植原因）：不是所有的硬件平台都能访问任意地址上的任意数据，某些硬件平台只能在某些地址处取某些特定类型的数据">
@@ -419,7 +419,7 @@
 <blockquote>
 <p>数据在内存中都是按照从<strong>内存</strong>的低地址开始到高地址的方式存放数据</p>
 </blockquote>
-<p>例如int类型变量x的地址为0x100，其数据为0x01234567(高字节为0x01，低字节为0x67)，则两种方式（大端与小端）的存储结果如下<img src="/images/big_little.png" alt="大端与小端"></p>
+<p>例如int类型变量x的地址为0x100，其数据为0x01234567(高字节为0x01，低字节为0x67)，则两种方式（大端与小端）的存储结果如下<img src="/images/big_little.png" alt="大端与小端"><br>一旦选择特定的系统，那么字节顺序也就固定下来了</p>
 <p>参考：<a href="https://www.cnblogs.com/zwh0214/p/8833314.html" target="_blank" rel="noopener">结构体内存对齐用法</a><br>      深入理解计算机系统</p>
 
       
@@ -454,6 +454,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/约瑟夫环/" rel="prev" title="约瑟夫环">
+                约瑟夫环 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -534,7 +538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -545,7 +549,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
