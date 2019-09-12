@@ -125,7 +125,7 @@
 <meta property="og:description" content="题目：已知n个人（以编号0，1，2…n-1分别表示）围坐在一起。从编号为0的人开始报数，数到k的那个人出列；他的下一个人又从1开始报数，数到k的那个人又出列；依此规律重复下去，直到圆桌周围的人全部出列，最后一个出列的人为胜利者。求胜利者编号 递归的方法当\(m=10, \quad k=3\)去掉一个元素时，变为一个\(m=9, \quad k=3\)的约瑟夫环问题，且有如下关系$$3 = (">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://muyi110.github.io/images/recursive.png">
-<meta property="og:updated_time" content="2019-09-12T12:11:45.838Z">
+<meta property="og:updated_time" content="2019-09-12T12:13:19.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="约瑟夫环">
 <meta name="twitter:description" content="题目：已知n个人（以编号0，1，2…n-1分别表示）围坐在一起。从编号为0的人开始报数，数到k的那个人出列；他的下一个人又从1开始报数，数到k的那个人又出列；依此规律重复下去，直到圆桌周围的人全部出列，最后一个出列的人为胜利者。求胜利者编号 递归的方法当\(m=10, \quad k=3\)去掉一个元素时，变为一个\(m=9, \quad k=3\)的约瑟夫环问题，且有如下关系$$3 = (">
@@ -395,7 +395,7 @@
 </script>
 
 <p>题目：已知n个人（以编号0，1，2…n-1分别表示）围坐在一起。从编号为0的人开始报数，数到k的那个人出列；他的下一个人又从1开始报数，数到k的那个人又出列；依此规律重复下去，直到圆桌周围的人全部出列，最后一个出列的人为胜利者。求胜利者编号</p>
-<h1 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h1><p><img src="/images/recursive.png" alt="示意图">当\(m=10, \quad k=3\)去掉一个元素时，变为一个\(m=9, \quad k=3\)的约瑟夫环问题，且有如下关系$$3 = (0 + 3) \% m \quad 4 = (1 + 3) \% 10 \dots 1 = (8 + 3) \% 10 \\\Downarrow \\3 = (0 + k) \% m \quad 4 = (1 + k) \% 10 \dots 1 = (8 + k) \% 10$$当\(m = 10, \quad k=3\)时，设约瑟夫环最后一个出列的人为\(\text{Joseph}(10, 3)\)，则有如下关系$$\text{Joseph}(10, 3) = (\text{Joseph}(9, 3) + k) \% m\\\vdots \\ \text{Joseph}(2, 3) = (\text{Joseph}(1, 3) + k) \% m$$C++实现如下</p>
+<h1 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h1><p><img src="/images/recursive.png" alt="示意图">当\(m=10, \quad k=3\)去掉一个元素时，变为一个\(m=9, \quad k=3\)的约瑟夫环问题，且有如下关系$$3 = (0 + 3) \% 10 \quad 4 = (1 + 3) \% 10 \dots 1 = (8 + 3) \% 10 \\\Downarrow \\3 = (0 + k) \% m \quad 4 = (1 + k) \% m \dots 1 = (8 + k) \% m$$当\(m = 10, \quad k=3\)时，设约瑟夫环最后一个出列的人为\(\text{Joseph}(10, 3)\)，则有如下关系$$\text{Joseph}(10, 3) = (\text{Joseph}(9, 3) + k) \% m\\\vdots \\ \text{Joseph}(2, 3) = (\text{Joseph}(1, 3) + k) \% m$$C++实现如下</p>
 
       
     </div>
